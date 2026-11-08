@@ -4140,15 +4140,7 @@ function updateIntroInfo(){
             var xz = toXZ(legoLL(man)[0], legoLL(man)[1]);
             holder.position.set(xz[0], -0.2, xz[1]);
             holder.rotation.y = (def.fwdDeg - man.heading) * Math.PI / 180;
-          } else if(def.key === 'x1'){
-            // [산비탈 랜드마크 정밀 고도] 인왕산 치마바위 50m 반경 18.8m 급경사(최고점 +9.22m) 지면 파묻힘 방지
-            var xz = toXZ(legoLL(man)[0], legoLL(man)[1]);
-            holder.position.set(xz[0], 9.5, xz[1]);
-          } else if(def.key === 'x2'){
-            // [산비탈 랜드마크 정밀 고도] 북악산 백악마루 50m 반경 8.6m 급경사(최고점 +4.42m) 지면 파묻힘 방지
-            var xz = toXZ(legoLL(man)[0], legoLL(man)[1]);
-            holder.position.set(xz[0], 5.5, xz[1]);
-            holder.rotation.y = (def.fwdDeg - man.heading) * Math.PI / 180;
+
           } else {
             var xz = toXZ(legoLL(man)[0], legoLL(man)[1]);
             holder.position.set(xz[0], 0, xz[1]);
