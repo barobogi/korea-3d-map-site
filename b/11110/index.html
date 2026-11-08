@@ -227,6 +227,30 @@
   @media (max-width:860px) and (max-height:700px) {
     #sidebar { max-height:40vh; }
   }
+  @media (max-width:640px) {
+    #lego-block-bar {
+      bottom: 58px !important;
+      max-width: calc(100vw - 16px) !important;
+      padding: 4px 8px !important;
+      gap: 4px !important;
+    }
+    #lego-block-bar select {
+      max-width: 140px !important;
+      font-size: 11px !important;
+    }
+    #lego-block-bar button {
+      padding: 4px 6px !important;
+      font-size: 10.5px !important;
+    }
+    #inapp-detail-sheet {
+      max-height: 48vh !important;
+      overflow-y: auto !important;
+      z-index: 70 !important;
+    }
+    #commercial-bottom-ui {
+      z-index: 45 !important;
+    }
+  }
   .intro-grid-status{display:none!important}
 </style>
 <script src="../../vendor/three.min.js"></script>
@@ -605,6 +629,80 @@ function boxOf(ring){
   if (!(w>0 && d>0)) return null;
   return {x:(a[0]+b[0])/2, z:(a[1]+b[1])/2, w:w, d:d};
 }
+const LEGO_EXCLUSIONS = [
+  {lon:126.9769, lat:37.5786, r:36}, // 근정전
+  {lon:126.9755, lat:37.5797, r:55}, // 경회루
+  {lon:126.9782, lat:37.5694, r:30}, // 청계천
+  {lon:126.963428, lat:37.581512, r:30}, // 인왕산 수성동계곡
+  {lon:126.960812, lat:37.581524, r:30}, // 인왕산 치마바위
+  {lon:126.981845, lat:37.595812, r:30}, // 북악산 백악마루
+  {lon:126.970514, lat:37.580841, r:30}, // 통인시장
+  {lon:126.969842, lat:37.580215, r:30}, // 서촌 이상의집
+  {lon:126.97689, lat:37.57599, r:28},  // 경복궁 광화문 (D-02 오렌지 띠 완전 차단)
+  {lon:126.977232, lat:37.582845, r:30}, // 향원정
+  {lon:126.974954, lat:37.586608, r:30}, // 청와대
+  {lon:126.9868, lat:37.5812, r:25},    // 북촌 계동
+  {lon:126.9854, lat:37.5828, r:25},    // 북촌 가회동
+  {lon:126.984, lat:37.5818, r:25},     // 북촌 백인제가옥
+  {lon:126.991008, lat:37.579617, r:30}, // 창덕궁 인정전
+  {lon:126.992812, lat:37.580451, r:30}, // 창덕궁 후원 부용정
+  {lon:126.992258, lat:37.578652, r:30}, // 창덕궁 낙선재
+  {lon:126.994781, lat:37.575028, r:30}, // 종묘 정전
+  {lon:126.994215, lat:37.575841, r:30}, // 종묘 영녕전
+  {lon:126.975412, lat:37.572815, r:30}, // 세종문화회관
+  {lon:126.976815, lat:37.575812, r:30}, // 광화문 월대
+  {lon:126.977824, lat:37.575612, r:30}, // 의정부지
+  {lon:127.002814, lat:37.582415, r:30}, // 대학로 소극장
+  {lon:127.002815, lat:37.580812, r:30}, // 마로니에공원
+  {lon:127.007812, lat:37.580415, r:30}, // 낙산공원
+  {lon:127.012541, lat:37.578912, r:30}, // 동망봉
+  {lon:127.009845, lat:37.572412, r:30}, // 흥인지문공원
+  {lon:126.9918, lat:37.5716, r:25},    // 종로3가역
+  {lon:126.989712, lat:37.574421, r:30}, // 익선동
+  {lon:126.985612, lat:37.574182, r:30}, // 인사동 쌈지길
+  {lon:126.988215, lat:37.571412, r:30}, // 탑골공원
+  {lon:126.988214, lat:37.572841, r:30}, // 낙원악기상가
+  {lon:126.993415, lat:37.574218, r:30}, // 서순라길
+  {lon:126.982145, lat:37.571025, r:30}, // 피맛골
+  {lon:126.982412, lat:37.574615, r:30}, // 조계사
+  {lon:126.9768, lat:37.5714, r:25},    // 이순신동상
+  {lon:126.9768, lat:37.5728, r:25},    // 세종대왕동상
+  {lon:126.981452, lat:37.571248, r:30}, // 종로 가로등
+  {lon:126.992521, lat:37.570189, r:30}, // 종로대로
+  {lon:126.993108, lat:37.570412, r:30}, // 간선버스
+  {lon:126.982145, lat:37.584512, r:30}, // 삼청동천
+  {lon:126.969845, lat:37.586212, r:30}, // 백운동천
+  {lon:126.9882, lat:37.5694, r:25},    // 청계천 수변산책로
+  {lon:126.968214, lat:37.581245, r:30}, // 옥류동천
+  {lon:126.9822, lat:37.5691, r:25},    // 광통교
+  {lon:126.977821, lat:37.569145, r:30}, // 벽천분수
+  {lon:126.993949, lat:37.568436, r:30}, // 청계천 v2
+  {lon:126.991814, lat:37.571441, r:30}, // 종로3가 귀금속
+  {lon:126.991814, lat:37.571441, r:30}, // 출입구 캐노피
+  {lon:127.000312, lat:37.570114, r:30}, // 광장시장
+  {lon:126.995812, lat:37.568415, r:30}  // 세운상가
+];
+let LEGO_EXCLUSIONS_XZ = null;
+function isBuildingExcludedByLego(ring){
+  if (!LEGO_EXCLUSIONS_XZ){
+    LEGO_EXCLUSIONS_XZ = LEGO_EXCLUSIONS.map(function(e){
+      const xz = toXZ(e.lon, e.lat);
+      return { x: xz[0], z: xz[1], r2: e.r * e.r };
+    });
+  }
+  let cx = 0, cz = 0;
+  const n = ring.length - 1;
+  if (n <= 0) return false;
+  for (let i = 0; i < n; i++){ cx += ring[i][0]; cz += ring[i][1]; }
+  cx /= n; cz /= n;
+  const bxz = toXZ(cx, cz);
+  for (let i = 0; i < LEGO_EXCLUSIONS_XZ.length; i++){
+    const ex = LEGO_EXCLUSIONS_XZ[i];
+    const dx = bxz[0] - ex.x, dz = bxz[1] - ex.z;
+    if (dx * dx + dz * dz < ex.r2) return true;
+  }
+  return false;
+}
 async function loadTiles(km, forcedLod, includeGround){
   const stat=document.getElementById('tile-stat');
   const half=(km*1000)/2;
@@ -629,8 +727,10 @@ async function loadTiles(km, forcedLod, includeGround){
     if (!gj) continue;
     const isFar=(jobs[i].lod==='lod2');
     for (const f of gj.features){
+      const ring=f.geometry.coordinates[0];
+      if (isBuildingExcludedByLego(ring)) continue; // [D-02 광화문 등 블록 겹침 및 오렌지 띠 잔존 완전 차단]
       buildings++;
-      const ring=f.geometry.coordinates[0], h=f.properties.h, color=featureColor(f);
+      const h=f.properties.h, color=featureColor(f);
       const b=isFar ? boxOf(ring) : null;
       if (b){ b.h=h; b.color=color; boxes.push(b); } else prism(ring, h, pos, norm, col, color);
     }
@@ -4014,6 +4114,7 @@ function updateIntroInfo(){
   })();
 
   window.__cityBuildingsVisible = true;
+  window.showTransitInBlock = function(on){ liveTransitGroup.visible = !!on; document.querySelectorAll('.ar-transit-tag').forEach(function(t){ t.style.display = on ? '' : 'none'; }); };
   window.toggleCityBuildings = function(show){
     window.__cityBuildingsVisible = show;
     if(typeof MESH !== 'undefined' && MESH) MESH.visible = show;
@@ -4171,12 +4272,15 @@ function updateIntroInfo(){
     // 청계천 블록 이동 시 주변 건물 자동 숨김 (수로 시야 확보)
     // 블록을 볼 때는 주변 도심 건물을 숨겨 블록이 가려지지 않게 한다(건물 토글 버튼으로 다시 표시 가능)
     window.toggleCityBuildings(false);
+    // 블록을 볼 때 실시간 교통 선(3호선 주황 띠 등)도 숨겨 블록 위에 겹쳐 보이지 않게 한다
+    liveTransitGroup.visible = false;
+    document.querySelectorAll('.ar-transit-tag').forEach(function(t){ t.style.display = 'none'; });
     showSpatialToast('🧱 외부 3D 블록 불러오는 중...');
     return legoLoad(def).then(function(h){
       customOrbitTarget = null;
       // 블록 크기에 맞춰 카메라를 맞춘다(블록이 화면 중앙에 꽉 차게)
       var bb = new THREE.Box3().setFromObject(h), ct = bb.getCenter(new THREE.Vector3()), sz = bb.getSize(new THREE.Vector3());
-      var r = Math.max(sz.x, sz.y, sz.z, 20);
+      var r = Math.min(Math.max(sz.x, sz.y, sz.z, 20), 400); // 5km 청계천처럼 긴 블록은 카메라가 너무 멀어지지 않게 상한
       if(!isFinite(r) || !isFinite(ct.x)){ var p = h.position; ct = new THREE.Vector3(p.x, p.y, p.z); r = 60; }
       // 화면에 보이는 높이 = 모델 높이 + 셰이더가 더하는 지형 고도. 카메라도 같은 기준으로 맞춘다.
       var tg = (typeof window.terrainH === 'function') ? window.terrainH(ct.x, ct.z) : 0; if(isFinite(tg)) ct.y += tg;
@@ -4188,6 +4292,7 @@ function updateIntroInfo(){
       targetCamPos = new THREE.Vector3(cx, cy, cz);
       showSpatialToast('🧱 ' + h.userData.man.name + ' 블록 표시 중');
       window.__stampAdd && window.__stampAdd(key);
+      window.__blockInfo && window.__blockInfo(h.userData.man || {});
       return new Promise(function(resolveCam){
         var t0 = performance.now();
         function checkCam(){
@@ -4207,7 +4312,7 @@ function updateIntroInfo(){
   (function(){
     var bar = document.createElement('div');
     bar.id = 'lego-block-bar';
-    bar.style.cssText = 'position:fixed;left:50%;transform:translateX(-50%);bottom:16px;z-index:60;display:flex;flex-direction:row;align-items:center;gap:8px;max-width:calc(100vw - 32px);overflow-x:auto;padding:6px 14px;background:rgba(15,23,42,.92);backdrop-filter:blur(8px);border-radius:18px;border:1px solid rgba(56,189,248,.45);box-shadow:0 10px 25px -5px rgba(0,0,0,.5);white-space:nowrap;';
+    bar.style.cssText = 'position:fixed;left:50%;transform:translateX(-50%);top:136px;z-index:60;display:flex;flex-direction:row;align-items:center;gap:8px;max-width:calc(100vw - 32px);overflow-x:auto;padding:6px 14px;background:rgba(15,23,42,.92);backdrop-filter:blur(8px);border-radius:18px;border:1px solid rgba(56,189,248,.45);box-shadow:0 10px 25px -5px rgba(0,0,0,.5);white-space:nowrap;';
     
     // 건물 숨김/표시 토글 버튼 추가
     var bldBtn = document.createElement('button');
@@ -4260,6 +4365,16 @@ function updateIntroInfo(){
     function stampDraw(){ stamp.textContent = '🏅 종로 도장 ' + stampLoad().length + ' / ' + LEGO_BLOCKS.length; }
     window.__stampAdd = function(k){ var a = stampLoad(); if(a.indexOf(k) < 0){ a.push(k); try { localStorage.setItem('k3d_stamps_11110', JSON.stringify(a)); } catch(e){} } stampDraw(); };
     stampDraw();
+    // 블록 정보 카드: 이름·출처·확인일(확인 안 된 정보는 '확인 필요'로 표시)
+    var info = document.createElement('div');
+    info.style.cssText = 'position:fixed;left:50%;transform:translateX(-50%);top:186px;z-index:59;max-width:calc(100vw - 32px);padding:6px 12px;border-radius:10px;background:rgba(15,23,42,.9);color:#e2e8f0;font:600 12px sans-serif;display:none;';
+    document.body.appendChild(info);
+    window.__blockInfo = function(m){
+      var src = (m.sources && m.sources[0] && (m.sources[0].title || m.sources[0].id)) || (m.references && m.references[0] && (m.references[0].title || m.references[0].url)) || (m.heritage && (m.heritage.designation || m.heritage.name)) || '';
+      var ver = m.verified_at || (m.sources && m.sources[0] && m.sources[0].verified_at) || '';
+      info.textContent = (m.name || '') + ' · 출처: ' + (src || '확인 필요') + ' · 확인일: ' + (ver || '확인 필요');
+      info.style.display = 'block';
+    };
     bar.insertBefore(tog, bar.firstChild);
     bar.insertBefore(stamp, bar.firstChild);
     setOpen(window.innerWidth > 760);
