@@ -60,6 +60,15 @@ fetch('data/sgg.json',{cache:'no-store'}).then(function(r){return r.json()}).the
   p.addEventListener('click',function(){if(r.status==='open'){location.href='b/'+r.code+'/'}else{tip.textContent=r.name+': 아직 준비중입니다'}});
   if(r.status==='open')openG.appendChild(p);else svg.appendChild(p)});
  svg.appendChild(openG);
+ d.regions.filter(function(r){return r.status==='open'}).forEach(function(r){
+  var xs=[],ys=[];r.rings.forEach(function(g){g.forEach(function(q){xs.push(X(q[0]));ys.push(Y(q[1]))})});
+  var mx=(Math.min.apply(null,xs)+Math.max.apply(null,xs))/2,my=(Math.min.apply(null,ys)+Math.max.apply(null,ys))/2;
+  var g=document.createElementNS(NS,'g');g.setAttribute('style','cursor:pointer');
+  var c=document.createElementNS(NS,'circle');c.setAttribute('cx',mx);c.setAttribute('cy',my);c.setAttribute('r',9);c.setAttribute('fill','none');c.setAttribute('stroke','#38bdf8');c.setAttribute('stroke-width','2.5');
+  var c2=document.createElementNS(NS,'circle');c2.setAttribute('cx',mx);c2.setAttribute('cy',my);c2.setAttribute('r',3.5);c2.setAttribute('fill','#38bdf8');
+  var t=document.createElementNS(NS,'text');t.setAttribute('x',mx+13);t.setAttribute('y',my+4);t.setAttribute('fill','#e0f2fe');t.setAttribute('font-size','13');t.setAttribute('font-weight','700');t.textContent=r.name+' (열림)';
+  g.appendChild(c);g.appendChild(c2);g.appendChild(t);g.addEventListener('click',function(){location.href='b/'+r.code+'/'});svg.appendChild(g);
+ });
 });
 </script>
 </body>
