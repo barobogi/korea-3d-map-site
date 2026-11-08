@@ -26,6 +26,7 @@ footer a{color:var(--open)}
 <p class="sub">동네를 눌러 입체 지도로 들어갑니다. 열린 동네는 단계적으로 늘어납니다.</p>
 </header>
 <main>
+<a id="today" class="block open" href="#" style="display:none;margin:10px 0"><span class="tag">오늘의 한 장면</span><br><b id="todayName"></b><div class="tag">눌러서 3D로 바로 보기</div></a>
 <div id="mapwrap"><svg id="map" viewBox="0 0 600 700" role="img" aria-label="대한민국 시군구 지도. 열린 동네는 하늘색"></svg><div id="tip" class="tag"></div></div>
 <label for="q" class="tag">동네 검색</label>
 <input id="q" type="search" placeholder="예: 종로구" autocomplete="off">
@@ -70,6 +71,15 @@ fetch('data/sgg.json',{cache:'no-store'}).then(function(r){return r.json()}).the
   g.appendChild(c);g.appendChild(c2);g.appendChild(t);g.addEventListener('click',function(){location.href='b/'+r.code+'/'});svg.appendChild(g);
  });
 });
+
+fetch('data/blocks.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(d){
+ var base={'03045_HERO_p01_경복궁_근정전':1,'03045_HERO_p02_경복궁_경회루':1,'03188_WATER_p21_청계천_단면음각_수로':1};
+ var pool=[];d.blocks.forEach(function(b,i){ if(!base[b.id] && b.id.indexOf('cheonggye_v2')<0) pool.push({i:i,label:b.label}); });
+ if(!pool.length) return;
+ var day=Math.floor((Date.now()+9*3600e3)/864e5), pick=pool[day%pool.length];
+ var a=document.getElementById('today'); document.getElementById('todayName').textContent='종로 · '+pick.label.replace(/^#\d+\s*/,'');
+ a.href='b/11110/#lego=x'+pick.i; a.style.display='block';
+}).catch(function(){});
 </script>
 </body>
 </html>

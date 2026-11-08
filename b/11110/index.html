@@ -4184,6 +4184,7 @@ function updateIntroInfo(){
       if(isFinite(tc) && cy < tc + r * 0.6 + 25) cy = tc + r * 0.6 + 25;
       targetCamPos = new THREE.Vector3(cx, cy, cz);
       showSpatialToast('🧱 ' + h.userData.man.name + ' 블록 표시 중');
+      window.__stampAdd && window.__stampAdd(key);
     }).catch(function(e){
       showSpatialToast('블록 로딩 실패: ' + e);
     });
@@ -4237,14 +4238,22 @@ function updateIntroInfo(){
     var items = Array.prototype.slice.call(bar.children);
     function setOpen(o){ items.forEach(function(x){ x.style.display = o ? '' : 'none'; }); tog.textContent = o ? '🧱 블록 메뉴 접기 ▲' : '🧱 블록 메뉴 ▼'; tog.setAttribute('aria-expanded', o); }
     tog.onclick = function(){ setOpen(tog.getAttribute('aria-expanded') !== 'true'); };
+    // 도장 모으기: 열어 본 블록 수를 이 기기에만 저장(로그인 없음, 서버 전송 없음)
+    var stamp = document.createElement('div');
+    stamp.style.cssText = 'padding:5px 9px;border-radius:9px;background:rgba(250,204,21,.92);color:#111827;font:800 12px sans-serif;';
+    function stampLoad(){ try { return JSON.parse(localStorage.getItem('k3d_stamps_11110') || '[]'); } catch(e){ return []; } }
+    function stampDraw(){ stamp.textContent = '🏅 종로 도장 ' + stampLoad().length + ' / ' + LEGO_BLOCKS.length; }
+    window.__stampAdd = function(k){ var a = stampLoad(); if(a.indexOf(k) < 0){ a.push(k); try { localStorage.setItem('k3d_stamps_11110', JSON.stringify(a)); } catch(e){} } stampDraw(); };
+    stampDraw();
     bar.insertBefore(tog, bar.firstChild);
+    bar.insertBefore(stamp, bar.firstChild);
     setOpen(window.innerWidth > 760);
     document.body.appendChild(bar);
     // [안티 긴급 개선] 페이지 시작 시 피망 3대 블록(근정전·경회루·청계천) 기본 자동 마운트
     setTimeout(function(){
-      LEGO_BLOCKS.forEach(function(d){ legoLoad(d); });
+      LEGO_BLOCKS.slice(0, 3).forEach(function(d){ legoLoad(d); }); // 첫 화면은 3개만(3초 로딩 목표), 나머지는 선택 시 로딩
     }, 800);
-    var m = /lego=([a-z]+)/.exec(location.hash || '');
+    var m = /lego=([a-z0-9]+)/.exec(location.hash || '');
     if(m) setTimeout(function(){ window.flyToLegoBlock(m[1]); }, 1500);
   })();
 
