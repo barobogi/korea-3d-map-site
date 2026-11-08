@@ -2944,6 +2944,7 @@ function updateIntroInfo(){
     grp.add(r2);
 
     parent.add(grp);
+    return grp;
   }
 
   function addPalaceWallSegment(parent, lon1, lat1, lon2, lat2){
@@ -2983,7 +2984,7 @@ function updateIntroInfo(){
     addPalaceWallSegment(landmarkArchGroup, 126.9778, 37.5792, 126.9760, 37.5792);
     addPalaceWallSegment(landmarkArchGroup, 126.9760, 37.5792, 126.9760, 37.5778);
 
-    addPalaceGate(landmarkArchGroup, 126.9769, 37.5759, { w: 62, d: 22, stoneH: 13 });
+    var ghmGate = addPalaceGate(landmarkArchGroup, 126.9769, 37.5759, { w: 62, d: 22, stoneH: 13 }); window.__procGHM = ghmGate;
     addPalaceHall(landmarkArchGroup, 126.9792, 37.5759, { w: 18, d: 18, baseH: 7, colH: 7, roofH: 7, doubleRoof: false });
     addPalaceHall(landmarkArchGroup, 126.9746, 37.5759, { w: 18, d: 18, baseH: 7, colH: 7, roofH: 7, doubleRoof: false });
 
@@ -3047,7 +3048,7 @@ function updateIntroInfo(){
     landmarkArchGroup.add(ghGrp);
 
     var hwXZ = toXZ(126.9770, 37.5817);
-    var hwGrp = new THREE.Group();
+    var hwGrp = new THREE.Group(); window.__procHW = hwGrp;
     hwGrp.position.set(hwXZ[0], 0, hwXZ[1]);
     var hwPond = new THREE.Mesh(new THREE.CylinderGeometry(34, 34, 2.4, 28), createReflectiveWaterMaterial(0x06b6d4));
     hwPond.position.y = 1.2;
@@ -3250,9 +3251,25 @@ function updateIntroInfo(){
   var LANTERN_ITEMS = [];
   var cheonggyeRibbon = null;
   function buildCheonggyeAndLanterns(){
+    // [A2] 청계천 실제 OSM 정밀 중심선 (51개 WGS84 정점 모전교~다산교 2.7km)
     var cgCoords = [
-      [126.9772, 37.5691], [126.9815, 37.5692], [126.9862, 37.5694],
-      [126.9918, 37.5696], [126.9985, 37.5698], [127.0055, 37.5700]
+      [126.9785975, 37.5691438], [126.979219, 37.5691184], [126.9798405, 37.5690884],
+      [126.9804611, 37.5690502], [126.9810806, 37.5690017], [126.9817002, 37.5689533],
+      [126.9823198, 37.5689048], [126.982939, 37.5688534], [126.9835553, 37.5687887],
+      [126.9841595, 37.5686693], [126.9847637, 37.5685498], [126.9853659, 37.5684245],
+      [126.9859617, 37.5682807], [126.9865574, 37.5681369], [126.987175, 37.5681039],
+      [126.9877975, 37.568096], [126.98842, 37.5680906], [126.9890418, 37.5680991],
+      [126.9896633, 37.5681284], [126.9902844, 37.5681606], [126.9909042, 37.5682074],
+      [126.991524, 37.5682541], [126.9921438, 37.5683008], [126.9927636, 37.5683473],
+      [126.9933835, 37.5683936], [126.9940033, 37.5684398], [126.9946232, 37.5684861],
+      [126.9952427, 37.568535], [126.9958611, 37.5685918], [126.9964785, 37.5686555],
+      [126.9970953, 37.5687225], [126.9977116, 37.5687929], [126.9983193, 37.5688992],
+      [126.9989233, 37.5690192], [126.9995274, 37.5691392], [127.0001316, 37.5692586],
+      [127.0007369, 37.5693743], [127.0013423, 37.5694901], [127.0019519, 37.5695811],
+      [127.0025742, 37.5695922], [127.0031968, 37.5695971], [127.0038193, 37.5695995],
+      [127.0044419, 37.5696019], [127.0050642, 37.5696155], [127.0056865, 37.5696293],
+      [127.0063088, 37.5696431], [127.0069304, 37.5696701], [127.0075516, 37.5697026],
+      [127.0081728, 37.569735], [127.0087941, 37.5697675], [127.0093071, 37.5697923]
     ];
     var cgPts = cgCoords.map(function(c){
       var xz = toXZ(c[0], c[1]);
@@ -3449,10 +3466,15 @@ function updateIntroInfo(){
     });
 
     candidates.sort(function(a, b){ return a.dist - b.dist; });
-    var maxCallouts = (w < 500) ? 7 : 12;
+    // [A3] H-4 줌 레벨별 라벨 표시 개수 제어 (1단계 max 5, 2단계 max 8, 3단계 max 12)
+    var camY = camera.position.y;
+    var zoomLevel = (camY >= 880) ? 1 : ((camY >= 450) ? 2 : 3);
+    var maxCallouts = (w < 500) ?
+      (zoomLevel === 1 ? 3 : (zoomLevel === 2 ? 5 : 7)) :
+      (zoomLevel === 1 ? 5 : (zoomLevel === 2 ? 8 : 12));
 
     candidates.forEach(function(c){
-      if(placedBoxes.length >= maxCallouts && !c.isSel){
+      if(placedBoxes.length >= maxCallouts){
         c.el.style.display = 'none';
         return;
       }
@@ -4057,7 +4079,12 @@ function updateIntroInfo(){
         if(p.attributes.TEXCOORD_0 != null) geo.setAttribute('uv', new THREE.BufferAttribute(legoReadAccessor(g, bufs, p.attributes.TEXCOORD_0), 2));
         if(p.indices != null) geo.setIndex(new THREE.BufferAttribute(legoReadAccessor(g, bufs, p.indices), 1));
         if(p.attributes.NORMAL == null) geo.computeVertexNormals();
-        var m = new THREE.Mesh(geo, mats[p.material || 0]);
+        var mat = mats[p.material || 0];
+        // [A2 수면 셰이더] 청계천 수면 메쉬 회색 줄무늬 결함 해결: 동적 반사 수면 셰이더 적용
+        if(nd.name && (nd.name.indexOf('water_surface') !== -1 || nd.name === 'water_surface_ribbon_pbr')){
+          mat = createReflectiveWaterMaterial(0x06b6d4);
+        }
+        var m = new THREE.Mesh(geo, mat);
         m.name = nd.name || '';
         if(nd.translation) m.position.set(nd.translation[0], nd.translation[1], nd.translation[2]);
         if(nd.scale) m.scale.set(nd.scale[0], nd.scale[1], nd.scale[2]);
@@ -4095,8 +4122,20 @@ function updateIntroInfo(){
             holder.position.set(xz[0], 0, xz[1]);
             holder.rotation.y = (def.fwdDeg - man.heading) * Math.PI / 180;
             if(window.__procGH) window.__procGH.visible = false;
-          } else if(def.key === 'cgc'){
-            // [제미나이 버그픽스] 청계천 수로 지면 스냅 및 원점 정합
+          } else if(def.key === 'x7'){
+            // [A1] 광화문 블록: 절차적 광화문 건물 숨김 (H-3 중복 해소)
+            var xz = toXZ(legoLL(man)[0], legoLL(man)[1]);
+            holder.position.set(xz[0], 0, xz[1]);
+            holder.rotation.y = (def.fwdDeg - man.heading) * Math.PI / 180;
+            if(window.__procGHM) window.__procGHM.visible = false;
+          } else if(def.key === 'x8'){
+            // [A1] 향원정 블록: 절차적 향원정 숨김
+            var xz = toXZ(legoLL(man)[0], legoLL(man)[1]);
+            holder.position.set(xz[0], 0, xz[1]);
+            holder.rotation.y = (def.fwdDeg - man.heading) * Math.PI / 180;
+            if(window.__procHW) window.__procHW.visible = false;
+          } else if(def.key === 'cgc' || def.key === 'x46'){
+            // [A2] 청계천 수로 지면 스냅 및 원점 정합
             var xz = toXZ(legoLL(man)[0], legoLL(man)[1]);
             holder.position.set(xz[0], -0.2, xz[1]);
             holder.rotation.y = (def.fwdDeg - man.heading) * Math.PI / 180;
@@ -4104,6 +4143,14 @@ function updateIntroInfo(){
             var xz = toXZ(legoLL(man)[0], legoLL(man)[1]);
             holder.position.set(xz[0], 0, xz[1]);
             holder.rotation.y = (def.fwdDeg - man.heading) * Math.PI / 180;
+          }
+          
+          // [A1 반경 가드] 블록 중심 반경 65m 내의 절차적 랜드마크 메쉬 자동 숨김 (H-3 중복 완전 차단)
+          if(typeof landmarkArchGroup !== 'undefined' && landmarkArchGroup){
+            landmarkArchGroup.children.forEach(function(child){
+              var d = Math.hypot(child.position.x - holder.position.x, child.position.z - holder.position.z);
+              if(d < 65) child.visible = false;
+            });
           }
           
           // 지형 고도는 전역 셰이더(terrainH)가 모든 메쉬에 한 번 더한다. 여기서 다시 더하지 않는다(규약 117 중복 가산 금지).
@@ -4144,7 +4191,7 @@ function updateIntroInfo(){
   (function(){
     var bar = document.createElement('div');
     bar.id = 'lego-block-bar';
-    bar.style.cssText = 'position:fixed;left:10px;top:150px;z-index:60;display:flex;flex-direction:column;gap:5px;max-width:240px;';
+    bar.style.cssText = 'position:fixed;left:50%;transform:translateX(-50%);bottom:16px;z-index:60;display:flex;flex-direction:row;align-items:center;gap:8px;max-width:calc(100vw - 32px);overflow-x:auto;padding:6px 14px;background:rgba(15,23,42,.92);backdrop-filter:blur(8px);border-radius:18px;border:1px solid rgba(56,189,248,.45);box-shadow:0 10px 25px -5px rgba(0,0,0,.5);white-space:nowrap;';
     
     // 건물 숨김/표시 토글 버튼 추가
     var bldBtn = document.createElement('button');
