@@ -1,0 +1,8 @@
+{
+  "condition": "clear",
+  "temp_c": -0.4,
+  "wmo_code": 0,
+  "as_of": "2026-11-07T08:00",
+  "source": "Open-Meteo API live fetch (lat=37.573, lon=126.9794)",
+  "raw_response_snippet": "{'time': '2026-11-07T08:00', 'interval': 900, 'temperature_2m': -0.4, 'weather_code': 0, 'relative_humidity_2m': 50}"
+}

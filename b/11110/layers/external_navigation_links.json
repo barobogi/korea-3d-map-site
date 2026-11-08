@@ -1,0 +1,5 @@
+{
+  "tmap_url": "tmap://route?goalname=종로구청&goalx=126.981582&goaly=37.572189",
+  "kakaonavi_url": "kakaonavi://navigate?name=종로구청&x=126.981582&y=37.572189&coord_type=wgs84",
+  "navermap_url": "nmap://navigation?dname=종로구청&dlng=126.981582&dlat=37.572189&appname=barobogi_3d_map"
+}

@@ -1,0 +1,49 @@
+{
+ "block_id": "11110",
+ "name": "종로구 수면 데이터 (청계천 수변)",
+ "water_bodies": [
+  {
+   "id": "cheonggyecheon_stream",
+   "name": "청계천 (모전교~다산교 2.7km)",
+   "type": "stream",
+   "center": [
+    126.994,
+    37.5698
+   ],
+   "material": {
+    "shader": "TransparentWaterShader",
+    "color": "#34b0bd",
+    "opacity": 0.85,
+    "roughness": 0.12,
+    "wave_speed": 1.2
+   },
+   "linestring": [
+    [
+     126.9785,
+     37.5692
+    ],
+    [
+     126.982,
+     37.5693
+    ],
+    [
+     126.987,
+     37.5695
+    ],
+    [
+     126.994,
+     37.5698
+    ],
+    [
+     127.001,
+     37.5701
+    ],
+    [
+     127.009,
+     37.5704
+    ]
+   ],
+   "width_meters": 12.0
+  }
+ ]
+}

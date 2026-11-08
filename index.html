@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>대한민국 3D 지도 · 비공개 베타</title>
+<style>
+:root{--bg:#0b111e;--panel:#111a2e;--line:#24324f;--fg:#f1f5f9;--sub:#94a3b8;--open:#38bdf8;--wait:#475569}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,"Noto Sans KR",sans-serif}
+header{padding:20px 16px 8px;max-width:720px;margin:0 auto}h1{font-size:1.3rem;margin:0 0 6px}p.sub{color:var(--sub);margin:0;font-size:.9rem}
+main{max-width:720px;margin:0 auto;padding:8px 16px 80px}
+input{width:100%;padding:14px;border-radius:12px;border:1px solid var(--line);background:var(--panel);color:var(--fg);font-size:1rem;margin:12px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+a.block,div.block{display:block;padding:16px;border-radius:14px;border:1px solid var(--line);background:var(--panel);color:var(--fg);text-decoration:none;min-height:84px}
+a.block{border-color:var(--open)}a.block:focus-visible{outline:3px solid #fff}
+.tag{font-size:.75rem;color:var(--sub)}.open .tag{color:var(--open)}
+footer{position:fixed;bottom:0;left:0;right:0;background:#0b111ee6;border-top:1px solid var(--line);padding:10px 16px;font-size:.75rem;color:var(--sub);text-align:center}
+footer a{color:var(--open)}
+</style>
+</head>
+<body>
+<header>
+<h1>대한민국 3D 지도 <span class="tag">비공개 베타</span></h1>
+<p class="sub">동네를 눌러 입체 지도로 들어갑니다. 열린 동네는 단계적으로 늘어납니다.</p>
+</header>
+<main>
+<label for="q" class="tag">동네 검색</label>
+<input id="q" type="search" placeholder="예: 종로구" autocomplete="off">
+<div class="grid" id="grid"></div>
+<p class="tag" id="status"></p>
+</main>
+<footer><a href="ATTRIBUTION.md">출처·라이선스</a> · <a href="https://github.com/barobogi/korea-3d-map/issues/new?template=error_report.yml">오류 신고</a> · 데이터 확인일은 각 동네 화면에 표시됩니다</footer>
+<script>
+fetch('data/regions.json',{cache:'no-store'}).then(r=>r.json()).then(function(d){
+ var grid=document.getElementById('grid'),q=document.getElementById('q'),st=document.getElementById('status');
+ function draw(){var t=q.value.trim();grid.innerHTML='';var n=0;
+  d.regions.forEach(function(r){if(t&&r.name.indexOf(t)<0)return;n++;
+   var open=r.status==='open',el=document.createElement(open?'a':'div');
+   el.className='block'+(open?' open':'');if(open)el.href='b/'+r.code+'/';
+   var b=document.createElement('b');b.textContent=r.name;
+   var s=document.createElement('div');s.className='tag';s.textContent=open?'열림 · '+r.blocks+'개 랜드마크':'준비중';
+   el.appendChild(b);el.appendChild(s);grid.appendChild(el);});
+  st.textContent='열린 동네 '+d.regions.filter(function(r){return r.status==='open'}).length+' · 나머지 시군구는 순차 공개'+(n?'':' · 검색 결과 없음');}
+ q.addEventListener('input',draw);draw();
+}).catch(function(){document.getElementById('status').textContent='동네 목록을 불러오지 못했습니다. 새로고침해 주세요.';});
+</script>
+</body>
+</html>

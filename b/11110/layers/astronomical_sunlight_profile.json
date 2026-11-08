@@ -1,0 +1,22 @@
+{
+  "spring_equinox": {
+    "sunrise": "06:35",
+    "sunset": "18:44",
+    "noon_altitude_deg": 52.4
+  },
+  "summer_solstice": {
+    "sunrise": "05:11",
+    "sunset": "19:56",
+    "noon_altitude_deg": 75.8
+  },
+  "autumn_equinox": {
+    "sunrise": "06:20",
+    "sunset": "18:29",
+    "noon_altitude_deg": 52.4
+  },
+  "winter_solstice": {
+    "sunrise": "07:44",
+    "sunset": "17:17",
+    "noon_altitude_deg": 29.0
+  }
+}

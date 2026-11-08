@@ -1,0 +1,9 @@
+{
+  "park_name": "낙산공원",
+  "trail_length_km": 2.5,
+  "facility_types": [
+    "bench",
+    "exercise_equipment",
+    "public_restroom"
+  ]
+}

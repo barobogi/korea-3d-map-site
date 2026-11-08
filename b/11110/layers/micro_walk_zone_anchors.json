@@ -1,0 +1,14 @@
+{
+  "zone_name": "종로 관철동 젊음의 거리",
+  "anchor_center": [
+    126.983249,
+    37.571256
+  ],
+  "walk_radius_m": 200,
+  "recommended_camera": {
+    "pitch_deg": 25,
+    "heading_deg": 310,
+    "altitude_m": 1.6
+  },
+  "target_facade_theme": "commercial_street"
+}

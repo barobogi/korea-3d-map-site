@@ -1,0 +1,16 @@
+name: 오류 신고
+description: 지도의 위치·이름·운영 정보 오류를 알려 주세요
+title: "[오류] "
+labels: ["error-report"]
+body:
+  - type: input
+    id: place
+    attributes: {label: 장소/블록, placeholder: "예: 종로구 경복궁 근정전"}
+    validations: {required: true}
+  - type: textarea
+    id: what
+    attributes: {label: 무엇이 틀렸나요, description: 개인 정보는 적지 마세요}
+    validations: {required: true}
+  - type: input
+    id: source
+    attributes: {label: 근거 링크(공식 출처)}

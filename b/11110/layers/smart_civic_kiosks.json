@@ -1,0 +1,9 @@
+{
+  "kiosk_name": "종로구 안심무인택배보관함 1호점",
+  "kiosk_type": "safe_parcel_locker",
+  "coordinates": [
+    126.984482,
+    37.574189
+  ],
+  "operating_hours": "24 hours"
+}

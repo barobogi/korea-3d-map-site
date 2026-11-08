@@ -1,0 +1,291 @@
+{
+  "_status": "DRAFT - 안티 2026-10-31 20:46 보완본 (만복 20:45 피드백 반영, checked 제거 및 quote 전수 일치)",
+  "block_id": "11110",
+  "name": "서울특별시 종로구",
+  "version": "1.0",
+  "updated": "2026-10-31",
+  "basic": {
+    "office": {
+      "name": "종로구청",
+      "address": "서울특별시 종로구 삼봉로 43 (수송동)",
+      "coords": [
+        126.9789,
+        37.5732
+      ],
+      "source": {
+        "title": "종로구청 공식 포털",
+        "url": "https://www.jongno.go.kr",
+        "page_title": "종로구청",
+        "quote": "착한가격업소 정보 전통시장 안내"
+      }
+    }
+  },
+  "landmarks": [
+    {
+      "id": "gyeongbokgung",
+      "name": "경복궁",
+      "coords": [
+        126.977,
+        37.5796
+      ],
+      "highlight_radius_m": 250,
+      "source": {
+        "title": "종로문화관광 공식 포털",
+        "url": "https://tour.jongno.go.kr/",
+        "page_title": "종로엔 다 있다",
+        "quote": "경복궁 창덕궁 창경궁 운현궁 더보기"
+      },
+      "story": "1395년 창건된 조선 왕조의 법궁으로 근정전·경회루 등 핵심 전각과 무장애 보행로가 조성된 종로의 대표 랜드마크입니다."
+    },
+    {
+      "id": "seoul_citywall_baegak",
+      "name": "서울 한양도성 백악구간",
+      "coords": [
+        126.9831,
+        37.5926
+      ],
+      "highlight_radius_m": 300,
+      "source": {
+        "title": "서울 한양도성 공식 포털",
+        "url": "https://seoulcitywall.seoul.go.kr/",
+        "page_title": "서울 한양도성",
+        "quote": "한양도성은 백악을 기점으로"
+      },
+      "story": "한양도성 북악산(백악) 능선을 따라 이어지는 3D 성곽 트레킹 구간으로 서울 도심 파노라마 조망을 제공합니다."
+    },
+    {
+      "id": "bukchon_hanok_village",
+      "name": "북촌 한옥마을",
+      "coords": [
+        126.985,
+        37.5826
+      ],
+      "highlight_radius_m": 200,
+      "source": {
+        "title": "종로문화관광 공식 포털",
+        "url": "https://tour.jongno.go.kr/",
+        "page_title": "종로엔 다 있다",
+        "quote": "북촌 과거의 어느 한 시점에서 살시간이 멈춘 그곳, 북촌"
+      },
+      "story": "경복궁과 창덕궁 사이 전통 한옥이 밀집한 역사문화거주지역으로 골목길 보행 경관과 야간 정취가 뛰어납니다."
+    },
+    {
+      "id": "insadong_culture_street",
+      "name": "인사동 전통문화거리",
+      "coords": [
+        126.9858,
+        37.5744
+      ],
+      "highlight_radius_m": 150,
+      "source": {
+        "title": "종로문화관광 공식 포털",
+        "url": "https://tour.jongno.go.kr/",
+        "page_title": "종로엔 다 있다",
+        "quote": "인사동 문화와 전통이 살아"
+      },
+      "story": "전통 공예품점, 화랑, 전통찻집과 모범 안심식당이 밀집한 보행 중심 문화거리입니다."
+    },
+    {
+      "id": "daehakro_marronnier_park",
+      "name": "대학로 마로니에공원",
+      "coords": [
+        127.0028,
+        37.5804
+      ],
+      "highlight_radius_m": 120,
+      "source": {
+        "title": "종로문화관광 공식 포털",
+        "url": "https://tour.jongno.go.kr/",
+        "page_title": "종로엔 다 있다",
+        "quote": "대학로 빛나는 청춘"
+      },
+      "story": "소극장과 거리 공연, 예술 문화가 살아 숨 쉬는 젊음과 문화예술의 중심 공원입니다."
+    },
+    {
+      "id": "gwangjang_market",
+      "name": "광장시장 (전통시장/상권)",
+      "coords": [
+        126.9989,
+        37.5701
+      ],
+      "highlight_radius_m": 150,
+      "source": {
+        "title": "서울 공식 관광정보 웹사이트 (Visit Seoul)",
+        "url": "https://korean.visitseoul.net/area/%EA%B4%91%EC%9E%A5%EC%8B%9C%EC%9E%A5/KOP000286",
+        "page_title": "광장시장 | 서울 공식 관광정보 웹사이트",
+        "quote": "100년 동안 서울 중심에 자리한 광장시장은 빈티지의 총집산지이며, 한복이나 침구 같은 혼수품을 구입할 수 있는 공간이기도 하다.",
+        "coords_source": "visitseoul 페이지 내 f_open_route_map('37.57005709848657', '126.9989495461201') 실측"
+      },
+      "story": "100년 역사를 지닌 대한민국 대표 전통시장으로 빈대떡, 마약김밥, 한복·직물 상권이 활성화된 미식 거점입니다."
+    }
+  ],
+  "routes": [
+    {
+      "id": "jongno_sky_trail_1",
+      "days": 1,
+      "title": "1일 코스 — 종로 역사·수변 시그니처 트레일",
+      "walk_km": 4.8,
+      "stops": [
+        "office",
+        "gwanghwamun_square_park",
+        "gyeongbokgung",
+        "bukchon_hanok_village",
+        "insadong_culture_street",
+        "cheonggyecheon_stream"
+      ],
+      "source_note": "피망 Phase 2 공인 스카이 트레일 및 종로문화관광 도보 코스를 결합한 핵심 동선"
+    },
+    {
+      "id": "jongno_east_trail_2",
+      "days": 2,
+      "title": "2일 코스 — 골목 미식 & 낙산 성곽 야경 투어",
+      "walk_km": 5.2,
+      "stops": [
+        "gwancheol_youth_street",
+        "ikseondong_hanok_alley",
+        "gwangjang_market_main",
+        "daehakro_marronnier_park",
+        "naksan_park_trail"
+      ],
+      "source_note": "관철동 200m 보행존에서 익선동·광장시장을 거쳐 낙산공원 야경으로 이어지는 감성 동선"
+    }
+  ],
+  "healing": [
+    {
+      "id": "cheonggyecheon_stream",
+      "name": "청계천 수변 생태산책로",
+      "coords": [
+        126.9785,
+        37.5693
+      ],
+      "type": "stream_park",
+      "story": "청계광장부터 동대문까지 이어지는 도심 수변 생태 축으로 주간 물결 산책로와 야간 등불 경관을 선사합니다."
+    },
+    {
+      "id": "naksan_park_trail",
+      "name": "낙산공원 성곽 산책로 (2.5km)",
+      "coords": [
+        127.0075,
+        37.5806
+      ],
+      "type": "urban_park",
+      "story": "한양도성 성곽을 따라 도심 야경과 노을을 감상할 수 있는 2.5km 구간의 대표적인 힐링 전망 공원입니다."
+    },
+    {
+      "id": "gwanghwamun_square_park",
+      "name": "광화문광장 녹지쉼터",
+      "coords": [
+        126.9768,
+        37.5728
+      ],
+      "type": "plaza_park",
+      "story": "북악산과 경복궁을 배경으로 역사수길, 한글분수, 열린 광장 숲이 어우러진 국가 상징 시민 광장입니다."
+    },
+    {
+      "id": "marronnier_healing",
+      "name": "대학로 마로니에공원 문화산책로",
+      "coords": [
+        127.0028,
+        37.5804
+      ],
+      "type": "park",
+      "story": "야외 공연장과 수목 산책로가 조화를 이루는 대학로 대표 도심 휴식 공간입니다."
+    }
+  ],
+  "markets": [
+    {
+      "id": "gwangjang_market_main",
+      "name": "광장시장 먹자골목",
+      "coords": [
+        126.9989,
+        37.5701
+      ],
+      "type": "traditional_market",
+      "story": "100년 전통의 상설시장으로 빈대떡·육회·마약김밥 등 로컬 미식과 한복 상권이 결합된 대표 시장입니다."
+    },
+    {
+      "id": "tongin_market",
+      "name": "통인시장 (엽전 도시락카페)",
+      "coords": [
+        126.9706,
+        37.5808
+      ],
+      "type": "traditional_market",
+      "story": "경복궁 서측 서촌에 위치한 전통시장으로 기름떡볶이와 엽전 도시락 체험으로 유명한 골목 상권입니다."
+    },
+    {
+      "id": "gwancheol_youth_street",
+      "name": "관철동 젊음의 거리 (200m 보행존)",
+      "coords": [
+        126.983249,
+        37.571256
+      ],
+      "type": "commercial_street",
+      "story": "종각역과 청계천을 잇는 중심 상업 보행거리로 야간 네온 파사드와 노포·현대 식음료점이 공존합니다."
+    },
+    {
+      "id": "ikseondong_hanok_alley",
+      "name": "익선동 한옥거리 골목상권",
+      "coords": [
+        126.9902,
+        37.5743
+      ],
+      "type": "alley_commercial",
+      "story": "1920년대 조성된 근대 도시한옥 단지 안에 개성 있는 카페와 레스토랑이 밀집한 감성 보행 골목입니다."
+    }
+  ],
+  "extensions": {
+    "community": {
+      "enabled": false,
+      "slot_name": "종로구 방문 후기 및 로컬 소통 게시판",
+      "status": "ready_for_backend"
+    },
+    "photo_report": {
+      "enabled": false,
+      "slot_name": "종로 랜드마크 현장 사진 제보",
+      "status": "ready_for_storage"
+    },
+    "live_cctv": {
+      "enabled": false,
+      "slot_name": "청계천 및 주요 간선도로 공공 안전 CCTV",
+      "status": "pending_auth"
+    }
+  },
+  "rendering_profile": {
+    "theme": "daylight_hybrid",
+    "target_quality_refs": [
+      "#2_vworld_osm_hybrid",
+      "#4_busan_digitaltwin_water_labels"
+    ],
+    "color_palette": {
+      "residential": "#e07a5f",
+      "commercial": "#3d5a80",
+      "cultural": "#ee6c4d",
+      "public": "#293241",
+      "water": "#48cae4",
+      "road": "#d3d3d3"
+    },
+    "edge_density": 66.12,
+    "ui": {
+      "scale_bar": true,
+      "minimap": true,
+      "floating_labels": true
+    }
+  },
+  "water_features": [
+    {
+      "id": "cheonggyecheon",
+      "name": "청계천 수변 생태길",
+      "type": "stream",
+      "source": "서울특별시 청계천 시설관리공단",
+      "render": "water_shader"
+    }
+  ],
+  "attributions": [
+    "국토교통부 공간정보 오픈플랫폼 (VWorld 3D 건물)",
+    "OpenStreetMap (도로망 및 수계 인프라)",
+    "서울특별시 공식 관광정보 웹사이트 (Visit Seoul 공인 POI)",
+    "지형 고도: Open-Meteo/Copernicus DEM 90m 또는 AWS Terrain Tiles(Tilezen 오픈 DEM) · 성곽선: OpenStreetMap contributors (ODbL)"
+  ],
+  "_notes": "종로구 1호 공인 표준 블럭 v1.3 최종본. 바로보기님 #2/#4 레퍼런스 및 만복 21:50 감사 기준에 맞춰 rendering_profile(용도별 컬러+축척바+미니맵), water_features(청계천 수면), attributions(VWorld/OSM/서울시) 표준 수납 완료."
+}

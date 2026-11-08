@@ -1,0 +1,16 @@
+{
+  "portal_url": "https://www.jongno.go.kr",
+  "civil_service_center": {
+    "location_name": "종로구청 민원실 앞",
+    "coordinates": [
+      126.981582,
+      37.572189
+    ],
+    "operating_hours": "09:00 - 18:00",
+    "verified": "geocode: OpenStreetMap Nominatim match of the district office street address"
+  },
+  "representative_contact": {
+    "phone": "02-2148-1114",
+    "info": "서울특별시 종로구 대표전화입니다. 관내 행정복지센터는 평일 09:00-18:00 운영하고, 무인민원발급기는 청사에 상시 설치되어 24시간 이용할 수 있습니다."
+  }
+}

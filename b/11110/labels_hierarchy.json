@@ -1,0 +1,137 @@
+{
+  "block_id": "11110",
+  "name": "서울특별시 종로구",
+  "hierarchy_levels": {
+    "1": {
+      "desc": "구 단위 (저줌)",
+      "min_zoom": 10,
+      "max_zoom": 14,
+      "font_size": 20,
+      "color": "#ffffff"
+    },
+    "2": {
+      "desc": "동 단위 (중줌)",
+      "min_zoom": 13,
+      "max_zoom": 16,
+      "font_size": 14,
+      "color": "#90caf9"
+    },
+    "3": {
+      "desc": "명소/랜드마크 (고줌)",
+      "min_zoom": 15,
+      "max_zoom": 20,
+      "font_size": 12,
+      "color": "#ffd54f"
+    }
+  },
+  "labels": [
+    {
+      "id": "L1_jongno",
+      "level": 1,
+      "name": "종로구",
+      "lat": 37.573,
+      "lon": 126.9794,
+      "alt": 130,
+      "icon": "district"
+    },
+    {
+      "id": "L2_insadong",
+      "level": 2,
+      "name": "인사동",
+      "lat": 37.5744,
+      "lon": 126.9858,
+      "alt": 65,
+      "icon": "dong"
+    },
+    {
+      "id": "L2_ikseon",
+      "level": 2,
+      "name": "익선동",
+      "lat": 37.5742,
+      "lon": 126.9892,
+      "alt": 65,
+      "icon": "dong"
+    },
+    {
+      "id": "L2_seochon",
+      "level": 2,
+      "name": "서촌(통인동)",
+      "lat": 37.5805,
+      "lon": 126.9702,
+      "alt": 65,
+      "icon": "dong"
+    },
+    {
+      "id": "L2_bukchon",
+      "level": 2,
+      "name": "북촌(가회동)",
+      "lat": 37.5828,
+      "lon": 126.9835,
+      "alt": 65,
+      "icon": "dong"
+    },
+    {
+      "id": "L2_hyehwa",
+      "level": 2,
+      "name": "대학로(혜화)",
+      "lat": 37.5822,
+      "lon": 127.0018,
+      "alt": 65,
+      "icon": "dong"
+    },
+    {
+      "id": "L2_gwangjang",
+      "level": 2,
+      "name": "예지동(광장시장)",
+      "lat": 37.5701,
+      "lon": 126.9997,
+      "alt": 65,
+      "icon": "dong"
+    },
+    {
+      "id": "L3_gbg",
+      "level": 3,
+      "name": "경복궁 근정전",
+      "lat": 37.5796,
+      "lon": 126.977,
+      "alt": 35,
+      "icon": "palace"
+    },
+    {
+      "id": "L3_cgc",
+      "level": 3,
+      "name": "청계천 모전교",
+      "lat": 37.5692,
+      "lon": 126.9785,
+      "alt": 20,
+      "icon": "water"
+    },
+    {
+      "id": "L3_ssamzie",
+      "level": 3,
+      "name": "인사동 쌈지길",
+      "lat": 37.5743,
+      "lon": 126.985,
+      "alt": 25,
+      "icon": "culture"
+    },
+    {
+      "id": "L3_market",
+      "level": 3,
+      "name": "광장시장 먹거리골목",
+      "lat": 37.57,
+      "lon": 126.9996,
+      "alt": 25,
+      "icon": "market"
+    },
+    {
+      "id": "L3_dhd",
+      "level": 3,
+      "name": "동대문(흥인지문)",
+      "lat": 37.5711,
+      "lon": 127.0097,
+      "alt": 30,
+      "icon": "heritage"
+    }
+  ]
+}

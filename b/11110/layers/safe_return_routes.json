@@ -1,0 +1,9 @@
+{
+  "safe_zone_name": "종로구 중심상업지역 여성안심귀갓길",
+  "emergency_bell_coords": [
+    126.986162,
+    37.598875
+  ],
+  "cctv_zone_count": 326,
+  "cctv_zone_count_note": "estimate: district-level CCTV zone density placeholder, not yet linked to an official statistics feed"
+}

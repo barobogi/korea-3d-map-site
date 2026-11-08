@@ -1,0 +1,13 @@
+{
+  "facility_name": "종로구민회관",
+  "sports_types": [
+    "badminton",
+    "table_tennis",
+    "fitness"
+  ],
+  "coordinates": [
+    126.978982,
+    37.573189
+  ],
+  "reservation_url": "https://www.jongno.go.kr"
+}

@@ -1,0 +1,31 @@
+{
+  "earthquake_shelters": [
+    {
+      "name": "종로초등학교 운동장",
+      "coordinates": [
+        37.580805,
+        126.983116
+      ],
+      "capacity": 5900,
+      "address": "서울특별시 종로구"
+    },
+    {
+      "name": "종로실내체육관",
+      "coordinates": [
+        37.571665,
+        126.993566
+      ],
+      "capacity": 1600,
+      "address": "서울특별시 종로구"
+    },
+    {
+      "name": "종로중앙공원 비상집합장소",
+      "coordinates": [
+        37.572072,
+        126.97967
+      ],
+      "capacity": 6000,
+      "address": "서울특별시 종로구"
+    }
+  ]
+}

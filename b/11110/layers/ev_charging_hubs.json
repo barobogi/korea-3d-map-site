@@ -1,0 +1,12 @@
+{
+  "station_name": "종로구청 공영주차장 급속충전소",
+  "coordinates": [
+    126.984482,
+    37.572989
+  ],
+  "charger_types": [
+    "DC_COMBO",
+    "CHAdeMO"
+  ],
+  "fast_charger_count": 8
+}
