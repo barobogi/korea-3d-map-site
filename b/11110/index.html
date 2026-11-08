@@ -3171,7 +3171,7 @@ function updateIntroInfo(){
     });
   }
 
-  var TRANSIT_VEHICLES = [];
+  var TRANSIT_VEHICLES = []; window.__transit = TRANSIT_VEHICLES;
   function buildLive3DTransitStreams(){
     var routes = [
       {
@@ -3363,6 +3363,8 @@ function updateIntroInfo(){
     var placedBoxes = [];
 
     TRANSIT_VEHICLES.forEach(function(tv, idx){
+      // 실제 속도로 이동: 지하철 평균 약 35km/h(9.7m/s), 도심 버스 약 15km/h(4.2m/s). 노선 길이(m)로 환산(1m=1단위)
+      if(!tv.realLen){ tv.realLen = tv.curve.getLength(); var mps = ((tv.cfg.id.indexOf('bus') === 0) ? 4.2 : 9.7) * 0.746; /* 실측 보정: 애니메이션 시계 배율 1.34 */ tv.cfg.speed = mps / 1000 / Math.max(tv.realLen, 1); }
       var t = ((now * tv.cfg.speed) + tv.cfg.offset) % 1.0;
       if(tv.cfg.dir === -1) t = 1.0 - t;
       var pos = tv.curve.getPointAt(t);
@@ -4129,7 +4131,11 @@ function updateIntroInfo(){
       // 화면에 보이는 높이 = 모델 높이 + 셰이더가 더하는 지형 고도. 카메라도 같은 기준으로 맞춘다.
       var tg = (typeof window.terrainH === 'function') ? window.terrainH(ct.x, ct.z) : 0; if(isFinite(tg)) ct.y += tg;
       targetLookAt = new THREE.Vector3(ct.x, ct.y, ct.z);
-      targetCamPos = new THREE.Vector3(ct.x + r * 0.9, ct.y + r * 0.85, ct.z + r * 1.25);
+      var cx = ct.x + r * 0.9, cz = ct.z + r * 1.25, cy = ct.y + r * 0.85;
+      // 산비탈 블록: 카메라 위치의 지형이 더 높으면 지형 위로 올린다(카메라가 산속에 묻히지 않게)
+      var tc = (typeof window.terrainH === 'function') ? window.terrainH(cx, cz) : 0;
+      if(isFinite(tc) && cy < tc + r * 0.6 + 25) cy = tc + r * 0.6 + 25;
+      targetCamPos = new THREE.Vector3(cx, cy, cz);
       showSpatialToast('🧱 ' + h.userData.man.name + ' 블록 표시 중');
     }).catch(function(e){
       showSpatialToast('블록 로딩 실패: ' + e);
@@ -4138,12 +4144,12 @@ function updateIntroInfo(){
   (function(){
     var bar = document.createElement('div');
     bar.id = 'lego-block-bar';
-    bar.style.cssText = 'position:fixed;left:12px;top:260px;z-index:60;display:flex;flex-direction:column;gap:8px;';
+    bar.style.cssText = 'position:fixed;left:10px;top:150px;z-index:60;display:flex;flex-direction:column;gap:5px;max-width:240px;';
     
     // 건물 숨김/표시 토글 버튼 추가
     var bldBtn = document.createElement('button');
     bldBtn.textContent = '🏢 건물 숨김/표시 토글';
-    bldBtn.style.cssText = 'padding:8px 12px;border-radius:12px;border:1px solid rgba(251,191,36,.8);background:rgba(15,23,42,.92);color:#fef08a;font:600 13px sans-serif;cursor:pointer;';
+    bldBtn.style.cssText = 'padding:5px 9px;border-radius:9px;border:1px solid rgba(251,191,36,.8);background:rgba(15,23,42,.88);color:#fef08a;font:600 12px sans-serif;cursor:pointer;';
     bldBtn.onclick = function(){
       var nowVis = (typeof MESH !== 'undefined' && MESH) ? !MESH.visible : true;
       window.toggleCityBuildings(nowVis);
@@ -4153,7 +4159,7 @@ function updateIntroInfo(){
     // 텍스트 라벨 끄기/켜기 토글 버튼 추가 (지도 시야 확보)
     var lblBtn = document.createElement('button');
     lblBtn.textContent = '👁️ 라벨 숨김 (지도 시야 확보)';
-    lblBtn.style.cssText = 'padding:8px 12px;border-radius:12px;border:1px solid rgba(56,189,248,.8);background:rgba(15,23,42,.92);color:#7dd3fc;font:600 13px sans-serif;cursor:pointer;';
+    lblBtn.style.cssText = 'padding:5px 9px;border-radius:9px;border:1px solid rgba(56,189,248,.8);background:rgba(15,23,42,.88);color:#7dd3fc;font:600 12px sans-serif;cursor:pointer;';
     lblBtn.onclick = function(){
       var layer = document.getElementById('ar-callout-layer');
       if(layer){
@@ -4166,7 +4172,7 @@ function updateIntroInfo(){
     bar.appendChild(lblBtn);
     var sel = document.createElement('select');
     sel.setAttribute('aria-label','랜드마크 블록 선택');
-    sel.style.cssText = 'padding:10px 12px;border-radius:14px;border:1px solid rgba(56,189,248,.6);background:rgba(15,23,42,.92);color:#f8fafc;font:600 14px sans-serif;max-width:300px;';
+    sel.style.cssText = 'padding:5px 8px;border-radius:9px;border:1px solid rgba(56,189,248,.6);background:rgba(15,23,42,.9);color:#f8fafc;font:600 12px sans-serif;max-width:240px;';
     var o0 = document.createElement('option'); o0.value=''; o0.textContent='🧱 랜드마크 블록 '+EXTRA_BLOCKS.length+'개 더 보기'; sel.appendChild(o0);
     EXTRA_BLOCKS.forEach(function(d){ var o=document.createElement('option'); o.value=d.key; o.textContent=d.label; sel.appendChild(o); });
     sel.onchange = function(){ if(sel.value){ window.flyToLegoBlock(sel.value); } };
@@ -4174,10 +4180,18 @@ function updateIntroInfo(){
     LEGO_BLOCKS.slice(0,3).forEach(function(d){
       var b = document.createElement('button');
       b.textContent = d.label;
-      b.style.cssText = 'padding:10px 14px;border-radius:14px;border:1px solid rgba(56,189,248,.6);background:rgba(15,23,42,.88);color:#f8fafc;font:600 15px sans-serif;';
+      b.style.cssText = 'padding:5px 9px;border-radius:9px;border:1px solid rgba(56,189,248,.6);background:rgba(15,23,42,.85);color:#f8fafc;font:600 12px sans-serif;text-align:left;';
       b.onclick = function(){ window.flyToLegoBlock(d.key); };
       bar.appendChild(b);
     });
+    // 접기/펴기: 지도를 가리지 않도록 좁은 화면에서는 기본 접힘
+    var tog = document.createElement('button');
+    tog.style.cssText = 'padding:5px 9px;border-radius:9px;border:1px solid rgba(148,163,184,.7);background:rgba(15,23,42,.9);color:#e2e8f0;font:700 12px sans-serif;text-align:left;';
+    var items = Array.prototype.slice.call(bar.children);
+    function setOpen(o){ items.forEach(function(x){ x.style.display = o ? '' : 'none'; }); tog.textContent = o ? '🧱 블록 메뉴 접기 ▲' : '🧱 블록 메뉴 ▼'; tog.setAttribute('aria-expanded', o); }
+    tog.onclick = function(){ setOpen(tog.getAttribute('aria-expanded') !== 'true'); };
+    bar.insertBefore(tog, bar.firstChild);
+    setOpen(window.innerWidth > 760);
     document.body.appendChild(bar);
     // [안티 긴급 개선] 페이지 시작 시 피망 3대 블록(근정전·경회루·청계천) 기본 자동 마운트
     setTimeout(function(){
