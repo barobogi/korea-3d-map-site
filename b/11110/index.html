@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
 <meta name="robots" content="noindex, nofollow">
@@ -4139,6 +4139,12 @@ function updateIntroInfo(){
             var xz = toXZ(legoLL(man)[0], legoLL(man)[1]);
             holder.position.set(xz[0], -0.2, xz[1]);
             holder.rotation.y = (def.fwdDeg - man.heading) * Math.PI / 180;
+          } else if(def.key === 'x1' || def.key === 'x2'){
+            // [산비탈 랜드마크 버그픽스] 인왕산 치마바위(x1) 및 북악산 백악마루(x2) 급경사면(18.8m 고도차) 지형 파묻힘 방지
+            // 모델 기저면을 지표면 위로 2.5m 올려 암릉·성곽·소나무가 산비탈 위에 선명히 노출되도록 보정
+            var xz = toXZ(legoLL(man)[0], legoLL(man)[1]);
+            holder.position.set(xz[0], 2.5, xz[1]);
+            holder.rotation.y = (def.fwdDeg - man.heading) * Math.PI / 180;
           } else {
             var xz = toXZ(legoLL(man)[0], legoLL(man)[1]);
             holder.position.set(xz[0], 0, xz[1]);
@@ -4164,12 +4170,13 @@ function updateIntroInfo(){
   }
   window.flyToLegoBlock = function(key){
     var def = LEGO_BLOCKS.find(function(d){ return d.key === key; });
-    if(!def) return;
+    if(!def) return Promise.reject('Block not found: ' + key);
+    if(typeof isOrbiting !== 'undefined') isOrbiting = false;
     // 청계천 블록 이동 시 주변 건물 자동 숨김 (수로 시야 확보)
     // 블록을 볼 때는 주변 도심 건물을 숨겨 블록이 가려지지 않게 한다(건물 토글 버튼으로 다시 표시 가능)
     window.toggleCityBuildings(false);
     showSpatialToast('🧱 외부 3D 블록 불러오는 중...');
-    legoLoad(def).then(function(h){
+    return legoLoad(def).then(function(h){
       customOrbitTarget = null;
       // 블록 크기에 맞춰 카메라를 맞춘다(블록이 화면 중앙에 꽉 차게)
       var bb = new THREE.Box3().setFromObject(h), ct = bb.getCenter(new THREE.Vector3()), sz = bb.getSize(new THREE.Vector3());
@@ -4185,8 +4192,10 @@ function updateIntroInfo(){
       targetCamPos = new THREE.Vector3(cx, cy, cz);
       showSpatialToast('🧱 ' + h.userData.man.name + ' 블록 표시 중');
       window.__stampAdd && window.__stampAdd(key);
+      return h;
     }).catch(function(e){
       showSpatialToast('블록 로딩 실패: ' + e);
+      throw e;
     });
   };
   (function(){
