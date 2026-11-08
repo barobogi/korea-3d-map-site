@@ -4085,6 +4085,7 @@ function updateIntroInfo(){
           mat = createReflectiveWaterMaterial(0x06b6d4);
         }
         var m = new THREE.Mesh(geo, mat);
+        m.frustumCulled = false; // 셰이더 지형 가산으로 CPU 경계와 실제 위치가 달라 산지 블록이 시야 밖으로 오판되어 안 그려지는 문제 방지
         m.name = nd.name || '';
         if(nd.translation) m.position.set(nd.translation[0], nd.translation[1], nd.translation[2]);
         if(nd.scale) m.scale.set(nd.scale[0], nd.scale[1], nd.scale[2]);
@@ -4139,11 +4140,14 @@ function updateIntroInfo(){
             var xz = toXZ(legoLL(man)[0], legoLL(man)[1]);
             holder.position.set(xz[0], -0.2, xz[1]);
             holder.rotation.y = (def.fwdDeg - man.heading) * Math.PI / 180;
-          } else if(def.key === 'x1' || def.key === 'x2'){
-            // [산비탈 랜드마크 버그픽스] 인왕산 치마바위(x1) 및 북악산 백악마루(x2) 급경사면(18.8m 고도차) 지형 파묻힘 방지
-            // 모델 기저면을 지표면 위로 2.5m 올려 암릉·성곽·소나무가 산비탈 위에 선명히 노출되도록 보정
+          } else if(def.key === 'x1'){
+            // [산비탈 랜드마크 정밀 고도] 인왕산 치마바위 50m 반경 18.8m 급경사(최고점 +9.22m) 지면 파묻힘 방지
             var xz = toXZ(legoLL(man)[0], legoLL(man)[1]);
-            holder.position.set(xz[0], 2.5, xz[1]);
+            holder.position.set(xz[0], 9.5, xz[1]);
+          } else if(def.key === 'x2'){
+            // [산비탈 랜드마크 정밀 고도] 북악산 백악마루 50m 반경 8.6m 급경사(최고점 +4.42m) 지면 파묻힘 방지
+            var xz = toXZ(legoLL(man)[0], legoLL(man)[1]);
+            holder.position.set(xz[0], 5.5, xz[1]);
             holder.rotation.y = (def.fwdDeg - man.heading) * Math.PI / 180;
           } else {
             var xz = toXZ(legoLL(man)[0], legoLL(man)[1]);
@@ -4192,7 +4196,17 @@ function updateIntroInfo(){
       targetCamPos = new THREE.Vector3(cx, cy, cz);
       showSpatialToast('🧱 ' + h.userData.man.name + ' 블록 표시 중');
       window.__stampAdd && window.__stampAdd(key);
-      return h;
+      return new Promise(function(resolveCam){
+        var t0 = performance.now();
+        function checkCam(){
+          if(!targetCamPos || camera.position.distanceTo(targetCamPos) < 15 || (performance.now() - t0 > 1500)){
+            resolveCam(h);
+          } else {
+            requestAnimationFrame(checkCam);
+          }
+        }
+        requestAnimationFrame(checkCam);
+      });
     }).catch(function(e){
       showSpatialToast('블록 로딩 실패: ' + e);
       throw e;
