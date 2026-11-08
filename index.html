@@ -15,6 +15,7 @@ input{width:100%;padding:14px;border-radius:12px;border:1px solid var(--line);ba
 a.block,div.block{display:block;padding:16px;border-radius:14px;border:1px solid var(--line);background:var(--panel);color:var(--fg);text-decoration:none;min-height:84px}
 a.block{border-color:var(--open)}a.block:focus-visible{outline:3px solid #fff}
 .tag{font-size:.75rem;color:var(--sub)}.open .tag{color:var(--open)}
+#mapwrap{position:relative;margin:8px 0 4px}#map{width:100%;height:auto;max-height:62vh;background:#0e1626;border:1px solid var(--line);border-radius:14px}#map path{fill:#243049;stroke:#0b111e;stroke-width:.5;cursor:default}#map path.open{fill:#38bdf8;stroke:#e0f2fe;stroke-width:1.2;cursor:pointer}#map path.open:hover{fill:#7dd3fc}#map path.soon:hover{fill:#2f3d5c}#tip{min-height:1.2em;margin-top:6px}
 footer{position:fixed;bottom:0;left:0;right:0;background:#0b111ee6;border-top:1px solid var(--line);padding:10px 16px;font-size:.75rem;color:var(--sub);text-align:center}
 footer a{color:var(--open)}
 </style>
@@ -25,6 +26,7 @@ footer a{color:var(--open)}
 <p class="sub">동네를 눌러 입체 지도로 들어갑니다. 열린 동네는 단계적으로 늘어납니다.</p>
 </header>
 <main>
+<div id="mapwrap"><svg id="map" viewBox="0 0 600 700" role="img" aria-label="대한민국 시군구 지도. 열린 동네는 하늘색"></svg><div id="tip" class="tag"></div></div>
 <label for="q" class="tag">동네 검색</label>
 <input id="q" type="search" placeholder="예: 종로구" autocomplete="off">
 <div class="grid" id="grid"></div>
@@ -44,6 +46,21 @@ fetch('data/regions.json',{cache:'no-store'}).then(r=>r.json()).then(function(d)
   st.textContent='열린 동네 '+d.regions.filter(function(r){return r.status==='open'}).length+' · 나머지 시군구는 순차 공개'+(n?'':' · 검색 결과 없음');}
  q.addEventListener('input',draw);draw();
 }).catch(function(){document.getElementById('status').textContent='동네 목록을 불러오지 못했습니다. 새로고침해 주세요.';});
+
+fetch('data/sgg.json',{cache:'no-store'}).then(function(r){return r.json()}).then(function(d){
+ var svg=document.getElementById('map'),tip=document.getElementById('tip'),NS='http://www.w3.org/2000/svg';
+ var k=95,cx=Math.cos(36*Math.PI/180);
+ function X(lng){return (lng-124.5)*cx*k+10}function Y(lat){return (38.7-lat)*k+10}
+ var openG=document.createDocumentFragment();
+ d.regions.forEach(function(r){var p=document.createElementNS(NS,'path');
+  p.setAttribute('d',r.rings.map(function(g){return 'M'+g.map(function(q){return X(q[0]).toFixed(1)+' '+Y(q[1]).toFixed(1)}).join('L')+'Z'}).join(''));
+  p.setAttribute('class',r.status==='open'?'open':'soon');
+  var t=document.createElementNS(NS,'title');t.textContent=r.province+' '+r.name+(r.status==='open'?' · 열림':' · 준비중');p.appendChild(t);
+  p.addEventListener('mouseenter',function(){tip.textContent=r.province+' '+r.name+(r.status==='open'?' · 열림':' · 준비중')});
+  p.addEventListener('click',function(){if(r.status==='open'){location.href='b/'+r.code+'/'}else{tip.textContent=r.name+': 아직 준비중입니다'}});
+  if(r.status==='open')openG.appendChild(p);else svg.appendChild(p)});
+ svg.appendChild(openG);
+});
 </script>
 </body>
 </html>
