@@ -4,6 +4,22 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
+<script>
+// DEF-001 (T-P0-001): 모바일 접속 시 3D 공간 지도 직통 자동 라우팅
+(function(){
+  try {
+    var p = new URLSearchParams(window.location.search);
+    if (p.get('nomobile') !== '1') {
+      var ua = navigator.userAgent || '';
+      var isMob = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile/i.test(ua) || (window.innerWidth <= 768 && ('ontouchstart' in window || navigator.maxTouchPoints > 0));
+      if (isMob) {
+        var target = 'b/11110/' + window.location.search + window.location.hash;
+        window.location.replace(target);
+      }
+    }
+  } catch(e) {}
+})();
+</script>
 <title>대한민국 3D 지도 · 비공개 베타</title>
 <style>
 :root{--bg:#0b111e;--panel:#111a2e;--line:#24324f;--fg:#f1f5f9;--sub:#94a3b8;--open:#38bdf8;--wait:#475569}
