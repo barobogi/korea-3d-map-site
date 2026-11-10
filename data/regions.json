@@ -1,12 +1,292 @@
 {
-  "updated": "2026-11-08",
+  "updated": "2026-11-10T20:15:00+09:00",
+  "note": "서울 25개 전체 자치구 + 인천 연수구 오픈 (피망 5개 구 50블록 완비)",
   "regions": [
     {
       "code": "11110",
       "name": "종로구",
+      "province": "서울특별시",
       "status": "open",
-      "blocks": 51
+      "blocks": 51,
+      "center": [
+        126.979,
+        37.572
+      ]
+    },
+    {
+      "code": "11140",
+      "name": "중구",
+      "province": "서울특별시",
+      "status": "open",
+      "blocks": 50,
+      "center": [
+        126.997,
+        37.563
+      ]
+    },
+    {
+      "code": "11170",
+      "name": "용산구",
+      "province": "서울특별시",
+      "status": "open",
+      "blocks": 50,
+      "center": [
+        126.99,
+        37.532
+      ]
+    },
+    {
+      "code": "11200",
+      "name": "성동구",
+      "province": "서울특별시",
+      "status": "open",
+      "blocks": 50,
+      "center": [
+        127.036,
+        37.563
+      ]
+    },
+    {
+      "code": "11215",
+      "name": "광진구",
+      "province": "서울특별시",
+      "status": "open",
+      "blocks": 50,
+      "center": [
+        127.082,
+        37.538
+      ]
+    },
+    {
+      "code": "11230",
+      "name": "동대문구",
+      "province": "서울특별시",
+      "status": "open",
+      "blocks": 50,
+      "center": [
+        127.039,
+        37.574
+      ]
+    },
+    {
+      "code": "11260",
+      "name": "중랑구",
+      "province": "서울특별시",
+      "status": "open",
+      "blocks": 50,
+      "center": [
+        127.092,
+        37.606
+      ]
+    },
+    {
+      "code": "11290",
+      "name": "성북구",
+      "province": "서울특별시",
+      "status": "open",
+      "blocks": 50,
+      "center": [
+        127.016,
+        37.589
+      ]
+    },
+    {
+      "code": "11305",
+      "name": "강북구",
+      "province": "서울특별시",
+      "status": "open",
+      "blocks": 50,
+      "center": [
+        127.025,
+        37.639
+      ]
+    },
+    {
+      "code": "11320",
+      "name": "도봉구",
+      "province": "서울특별시",
+      "status": "open",
+      "blocks": 50,
+      "center": [
+        127.047,
+        37.668
+      ]
+    },
+    {
+      "code": "11350",
+      "name": "노원구",
+      "province": "서울특별시",
+      "status": "open",
+      "blocks": 50,
+      "center": [
+        127.056,
+        37.654
+      ]
+    },
+    {
+      "code": "11380",
+      "name": "은평구",
+      "province": "서울특별시",
+      "status": "open",
+      "blocks": 50,
+      "center": [
+        126.929,
+        37.602
+      ]
+    },
+    {
+      "code": "11410",
+      "name": "서대문구",
+      "province": "서울특별시",
+      "status": "open",
+      "blocks": 50,
+      "center": [
+        126.936,
+        37.579
+      ]
+    },
+    {
+      "code": "11440",
+      "name": "마포구",
+      "province": "서울특별시",
+      "status": "open",
+      "blocks": 50,
+      "center": [
+        126.901,
+        37.566
+      ]
+    },
+    {
+      "code": "11470",
+      "name": "양천구",
+      "province": "서울특별시",
+      "status": "open",
+      "blocks": 50,
+      "center": [
+        126.866,
+        37.516
+      ]
+    },
+    {
+      "code": "11500",
+      "name": "강서구",
+      "province": "서울특별시",
+      "status": "open",
+      "blocks": 50,
+      "center": [
+        126.849,
+        37.55
+      ]
+    },
+    {
+      "code": "11530",
+      "name": "구로구",
+      "province": "서울특별시",
+      "status": "open",
+      "blocks": 50,
+      "center": [
+        126.887,
+        37.495
+      ]
+    },
+    {
+      "code": "11545",
+      "name": "금천구",
+      "province": "서울특별시",
+      "status": "open",
+      "blocks": 50,
+      "center": [
+        126.895,
+        37.456
+      ]
+    },
+    {
+      "code": "11560",
+      "name": "영등포구",
+      "province": "서울특별시",
+      "status": "open",
+      "blocks": 50,
+      "center": [
+        126.896,
+        37.526
+      ]
+    },
+    {
+      "code": "11590",
+      "name": "동작구",
+      "province": "서울특별시",
+      "status": "open",
+      "blocks": 50,
+      "center": [
+        126.939,
+        37.512
+      ]
+    },
+    {
+      "code": "11620",
+      "name": "관악구",
+      "province": "서울특별시",
+      "status": "open",
+      "blocks": 50,
+      "center": [
+        126.951,
+        37.478
+      ]
+    },
+    {
+      "code": "11650",
+      "name": "서초구",
+      "province": "서울특별시",
+      "status": "open",
+      "blocks": 50,
+      "center": [
+        127.032,
+        37.483
+      ]
+    },
+    {
+      "code": "11680",
+      "name": "강남구",
+      "province": "서울특별시",
+      "status": "open",
+      "blocks": 50,
+      "center": [
+        127.047,
+        37.517
+      ]
+    },
+    {
+      "code": "11710",
+      "name": "송파구",
+      "province": "서울특별시",
+      "status": "open",
+      "blocks": 50,
+      "center": [
+        127.105,
+        37.514
+      ]
+    },
+    {
+      "code": "11740",
+      "name": "강동구",
+      "province": "서울특별시",
+      "status": "open",
+      "blocks": 50,
+      "center": [
+        127.123,
+        37.53
+      ]
+    },
+    {
+      "code": "28185",
+      "name": "연수구",
+      "province": "인천광역시",
+      "status": "open",
+      "blocks": 50,
+      "center": [
+        126.654,
+        37.385
+      ]
     }
-  ],
-  "note": "나머지 시군구는 블록 검증 완료 후 순차 추가. 준비중 항목은 상태 확인된 곳만 기재."
+  ]
 }
