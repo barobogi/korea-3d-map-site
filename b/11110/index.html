@@ -46,11 +46,20 @@
 
   
   #sidebar {
-    position:absolute; top:130px; left:20px; bottom:20px; width:340px;
-    background:rgba(15,23,42,0.90); backdrop-filter:blur(16px);
-    border:1px solid rgba(148,163,184,0.15); border-radius:16px;
-    display:flex; flex-direction:column; z-index:20; overflow:hidden;
+    position:fixed; top:70px; left:0; bottom:20px; width:240px; max-width:240px;
+    background:rgba(15,23,42,0.92); backdrop-filter:blur(16px);
+    border:1px solid rgba(148,163,184,0.18); border-radius:0 16px 16px 0;
+    display:flex; flex-direction:column; z-index:50; overflow:hidden;
     box-shadow:0 12px 32px rgba(0,0,0,0.5);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  #sidebar.collapsed {
+    transform: translateX(calc(-100% + 24px));
+  }
+  #sidebar.collapsed #collapse-btn {
+    position: absolute; right: 0; top: 0; bottom: 0; width: 24px; padding: 0;
+    border-radius: 0 16px 16px 0; background: rgba(2,132,199,0.4);
+    display: flex; align-items: center; justify-content: center; writing-mode: vertical-lr;
   }
   .sidebar-header {
     padding:16px 20px; background:rgba(30,41,59,0.7); border-bottom:1px solid rgba(148,163,184,0.1);
@@ -146,11 +155,10 @@
   #top-tab-bar { max-width:calc(100vw - 40px); overflow-x:auto; scrollbar-width:none; }
   #top-tab-bar::-webkit-scrollbar { display:none; }
   .main-tab-btn { white-space:nowrap; flex:0 0 auto; }
-  #sidebar { width:364px; }
+  #sidebar { width:240px; max-width:240px; }
   .sidebar-header { gap:8px; }
   .collapse-btn { background:rgba(2,132,199,0.18); border:1px solid rgba(56,189,248,0.35); color:#7dd3fc; font-size:10.5px; font-weight:bold; padding:4px 8px; border-radius:8px; cursor:pointer; white-space:nowrap; }
   .collapse-btn:hover { background:#0284c7; color:#fff; }
-  #sidebar.collapsed { top:130px; bottom:auto; }
   #sidebar.collapsed .panel-body, #sidebar.collapsed #panel-footer { display:none; }
   .panel-body { flex:1; min-height:0; overflow-y:auto; padding:10px; display:flex; flex-direction:column; gap:8px; }
   .panel-footer { padding:7px 12px; border-top:1px solid rgba(148,163,184,0.12); font-size:9.5px; color:#64748b; line-height:1.5; }
@@ -718,7 +726,7 @@
 })();
 </script>
 </head>
-<body>
+<body class="ui-collapsed">
 <div id="intro-overlay">
   <div class="intro-card">
     <div class="intro-badge">KOREA 3D DIGITAL TWIN · BLOCK 11110</div>
@@ -747,10 +755,10 @@
   <button class="main-tab-btn" data-tab="roadmap" onclick="switchTab('roadmap',this)"><span>코스</span> 로드맵</button>
   <button class="main-tab-btn" data-tab="drone" onclick="switchTab('drone',this)"><span>360</span> 드론</button>
 </div>
-<div id="sidebar">
+<div id="sidebar" class="collapsed">
   <div class="sidebar-header">
     <div class="sidebar-title"><span id="sidebar-category-name">기본정보</span><span class="sidebar-count" id="sidebar-poi-count">…</span></div>
-    <button id="collapse-btn" class="collapse-btn" onclick="togglePanel()" title="패널 접기/펼치기">▾ 접기</button>
+    <button id="collapse-btn" class="collapse-btn" onclick="togglePanel()" title="패널 접기/펼치기">▶ 펼치기</button>
   </div>
   <div class="panel-body" id="panel-body">block.json 로딩 중…</div>
   <div class="panel-footer" id="panel-footer">데이터: block.json · three.js 로컬 번들 · 외부요청 0</div>
@@ -1405,8 +1413,9 @@ function closeModal(){ document.getElementById('poi-modal').style.display='none'
 function togglePanel(){
   const sb=document.getElementById('sidebar'); if(!sb) return;
   sb.classList.toggle('collapsed');
+  document.body.classList.toggle('ui-collapsed');
   const b=document.getElementById('collapse-btn');
-  if(b) b.textContent = sb.classList.contains('collapsed') ? '▴ 펼치기' : '▾ 접기';
+  if(b) b.textContent = sb.classList.contains('collapsed') ? '▶ 펼치기' : '◀ 접기';
 }
 function resetCamera(){ overview(1800,2400); closeModal(); }
 function startOrbit(h){
@@ -2431,6 +2440,16 @@ function updateIntroInfo(){
     }
   }
 
+  /* [HMYS 1호 안건1 / 만복 v2 가림 규격] 기본 접힘 시 좌측 띠 24px (1.25%) 완벽 달성 */
+  body.ui-collapsed #commercial-top-ui,
+  body.ui-collapsed #commercial-bottom-ui,
+  body.ui-collapsed #lego-block-bar {
+    display: none !important;
+  }
+  body.ui-collapsed #sidebar {
+    transform: translateX(calc(-100% + 24px)) !important;
+  }
+
   
   #quick-mode-dock {
     display: grid;
@@ -2605,6 +2624,7 @@ function updateIntroInfo(){
 
   
   #spatial-toast {
+    display: none;
     position: fixed;
     top: calc(env(safe-area-inset-top, 0px) + 148px);
     left: 50%;
@@ -2909,9 +2929,13 @@ function updateIntroInfo(){
     var t = document.getElementById('spatial-toast');
     if(!t) return;
     t.textContent = msg;
+    t.style.display = 'block';
     t.style.opacity = '1';
     clearTimeout(_toastTimer);
-    _toastTimer = setTimeout(function(){ t.style.opacity = '0'; }, 2600);
+    _toastTimer = setTimeout(function(){
+      t.style.opacity = '0';
+      setTimeout(function(){ if(t.style.opacity === '0') t.style.display = 'none'; }, 260);
+    }, 2600);
   };
 
   var SPATIAL_NODES = [
