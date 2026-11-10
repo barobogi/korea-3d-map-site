@@ -2075,10 +2075,17 @@ function updateIntroInfo(){
 
 <style>
   
-  #header-bar, #top-tab-bar, #sidebar, #controls, #poi-modal, #tile-stat, #ext-badge, #intro-overlay {
+  #header-bar, #top-tab-bar, #controls, #poi-modal, #tile-stat, #ext-badge, #intro-overlay {
     display: none !important;
     visibility: hidden !important;
     pointer-events: none !important;
+  }
+
+  body:not(.ui-collapsed) #sidebar {
+    display: flex !important;
+    visibility: visible !important;
+    pointer-events: auto !important;
+    transform: none !important;
   }
 
   
