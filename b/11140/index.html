@@ -2,1643 +2,394 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<link rel="icon" href="data:,">
-<title>서울특별시 중구 3D 지도 (명동·남산 중심)</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#0b111e">
+<title>서울특별시 중구 3D 지도 (명동·남산 중심) · 50블록 정본</title>
 <style>
-
   html, body { margin:0; height:100%; overflow:hidden; background:#0b111e; color:#e2e8f0; font-family:'Malgun Gothic', -apple-system, sans-serif; }
-  canvas { display:block; width:100vw; height:100vh; }
+  canvas { display:block; width:100vw; height:100vh; touch-action:none; -webkit-user-select:none; user-select:none; }
 
-  /* 상단 헤더 & 브랜딩 바 */
+  /* 상단 헤더 바 */
   #header-bar {
-    position:absolute; top:0; left:0; right:0; height:58px;
-    background:linear-gradient(180deg, rgba(11,17,30,0.96) 0%, rgba(11,17,30,0.8) 80%, rgba(11,17,30,0) 100%);
-    display:flex; align-items:center; justify-content:space-between; padding:0 20px; z-index:20;
+    position:absolute; top:0; left:0; right:0; height:56px;
+    background:linear-gradient(180deg, rgba(11,17,30,0.96) 0%, rgba(11,17,30,0.82) 80%, rgba(11,17,30,0) 100%);
+    display:flex; align-items:center; justify-content:space-between; padding:0 18px; z-index:20;
     pointer-events:none;
   }
-  .brand-title { font-size:16px; font-weight:bold; color:#7fd1ff; letter-spacing:0.5px; pointer-events:auto; display:flex; align-items:center; gap:8px; }
+  .brand-title { font-size:15px; font-weight:bold; color:#7fd1ff; letter-spacing:0.5px; pointer-events:auto; display:flex; align-items:center; gap:8px; }
   .brand-badge { background:#1e293b; color:#38bdf8; font-size:11px; padding:3px 9px; border-radius:12px; border:1px solid #0284c7; font-weight:600; }
+  .header-links { pointer-events:auto; display:flex; gap:10px; align-items:center; }
+  .nav-btn { background:rgba(30,41,59,0.8); color:#94a3b8; border:1px solid rgba(148,163,184,0.3); padding:5px 12px; border-radius:8px; font-size:12px; text-decoration:none; transition:all 0.2s; font-weight:600; }
+  .nav-btn:hover { background:#0284c7; color:#fff; border-color:#38bdf8; }
 
-  /* 상단 5대 권역 탭 바 (Floating Tab Bar) */
-  #top-tab-bar {
-    position:absolute; top:68px; left:50%; transform:translateX(-50%); z-index:25;
-    background:rgba(15,23,42,0.92); backdrop-filter:blur(12px);
-    border:1px solid rgba(56,189,248,0.3); border-radius:24px;
-    padding:5px; display:flex; gap:6px; box-shadow:0 10px 30px rgba(0,0,0,0.6);
-  }
-  .main-tab-btn {
-    background:transparent; color:#94a3b8; border:none; border-radius:18px;
-    padding:8px 16px; font-size:13px; font-weight:bold; cursor:pointer;
-    display:flex; align-items:center; gap:6px; transition:all 0.2s ease;
-  }
-  .main-tab-btn:hover { background:rgba(51,65,85,0.7); color:#f8fafc; }
-  .main-tab-btn.active {
-    background:linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-    color:#ffffff; box-shadow:0 4px 12px rgba(2,132,199,0.4);
-  }
-
-  /* 좌측 사이드바: 탭별 목록 및 정보 */
+  /* 좌측 사이드바: 50대 정규 블록 목록 */
   #sidebar {
-    position:absolute; top:130px; left:20px; bottom:20px; width:340px;
-    background:rgba(15,23,42,0.90); backdrop-filter:blur(16px);
-    border:1px solid rgba(148,163,184,0.15); border-radius:16px;
-    display:flex; flex-direction:column; z-index:20; overflow:hidden;
-    box-shadow:0 12px 32px rgba(0,0,0,0.5);
-   width:240px !important; max-width:240px !important; box-sizing:border-box !important; }
+    position:fixed; top:66px; left:0; bottom:16px; width:290px; box-sizing:border-box;
+    background:rgba(15,23,42,0.94); backdrop-filter:blur(16px);
+    border:1px solid rgba(148,163,184,0.2); border-radius:0 16px 16px 0;
+    display:flex; flex-direction:column; z-index:50; overflow:hidden;
+    box-shadow:0 12px 32px rgba(0,0,0,0.6);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  #sidebar.collapsed { transform: translateX(-100%); }
+  #collapse-btn {
+    position:fixed; left:290px; top:120px; width:24px; height:80px; z-index:55;
+    background:rgba(2,132,199,0.92); color:#fff; border:1px solid rgba(56,189,248,0.6);
+    border-radius:0 10px 10px 0; cursor:pointer; display:flex; align-items:center; justify-content:center;
+    writing-mode:vertical-lr; font-size:11px; font-weight:bold; box-shadow:2px 0 10px rgba(0,0,0,0.4);
+    transition: left 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  body.ui-collapsed #collapse-btn { left:0; }
+
   .sidebar-header {
-    padding:16px 20px; background:rgba(30,41,59,0.7); border-bottom:1px solid rgba(148,163,184,0.1);
+    padding:14px 16px; background:rgba(30,41,59,0.75); border-bottom:1px solid rgba(148,163,184,0.15);
     display:flex; justify-content:space-between; align-items:center;
   }
   .sidebar-title { font-size:14px; font-weight:bold; color:#f1f5f9; display:flex; align-items:center; gap:6px; }
-  .sidebar-count { font-size:11px; background:#0284c7; color:#fff; padding:2px 7px; border-radius:10px; }
-  .poi-list { flex:1; overflow-y:auto; padding:10px; display:flex; flex-direction:column; gap:8px; }
+  .sidebar-count { font-size:11px; background:#0284c7; color:#fff; padding:2px 8px; border-radius:10px; font-weight:bold; }
   
-  .poi-item {
-    padding:12px 14px; background:rgba(30,41,59,0.5); border:1px solid rgba(148,163,184,0.1);
-    border-radius:10px; cursor:pointer; transition:all 0.2s;
+  .search-box { padding:10px 12px; border-bottom:1px solid rgba(148,163,184,0.1); }
+  .search-box input {
+    width:100%; box-sizing:border-box; background:rgba(30,41,59,0.6); border:1px solid rgba(148,163,184,0.25);
+    border-radius:8px; padding:7px 10px; color:#f1f5f9; font-size:12px; outline:none;
   }
-  .poi-item:hover { background:rgba(51,65,85,0.8); border-color:#38bdf8; transform:translateY(-2px); }
-  .poi-item.active { background:rgba(2,132,199,0.25); border-color:#0284c7; }
-  .poi-name { font-size:13px; font-weight:bold; color:#f8fafc; margin-bottom:4px; display:flex; align-items:center; gap:6px; }
-  .poi-dot { width:8px; height:8px; border-radius:50%; display:inline-block; }
-  .poi-desc { font-size:11.5px; color:#94a3b8; line-height:1.4; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+  .search-box input:focus { border-color:#38bdf8; background:rgba(30,41,59,0.9); }
 
-  /* 우측 하단 컨트롤러 바 */
+  .block-list { flex:1; overflow-y:auto; padding:10px; display:flex; flex-direction:column; gap:6px; }
+  .block-list::-webkit-scrollbar { width:5px; }
+  .block-list::-webkit-scrollbar-thumb { background:rgba(148,163,184,0.3); border-radius:3px; }
+
+  .block-item {
+    padding:9px 11px; background:rgba(30,41,59,0.5); border:1px solid rgba(148,163,184,0.12);
+    border-radius:9px; cursor:pointer; transition:all 0.18s; display:flex; flex-direction:column; gap:3px;
+  }
+  .block-item:hover { background:rgba(51,65,85,0.85); border-color:#38bdf8; transform:translateY(-1px); }
+  .block-item.active { background:rgba(2,132,199,0.28); border-color:#0284c7; box-shadow:0 0 10px rgba(56,189,248,0.2); }
+  
+  .block-item-top { display:flex; align-items:center; gap:7px; }
+  .block-no { font-size:10.5px; font-weight:bold; color:#38bdf8; background:rgba(2,132,199,0.18); padding:1px 5px; border-radius:4px; min-width:18px; text-align:center; }
+  .block-name { font-size:12.5px; font-weight:bold; color:#f8fafc; flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .block-meta { display:flex; align-items:center; gap:6px; font-size:10.5px; color:#94a3b8; }
+  .block-cat { background:rgba(148,163,184,0.15); padding:1px 5px; border-radius:4px; color:#cbd5e1; }
+  .block-addr { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:140px; }
+
+  /* 우측 하단 컨트롤 */
   #controls {
-    position:absolute; bottom:20px; right:20px; z-index:20;
-    display:flex; flex-direction:column; gap:8px;
+    position:absolute; bottom:18px; right:18px; z-index:25;
+    display:flex; flex-direction:column; gap:7px;
   }
   .ctrl-btn {
-    background:rgba(15,23,42,0.9); border:1px solid rgba(148,163,184,0.2); color:#e2e8f0;
-    padding:10px 16px; border-radius:12px; font-size:12px; font-weight:bold; cursor:pointer;
-    display:flex; align-items:center; gap:8px; box-shadow:0 4px 12px rgba(0,0,0,0.4);
-    transition:all 0.2s; backdrop-filter:blur(8px);
+    background:rgba(15,23,42,0.9); color:#f1f5f9; border:1px solid rgba(148,163,184,0.3);
+    border-radius:9px; padding:8px 13px; font-size:12px; font-weight:bold; cursor:pointer;
+    box-shadow:0 4px 14px rgba(0,0,0,0.5); transition:all 0.2s; display:flex; align-items:center; gap:6px;
   }
-  .ctrl-btn:hover { background:#0284c7; color:#fff; border-color:#38bdf8; transform:scale(1.03); }
+  .ctrl-btn:hover { background:#0284c7; border-color:#38bdf8; }
 
-  /* POI 상세 모달 카드 */
-  #poi-modal {
-    position:absolute; bottom:24px; left:380px; width:400px;
-    background:rgba(15,23,42,0.95); backdrop-filter:blur(20px);
-    border:1px solid #38bdf8; border-radius:16px; padding:20px; z-index:30;
-    box-shadow:0 16px 40px rgba(0,0,0,0.7); display:none; flex-direction:column; gap:12px;
-    animation:fadeIn 0.25s ease-out;
+  /* 선택된 블록 상세 모달 */
+  #block-detail {
+    position:fixed; bottom:20px; left:305px; z-index:45; max-width:380px;
+    background:rgba(15,23,42,0.95); backdrop-filter:blur(14px);
+    border:1px solid rgba(56,189,248,0.5); border-radius:14px;
+    padding:14px 16px; box-shadow:0 12px 30px rgba(0,0,0,0.7);
+    display:none; flex-direction:column; gap:6px;
   }
-  @keyframes fadeIn { from { opacity:0; transform:translateY(15px); } to { opacity:1; transform:translateY(0); } }
-  .modal-close { position:absolute; top:14px; right:16px; background:none; border:none; color:#94a3b8; font-size:18px; cursor:pointer; }
-  .modal-title { font-size:16px; font-weight:bold; color:#7dd3fc; margin-right:24px; }
-  .modal-category { font-size:11px; padding:2px 8px; border-radius:8px; background:#1e293b; color:#38bdf8; width:fit-content; }
-  .modal-body { font-size:12.5px; color:#cbd5e1; line-height:1.6; max-height:180px; overflow-y:auto; }
-  .modal-quote { background:rgba(30,41,59,0.8); border-left:3px solid #eab308; padding:8px 12px; font-size:11.5px; color:#fef08a; border-radius:4px; font-style:italic; }
-  .modal-source { font-size:11px; color:#64748b; display:flex; justify-content:space-between; align-items:center; }
-  .modal-source a { color:#38bdf8; text-decoration:none; }
+  body.ui-collapsed #block-detail { left:20px; }
+  .detail-title { font-size:15px; font-weight:bold; color:#7fd1ff; display:flex; justify-content:space-between; align-items:center; }
+  .detail-close { cursor:pointer; color:#94a3b8; font-size:14px; padding:2px 6px; }
+  .detail-close:hover { color:#fff; }
+  .detail-cat { font-size:11px; color:#fde047; }
+  .detail-addr { font-size:11.5px; color:#cbd5e1; line-height:1.4; }
+  .detail-coords { font-size:10px; color:#64748b; font-family:Consolas, monospace; }
 
-  /* 전국 Fog of War 인트로 오버레이 (ITEM-12 구현) */
-  #intro-overlay {
-    position:absolute; top:0; left:0; right:0; bottom:0; z-index:100;
-    background:radial-gradient(circle at center, rgba(11,17,30,0.85) 0%, rgba(5,8,15,0.98) 100%);
-    display:flex; flex-direction:column; align-items:center; justify-content:center;
-    transition:opacity 0.8s ease, visibility 0.8s ease; backdrop-filter:blur(8px);
+  @media (max-width: 768px) {
+    #sidebar { width:240px; }
+    #collapse-btn { left:240px; }
+    #block-detail { left:10px; right:10px; max-width:none; bottom:70px; }
   }
-  .intro-card {
-    background:rgba(15,23,42,0.95); border:1px solid rgba(56,189,248,0.4);
-    border-radius:24px; padding:36px 44px; max-width:540px; text-align:center;
-    box-shadow:0 24px 60px rgba(0,0,0,0.8); display:flex; flex-direction:column; align-items:center; gap:16px;
-  }
-  .intro-badge {
-    background:#0f172a; color:#38bdf8; border:1px solid #0284c7;
-    font-size:11px; font-weight:bold; padding:5px 14px; border-radius:20px; letter-spacing:1px;
-  }
-  .intro-title { font-size:26px; font-weight:bold; color:#f8fafc; line-height:1.3; }
-  .intro-title span { color:#38bdf8; }
-  .intro-desc { font-size:13.5px; color:#94a3b8; line-height:1.6; margin-bottom:8px; }
-  .intro-grid-status {
-    display:flex; gap:16px; background:rgba(30,41,59,0.6); padding:12px 20px; border-radius:14px;
-    border:1px solid rgba(148,163,184,0.1); width:100%; justify-content:space-around;
-  }
-  .status-item { display:flex; flex-direction:column; gap:4px; font-size:11px; color:#64748b; }
-  .status-val { font-size:15px; font-weight:bold; color:#f1f5f9; }
-  .status-val.unlocked { color:#eab308; }
-  
-  .intro-btn {
-    background:linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
-    color:#fff; border:none; padding:14px 32px; border-radius:16px; font-size:14px; font-weight:bold;
-    cursor:pointer; box-shadow:0 8px 24px rgba(2,132,199,0.5); transition:all 0.25s;
-    display:flex; align-items:center; gap:8px;
-  }
-  .intro-btn:hover { transform:translateY(-2px); box-shadow:0 12px 30px rgba(2,132,199,0.7); background:#38bdf8; }
-#tile-stat{position:absolute;top:130px;right:20px;z-index:20;}
-  #poi-detail{border-top:1px solid #333;padding:12px 14px;max-height:220px;overflow-y:auto;background:rgba(2,132,199,0.08);font-size:12px;line-height:1.6;color:#cbd5e1;}
-  #poi-detail .d-title{font-weight:bold;color:#7dd3fc;font-size:13px;margin-bottom:6px;}
-  #poi-detail .d-src{margin-top:8px;font-size:11px;color:#64748b;word-break:break-all;}
-  #poi-detail .d-src span{color:#38bdf8;}
-  .poi-item.selected{background:rgba(2,132,199,0.35)!important;border-color:#38bdf8!important;}
-  .empty-note{padding:16px 12px;font-size:12.5px;color:#94a3b8;line-height:1.6;text-align:center;}
-
-  /* ===== v3: 6탭 패널 · 로드맵 · 모바일 접기 ===== */
-  #top-tab-bar { max-width:calc(100vw - 40px); overflow-x:auto; scrollbar-width:none; }
-  #top-tab-bar::-webkit-scrollbar { display:none; }
-  .main-tab-btn { white-space:nowrap; flex:0 0 auto; }
-  #sidebar { width:364px;  width:240px !important; max-width:240px !important; box-sizing:border-box !important; }
-  .sidebar-header { gap:8px; }
-  .collapse-btn { background:rgba(2,132,199,0.18); border:1px solid rgba(56,189,248,0.35); color:#7dd3fc; font-size:10.5px; font-weight:bold; padding:4px 8px; border-radius:8px; cursor:pointer; white-space:nowrap; }
-  .collapse-btn:hover { background:#0284c7; color:#fff; }
-  #sidebar.collapsed { top:130px; bottom:auto; }
-  #sidebar.collapsed .panel-body, #sidebar.collapsed #panel-footer { display:none; }
-  .panel-body { flex:1; min-height:0; overflow-y:auto; padding:10px; display:flex; flex-direction:column; gap:8px; }
-  .panel-footer { padding:7px 12px; border-top:1px solid rgba(148,163,184,0.12); font-size:9.5px; color:#64748b; line-height:1.5; }
-  .sec-title { font-size:11px; font-weight:bold; color:#38bdf8; letter-spacing:0.4px; margin-top:4px; display:flex; justify-content:space-between; align-items:center; gap:6px; }
-  .asof { font-size:10px; color:#94a3b8; font-weight:normal; }
-  .office-head { background:linear-gradient(135deg, rgba(245,158,11,0.16), rgba(2,132,199,0.14)); border:1px solid rgba(245,158,11,0.4); border-radius:12px; padding:11px 12px; }
-  .office-name { font-size:14.5px; font-weight:bold; color:#fde68a; display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
-  .office-sub { font-size:10.5px; color:#94a3b8; margin-top:5px; line-height:1.55; }
-  .fact-grid { display:grid; grid-template-columns:1fr 1fr; gap:7px; }
-  .fact-card { background:rgba(30,41,59,0.55); border:1px solid rgba(148,163,184,0.15); border-radius:10px; padding:9px 10px; }
-  .fact-label { font-size:10px; color:#94a3b8; }
-  .fact-value { font-size:15px; font-weight:bold; color:#f8fafc; margin-top:2px; }
-.fact-note { font-size:10px; color:#94a3b8; margin-top:3px; line-height:1.5; }
-  .fact-meta { font-size:9px; color:#64748b; margin-top:4px; line-height:1.6; word-break:break-all; }
-  .hist-item { display:flex; gap:9px; font-size:11.5px; line-height:1.5; color:#cbd5e1; padding:6px 0; border-bottom:1px dashed rgba(148,163,184,0.14); }
-  .hist-year { color:#fbbf24; font-weight:bold; min-width:34px; flex:0 0 auto; }
-  .src-note { font-size:9.5px; color:#64748b; line-height:1.65; word-break:break-all; }
-  .src-link, .src-note a { color:#38bdf8; text-decoration:none; border-bottom:1px dotted rgba(56,189,248,0.45); }
-  .poi-meta { display:flex; gap:4px; flex-wrap:wrap; align-items:center; margin-top:6px; }
-  .mini-badge { font-size:10px; padding:2px 7px; border-radius:6px; background:rgba(2,132,199,0.2); color:#7dd3fc; border:1px solid rgba(56,189,248,0.3); }
-  .mini-badge.gold { background:rgba(234,179,8,0.16); color:#fde047; border-color:rgba(234,179,8,0.35); }
-  .panel-note { font-size:10px; color:#94a3b8; background:rgba(2,132,199,0.08); border:1px solid rgba(56,189,248,0.18); border-radius:8px; padding:6px 8px; line-height:1.6; }
-.panel-note b { color:#7dd3fc; }
-.office-head { cursor:pointer; }
-.office-head:hover { border-color:#38bdf8; }
-#ext-badge { position:absolute; bottom:20px; left:50%; transform:translateX(-50%); font-size:10px; color:#475569; white-space:nowrap; }
-  .toolbar { display:flex; justify-content:space-between; align-items:center; gap:8px; background:rgba(2,132,199,0.1); border:1px solid rgba(56,189,248,0.22); border-radius:8px; padding:6px 8px; }
-  .route-card { background:rgba(30,41,59,0.55); border:1px solid rgba(148,163,184,0.16); border-radius:10px; padding:9px 10px; display:flex; flex-direction:column; gap:2px; }
-  .route-head { display:flex; justify-content:space-between; align-items:flex-start; gap:6px; }
-  .route-title { font-size:11.5px; font-weight:bold; color:#f8fafc; line-height:1.4; }
-  .route-total { font-size:10.5px; color:#7dd3fc; font-weight:bold; margin:2px 0 3px; }
-  .route-toggle { font-size:9.5px; border:1px solid rgba(56,189,248,0.4); background:rgba(2,132,199,0.18); color:#7dd3fc; border-radius:6px; padding:3px 7px; cursor:pointer; white-space:nowrap; }
-  .route-toggle.off { color:#64748b; border-color:rgba(148,163,184,0.25); background:transparent; }
-  .stop-row { display:flex; align-items:center; gap:7px; padding:4px 0; cursor:pointer; border-bottom:1px dashed rgba(148,163,184,0.1); }
-  .stop-row:hover .stop-name { color:#7dd3fc; }
-  .stop-no { width:17px; height:17px; border-radius:50%; font-size:10px; font-weight:bold; color:#0b111e; display:flex; align-items:center; justify-content:center; flex:0 0 auto; }
-  .stop-name { font-size:11px; color:#e2e8f0; flex:1; min-width:0; line-height:1.4; }
-  .stop-dist { font-size:9.5px; color:#94a3b8; white-space:nowrap; }
-  .stop-dist + .stop-dist { color:#64748b; }
-  .stop-row.off { opacity:0.45; }
-  .leg-note { font-size:9.5px; color:#64748b; line-height:1.55; margin-top:3px; }
-  .btn-row { display:flex; gap:5px; flex-wrap:wrap; }
-  .poi-item.selected { border-color:#38bdf8; background:rgba(2,132,199,0.3); }
-  #tile-stat { font-size:10.5px; color:#94a3b8; background:rgba(15,23,42,0.82); border:1px solid rgba(148,163,184,0.16); border-radius:8px; padding:5px 9px; }
-  #modal-source-url { color:#38bdf8; text-decoration:none; font-size:11px; }
-  #modal-extra { font-size:10px; color:#94a3b8; }
-  @media (max-width:860px) {
-    #header-bar { height:44px; padding:0 10px; }
-    .brand-title { font-size:11.5px; gap:5px; }
-    .brand-badge { font-size:9px; padding:2px 6px; }
-    #header-bar > div:last-child { display:none !important; }
-    .brand-title { white-space:nowrap; overflow:hidden; }
-    .brand-badge { white-space:nowrap; }
-    #top-tab-bar { top:48px; left:6px; right:6px; transform:none; max-width:none; padding:4px; gap:4px; border-radius:14px; -webkit-mask-image:linear-gradient(90deg,#000 0,#000 88%,rgba(0,0,0,0.15) 100%); mask-image:linear-gradient(90deg,#000 0,#000 88%,rgba(0,0,0,0.15) 100%); }
-    .intro-card { padding:22px 16px; max-width:calc(100vw - 24px); gap:12px; border-radius:18px; }
-    .intro-title { font-size:19px; }
-    .intro-desc { font-size:11.5px; line-height:1.55; }
-    .intro-grid-status { padding:9px 10px; }
-    .status-val { font-size:12.5px; }
-    .intro-btn { padding:12px 20px; font-size:12.5px; }
-    .main-tab-btn { padding:7px 9px; font-size:11px; gap:3px; }
-    .main-tab-btn span { font-size:9px; opacity:0.7; }
-    #sidebar { top:auto; left:6px; right:6px; bottom:6px; width:auto; max-height:46vh; border-radius:14px;  width:240px !important; max-width:240px !important; box-sizing:border-box !important; }
-    #sidebar.collapsed { top:auto; bottom:6px; max-height:42px; }
-    .sidebar-header { padding:9px 11px; }
-    .panel-body { padding:9px; }
-    #tile-stat { top:92px; left:8px; right:auto; max-width:52vw; font-size:9px; }
-    #controls { top:92px; right:8px; bottom:auto; flex-direction:column; gap:5px; }
-    #controls .ctrl-btn { padding:7px 9px; font-size:10px; }
-    #poi-modal { left:8px; right:8px; width:auto; bottom:auto; top:132px; max-height:calc(100vh - 190px); padding:14px; }
-    .modal-body { max-height:31vh; }
-    #ext-badge { display:none; }
-  }
-  @media (max-width:860px) and (max-height:700px) {
-    #sidebar { max-height:40vh;  width:240px !important; max-width:240px !important; box-sizing:border-box !important; }
-  }
-  .intro-grid-status{display:none!important}
 </style>
 <script src="../../vendor/three.min.js"></script>
-<script>
-/* [만복 2026-11-03 지형] 고도 격자(Open-Meteo 90m DEM, 49x49, ±5km)를 셰이더 공통 변환으로 적용: 모든 재질의 정점 y를 지형 높이만큼 올린다. */
-(function(){
-  var GL="\nconst int TN=49; const float TR=5000.0; const float TEXAG=1.00;\nconst float TH[2401]=float[2401](79.0,88.0,106.0,145.0,172.0,169.0,129.0,102.0,129.0,177.0,157.0,119.0,149.0,160.0,110.0,122.0,135.0,188.0,216.0,272.0,229.0,186.0,134.0,102.0,89.0,84.0,75.0,65.0,57.0,54.0,88.0,74.0,100.0,65.0,49.0,65.0,65.0,41.0,33.0,32.0,32.0,51.0,93.0,89.0,80.0,59.0,32.0,27.0,27.0,116.0,125.0,140.0,190.0,164.0,183.0,150.0,112.0,93.0,138.0,128.0,109.0,111.0,110.0,116.0,161.0,163.0,173.0,241.0,278.0,250.0,200.0,146.0,122.0,91.0,73.0,78.0,67.0,56.0,48.0,65.0,57.0,77.0,64.0,44.0,62.0,58.0,37.0,35.0,38.0,30.0,44.0,53.0,69.0,50.0,45.0,35.0,36.0,26.0,150.0,178.0,184.0,158.0,106.0,165.0,175.0,118.0,99.0,107.0,105.0,91.0,104.0,122.0,155.0,184.0,166.0,208.0,254.0,274.0,264.0,206.0,157.0,136.0,108.0,87.0,95.0,101.0,78.0,54.0,56.0,50.0,65.0,68.0,45.0,50.0,44.0,35.0,33.0,31.0,32.0,35.0,34.0,41.0,32.0,45.0,35.0,42.0,51.0,159.0,168.0,152.0,93.0,85.0,134.0,150.0,148.0,121.0,77.0,120.0,108.0,165.0,170.0,184.0,207.0,220.0,258.0,326.0,325.0,287.0,217.0,190.0,177.0,145.0,138.0,138.0,115.0,97.0,71.0,45.0,46.0,47.0,48.0,52.0,38.0,45.0,42.0,39.0,37.0,31.0,29.0,30.0,29.0,32.0,56.0,59.0,97.0,88.0,156.0,132.0,104.0,77.0,61.0,144.0,121.0,99.0,96.0,76.0,110.0,145.0,156.0,208.0,192.0,253.0,277.0,293.0,272.0,269.0,244.0,179.0,168.0,168.0,162.0,166.0,167.0,134.0,91.0,73.0,55.0,67.0,45.0,41.0,44.0,43.0,72.0,65.0,46.0,33.0,32.0,33.0,26.0,28.0,37.0,45.0,95.0,125.0,77.0,115.0,116.0,73.0,60.0,62.0,119.0,139.0,69.0,76.0,75.0,105.0,135.0,169.0,198.0,254.0,266.0,285.0,247.0,227.0,208.0,214.0,166.0,133.0,139.0,129.0,145.0,179.0,142.0,105.0,90.0,77.0,63.0,78.0,56.0,54.0,51.0,105.0,83.0,57.0,39.0,30.0,27.0,27.0,32.0,44.0,54.0,114.0,107.0,60.0,125.0,122.0,66.0,44.0,47.0,122.0,126.0,65.0,99.0,79.0,112.0,157.0,182.0,175.0,217.0,282.0,249.0,204.0,192.0,175.0,163.0,153.0,122.0,99.0,94.0,107.0,150.0,161.0,130.0,93.0,81.0,61.0,74.0,86.0,74.0,81.0,117.0,71.0,42.0,33.0,28.0,26.0,28.0,27.0,29.0,61.0,106.0,71.0,58.0,58.0,106.0,57.0,43.0,55.0,62.0,85.0,79.0,184.0,130.0,89.0,169.0,163.0,186.0,236.0,260.0,213.0,212.0,159.0,134.0,119.0,108.0,100.0,93.0,68.0,68.0,96.0,136.0,148.0,132.0,95.0,59.0,41.0,52.0,50.0,94.0,130.0,102.0,98.0,41.0,28.0,27.0,26.0,38.0,54.0,90.0,63.0,52.0,47.0,66.0,79.0,48.0,45.0,52.0,89.0,150.0,159.0,193.0,124.0,93.0,118.0,157.0,195.0,277.0,256.0,165.0,157.0,183.0,182.0,157.0,113.0,87.0,72.0,79.0,58.0,64.0,99.0,129.0,117.0,76.0,62.0,40.0,41.0,44.0,77.0,107.0,123.0,126.0,48.0,28.0,24.0,24.0,32.0,38.0,67.0,48.0,46.0,53.0,76.0,46.0,42.0,46.0,67.0,91.0,165.0,192.0,183.0,138.0,104.0,121.0,145.0,166.0,310.0,216.0,159.0,120.0,127.0,148.0,189.0,146.0,113.0,81.0,62.0,63.0,58.0,60.0,81.0,94.0,47.0,41.0,37.0,39.0,43.0,110.0,91.0,88.0,100.0,39.0,29.0,26.0,24.0,30.0,34.0,51.0,47.0,34.0,37.0,48.0,44.0,40.0,44.0,93.0,108.0,136.0,196.0,213.0,153.0,133.0,119.0,91.0,113.0,204.0,187.0,115.0,106.0,92.0,114.0,146.0,158.0,99.0,86.0,58.0,52.0,70.0,47.0,74.0,48.0,38.0,37.0,33.0,33.0,37.0,90.0,68.0,61.0,62.0,55.0,40.0,24.0,26.0,26.0,37.0,45.0,43.0,31.0,27.0,98.0,53.0,41.0,50.0,82.0,169.0,178.0,245.0,253.0,188.0,163.0,97.0,61.0,61.0,83.0,129.0,134.0,63.0,67.0,85.0,114.0,117.0,82.0,61.0,54.0,44.0,51.0,49.0,42.0,40.0,51.0,42.0,34.0,31.0,31.0,42.0,71.0,48.0,42.0,35.0,23.0,24.0,20.0,20.0,31.0,60.0,60.0,39.0,33.0,87.0,59.0,59.0,47.0,63.0,105.0,133.0,206.0,290.0,228.0,146.0,77.0,54.0,53.0,74.0,90.0,90.0,62.0,69.0,87.0,76.0,88.0,74.0,53.0,51.0,44.0,42.0,67.0,59.0,52.0,48.0,41.0,54.0,31.0,27.0,38.0,51.0,42.0,32.0,29.0,21.0,21.0,18.0,21.0,25.0,37.0,39.0,30.0,34.0,59.0,87.0,67.0,65.0,62.0,113.0,148.0,277.0,256.0,168.0,136.0,84.0,52.0,50.0,54.0,64.0,68.0,62.0,75.0,72.0,60.0,91.0,68.0,46.0,40.0,42.0,37.0,53.0,80.0,58.0,60.0,51.0,48.0,32.0,26.0,52.0,35.0,37.0,28.0,32.0,23.0,19.0,18.0,17.0,21.0,30.0,33.0,25.0,39.0,62.0,81.0,97.0,79.0,53.0,99.0,163.0,239.0,211.0,121.0,107.0,65.0,54.0,47.0,44.0,53.0,58.0,49.0,71.0,56.0,62.0,69.0,56.0,52.0,40.0,35.0,33.0,42.0,82.0,69.0,75.0,74.0,58.0,36.0,27.0,43.0,37.0,27.0,25.0,29.0,24.0,17.0,17.0,17.0,19.0,23.0,23.0,28.0,41.0,87.0,142.0,158.0,121.0,83.0,84.0,123.0,220.0,196.0,138.0,82.0,51.0,46.0,45.0,43.0,41.0,44.0,45.0,52.0,44.0,47.0,56.0,60.0,43.0,47.0,40.0,33.0,36.0,74.0,97.0,96.0,82.0,59.0,44.0,26.0,23.0,27.0,25.0,25.0,30.0,20.0,17.0,17.0,18.0,20.0,18.0,40.0,27.0,28.0,104.0,174.0,206.0,154.0,109.0,89.0,113.0,153.0,161.0,146.0,95.0,74.0,46.0,42.0,42.0,40.0,39.0,43.0,46.0,39.0,43.0,38.0,44.0,34.0,42.0,42.0,37.0,33.0,59.0,90.0,112.0,55.0,38.0,69.0,28.0,25.0,24.0,22.0,21.0,26.0,20.0,19.0,19.0,16.0,18.0,19.0,21.0,32.0,31.0,105.0,192.0,268.0,223.0,134.0,119.0,85.0,98.0,109.0,119.0,91.0,66.0,49.0,43.0,41.0,37.0,37.0,41.0,41.0,39.0,35.0,35.0,42.0,36.0,34.0,37.0,29.0,29.0,56.0,72.0,98.0,70.0,35.0,79.0,40.0,21.0,23.0,21.0,17.0,22.0,20.0,17.0,17.0,16.0,16.0,21.0,28.0,28.0,27.0,104.0,172.0,243.0,243.0,182.0,98.0,76.0,56.0,81.0,85.0,98.0,54.0,43.0,43.0,38.0,34.0,35.0,38.0,34.0,40.0,37.0,33.0,37.0,46.0,28.0,32.0,31.0,30.0,45.0,64.0,50.0,52.0,27.0,67.0,23.0,18.0,25.0,18.0,19.0,19.0,21.0,16.0,20.0,19.0,19.0,18.0,22.0,22.0,19.0,83.0,161.0,165.0,148.0,197.0,112.0,84.0,61.0,51.0,62.0,81.0,61.0,57.0,51.0,32.0,36.0,35.0,32.0,37.0,31.0,40.0,30.0,32.0,38.0,32.0,26.0,27.0,27.0,32.0,43.0,27.0,34.0,22.0,23.0,25.0,19.0,21.0,19.0,21.0,18.0,20.0,20.0,16.0,18.0,18.0,18.0,17.0,23.0,27.0,84.0,137.0,138.0,119.0,182.0,136.0,114.0,72.0,50.0,52.0,54.0,81.0,56.0,45.0,37.0,39.0,32.0,33.0,32.0,33.0,29.0,33.0,31.0,25.0,32.0,31.0,23.0,26.0,26.0,25.0,24.0,24.0,20.0,22.0,18.0,16.0,21.0,20.0,20.0,22.0,17.0,22.0,21.0,15.0,15.0,17.0,16.0,28.0,20.0,93.0,135.0,99.0,116.0,148.0,174.0,148.0,120.0,65.0,47.0,45.0,62.0,50.0,41.0,33.0,33.0,28.0,41.0,28.0,34.0,28.0,29.0,28.0,26.0,27.0,31.0,25.0,24.0,25.0,20.0,25.0,25.0,21.0,23.0,33.0,24.0,18.0,18.0,16.0,17.0,27.0,19.0,18.0,24.0,21.0,18.0,18.0,23.0,20.0,78.0,109.0,90.0,79.0,113.0,133.0,157.0,147.0,72.0,52.0,42.0,47.0,48.0,61.0,42.0,45.0,37.0,38.0,33.0,27.0,25.0,26.0,26.0,26.0,27.0,27.0,27.0,22.0,30.0,29.0,29.0,24.0,23.0,24.0,32.0,23.0,19.0,22.0,26.0,27.0,30.0,25.0,20.0,23.0,18.0,12.0,16.0,11.0,23.0,68.0,78.0,65.0,70.0,114.0,71.0,81.0,106.0,98.0,78.0,50.0,41.0,44.0,46.0,38.0,34.0,30.0,33.0,35.0,35.0,26.0,27.0,35.0,31.0,31.0,30.0,31.0,26.0,24.0,33.0,33.0,31.0,28.0,26.0,30.0,29.0,26.0,28.0,28.0,28.0,22.0,17.0,16.0,15.0,16.0,18.0,15.0,16.0,15.0,71.0,66.0,47.0,94.0,106.0,68.0,57.0,62.0,79.0,77.0,49.0,40.0,38.0,43.0,46.0,33.0,41.0,37.0,40.0,42.0,42.0,38.0,30.0,31.0,32.0,31.0,34.0,33.0,24.0,32.0,34.0,28.0,25.0,28.0,32.0,39.0,43.0,44.0,35.0,34.0,29.0,20.0,25.0,24.0,25.0,28.0,11.0,16.0,16.0,51.0,39.0,50.0,68.0,91.0,61.0,50.0,48.0,87.0,54.0,43.0,37.0,35.0,42.0,50.0,38.0,42.0,40.0,38.0,46.0,54.0,42.0,36.0,37.0,36.0,39.0,32.0,33.0,32.0,48.0,39.0,31.0,30.0,32.0,36.0,52.0,82.0,59.0,37.0,36.0,33.0,25.0,32.0,32.0,58.0,29.0,21.0,15.0,15.0,43.0,38.0,58.0,64.0,101.0,59.0,53.0,43.0,80.0,64.0,46.0,35.0,36.0,39.0,53.0,38.0,45.0,36.0,43.0,43.0,48.0,44.0,40.0,43.0,38.0,51.0,44.0,39.0,39.0,51.0,36.0,31.0,35.0,34.0,45.0,69.0,56.0,37.0,31.0,24.0,23.0,20.0,25.0,19.0,39.0,22.0,17.0,15.0,15.0,40.0,38.0,45.0,73.0,83.0,60.0,51.0,38.0,49.0,60.0,61.0,42.0,36.0,27.0,34.0,50.0,46.0,48.0,49.0,62.0,70.0,88.0,61.0,54.0,61.0,84.0,78.0,48.0,40.0,53.0,33.0,34.0,42.0,67.0,77.0,71.0,66.0,48.0,32.0,24.0,22.0,22.0,20.0,37.0,65.0,51.0,30.0,12.0,16.0,43.0,42.0,52.0,64.0,62.0,47.0,41.0,36.0,43.0,69.0,88.0,55.0,28.0,28.0,32.0,45.0,66.0,68.0,64.0,87.0,100.0,115.0,81.0,57.0,81.0,102.0,66.0,42.0,66.0,46.0,32.0,39.0,57.0,86.0,78.0,75.0,62.0,51.0,53.0,32.0,26.0,35.0,18.0,22.0,43.0,61.0,40.0,17.0,18.0,39.0,61.0,62.0,65.0,78.0,57.0,41.0,30.0,40.0,88.0,60.0,43.0,26.0,47.0,44.0,70.0,94.0,104.0,96.0,131.0,145.0,150.0,103.0,71.0,99.0,124.0,83.0,71.0,65.0,40.0,40.0,45.0,77.0,77.0,73.0,67.0,59.0,69.0,89.0,39.0,33.0,21.0,16.0,24.0,35.0,32.0,17.0,5.0,21.0,70.0,90.0,44.0,50.0,78.0,54.0,36.0,25.0,36.0,86.0,60.0,33.0,27.0,38.0,35.0,49.0,85.0,124.0,140.0,189.0,199.0,167.0,137.0,100.0,99.0,108.0,77.0,89.0,57.0,42.0,43.0,58.0,107.0,89.0,69.0,49.0,54.0,100.0,110.0,55.0,32.0,23.0,16.0,11.0,11.0,4.0,4.0,4.0,14.0,45.0,36.0,23.0,31.0,67.0,37.0,26.0,25.0,26.0,58.0,65.0,63.0,33.0,26.0,32.0,49.0,57.0,73.0,109.0,158.0,247.0,228.0,213.0,156.0,130.0,115.0,102.0,107.0,68.0,83.0,78.0,89.0,82.0,78.0,66.0,67.0,31.0,55.0,56.0,25.0,18.0,4.0,15.0,19.0,19.0,14.0,16.0,18.0,17.0,26.0,18.0,18.0,40.0,44.0,30.0,23.0,23.0,32.0,68.0,81.0,52.0,30.0,26.0,40.0,38.0,48.0,62.0,89.0,141.0,193.0,192.0,222.0,221.0,175.0,130.0,97.0,106.0,80.0,109.0,101.0,79.0,49.0,43.0,33.0,31.0,28.0,46.0,56.0,30.0,4.0,16.0,9.0,13.0,15.0,24.0,18.0,18.0,17.0,20.0,17.0,16.0,25.0,46.0,22.0,16.0,22.0,42.0,68.0,68.0,64.0,33.0,24.0,43.0,29.0,37.0,44.0,67.0,117.0,157.0,146.0,195.0,257.0,206.0,155.0,90.0,74.0,77.0,129.0,89.0,70.0,40.0,37.0,31.0,21.0,21.0,56.0,72.0,12.0,7.0,19.0,16.0,15.0,14.0,20.0,19.0,18.0,18.0,14.0,33.0,17.0,12.0,14.0,16.0,18.0,46.0,60.0,43.0,48.0,37.0,25.0,20.0,22.0,23.0,25.0,32.0,68.0,93.0,80.0,84.0,136.0,174.0,171.0,126.0,77.0,86.0,133.0,158.0,91.0,60.0,49.0,62.0,61.0,18.0,17.0,7.0,4.0,15.0,25.0,19.0,14.0,14.0,11.0,19.0,15.0,17.0,19.0,13.0,21.0,21.0,13.0,14.0,18.0,13.0,57.0,52.0,31.0,48.0,44.0,24.0,20.0,22.0,20.0,26.0,55.0,93.0,88.0,56.0,68.0,116.0,123.0,156.0,118.0,66.0,68.0,116.0,125.0,61.0,39.0,27.0,34.0,70.0,11.0,4.0,4.0,14.0,19.0,23.0,17.0,17.0,14.0,13.0,15.0,16.0,17.0,17.0,13.0,16.0,13.0,14.0,10.0,20.0,23.0,43.0,50.0,26.0,44.0,42.0,22.0,18.0,23.0,19.0,36.0,52.0,68.0,66.0,44.0,59.0,74.0,91.0,112.0,99.0,58.0,54.0,71.0,96.0,48.0,34.0,16.0,18.0,13.0,4.0,4.0,11.0,16.0,20.0,18.0,16.0,15.0,14.0,14.0,17.0,17.0,19.0,17.0,15.0,12.0,13.0,14.0,16.0,36.0,48.0,38.0,27.0,19.0,42.0,30.0,18.0,18.0,18.0,23.0,36.0,47.0,46.0,41.0,41.0,46.0,67.0,96.0,105.0,92.0,49.0,37.0,58.0,108.0,68.0,55.0,29.0,13.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,17.0,23.0,18.0,16.0,17.0,17.0,17.0,22.0,3.0,16.0,25.0,23.0,39.0,62.0,65.0,38.0,18.0,16.0,24.0,18.0,20.0,16.0,16.0,21.0,24.0,23.0,25.0,28.0,38.0,73.0,99.0,107.0,73.0,56.0,42.0,24.0,51.0,63.0,56.0,76.0,23.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,15.0,18.0,18.0,19.0,18.0,3.0,3.0,37.0,40.0,60.0,47.0,37.0,32.0,23.0,16.0,15.0,23.0,13.0,16.0,16.0,20.0,19.0,22.0,29.0,31.0,50.0,87.0,81.0,76.0,82.0,59.0,31.0,21.0,28.0,33.0,54.0,74.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,8.0,18.0,18.0,3.0,3.0,13.0,18.0,23.0,27.0,31.0,19.0,14.0,14.0,18.0,18.0,16.0,14.0,17.0,21.0,27.0,29.0,34.0,45.0,57.0,56.0,50.0,57.0,80.0,69.0,29.0,20.0,19.0,32.0,66.0,45.0,4.0,4.0,4.0,4.0,4.0,23.0,21.0,8.0,5.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,3.0,3.0,3.0,3.0,16.0,15.0,18.0,18.0,11.0,12.0,14.0,12.0,12.0,18.0,20.0,37.0,41.0,31.0,42.0,50.0,48.0,40.0,34.0,59.0,82.0,73.0,50.0,26.0,15.0,39.0,48.0,4.0,4.0,4.0,4.0,4.0,23.0,24.0,26.0,24.0,22.0,8.0,4.0,4.0,4.0,4.0,4.0,4.0,4.0,3.0,3.0,3.0,3.0,3.0,17.0,19.0,13.0,13.0,12.0,13.0,11.0,14.0,19.0,23.0,27.0,23.0,20.0,29.0,50.0,56.0,43.0,26.0,55.0,52.0,48.0,63.0,62.0,15.0,18.0,4.0,4.0,4.0,4.0,4.0,24.0,24.0,28.0,25.0,22.0,21.0,24.0,29.0,25.0,25.0,12.0,4.0,4.0,4.0,3.0,3.0,3.0,3.0,3.0,8.0,20.0,15.0,14.0,12.0,21.0,12.0,16.0,20.0,25.0,18.0,20.0,20.0,26.0,32.0,43.0,35.0,28.0,54.0,42.0,36.0,36.0,56.0,15.0,4.0,4.0,4.0,4.0,4.0,14.0,31.0,29.0,27.0,26.0,25.0,29.0,22.0,24.0,29.0,37.0,41.0,24.0,21.0,4.0,3.0,3.0,3.0,3.0,3.0,6.0,20.0,13.0,12.0,13.0,15.0,11.0,15.0,29.0,19.0,15.0,22.0,16.0,26.0,27.0,30.0,19.0,20.0,36.0,49.0,34.0,18.0,19.0,4.0,4.0,4.0,4.0,4.0,11.0,21.0,25.0,22.0,27.0,29.0,25.0,24.0,22.0,26.0,38.0,42.0,42.0,23.0,29.0,28.0,3.0,3.0,3.0,3.0,3.0,3.0,15.0,26.0,15.0,14.0,16.0,20.0,17.0,24.0,15.0,14.0,19.0,17.0,19.0,24.0,23.0,18.0,24.0,37.0,57.0,44.0,21.0,4.0,4.0,4.0,4.0,4.0,14.0,21.0,23.0,17.0,21.0,24.0,24.0,27.0,30.0,22.0,28.0,52.0,50.0,28.0,23.0,28.0,29.0,10.0,3.0,3.0,3.0,3.0,3.0,3.0,10.0,15.0,18.0,15.0,14.0,17.0,22.0,19.0,14.0,17.0,20.0,28.0,26.0,18.0,16.0,33.0,31.0,24.0,29.0,4.0,4.0,4.0,4.0,4.0,12.0,22.0,18.0,23.0,22.0,21.0,25.0,29.0,29.0,33.0,26.0,30.0,38.0,46.0,25.0,30.0,54.0,37.0,16.0,9.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,13.0,16.0,19.0,23.0,19.0,26.0,19.0,18.0,20.0,19.0,18.0,16.0,15.0,28.0,20.0,18.0,4.0,4.0,4.0,4.0,4.0,12.0,19.0,16.0,19.0,26.0,24.0,23.0,30.0,38.0,30.0,34.0,31.0,36.0,43.0,50.0,26.0,34.0,59.0,38.0,21.0,10.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,3.0,12.0,19.0,20.0,18.0,18.0,18.0,20.0,19.0,18.0,18.0,17.0,19.0,12.0,4.0,4.0,4.0,4.0,4.0,10.0,17.0,16.0,17.0,23.0,24.0,31.0,37.0,33.0,38.0,43.0,42.0,32.0,55.0,54.0,51.0,31.0,39.0,43.0,43.0);\nfloat terrainH(vec2 xz){\n  vec2 u=clamp((xz+TR)/(2.0*TR),0.0,1.0)*float(TN-1); ivec2 i=min(ivec2(floor(u)),ivec2(TN-2)); vec2 f=u-vec2(i);\n  float a=TH[i.y*TN+i.x], b=TH[i.y*TN+i.x+1], c=TH[(i.y+1)*TN+i.x], d=TH[(i.y+1)*TN+i.x+1];\n  float h=mix(mix(a,b,f.x),mix(c,d,f.x),f.y);\n  float e=max(abs(xz.x),abs(xz.y)); float w=1.0-smoothstep(3200.0,TR,e);\n  return (h*w+20.0*(1.0-w))*TEXAG;\n}\n";
-  THREE.ShaderChunk.common += GL;
-  THREE.ShaderChunk.project_vertex = ['vec4 mvPosition = vec4( transformed, 1.0 );','#ifdef USE_BATCHING','mvPosition = batchingMatrix * mvPosition;','#endif','#ifdef USE_INSTANCING','mvPosition = instanceMatrix * mvPosition;','#endif','vec4 tWorld = modelMatrix * mvPosition; tWorld.y += terrainH(tWorld.xz);','mvPosition = viewMatrix * tWorld;','gl_Position = projectionMatrix * mvPosition;'].join('\n');
-  var sv=THREE.ShaderLib.sprite.vertexShader;
-  THREE.ShaderLib.sprite.vertexShader=sv.replace('vec4 mvPosition = modelViewMatrix * vec4( 0.0, 0.0, 0.0, 1.0 );','vec4 tw0 = modelMatrix * vec4( 0.0, 0.0, 0.0, 1.0 ); tw0.y += terrainH(tw0.xz); vec4 mvPosition = viewMatrix * tw0;');
-  window.__TERRAIN={n:49,R:5000.0,h:[79, 88, 106, 145, 172, 169, 129, 102, 129, 177, 157, 119, 149, 160, 110, 122, 135, 188, 216, 272, 229, 186, 134, 102, 89, 84, 75, 65, 57, 54, 88, 74, 100, 65, 49, 65, 65, 41, 33, 32, 32, 51, 93, 89, 80, 59, 32, 27, 27, 116, 125, 140, 190, 164, 183, 150, 112, 93, 138, 128, 109, 111, 110, 116, 161, 163, 173, 241, 278, 250, 200, 146, 122, 91, 73, 78, 67, 56, 48, 65, 57, 77, 64, 44, 62, 58, 37, 35, 38, 30, 44, 53, 69, 50, 45, 35, 36, 26, 150, 178, 184, 158, 106, 165, 175, 118, 99, 107, 105, 91, 104, 122, 155, 184, 166, 208, 254, 274, 264, 206, 157, 136, 108, 87, 95, 101, 78, 54, 56, 50, 65, 68, 45, 50, 44, 35, 33, 31, 32, 35, 34, 41, 32, 45, 35, 42, 51, 159, 168, 152, 93, 85, 134, 150, 148, 121, 77, 120, 108, 165, 170, 184, 207, 220, 258, 326, 325, 287, 217, 190, 177, 145, 138, 138, 115, 97, 71, 45, 46, 47, 48, 52, 38, 45, 42, 39, 37, 31, 29, 30, 29, 32, 56, 59, 97, 88, 156, 132, 104, 77, 61, 144, 121, 99, 96, 76, 110, 145, 156, 208, 192, 253, 277, 293, 272, 269, 244, 179, 168, 168, 162, 166, 167, 134, 91, 73, 55, 67, 45, 41, 44, 43, 72, 65, 46, 33, 32, 33, 26, 28, 37, 45, 95, 125, 77, 115, 116, 73, 60, 62, 119, 139, 69, 76, 75, 105, 135, 169, 198, 254, 266, 285, 247, 227, 208, 214, 166, 133, 139, 129, 145, 179, 142, 105, 90, 77, 63, 78, 56, 54, 51, 105, 83, 57, 39, 30, 27, 27, 32, 44, 54, 114, 107, 60, 125, 122, 66, 44, 47, 122, 126, 65, 99, 79, 112, 157, 182, 175, 217, 282, 249, 204, 192, 175, 163, 153, 122, 99, 94, 107, 150, 161, 130, 93, 81, 61, 74, 86, 74, 81, 117, 71, 42, 33, 28, 26, 28, 27, 29, 61, 106, 71, 58, 58, 106, 57, 43, 55, 62, 85, 79, 184, 130, 89, 169, 163, 186, 236, 260, 213, 212, 159, 134, 119, 108, 100, 93, 68, 68, 96, 136, 148, 132, 95, 59, 41, 52, 50, 94, 130, 102, 98, 41, 28, 27, 26, 38, 54, 90, 63, 52, 47, 66, 79, 48, 45, 52, 89, 150, 159, 193, 124, 93, 118, 157, 195, 277, 256, 165, 157, 183, 182, 157, 113, 87, 72, 79, 58, 64, 99, 129, 117, 76, 62, 40, 41, 44, 77, 107, 123, 126, 48, 28, 24, 24, 32, 38, 67, 48, 46, 53, 76, 46, 42, 46, 67, 91, 165, 192, 183, 138, 104, 121, 145, 166, 310, 216, 159, 120, 127, 148, 189, 146, 113, 81, 62, 63, 58, 60, 81, 94, 47, 41, 37, 39, 43, 110, 91, 88, 100, 39, 29, 26, 24, 30, 34, 51, 47, 34, 37, 48, 44, 40, 44, 93, 108, 136, 196, 213, 153, 133, 119, 91, 113, 204, 187, 115, 106, 92, 114, 146, 158, 99, 86, 58, 52, 70, 47, 74, 48, 38, 37, 33, 33, 37, 90, 68, 61, 62, 55, 40, 24, 26, 26, 37, 45, 43, 31, 27, 98, 53, 41, 50, 82, 169, 178, 245, 253, 188, 163, 97, 61, 61, 83, 129, 134, 63, 67, 85, 114, 117, 82, 61, 54, 44, 51, 49, 42, 40, 51, 42, 34, 31, 31, 42, 71, 48, 42, 35, 23, 24, 20, 20, 31, 60, 60, 39, 33, 87, 59, 59, 47, 63, 105, 133, 206, 290, 228, 146, 77, 54, 53, 74, 90, 90, 62, 69, 87, 76, 88, 74, 53, 51, 44, 42, 67, 59, 52, 48, 41, 54, 31, 27, 38, 51, 42, 32, 29, 21, 21, 18, 21, 25, 37, 39, 30, 34, 59, 87, 67, 65, 62, 113, 148, 277, 256, 168, 136, 84, 52, 50, 54, 64, 68, 62, 75, 72, 60, 91, 68, 46, 40, 42, 37, 53, 80, 58, 60, 51, 48, 32, 26, 52, 35, 37, 28, 32, 23, 19, 18, 17, 21, 30, 33, 25, 39, 62, 81, 97, 79, 53, 99, 163, 239, 211, 121, 107, 65, 54, 47, 44, 53, 58, 49, 71, 56, 62, 69, 56, 52, 40, 35, 33, 42, 82, 69, 75, 74, 58, 36, 27, 43, 37, 27, 25, 29, 24, 17, 17, 17, 19, 23, 23, 28, 41, 87, 142, 158, 121, 83, 84, 123, 220, 196, 138, 82, 51, 46, 45, 43, 41, 44, 45, 52, 44, 47, 56, 60, 43, 47, 40, 33, 36, 74, 97, 96, 82, 59, 44, 26, 23, 27, 25, 25, 30, 20, 17, 17, 18, 20, 18, 40, 27, 28, 104, 174, 206, 154, 109, 89, 113, 153, 161, 146, 95, 74, 46, 42, 42, 40, 39, 43, 46, 39, 43, 38, 44, 34, 42, 42, 37, 33, 59, 90, 112, 55, 38, 69, 28, 25, 24, 22, 21, 26, 20, 19, 19, 16, 18, 19, 21, 32, 31, 105, 192, 268, 223, 134, 119, 85, 98, 109, 119, 91, 66, 49, 43, 41, 37, 37, 41, 41, 39, 35, 35, 42, 36, 34, 37, 29, 29, 56, 72, 98, 70, 35, 79, 40, 21, 23, 21, 17, 22, 20, 17, 17, 16, 16, 21, 28, 28, 27, 104, 172, 243, 243, 182, 98, 76, 56, 81, 85, 98, 54, 43, 43, 38, 34, 35, 38, 34, 40, 37, 33, 37, 46, 28, 32, 31, 30, 45, 64, 50, 52, 27, 67, 23, 18, 25, 18, 19, 19, 21, 16, 20, 19, 19, 18, 22, 22, 19, 83, 161, 165, 148, 197, 112, 84, 61, 51, 62, 81, 61, 57, 51, 32, 36, 35, 32, 37, 31, 40, 30, 32, 38, 32, 26, 27, 27, 32, 43, 27, 34, 22, 23, 25, 19, 21, 19, 21, 18, 20, 20, 16, 18, 18, 18, 17, 23, 27, 84, 137, 138, 119, 182, 136, 114, 72, 50, 52, 54, 81, 56, 45, 37, 39, 32, 33, 32, 33, 29, 33, 31, 25, 32, 31, 23, 26, 26, 25, 24, 24, 20, 22, 18, 16, 21, 20, 20, 22, 17, 22, 21, 15, 15, 17, 16, 28, 20, 93, 135, 99, 116, 148, 174, 148, 120, 65, 47, 45, 62, 50, 41, 33, 33, 28, 41, 28, 34, 28, 29, 28, 26, 27, 31, 25, 24, 25, 20, 25, 25, 21, 23, 33, 24, 18, 18, 16, 17, 27, 19, 18, 24, 21, 18, 18, 23, 20, 78, 109, 90, 79, 113, 133, 157, 147, 72, 52, 42, 47, 48, 61, 42, 45, 37, 38, 33, 27, 25, 26, 26, 26, 27, 27, 27, 22, 30, 29, 29, 24, 23, 24, 32, 23, 19, 22, 26, 27, 30, 25, 20, 23, 18, 12, 16, 11, 23, 68, 78, 65, 70, 114, 71, 81, 106, 98, 78, 50, 41, 44, 46, 38, 34, 30, 33, 35, 35, 26, 27, 35, 31, 31, 30, 31, 26, 24, 33, 33, 31, 28, 26, 30, 29, 26, 28, 28, 28, 22, 17, 16, 15, 16, 18, 15, 16, 15, 71, 66, 47, 94, 106, 68, 57, 62, 79, 77, 49, 40, 38, 43, 46, 33, 41, 37, 40, 42, 42, 38, 30, 31, 32, 31, 34, 33, 24, 32, 34, 28, 25, 28, 32, 39, 43, 44, 35, 34, 29, 20, 25, 24, 25, 28, 11, 16, 16, 51, 39, 50, 68, 91, 61, 50, 48, 87, 54, 43, 37, 35, 42, 50, 38, 42, 40, 38, 46, 54, 42, 36, 37, 36, 39, 32, 33, 32, 48, 39, 31, 30, 32, 36, 52, 82, 59, 37, 36, 33, 25, 32, 32, 58, 29, 21, 15, 15, 43, 38, 58, 64, 101, 59, 53, 43, 80, 64, 46, 35, 36, 39, 53, 38, 45, 36, 43, 43, 48, 44, 40, 43, 38, 51, 44, 39, 39, 51, 36, 31, 35, 34, 45, 69, 56, 37, 31, 24, 23, 20, 25, 19, 39, 22, 17, 15, 15, 40, 38, 45, 73, 83, 60, 51, 38, 49, 60, 61, 42, 36, 27, 34, 50, 46, 48, 49, 62, 70, 88, 61, 54, 61, 84, 78, 48, 40, 53, 33, 34, 42, 67, 77, 71, 66, 48, 32, 24, 22, 22, 20, 37, 65, 51, 30, 12, 16, 43, 42, 52, 64, 62, 47, 41, 36, 43, 69, 88, 55, 28, 28, 32, 45, 66, 68, 64, 87, 100, 115, 81, 57, 81, 102, 66, 42, 66, 46, 32, 39, 57, 86, 78, 75, 62, 51, 53, 32, 26, 35, 18, 22, 43, 61, 40, 17, 18, 39, 61, 62, 65, 78, 57, 41, 30, 40, 88, 60, 43, 26, 47, 44, 70, 94, 104, 96, 131, 145, 150, 103, 71, 99, 124, 83, 71, 65, 40, 40, 45, 77, 77, 73, 67, 59, 69, 89, 39, 33, 21, 16, 24, 35, 32, 17, 5, 21, 70, 90, 44, 50, 78, 54, 36, 25, 36, 86, 60, 33, 27, 38, 35, 49, 85, 124, 140, 189, 199, 167, 137, 100, 99, 108, 77, 89, 57, 42, 43, 58, 107, 89, 69, 49, 54, 100, 110, 55, 32, 23, 16, 11, 11, 4, 4, 4, 14, 45, 36, 23, 31, 67, 37, 26, 25, 26, 58, 65, 63, 33, 26, 32, 49, 57, 73, 109, 158, 247, 228, 213, 156, 130, 115, 102, 107, 68, 83, 78, 89, 82, 78, 66, 67, 31, 55, 56, 25, 18, 4, 15, 19, 19, 14, 16, 18, 17, 26, 18, 18, 40, 44, 30, 23, 23, 32, 68, 81, 52, 30, 26, 40, 38, 48, 62, 89, 141, 193, 192, 222, 221, 175, 130, 97, 106, 80, 109, 101, 79, 49, 43, 33, 31, 28, 46, 56, 30, 4, 16, 9, 13, 15, 24, 18, 18, 17, 20, 17, 16, 25, 46, 22, 16, 22, 42, 68, 68, 64, 33, 24, 43, 29, 37, 44, 67, 117, 157, 146, 195, 257, 206, 155, 90, 74, 77, 129, 89, 70, 40, 37, 31, 21, 21, 56, 72, 12, 7, 19, 16, 15, 14, 20, 19, 18, 18, 14, 33, 17, 12, 14, 16, 18, 46, 60, 43, 48, 37, 25, 20, 22, 23, 25, 32, 68, 93, 80, 84, 136, 174, 171, 126, 77, 86, 133, 158, 91, 60, 49, 62, 61, 18, 17, 7, 4, 15, 25, 19, 14, 14, 11, 19, 15, 17, 19, 13, 21, 21, 13, 14, 18, 13, 57, 52, 31, 48, 44, 24, 20, 22, 20, 26, 55, 93, 88, 56, 68, 116, 123, 156, 118, 66, 68, 116, 125, 61, 39, 27, 34, 70, 11, 4, 4, 14, 19, 23, 17, 17, 14, 13, 15, 16, 17, 17, 13, 16, 13, 14, 10, 20, 23, 43, 50, 26, 44, 42, 22, 18, 23, 19, 36, 52, 68, 66, 44, 59, 74, 91, 112, 99, 58, 54, 71, 96, 48, 34, 16, 18, 13, 4, 4, 11, 16, 20, 18, 16, 15, 14, 14, 17, 17, 19, 17, 15, 12, 13, 14, 16, 36, 48, 38, 27, 19, 42, 30, 18, 18, 18, 23, 36, 47, 46, 41, 41, 46, 67, 96, 105, 92, 49, 37, 58, 108, 68, 55, 29, 13, 4, 4, 4, 4, 4, 4, 4, 17, 23, 18, 16, 17, 17, 17, 22, 3, 16, 25, 23, 39, 62, 65, 38, 18, 16, 24, 18, 20, 16, 16, 21, 24, 23, 25, 28, 38, 73, 99, 107, 73, 56, 42, 24, 51, 63, 56, 76, 23, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 15, 18, 18, 19, 18, 3, 3, 37, 40, 60, 47, 37, 32, 23, 16, 15, 23, 13, 16, 16, 20, 19, 22, 29, 31, 50, 87, 81, 76, 82, 59, 31, 21, 28, 33, 54, 74, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 8, 18, 18, 3, 3, 13, 18, 23, 27, 31, 19, 14, 14, 18, 18, 16, 14, 17, 21, 27, 29, 34, 45, 57, 56, 50, 57, 80, 69, 29, 20, 19, 32, 66, 45, 4, 4, 4, 4, 4, 23, 21, 8, 5, 4, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 16, 15, 18, 18, 11, 12, 14, 12, 12, 18, 20, 37, 41, 31, 42, 50, 48, 40, 34, 59, 82, 73, 50, 26, 15, 39, 48, 4, 4, 4, 4, 4, 23, 24, 26, 24, 22, 8, 4, 4, 4, 4, 4, 4, 4, 3, 3, 3, 3, 3, 17, 19, 13, 13, 12, 13, 11, 14, 19, 23, 27, 23, 20, 29, 50, 56, 43, 26, 55, 52, 48, 63, 62, 15, 18, 4, 4, 4, 4, 4, 24, 24, 28, 25, 22, 21, 24, 29, 25, 25, 12, 4, 4, 4, 3, 3, 3, 3, 3, 8, 20, 15, 14, 12, 21, 12, 16, 20, 25, 18, 20, 20, 26, 32, 43, 35, 28, 54, 42, 36, 36, 56, 15, 4, 4, 4, 4, 4, 14, 31, 29, 27, 26, 25, 29, 22, 24, 29, 37, 41, 24, 21, 4, 3, 3, 3, 3, 3, 6, 20, 13, 12, 13, 15, 11, 15, 29, 19, 15, 22, 16, 26, 27, 30, 19, 20, 36, 49, 34, 18, 19, 4, 4, 4, 4, 4, 11, 21, 25, 22, 27, 29, 25, 24, 22, 26, 38, 42, 42, 23, 29, 28, 3, 3, 3, 3, 3, 3, 15, 26, 15, 14, 16, 20, 17, 24, 15, 14, 19, 17, 19, 24, 23, 18, 24, 37, 57, 44, 21, 4, 4, 4, 4, 4, 14, 21, 23, 17, 21, 24, 24, 27, 30, 22, 28, 52, 50, 28, 23, 28, 29, 10, 3, 3, 3, 3, 3, 3, 10, 15, 18, 15, 14, 17, 22, 19, 14, 17, 20, 28, 26, 18, 16, 33, 31, 24, 29, 4, 4, 4, 4, 4, 12, 22, 18, 23, 22, 21, 25, 29, 29, 33, 26, 30, 38, 46, 25, 30, 54, 37, 16, 9, 3, 3, 3, 3, 3, 3, 3, 13, 16, 19, 23, 19, 26, 19, 18, 20, 19, 18, 16, 15, 28, 20, 18, 4, 4, 4, 4, 4, 12, 19, 16, 19, 26, 24, 23, 30, 38, 30, 34, 31, 36, 43, 50, 26, 34, 59, 38, 21, 10, 3, 3, 3, 3, 3, 3, 3, 3, 3, 12, 19, 20, 18, 18, 18, 20, 19, 18, 18, 17, 19, 12, 4, 4, 4, 4, 4, 10, 17, 16, 17, 23, 24, 31, 37, 33, 38, 43, 42, 32, 55, 54, 51, 31, 39, 43, 43],base:20.0,fade0:3200.0,ex:1.00};
-  window.terrainH=function(x,z){var T=window.__TERRAIN,N=T.n,R=T.R;var ux=Math.min(Math.max((x+R)/(2*R),0),1)*(N-1),uz=Math.min(Math.max((z+R)/(2*R),0),1)*(N-1);
-    var i=Math.min(Math.floor(ux),N-2),j=Math.min(Math.floor(uz),N-2),fx=ux-i,fz=uz-j,h=T.h;
-    var a=h[j*N+i],b=h[j*N+i+1],c=h[(j+1)*N+i],d=h[(j+1)*N+i+1];var v=(a*(1-fx)+b*fx)*(1-fz)+(c*(1-fx)+d*fx)*fz;
-    var e=Math.max(Math.abs(x),Math.abs(z));var t=Math.min(Math.max((e-T.fade0)/(T.R-T.fade0),0),1);var w=1-t*t*(3-2*t);return (v*w+T.base*(1-w))*T.ex;};
-})();
-</script>
 </head>
 <body>
-<div id="intro-overlay">
-  <div class="intro-card">
-    <div class="intro-badge">3AI DIGITAL TWIN · BLOCK 11140 · v1</div>
-    <div class="intro-title">서울특별시 중구 <span>실제 건물</span></div>
-    <div class="intro-desc">손가락으로 밀어서 이동하고, 두 손가락으로 확대·축소할 수 있습니다.<br>화면 아래 패널에서 장소 정보를 보고, 오른쪽 버튼으로 낮·밤 조명을 바꿀 수 있습니다.<br>처음에는 지도 데이터를 받느라 몇 초 걸립니다.</div>
-    <div class="intro-grid-status">
-      <div class="status-item"><span>데이터</span><span class="status-val" id="intro-data">poi_data.json</span></div>
-      <div class="status-item"><span>장소</span><span class="status-val unlocked" id="intro-poi">…</span></div>
-      <div class="status-item"><span>첫 화면</span><span class="status-val" id="intro-perf">측정 중…</span></div>
-    </div>
-    <button class="intro-btn" id="intro-start" onclick="startFlyToPaldal()">중구로 강하 (Fly-to)</button>
-  </div>
-</div>
+
 <div id="header-bar">
-  <div class="brand-title"><span>3AI KOREA 3D MAP</span><span class="brand-badge">서울특별시 중구 (11140)</span></div>
-  <div style="pointer-events:auto; display:flex; gap:10px;">
-    <button class="ctrl-btn" onclick="location.href='../../korea_frontier_map_v2.html'">전국 지도로</button>
-    <button class="ctrl-btn" onclick="reopenFogMap()" style="padding:6px 14px; font-size:11px;">인트로 다시 보기</button>
+  <div class="brand-title">
+    <span>서울특별시 중구 3D 지도</span>
+    <span class="brand-badge">50블록 정본 v1.0</span>
+  </div>
+  <div class="header-links">
+    <a class="nav-btn" href="../../index.html">← 전체 포털</a>
   </div>
 </div>
-<div id="top-tab-bar">
-  <button class="main-tab-btn active" data-tab="basic" onclick="switchTab('basic',this)"><span>구청</span> 기본정보</button>
-  <button class="main-tab-btn" data-tab="heritage" onclick="switchTab('heritage',this)"><span>성곽</span> 역사</button>
-  <button class="main-tab-btn" data-tab="market" onclick="switchTab('market',this)"><span>시장</span> 전통시장·골목</button>
-  <button class="main-tab-btn" data-tab="healing" onclick="switchTab('healing',this)"><span>숲</span> 힐링</button>
-  <button class="main-tab-btn" data-tab="roadmap" onclick="switchTab('roadmap',this)"><span>코스</span> 로드맵</button>
-  <button class="main-tab-btn" data-tab="drone" onclick="switchTab('drone',this)"><span>360</span> 드론</button>
-</div>
+
+<div id="collapse-btn" onclick="toggleSidebar()">목록</div>
+
 <div id="sidebar">
   <div class="sidebar-header">
-    <div class="sidebar-title"><span id="sidebar-category-name">기본정보</span><span class="sidebar-count" id="sidebar-poi-count">…</span></div>
-    <button id="collapse-btn" class="collapse-btn" onclick="togglePanel()" title="패널 접기/펼치기">▾ 접기</button>
+    <div class="sidebar-title">🏢 50대 정규 블록</div>
+    <div class="sidebar-count" id="count-badge">50개</div>
   </div>
-  <div class="panel-body" id="panel-body">poi_data.json 로딩 중…</div>
-  <div class="panel-footer" id="panel-footer">데이터: poi_data.json · three.js 로컬 번들 · 외부요청 0</div>
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="블록 이름 / 주소 검색..." oninput="filterBlocks()">
+  </div>
+  <div class="block-list" id="blockList"></div>
 </div>
-<div id="tile-stat">타일 로딩 중…</div>
+
+<div id="block-detail">
+  <div class="detail-title">
+    <span id="dtName">블록 명칭</span>
+    <span class="detail-close" onclick="closeDetail()">✕</span>
+  </div>
+  <div class="detail-cat" id="dtCat">카테고리</div>
+  <div class="detail-addr" id="dtAddr">도로명주소</div>
+  <div class="detail-coords" id="dtCoords">WGS84 좌표</div>
+</div>
+
 <div id="controls">
-  <button class="ctrl-btn" onclick="resetCamera()">중심 복귀 (중구청)</button>
-  <button class="ctrl-btn" id="radius-btn" onclick="toggleRadius()">반경 원 ON</button>
-  <button class="ctrl-btn" id="btn-daynight" onclick="toggleDayNight()">실시간</button>
-  <button class="ctrl-btn" id="orbit-btn" onclick="toggleOrbit()">360 무인 회전</button>
+  <button class="ctrl-btn" onclick="resetView()">🔄 뷰 리셋</button>
+  <button class="ctrl-btn" id="btnOrbit" onclick="toggleOrbit()">🌐 자동 회전</button>
 </div>
-<div id="poi-modal">
-  <button class="modal-close" onclick="closeModal()">×</button>
-  <div class="modal-category" id="modal-cat"></div>
-  <div class="modal-title" id="modal-title"></div>
-  <div class="modal-body" id="modal-body"></div>
-  <div class="modal-quote" id="modal-quote" style="display:none;"></div>
-  <div id="modal-extra"></div>
-  <div class="modal-source" id="modal-source"><span id="modal-source-name"></span><a id="modal-source-url" href="#" target="_blank" rel="noopener">원문 열기 ↗</a></div>
-</div>
-<div id="ext-badge">외부 요청 0 · three.js 로컬 번들 · 데이터 poi_data.json(동일 폴더)</div>
+
 <script>
-/* v3: 하드코딩 POI 제거 - poi_data.json을 fetch해 채운다 (POI_DATA는 init에서 구성) */
-let POI_DATA = [], BLOCK = null, OFFICE = null, ROUTES = [], FACTS = [], HISTORY = [];
-const PERF = { start: performance.now(), blockMs: 0, tilesMs: 0, firstFrameMs: 0, expandMs: 0 };
-/* P1 (2026-10-27, 아이템 #13): 초기 타일 시야 2km → 1km 로 축소해 첫 화면 전송 바이트를 낮추고,
-   첫 프레임 이후 유휴 시간에 2km 로 점진 확장한다. (후보 파일 전용, 라이브 paldal_showcase_real_v3.html 무변경) */
-const VIEW = { initialKm: 0.7, fullKm: 2.2, expandIdleMs: 1000, initialLod: 'lod2' };
-let viewExpanded = false;
-const KIND_LABEL = { office:'행정', landmark:'역사', market:'전통시장', local:'골목', healing:'힐링' };
+const REGION_CODE = '11140';
+const REGION_NAME = '중구';
+const CENTER = [126.9753, 37.5599];
 const LON = 88000, LAT = 111000;
-const CENTER = [126.9975659, 37.563758];
-let isOrbiting = false, currentTab = 'basic', radiusOn = true, selectedPoiId = null;
-let targetCamPos = null, targetLookAt = null, angle = 0;
-let orbitHeight = 1600, orbitRadius = 2480, lastBuildingCount = 0, lastTileCount = 0;
+const BLOCKS = [{"no": 1, "id": "11140_B01_숭례문_국보_제1호_남대문", "name": "숭례문", "cat": "성곽/국보", "coords": [126.9753, 37.5599], "addr": "서울특별시 중구 세종대로 40 (남대문로4가)"}, {"no": 2, "id": "11140_B02_덕수궁_대한문_정문", "name": "덕수궁 대한문 (정문)", "cat": "궁궐/정문", "coords": [126.9768, 37.5658], "addr": "서울특별시 중구 세종대로 99 (정동 5-1)"}, {"no": 3, "id": "11140_B03_덕수궁_중화전_정전", "name": "덕수궁 중화전 (정전)", "cat": "궁궐/정전", "coords": [126.9749, 37.5661], "addr": "서울특별시 중구 세종대로 99 (정동 5-1, 덕수궁 내)"}, {"no": 4, "id": "11140_B04_덕수궁_석조전", "name": "덕수궁 석조전", "cat": "근대건축/석조건축", "coords": [126.9742, 37.5663], "addr": "서울특별시 중구 세종대로 99 (정동 5-1, 덕수궁 내)"}, {"no": 5, "id": "11140_B05_덕수궁_정관헌", "name": "덕수궁 정관헌", "cat": "궁궐/동서절충누각", "coords": [126.9754, 37.5667], "addr": "서울특별시 중구 세종대로 99 (정동 5-1, 덕수궁 내)"}, {"no": 6, "id": "11140_B06_덕수궁_돌담길_정동길_입구", "name": "덕수궁 돌담길 (정동길 입구)", "cat": "문화거리/돌담길", "coords": [126.9758, 37.5652], "addr": "서울특별시 중구 정동길 일대 (덕수궁 남동측 담장)"}, {"no": 7, "id": "11140_B07_정동제일교회_벧엘예배당", "name": "정동제일교회 벧엘예배당", "cat": "근대건축/사적성당", "coords": [126.9728, 37.5664], "addr": "서울특별시 중구 정동길 46 (정동 34-2)"}, {"no": 8, "id": "11140_B08_덕수궁_중명전", "name": "덕수궁 중명전", "cat": "대한제국유적/사적", "coords": [126.9718, 37.5672], "addr": "서울특별시 중구 정동 5-1 (덕수궁 내 중명전)"}, {"no": 9, "id": "11140_B09_서울시립미술관_서소문본관", "name": "서울시립미술관 서소문본관", "cat": "문화예술/근대건축", "coords": [126.9734, 37.5641], "addr": "서울특별시 중구 덕수궁길 61 (서소문동 37)"}, {"no": 10, "id": "11140_B10_배재학당_역사박물관", "name": "배재학당 역사박물관", "cat": "근대교육/사적", "coords": [126.9721, 37.5638], "addr": "서울특별시 중구 서소문로 11길 19 (정동 34-5)"}, {"no": 11, "id": "11140_B11_명동성당_대성당", "name": "명동성당 대성당", "cat": "종교유적/고딕성당", "coords": [126.9872, 37.5632], "addr": "서울특별시 중구 명동길 74 (명동 3-1)"}, {"no": 12, "id": "11140_B12_명동_메인스트리트_보행자거리", "name": "명동 메인스트리트 보행자거리", "cat": "글로벌상권/보행거리", "coords": [126.9854, 37.5618], "addr": "서울특별시 중구 명동길 일대 (명동 2가 중심 상권)"}, {"no": 13, "id": "11140_B13_명동예술극장_파사드", "name": "명동예술극장 파사드", "cat": "문화공연/근대극장", "coords": [126.9848, 37.5636], "addr": "서울특별시 중구 명동길 41 (명동 2가 56-1)"}, {"no": 14, "id": "11140_B14_남대문시장_칼국수·갈치골목", "name": "남대문시장 칼국수·갈치골목", "cat": "전통시장/아케이드", "coords": [126.9798, 37.5613], "addr": "서울특별시 중구 남대문시장4길 21 (남창동)"}, {"no": 15, "id": "11140_B15_한국은행_구_본관_(화폐박물관)", "name": "한국은행 구 본관 (화폐박물관)", "cat": "근대건축/사적", "coords": [126.9812, 37.5624], "addr": "서울특별시 중구 남대문로 39 (남대문로3가)"}, {"no": 16, "id": "11140_B16_롯데백화점_본점_파사드_&_애비뉴엘", "name": "롯데백화점 본점 파사드 & 애비뉴엘", "cat": "도심상업/백화점", "coords": [126.9818, 37.5654], "addr": "서울특별시 중구 남대문로 81 (소공동)"}, {"no": 17, "id": "11140_B17_신세계백화점_본점_본관_&_미디어파사드", "name": "신세계백화점 본점 본관 & 미디어파사드", "cat": "근대건축/미디어아트", "coords": [126.9808, 37.5604], "addr": "서울특별시 중구 소공로 63 (충무로1가)"}, {"no": 18, "id": "11140_B18_서울광장_잔디광장_&_서울도서관", "name": "서울광장 잔디광장 & 서울도서관", "cat": "도심광장/역사도서관", "coords": [126.9778, 37.5663], "addr": "서울특별시 중구 세종대로 110 (태평로1가)"}, {"no": 19, "id": "11140_B19_서울시청_신청사_&_수직정원", "name": "서울시청 신청사 & 수직정원", "cat": "현대건축/친환경청사", "coords": [126.9784, 37.5668], "addr": "서울특별시 중구 세종대로 110 (태평로1가)"}, {"no": 20, "id": "11140_B20_을지로_노가리호프골목", "name": "을지로 노가리호프골목", "cat": "도시문화/뉴트로골목", "coords": [126.9912, 37.5664], "addr": "서울특별시 중구 을지로13길 일대 (을지로3가)"}, {"no": 21, "id": "11140_B21_N서울타워_(남산타워_메가전망대)", "name": "N서울타워 (남산타워 메가전망대)", "cat": "초고층전망대/메가랜드마크", "coords": [126.9882, 37.5512], "addr": "서울특별시 중구 남산공원길 105 (용산동2가)"}, {"no": 22, "id": "11140_B22_남산_케이블카_상하부_정류장_&_캐빈", "name": "남산 케이블카 상하부 정류장 & 캐빈", "cat": "관광교통/케이블카", "coords": [126.9852, 37.5564], "addr": "서울특별시 중구 남산공원길 83 (예장동)"}, {"no": 23, "id": "11140_B23_남산_팔각정_&_봉수대", "name": "남산 팔각정 & 봉수대", "cat": "전통누각/통신유적", "coords": [126.9878, 37.5516], "addr": "서울특별시 중구 남산공원길 105 (예장동)"}, {"no": 24, "id": "11140_B24_한양도성_남산구간_(목멱산_성곽길)", "name": "한양도성 남산구간 (목멱산 성곽길)", "cat": "세계유산/산악성곽", "coords": [126.9812, 37.5534], "addr": "서울특별시 중구 남산공원길 일대 (회현동)"}, {"no": 25, "id": "11140_B25_백범광장_잔디공원_&_김구선생_동상", "name": "백범광장 잔디공원 & 김구선생 동상", "cat": "호국보훈/기념공원", "coords": [126.9782, 37.5552], "addr": "서울특별시 중구 남산공원길 일대 (예장동)"}, {"no": 26, "id": "11140_B26_안중근의사기념관", "name": "안중근의사기념관", "cat": "역사기념관/현대건축", "coords": [126.9798, 37.5548], "addr": "서울특별시 중구 소월로 91 (남대문로5가)"}, {"no": 27, "id": "11140_B27_남산골한옥마을_&_천우각", "name": "남산골한옥마을 & 천우각", "cat": "전통가옥/한국정원", "coords": [126.9938, 37.5592], "addr": "서울특별시 중구 퇴계로34길 28 (필동2가)"}, {"no": 28, "id": "11140_B28_국립극장_해오름극장", "name": "국립극장 해오름극장", "cat": "문화예술/국립극장", "coords": [127.0008, 37.5524], "addr": "서울특별시 중구 장충단로 59 (장충동2가)"}, {"no": 29, "id": "11140_B29_남산_야외식물원_&_소나무힐링숲", "name": "남산 야외식물원 & 소나무힐링숲", "cat": "도심식물원/힐링숲", "coords": [126.9942, 37.5468], "addr": "서울특별시 중구 소파로 43 (예장동)"}, {"no": 30, "id": "11140_B30_장충단공원_수표교_(중구수변천_원형석교)", "name": "장충단공원 수표교 (중구수변천 원형석교)", "cat": "역사교량/문화유산", "coords": [127.0048, 37.5584], "addr": "서울특별시 중구 장충단로 60 (장충동2기)"}, {"no": 31, "id": "11140_B31_을지로_조명상가_스트리트", "name": "을지로 조명상가 스트리트", "cat": "특화상권/빛의거리", "coords": [126.9948, 37.5668], "addr": "서울특별시 중구 을지로 일대 (을지로3가·4가)"}, {"no": 32, "id": "11140_B32_을지로_인쇄골목_미로파사드", "name": "을지로 인쇄골목 미로파사드", "cat": "산업유산/도심제조", "coords": [126.9972, 37.5654], "addr": "서울특별시 중구 을지로35길 일대 (을지로4가)"}, {"no": 33, "id": "11140_B33_충무로_영화의거리", "name": "충무로 영화의거리", "cat": "대중문화/영화역사", "coords": [126.9942, 37.5622], "addr": "서울특별시 중구 충무로 일대 (충무로3가·4가)"}, {"no": 34, "id": "11140_B34_세운상가_남측_대림상가_보행데크", "name": "세운상가 남측 대림상가 보행데크", "cat": "공중보행로/메이커스페이스", "coords": [126.9968, 37.5672], "addr": "서울특별시 중구 중구수변천로 159 (산림동)"}, {"no": 35, "id": "11140_B35_인현시장_먹자골목_&_PJ호텔", "name": "인현시장 먹자골목 & PJ호텔", "cat": "전통먹자골목/호텔", "coords": [126.9984, 37.5642], "addr": "서울특별시 중구 마른내로 24 (인현동2가)"}, {"no": 36, "id": "11140_B36_신당동_떡볶이타운_입구_아치", "name": "신당동 떡볶이타운 입구 아치", "cat": "음식특화거리/명소", "coords": [127.0142, 37.5614], "addr": "서울특별시 중구 퇴계로76길 일대 (신당동)"}, {"no": 37, "id": "11140_B37_동대문디자인플라자_(DDP)_알림터·살림터", "name": "동대문디자인플라자 (DDP) 알림터·살림터", "cat": "비정형건축/디자인랜드마크", "coords": [127.0098, 37.5671], "addr": "서울특별시 중구 을지로 281 (을지로7가)"}, {"no": 38, "id": "11140_B38_DDP_어울림광장_&_동대문역사문화공원", "name": "DDP 어울림광장 & 동대문역사문화공원", "cat": "도시광장/유적공원", "coords": [127.0084, 37.5662], "addr": "서울특별시 중구 을지로 281 일대 (을지로7가)"}, {"no": 39, "id": "11140_B39_동대문_평화시장_&_신평화패션타운", "name": "동대문 평화시장 & 신평화패션타운", "cat": "의류도매/상설시장", "coords": [127.0088, 37.5694], "addr": "서울특별시 중구 중구수변천로 360 (을지로6가)"}, {"no": 40, "id": "11140_B40_밀리오레_&_두타몰_패션타워", "name": "밀리오레 & 두타몰 패션타워", "cat": "대형쇼핑몰/패션랜드마크", "coords": [127.0068, 37.5688], "addr": "서울특별시 중구 장충단로 275 (을지로6가)"}, {"no": 41, "id": "11140_B41_중구수변천_남측_수변산책로_(광통교~수표교)", "name": "중구수변천 남측 수변산책로 (광통교~수표교)", "cat": "하천친수/수변산책로", "coords": [126.9852, 37.5689], "addr": "서울특별시 중구 중구수변천로 일대 (관철동)"}, {"no": 42, "id": "11140_B42_중구수변천_삼일교_&_한화빌딩_파사드", "name": "중구수변천 삼일교 & 한화빌딩 파사드", "cat": "도심오피스/친환경파사드", "coords": [126.9878, 37.5688], "addr": "서울특별시 중구 중구수변천로 86 (삼각동)"}, {"no": 43, "id": "11140_B43_퇴계로_간선도로_&_충무로역_환승허브", "name": "퇴계로 간선도로 & 충무로역 환승허브", "cat": "간선교통/지하철허브", "coords": [126.9932, 37.5612], "addr": "서울특별시 중구 퇴계로 지하 199 (충무로3가)"}, {"no": 44, "id": "11140_B44_서울로7017_공중정원_(중구방면_램프)", "name": "서울로7017 공중정원 (중구방면 램프)", "cat": "도시재생/공중보행로", "coords": [126.9732, 37.5574], "addr": "서울특별시 중구 서울로 일대 (봉래동2가)"}, {"no": 45, "id": "11140_B45_서소문성지_역사박물관_&_순교성지", "name": "서소문성지 역사박물관 & 순교성지", "cat": "종교역사/지하건축명작", "coords": [126.9682, 37.5584], "addr": "서울특별시 중구 칠패로 5 (서소문동)"}, {"no": 46, "id": "11140_B46_동국대학교_서울캠퍼스_팔정도_&_명진관", "name": "동국대학교 서울캠퍼스 팔정도 & 명진관", "cat": "대학캠퍼스/역사건물", "coords": [127.0042, 37.5578], "addr": "서울특별시 중구 필동로1길 30 (필동3가)"}, {"no": 47, "id": "11140_B47_장충체육관_(대한민국_최초_실내돔)", "name": "장충체육관 (대한민국 최초 실내돔)", "cat": "스포츠/돔체육관", "coords": [127.0072, 37.5582], "addr": "서울특별시 중구 동호로 241 (장충동2가)"}, {"no": 48, "id": "11140_B48_호텔신라_서울_영빈관_(전통한옥)", "name": "호텔신라 서울 영빈관 (전통한옥)", "cat": "한옥영빈관/전통건축", "coords": [127.0054, 37.5562], "addr": "서울특별시 중구 동호로 249 (장충동2가)"}, {"no": 49, "id": "11140_B49_남산_북측_순환산책로_(친환경보행로)", "name": "남산 북측 순환산책로 (친환경보행로)", "cat": "자연생태/무장애둘레길", "coords": [126.9912, 37.5538], "addr": "서울특별시 중구 남산공원길 일대 (예장동)"}, {"no": 50, "id": "11140_B50_중구_스마트_가로등_&_도심야경_관제망", "name": "중구 스마트 가로등 & 도심야경 관제망", "cat": "IoT조명/스마트시티인프라", "coords": [126.9824, 37.5634], "addr": "서울특별시 중구 세종대로 일대"}];
+
+function toXZ(lon, lat){
+  return [(lon - CENTER[0]) * LON, -(lat - CENTER[1]) * LAT];
+}
+
+// Three.js 씬 초기화
 const scene = new THREE.Scene();
-/* C14: REF의 밝은 대기·도시 질감에 접근하되 UI 대비는 유지한다. */
-scene.background = new THREE.Color(0x8ba4b2);
-scene.fog = new THREE.Fog(0x8ba4b2, 3000, 25000);
-const camera = new THREE.PerspectiveCamera(50, innerWidth/innerHeight, 1, 150000);
-camera.position.set(0, 2600, 4200);
-camera.lookAt(0, 0, 0);
-const renderer = new THREE.WebGLRenderer({antialias:true});
-renderer.setSize(innerWidth, innerHeight);
+scene.background = new THREE.Color(0x0b111e);
+scene.fog = new THREE.FogExp2(0x0b111e, 0.00018);
+
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 10, 35000);
+camera.position.set(0, 1300, 1800);
+camera.lookAt(0, 40, 0);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 document.body.appendChild(renderer.domElement);
-scene.add(new THREE.AmbientLight(0xffffff, 0.62));
-scene.add(new THREE.HemisphereLight(0xcfe4ff, 0x52606a, 0.95));
-const dl = new THREE.DirectionalLight(0xfff6e2, 1.2);
-dl.position.set(-1000, 2500, 1500); scene.add(dl);
-/* [지형] 지형 메쉬: 정점은 평면(y=-1)에 두고 셰이더가 높이를 올린다. 색은 고도·사면 음영을 구워 넣는다. */
-(function(){
-  var ax=[-30000,-16000,-9000,-6500]; for(var v=-6000;v<=6000;v+=120)ax.push(v); ax.push(6500,9000,16000,30000);
-  var n=ax.length,pos=new Float32Array(n*n*3),col=new Float32Array(n*n*3),idx=[];
-  var sun=new THREE.Vector3(-1000,2500,1500).normalize();
-  function ramp(h){ if(h<25)return[0.86,0.89,0.80]; if(h<90)return[0.74,0.83,0.66]; if(h<180)return[0.60,0.74,0.52]; if(h<300)return[0.55,0.66,0.46]; return[0.66,0.62,0.55]; }
-  for(var j=0;j<n;j++)for(var i=0;i<n;i++){
-    var x=ax[i],z=ax[j],k=(j*n+i)*3,h=terrainH(x,z),dx=(terrainH(x+60,z)-terrainH(x-60,z))/120,dz=(terrainH(x,z+60)-terrainH(x,z-60))/120;
-    var nrm=new THREE.Vector3(-dx,1,-dz).normalize(),sh=0.72+0.5*Math.max(0,nrm.dot(sun)),c=ramp(h);
-    pos[k]=x;pos[k+1]=-1;pos[k+2]=z; col[k]=Math.min(1,c[0]*sh);col[k+1]=Math.min(1,c[1]*sh);col[k+2]=Math.min(1,c[2]*sh);
-  }
-  for(var j=0;j<n-1;j++)for(var i=0;i<n-1;i++){var a=j*n+i,b=a+1,c=a+n,d=c+1;idx.push(a,c,b,b,c,d);}
-  var g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.BufferAttribute(pos,3));g.setAttribute('color',new THREE.BufferAttribute(col,3));g.setIndex(idx);
-  g.setAttribute('normal',new THREE.BufferAttribute(new Float32Array(n*n*3).map(function(_,q){return q%3===1?1:0}),3));
-  window.TERRAIN_MESH=new THREE.Mesh(g,new THREE.MeshLambertMaterial({vertexColors:true}));window.TERRAIN_MESH.frustumCulled=false;scene.add(window.TERRAIN_MESH);
-})();
 
+// 조명 설정
+const hemiLight = new THREE.HemisphereLight(0xffffff, 0x223344, 0.85);
+hemiLight.position.set(0, 5000, 0);
+scene.add(hemiLight);
 
-/* C14: 실제 창문 조사 데이터가 아니라, 세계좌표 3.4m×3.0m 격자의 절차적 파사드다.
-   외부 텍스처/요청 없이 하나의 기존 재질에서 계산하며, 원거리에서는 fwidth로 페이드한다. */
-const BUILDING_PALETTE = [0xfae6d0,0xf6d2b5,0xe8def7,0xd6eedc,0xfbe9d6,0xd9e6f3,0xf7c9b0,0xe2f0f7];
-function featureColor(f){
-  const p=f.geometry.coordinates[0][0];
-  const n=Math.abs(Math.floor((p[0]*137+p[1]*311)*1000));
-  return new THREE.Color(BUILDING_PALETTE[n%BUILDING_PALETTE.length]);
-}
-function createBuildingMaterial(vertexColors){
-  const m=new THREE.MeshLambertMaterial({color:0xffffff,flatShading:true,vertexColors:!!vertexColors});
-  m.onBeforeCompile=function(shader){
-    shader.vertexShader='varying vec3 vQualityWorldPos;\nvarying vec3 vQualityWorldNormal;\nvarying vec3 vQualityLocalPos;\n'+shader.vertexShader;
-    shader.vertexShader=shader.vertexShader.replace('#include <worldpos_vertex>',`
-      #include <worldpos_vertex>
-      vec4 qualityWorld=vec4(transformed,1.0);
-      vec3 qualityNormal=objectNormal;
-      #ifdef USE_INSTANCING
-        qualityWorld=instanceMatrix*qualityWorld;
-        qualityNormal=mat3(instanceMatrix)*qualityNormal;
-      #endif
-      vQualityWorldPos=(modelMatrix*qualityWorld).xyz;
-      vQualityWorldNormal=normalize(mat3(modelMatrix)*qualityNormal);
-      vQualityLocalPos=position;
-    `);
-    shader.fragmentShader='varying vec3 vQualityWorldPos;\nvarying vec3 vQualityWorldNormal;\nvarying vec3 vQualityLocalPos;\n'+shader.fragmentShader;
-    shader.uniforms.uNight={value:0}; (window.NIGHT_UNIS=window.NIGHT_UNIS||[]).push(shader.uniforms.uNight);
-    shader.fragmentShader='uniform float uNight;\n'+shader.fragmentShader;
-    /* #8 야간 창문 불빛: 켜진 창(qualityLit)만 따뜻한 에미시브로. 추가 드로우콜 없음 */
-    shader.fragmentShader=shader.fragmentShader.replace('#include <emissivemap_fragment>','#include <emissivemap_fragment>\n      totalEmissiveRadiance += vec3(1.0,0.78,0.38)*qualityWindow*qualityLit*uNight*1.8;');
-    shader.fragmentShader=shader.fragmentShader.replace('#include <color_fragment>',`
-      #include <color_fragment>
-      vec3 qualityN=normalize(vQualityWorldNormal);
-      float qualityWall=1.0-smoothstep(0.45,0.75,abs(qualityN.y));
-      float qualityU=abs(qualityN.x)>abs(qualityN.z)?vQualityWorldPos.z:vQualityWorldPos.x;
-      /* C15: 원거리에서 창문을 통째로 지우지 않고 3.4m→10.2m 파사드 LOD로 전환한다.
-         침묵 네트워크/추가 드로우콜 없이 건축물의 층계·벽체 대비를 유지한다. */
-      float qualityViewDistance=length(vQualityWorldPos-cameraPosition);
-      float qualityDistanceLod=smoothstep(900.0,3200.0,qualityViewDistance);
-      vec2 qualityBaseGrid=vec2(qualityU/3.4,vQualityWorldPos.y/3.0);
-      vec2 qualityBaseWidth=fwidth(qualityBaseGrid);
-      float qualityLodScale=mix(1.0,2.0,qualityDistanceLod);
-      vec2 qualityGrid=qualityBaseGrid/qualityLodScale;
-      vec2 qualityCell=fract(qualityGrid);
-      vec2 qualityWidth=qualityBaseWidth/qualityLodScale;
-      float qualityVisible=1.0-smoothstep(0.65,1.60,max(qualityWidth.x,qualityWidth.y));
-      vec2 qualityAA=clamp(qualityWidth*0.55,vec2(0.012),vec2(0.22));
-      vec2 qualityLo=mix(vec2(0.18,0.22),vec2(0.12,0.16),qualityDistanceLod);
-      vec2 qualityHi=mix(vec2(0.58,0.60),vec2(0.72,0.74),qualityDistanceLod);
-      vec2 qualityA=smoothstep(qualityLo-qualityAA,qualityLo+qualityAA,qualityCell);
-      vec2 qualityB=1.0-smoothstep(qualityHi-qualityAA,qualityHi+qualityAA,qualityCell);
-      float qualityWindow=qualityA.x*qualityB.x*qualityA.y*qualityB.y*qualityWall*qualityVisible;
-      float qualityLit=step(0.84,fract(sin(dot(floor(qualityGrid),vec2(12.9898,78.233)))*43758.5453));
-      /* C16: 근접 재질은 유지하고 원거리에서만 창문 명도를 낮춰 층계 대비를 강화한다.
-         벽면의 따뜻한 반사광과 휘도 기준 채도 보정으로 c15의 밝기·채도 손실을 보완한다. */
-      vec3 qualityNearWindowColor=mix(vec3(0.035,0.075,0.105),vec3(0.52,0.40,0.20),qualityLit*0.55);
-      vec3 qualityFarWindowColor=mix(vec3(0.018,0.050,0.085),vec3(0.42,0.28,0.10),qualityLit*0.55);
-      vec3 qualityWindowColor=mix(qualityNearWindowColor,qualityFarWindowColor,qualityDistanceLod);
-      float qualityWindowContrast=mix(0.04,0.03,qualityDistanceLod);
-      vec3 qualityWallReflectance=mix(vec3(1.0),vec3(1.318,1.267,1.196),qualityDistanceLod);
-      vec3 qualityFacade=diffuseColor.rgb*qualityWallReflectance;
-      float qualityFacadeLuma=dot(qualityFacade,vec3(0.2126,0.7152,0.0722));
-      qualityFacade=max(vec3(0.0),mix(vec3(qualityFacadeLuma),qualityFacade,1.0+0.217*qualityDistanceLod));
-      diffuseColor.rgb=mix(qualityFacade,qualityWindowColor,qualityWindow*qualityWindowContrast);
-      /* #4 지붕·벽 명암 대비: 지붕은 밝게, 측면은 살짝 어둡게 */
-      /* Method 1: Alternating Floor Banding (6.4m cycle = 2.8px at 2200m) */
-      float qualityFloorPhase=fract(vQualityWorldPos.y/mix(6.4,19.2,qualityDistanceLod));/*FLOOR_FAR_PERIOD*/
-      float qualityFloorBand=step(0.50,qualityFloorPhase)*qualityWall;
-      diffuseColor.rgb*=mix(mix(0.95,0.90,qualityDistanceLod),mix(1.04,1.09,qualityDistanceLod),qualityFloorBand);/*FLOOR_FAR_PATCH*/ { float qlf=floor(vQualityWorldPos.y/3.0); float qlh=fract(sin(dot(vec2(qlf,floor(qualityU/3.4)),vec2(12.9898,78.233)))*43758.5453); diffuseColor.rgb*=mix(0.94,1.04,qlh*qualityWall); }
+const dirLight = new THREE.DirectionalLight(0xfff4e6, 1.1);
+dirLight.position.set(3000, 7000, 4000);
+scene.add(dirLight);
 
-      /* Horizontal floor spandrel line (1.0m width, clearly visible at distance) */
-      float qualitySpandrel=step(0.75,fract(vQualityWorldPos.y/3.2))*qualityWall;
-      diffuseColor.rgb*=mix(1.0,0.70,qualitySpandrel*0.20);
+const fillLight = new THREE.DirectionalLight(0x7fd1ff, 0.4);
+fillLight.position.set(-3000, 3000, -3000);
+scene.add(fillLight);
 
-      /* Method 1: Roof normal highlight vs Wall */
-      diffuseColor.rgb*=mix(0.80,1.30,step(0.75,qualityN.y));
-      /* Ground contact shadow: 0~8m */
-      diffuseColor.rgb*=mix(0.60,1.0,smoothstep(0.0,8.0,vQualityWorldPos.y));
-      /* 접지감: 건물 밑부분(지면~8m)을 정점 높이 기준으로 어둡게. 추가 드로우콜 없음 */
-      diffuseColor.rgb*=mix(0.68,1.0,smoothstep(0.0,8.0,vQualityWorldPos.y));
-      #ifdef USE_INSTANCING
-        /* C14 V2: instance roof perimeter only; no triangulation lines or ground noise. */
-        float qualityRoof=step(0.75,qualityN.y)*step(0.95,vQualityLocalPos.y);
-        vec2 qualityRoofDistance=0.5-abs(vQualityLocalPos.xz);
-        float qualityNearest=min(qualityRoofDistance.x,qualityRoofDistance.y);
-        vec2 qualityLocalWidth=fwidth(vQualityLocalPos.xz);
-        float qualityRoofVisible=1.0-smoothstep(0.90,1.80,max(qualityLocalWidth.x,qualityLocalWidth.y));
-        float qualityRoofLine=(1.0-smoothstep(0.020,0.060,qualityNearest))*qualityRoof*qualityRoofVisible;
-        diffuseColor.rgb=mix(diffuseColor.rgb,vec3(0.08,0.12,0.15),qualityRoofLine*0.48);
-      #endif
-    `);
-  };
-  m.customProgramCacheKey=function(){ return 'c17-anti-facade-v3'; };
-  return m;
+// 기본 베이스 지면
+const groundGeo = new THREE.PlaneGeometry(30000, 30000);
+const groundMat = new THREE.MeshLambertMaterial({ color: 0x121b2d, depthWrite: true });
+const groundMesh = new THREE.Mesh(groundGeo, groundMat);
+groundMesh.rotation.x = -Math.PI / 2;
+groundMesh.position.y = -1;
+scene.add(groundMesh);
+
+// 3D 마커 그룹
+const markerGroup = new THREE.Group();
+scene.add(markerGroup);
+const markerObjects = [];
+
+// 블록 50개 3D 마커 생성
+function createMarkers(){
+  const pinGeo = new THREE.CylinderGeometry(0, 16, 60, 8);
+  pinGeo.rotateX(Math.PI);
+  
+  BLOCKS.forEach((b, idx) => {
+    const xz = toXZ(b.coords[0], b.coords[1]);
+    const pinMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8 });
+    const pin = new THREE.Mesh(pinGeo, pinMat);
+    pin.position.set(xz[0], 50, xz[1]);
+    
+    // 바닥 링
+    const ringGeo = new THREE.RingGeometry(18, 26, 16);
+    ringGeo.rotateX(-Math.PI / 2);
+    const ringMat = new THREE.MeshBasicMaterial({ color: 0x0284c7, side: THREE.DoubleSide });
+    const ring = new THREE.Mesh(ringGeo, ringMat);
+    ring.position.set(xz[0], 2, xz[1]);
+    
+    const obj = new THREE.Group();
+    obj.add(pin);
+    obj.add(ring);
+    obj.userData = { block: b, index: idx };
+    markerGroup.add(obj);
+    markerObjects.push({ group: obj, pin: pin, ring: ring, block: b, index: idx });
+  });
 }
-function toXZ(lon, lat){ return [(lon-CENTER[0])*LON, -(lat-CENTER[1])*LAT]; }
-function prism(ring, h, pos, norm, col, base){
-  const contour = [];
-  base=base||new THREE.Color(0xd8dee9);
-  for (let i=0;i<ring.length-1;i++){
-    const p = toXZ(ring[i][0], ring[i][1]);
-    contour.push(new THREE.Vector2(p[0], p[1]));
-  }
-  if (contour.length < 3) return;
-  let area=0;
-  for(let i=0;i<contour.length;i++){
-    const a=contour[i], b=contour[(i+1)%contour.length]; area+=a.x*b.y-b.x*a.y;
-  }
-  let faces = [];
-  try { faces = THREE.ShapeUtils.triangulateShape(contour, []); } catch(e){ return; }
-  for (const f of faces) for (const idx of f){
-    const v = contour[idx]; pos.push(v.x, h, v.y); norm.push(0,1,0); col.push(base.r,base.g,base.b);
-  }
-  /* C14: 기존에는 모든 벽면이 (0,0,1)이라 조명이 왜곡됐다. 윤곽 방향별 외측 법선을 계산한다. */
-  for (let i=0;i<contour.length;i++){
-    const a = contour[i], b = contour[(i+1)%contour.length];
-    const dx=b.x-a.x, dz=b.y-a.y, len=Math.hypot(dx,dz)||1, sign=area>=0?1:-1;
-    const nx=sign*dz/len, nz=-sign*dx/len;
-    pos.push(a.x,0,a.y, b.x,0,b.y, b.x,h,b.y);
-    pos.push(a.x,0,a.y, b.x,h,b.y, a.x,h,a.y);
-    for (let k=0;k<6;k++){ norm.push(nx,0,nz); col.push(base.r,base.g,base.b); }
-  }
-}
-const STYLE = {
-  landuse:{c:[0.88,0.90,0.88],y:0.15}, water:{c:[0.15,0.48,0.62],y:0.25},
-  park:{c:[0.16,0.52,0.26],y:0.30}, green:{c:[0.20,0.58,0.30],y:0.30},
-  road:{c:[0.62,0.64,0.65],y:0.55}, rail:{c:[0.38,0.42,0.46],y:0.70}
-};
-let MAN=null, GMAN=null, MESH=null, INST=null, G_FILL=null, G_LINE=null, G_PLANE=null;
-function inView(bbox, half){
-  const a=toXZ(bbox[0],bbox[3]), b=toXZ(bbox[2],bbox[1]);
-  const minX=Math.min(a[0],b[0]), maxX=Math.max(a[0],b[0]);
-  const minZ=Math.min(a[1],b[1]), maxZ=Math.max(a[1],b[1]);
-  return !(maxX<-half||minX>half||maxZ<-half||minZ>half);
-}
-function ensureBaseGround(){
-  if(G_PLANE) return;
-  const pg=new THREE.PlaneGeometry(VIEW.fullKm*1000*8.0,VIEW.fullKm*1000*8.0);
-  G_PLANE=new THREE.Mesh(pg,new THREE.MeshLambertMaterial({color:0xe6eae6}));
-  G_PLANE.rotation.x=-Math.PI/2; G_PLANE.position.y=-0.4; G_PLANE.visible=false; scene.add(G_PLANE);
-}
-async function loadGround(km, half){
-  if (G_PLANE){ scene.remove(G_PLANE); G_PLANE.geometry.dispose(); G_PLANE.material.dispose(); G_PLANE=null; }
-  const pg = new THREE.PlaneGeometry(km*1000*8.0, km*1000*8.0);
-  G_PLANE = new THREE.Mesh(pg, new THREE.MeshLambertMaterial({color:0xe6eae6}));
-  G_PLANE.rotation.x = -Math.PI/2; G_PLANE.position.y = -0.4; G_PLANE.visible=false; scene.add(G_PLANE);
-  if (!GMAN) return {tiles:0, features:0};
-  const need = GMAN.tiles.filter(t=>inView(t.bbox, half));
-  const gpos=[], gcol=[], lpos=[], lcol=[]; let features=0; const TREE_RINGS=[];
-  for (const t of need){
-    let gj;
-    try { gj = await (await fetch('tiles_1000m/ground/tile_g_'+t.ti+'_'+t.tj+'.json')).json(); }
-    catch(e){ continue; }
-    for (const f of gj.features){
-      const st = STYLE[f.properties.k]; if(!st) continue;
-      features++;
-      const pts = f.geometry.coordinates;
-      const isClosedPark = (f.geometry.type==='LineString' && pts.length>=4 && pts[0][0]===pts[pts.length-1][0] && pts[0][1]===pts[pts.length-1][1] && (f.properties.k==='park'||f.properties.k==='green'||f.properties.k==='water'));
-      if (f.geometry.type==='LineString' && !isClosedPark){
-        for (let i=0;i<pts.length-1;i++){
-          const a=toXZ(pts[i][0],pts[i][1]), b=toXZ(pts[i+1][0],pts[i+1][1]);
-          lpos.push(a[0],st.y,a[1], b[0],st.y,b[1]);
-          for (let k=0;k<2;k++) lcol.push(st.c[0],st.c[1],st.c[2]);
-        }
-      } else {
-        const ring=[], vec=[];
-        for (let i=0;i<pts.length-1;i++){
-          const q=toXZ(pts[i][0],pts[i][1]); ring.push(q); vec.push(new THREE.Vector2(q[0],q[1]));
-        }
-        if (ring.length<3) continue;
-        if (f.properties.k==='park'||f.properties.k==='green') TREE_RINGS.push(ring);
-        let faces=[];
-        try { faces=THREE.ShapeUtils.triangulateShape(vec,[]); } catch(e){ faces=[]; }
-        if (faces.length){
-          for (const fc of faces) for (const idx of fc){
-            const v=ring[idx]; gpos.push(v[0],st.y,v[1]); gcol.push(st.c[0],st.c[1],st.c[2]);
+createMarkers();
+
+// 건물 타일셋 로딩
+async function loadTiles(){
+  try {
+    const res = await fetch('tiles_1000m/tiles_manifest.json');
+    if(!res.ok) return;
+    const man = await res.json();
+    if(!man || !man.tiles) return;
+
+    const bMat = new THREE.MeshLambertMaterial({ color: 0x5a708e });
+    const edgeMat = new THREE.LineBasicMaterial({ color: 0x9fb6d6, transparent: true, opacity: 0.45 });
+
+    for(const t of man.tiles){
+      try {
+        const tr = await fetch('tiles_1000m/tile_' + t.ti + '_' + t.tj + '_lod1.json');
+        if(!tr.ok) continue;
+        const data = await tr.json();
+        if(!data || !data.buildings) continue;
+
+        data.buildings.forEach(bd => {
+          if(!bd.pts || bd.pts.length < 3) return;
+          const shape = new THREE.Shape();
+          const first = toXZ(bd.pts[0][0], bd.pts[0][1]);
+          shape.moveTo(first[0], -first[1]);
+          for(let i=1; i<bd.pts.length; i++){
+            const pt = toXZ(bd.pts[i][0], bd.pts[i][1]);
+            shape.lineTo(pt[0], -pt[1]);
           }
-        } else {
-          let sx=0,sz=0; for (const q of ring){ sx+=q[0]; sz+=q[1]; }
-          for (let i=0;i<ring.length;i++){
-            const a=ring[i], b=ring[(i+1)%ring.length];
-            gpos.push(sx/ring.length,st.y,sz/ring.length, a[0],st.y,a[1], b[0],st.y,b[1]);
-            for (let k=0;k<3;k++) gcol.push(st.c[0],st.c[1],st.c[2]);
-          }
-        }
-      }
-    }
-  }
-  if (gpos.length){
-    const gg=new THREE.BufferGeometry();
-    gg.setAttribute('position', new THREE.Float32BufferAttribute(gpos,3));
-    gg.setAttribute('color', new THREE.Float32BufferAttribute(gcol,3));
-    gg.computeVertexNormals();
-    if (G_FILL){ scene.remove(G_FILL); G_FILL.geometry.dispose(); }
-    G_FILL=new THREE.Mesh(gg,new THREE.MeshLambertMaterial({vertexColors:true,side:THREE.DoubleSide}));
-    scene.add(G_FILL);
-  }
-  /* 공원·녹지 가로수(2026-11-02): 공원 면 안에 낮은 원뿔 나무를 인스턴싱으로 뿌린다. 드로우콜 +1 */
-  if (TREE_RINGS.length){
-    const T=[]; let seed=12345;
-    function rnd(){ seed=(seed*1664525+1013904223)>>>0; return seed/4294967296; }
-    function inPoly(x,z,r){ let ins=false; for(let i=0,j=r.length-1;i<r.length;j=i++){ const xi=r[i][0],zi=r[i][1],xj=r[j][0],zj=r[j][1]; if(((zi>z)!==(zj>z))&&(x<(xj-xi)*(z-zi)/(zj-zi)+xi)) ins=!ins; } return ins; }
-    for (const r of TREE_RINGS){
-      let minx=1e9,maxx=-1e9,minz=1e9,maxz=-1e9, area=0;
-      for(let i=0;i<r.length;i++){ const p=r[i], q=r[(i+1)%r.length]; minx=Math.min(minx,p[0]);maxx=Math.max(maxx,p[0]);minz=Math.min(minz,p[1]);maxz=Math.max(maxz,p[1]); area+=p[0]*q[1]-q[0]*p[1]; }
-      area=Math.abs(area)/2; const n=Math.min(70, Math.floor(area/700));
-      for(let k=0,tries=0;k<n && tries<n*8 && T.length<3500;tries++){ const x=minx+rnd()*(maxx-minx), z=minz+rnd()*(maxz-minz); if(inPoly(x,z,r)){ T.push([x,z,0.8+rnd()*0.7,rnd()]); k++; } }
-    }
-    if (T.length){
-      const geo=new THREE.ConeGeometry(4.5,14,5); geo.translate(0,7,0);
-      const mat=new THREE.MeshLambertMaterial({color:0xffffff});
-      const im=new THREE.InstancedMesh(geo,mat,T.length); const m4=new THREE.Matrix4(), col=new THREE.Color();
-      for(let i=0;i<T.length;i++){ const t=T[i]; m4.makeScale(t[2],t[2],t[2]); m4.setPosition(t[0],0.4,t[1]); im.setMatrixAt(i,m4); col.setRGB(0.10+t[3]*0.10, 0.34+t[3]*0.20, 0.12+t[3]*0.08); im.setColorAt(i,col); }
-      im.instanceMatrix.needsUpdate=true; if(im.instanceColor) im.instanceColor.needsUpdate=true; scene.add(im); window.__TREES=T.length;
-    }
-  }
-  if (lpos.length){
-    const lg=new THREE.BufferGeometry();
-    lg.setAttribute('position', new THREE.Float32BufferAttribute(lpos,3));
-    lg.setAttribute('color', new THREE.Float32BufferAttribute(lcol,3));
-    if (G_LINE){ scene.remove(G_LINE); G_LINE.geometry.dispose(); }
-    G_LINE=new THREE.LineSegments(lg,new THREE.LineBasicMaterial({vertexColors:true}));
-    scene.add(G_LINE);
-  }
-  return {tiles:need.length, features:features};
-}
-/* ── #13 후보(클라인, 2026-10-26) — 인스턴싱 + 병렬 수신 ──────────────────────
-   근거: pilot/ref_check/item13_mobile3s_20261026.md
-     기준선(모바일 LTE 10Mbps·CPU4x) 첫 화면 6437ms / 4G 25601ms → 3초 초과.
-     타일 전송 5.04MB(23요청) + 순차 fetch + 사각 건물까지 정점으로 펼치는 비용이 원인.
-   변경 1) 타일 9건 순차 await → Promise.all 병렬 수신 (RTT×타일수 만큼 손해 제거)
-   변경 2) lod2(사각 근사) 건물은 정점 병합 대신 InstancedMesh 1회 드로우 (메모리·CPU 절감)
-   시각 동일성: lod2 링이 축정렬 사각(5점·x2종·y2종)일 때만 인스턴스로 바꾸고, 아니면 기존 prism 경로.
-     사각 인스턴스 지오메트리는 바닥면을 뺀 5면(10삼각형) → 기존 prism 과 삼각형 수가 같다. */
-function unitBoxNoBottom(){
-  const p=[], n=[];
-  function quad(a,b,c,d,nx,ny,nz){
-    p.push(a[0],a[1],a[2], b[0],b[1],b[2], c[0],c[1],c[2]);
-    p.push(a[0],a[1],a[2], c[0],c[1],c[2], d[0],d[1],d[2]);
-    for(let i=0;i<6;i++) n.push(nx,ny,nz);
-  }
-  const A=[-0.5,0,-0.5], B=[0.5,0,-0.5], C=[0.5,0,0.5], D=[-0.5,0,0.5];
-  const A2=[-0.5,1,-0.5], B2=[0.5,1,-0.5], C2=[0.5,1,0.5], D2=[-0.5,1,0.5];
-  quad(A2,B2,C2,D2, 0,1,0);
-  quad(A,B,B2,A2, 0,0,-1);
-  quad(B,C,C2,B2, 1,0,0);
-  quad(C,D,D2,C2, 0,0,1);
-  quad(D,A,A2,D2, -1,0,0);
-  const g=new THREE.BufferGeometry();
-  g.setAttribute('position', new THREE.Float32BufferAttribute(p,3));
-  g.setAttribute('normal', new THREE.Float32BufferAttribute(n,3));
-  return g;
-}
-function boxOf(ring){
-  if (ring.length!==5) return null;
-  const xs=[ring[0][0],ring[1][0],ring[2][0],ring[3][0]], ys=[ring[0][1],ring[1][1],ring[2][1],ring[3][1]];
-  if (new Set(xs).size!==2 || new Set(ys).size!==2) return null;
-  const a=toXZ(Math.min.apply(null,xs), Math.min.apply(null,ys));
-  const b=toXZ(Math.max.apply(null,xs), Math.max.apply(null,ys));
-  const w=Math.abs(b[0]-a[0]), d=Math.abs(b[1]-a[1]);
-  if (!(w>0 && d>0)) return null;
-  return {x:(a[0]+b[0])/2, z:(a[1]+b[1])/2, w:w, d:d};
-}
-async function loadTiles(km, forcedLod, includeGround){
-  const stat=document.getElementById('tile-stat');
-  const half=(km*1000)/2;
-  const need=MAN.tiles.filter(t=>inView(t.bbox,half));
-  stat.innerHTML='타일 '+need.length+'개 로딩 중…';
-  const t0=performance.now(); let buildings=0;
-  const jobs=need.map(function(t){
-    const c=toXZ((t.bbox[0]+t.bbox[2])/2,(t.bbox[1]+t.bbox[3])/2);
-    const d=Math.hypot(c[0],c[1]);
-    let lod=forcedLod || 'lod0';
-    if (!forcedLod) { if (d>km*1000*0.66) lod='lod2'; else if (d>km*1000*0.33) lod='lod1'; }
-    return {ti:t.ti, tj:t.tj, lod:lod};
-  });
-  const got=await Promise.all(jobs.map(function(j){
-    return fetch('tiles_1000m/tile_'+j.ti+'_'+j.tj+'_'+j.lod+'.json')
-      .then(function(r){ return r.ok ? r.json() : null; })
-      .catch(function(){ return null; });
-  }));
-  const pos=[], norm=[], col=[], boxes=[];
-  for (let i=0;i<jobs.length;i++){
-    const gj=got[i];
-    if (!gj) continue;
-    const isFar=(jobs[i].lod==='lod2');
-    for (const f of gj.features){
-      buildings++;
-      const ring=f.geometry.coordinates[0], h=f.properties.h, color=featureColor(f);
-      const b=isFar ? boxOf(ring) : null;
-      if (b){ b.h=h; b.color=color; boxes.push(b); } else prism(ring, h, pos, norm, col, color);
-    }
-  }
-  if (MESH){ scene.remove(MESH); MESH.geometry.dispose(); MESH.material.dispose(); }
-  const g=new THREE.BufferGeometry();
-  g.setAttribute('position', new THREE.Float32BufferAttribute(pos,3));
-  g.setAttribute('normal', new THREE.Float32BufferAttribute(norm,3));
-  g.setAttribute('color', new THREE.Float32BufferAttribute(col,3));
-  MESH=new THREE.Mesh(g,createBuildingMaterial(true));
-  scene.add(MESH);
-  if (INST){ scene.remove(INST); INST.geometry.dispose(); INST.material.dispose(); INST=null; }
-  if (boxes.length){
-    INST=new THREE.InstancedMesh(unitBoxNoBottom(),createBuildingMaterial(false),boxes.length);
-    const m=new THREE.Matrix4();
-    for (let i=0;i<boxes.length;i++){
-      const b=boxes[i];
-      m.makeScale(b.w, b.h, b.d); m.setPosition(b.x, 0, b.z);
-      INST.setMatrixAt(i, m); INST.setColorAt(i,b.color);
-    }
-    INST.instanceMatrix.needsUpdate=true;
-    if(INST.instanceColor) INST.instanceColor.needsUpdate=true;
-    INST.frustumCulled=false;
-    scene.add(INST);
-  }
-  const gt=includeGround ? await loadGround(km, half) : {tiles:0, features:0};
-  const ms=(performance.now()-t0).toFixed(0);
-  lastBuildingCount=buildings; lastTileCount=need.length;
-  stat.innerHTML='타일 '+need.length+'개 · 건물 '+buildings.toLocaleString()+'동(실측) · 인스턴스 '+boxes.length.toLocaleString()+'동 · 바닥 '+gt.features.toLocaleString()+'개 · '+ms+'ms';
-}
-/* P1: 첫 프레임 이후 유휴 시점에 시야를 VIEW.fullKm 로 1회 확장 (중복 실행 방지) */
-function scheduleViewExpand(){
-  if (viewExpanded) return;
-  const run=async function(){
-    if (viewExpanded) return;
-    viewExpanded=true;
-    const t0=performance.now();
-    await loadTiles(VIEW.fullKm, null, true);
-    PERF.expandMs=performance.now()-t0;
-  };
-  if (typeof window.requestIdleCallback==='function'){
-    window.requestIdleCallback(function(){ run(); }, {timeout: VIEW.expandIdleMs});
-  } else {
-    setTimeout(run, VIEW.expandIdleMs);
-  }
-}
-
-const markerGroup=new THREE.Group(), radiusGroup=new THREE.Group();
-const routeGroup=new THREE.Group(), routeNumberGroup=new THREE.Group();
-const markerObjects=[];
-scene.add(markerGroup); scene.add(radiusGroup); scene.add(routeGroup); scene.add(routeNumberGroup);
-
-function makeSprite(text, color, wUnits, hUnits){
-  /* 캔버스를 정사각(128×128)으로 두고 배지는 가로로 넓은 라운드 사각형 → 스프라이트를 정사각 스케일해도 숫자가 찌그러지지 않는다 */
-  const c=document.createElement('canvas'); c.width=128; c.height=128;
-  const g=c.getContext('2d');
-  g.fillStyle='rgba(11,17,30,0.9)'; g.strokeStyle=color; g.lineWidth=8;
-  const x=5, y=26, w=118, h=76, r=20;
-  g.beginPath(); g.moveTo(x+r,y); g.arcTo(x+w,y,x+w,y+h,r); g.arcTo(x+w,y+h,x,y+h,r); g.arcTo(x,y+h,x,y,r); g.arcTo(x,y,x+w,y,r); g.closePath();
-  g.fill(); g.stroke();
-  g.font='bold 58px "Malgun Gothic", sans-serif'; g.fillStyle=color; g.textAlign='center'; g.textBaseline='middle';
-  g.fillText(text, 64, 65);
-  const tex=new THREE.CanvasTexture(c); tex.needsUpdate=true;
-  const sp=new THREE.Sprite(new THREE.SpriteMaterial({map:tex,transparent:true,depthWrite:false,depthTest:false}));
-  sp.scale.set(wUnits, hUnits, 1); sp.renderOrder=30;
-  return sp;
-}
-function disposeObj(o){
-  o.traverse(function(n){
-    if(n.geometry) n.geometry.dispose();
-    if(n.material){
-      const ms=Array.isArray(n.material)?n.material:[n.material];
-      ms.forEach(function(m){ if(m.map) m.map.dispose(); m.dispose(); });
-    }
-  });
-}
-/* poi_data.json에서 읽은 POI_DATA만으로 마커를 만든다 (하드코딩 좌표 없음) */
-function buildMarkers(){
-  while(markerGroup.children.length){ const c=markerGroup.children.pop(); disposeObj(c); }
-  markerObjects.length=0;
-  POI_DATA.forEach(function(poi){
-    const xz=toXZ(poi.coords[0], poi.coords[1]), x=xz[0], z=xz[1];
-    const color=new THREE.Color(poi.color);
-    const grp=new THREE.Group(); let hit;
-    if(poi.kind==='office'){
-      const pole=new THREE.Mesh(new THREE.CylinderGeometry(5,5,190,8),
-        new THREE.MeshBasicMaterial({color:0xf59e0b,transparent:true,opacity:0.9}));
-      pole.position.set(x,95,z);
-      hit=new THREE.Mesh(new THREE.OctahedronGeometry(20,0), new THREE.MeshBasicMaterial({color:0xfde68a}));
-      hit.position.set(x,205,z);
-      const ring=new THREE.Mesh(new THREE.RingGeometry(26,36,32),
-        new THREE.MeshBasicMaterial({color:0xf59e0b,side:THREE.DoubleSide,transparent:true,opacity:0.75}));
-      ring.rotation.x=-Math.PI/2; ring.position.set(x,2,z);
-      const lab=makeSprite('구청','#fde68a',70,35); lab.position.set(x,248,z);
-      grp.add(pole); grp.add(hit); grp.add(ring); grp.add(lab);
-    } else {
-      const pillar=new THREE.Mesh(new THREE.CylinderGeometry(4,4,180,8),
-        new THREE.MeshBasicMaterial({color:color,transparent:true,opacity:0.72}));
-      pillar.position.set(x,90,z);
-      hit=new THREE.Mesh(new THREE.SphereGeometry(14,16,16), new THREE.MeshBasicMaterial({color:color}));
-      hit.position.set(x,180,z);
-      const ring=new THREE.Mesh(new THREE.RingGeometry(18,26,24),
-        new THREE.MeshBasicMaterial({color:color,side:THREE.DoubleSide,transparent:true,opacity:0.6}));
-      ring.rotation.x=-Math.PI/2; ring.position.set(x,2,z);
-      grp.add(pillar); grp.add(hit); grp.add(ring);
-    }
-    hit.userData={poiId:poi.id};
-    grp.userData={poiId:poi.id, tab:poi.tab};
-    markerGroup.add(grp);
-    markerObjects.push({group:grp, ring:grp.children[2], hit:hit, poi:poi, x:x, z:z});
-  });
-  buildRadius();
-  buildRoutes();
-}
-function startFlyToPaldal(){
-  const o=document.getElementById('intro-overlay');
-  o.style.opacity='0'; setTimeout(function(){o.style.visibility='hidden';},800);
-  if(currentTab==='basic') focusOffice(); else resetCamera();
-}
-function reopenFogMap(){
-  const o=document.getElementById('intro-overlay');
-  o.style.visibility='visible'; o.style.opacity='1';
-  targetCamPos=new THREE.Vector3(0,7500,9000); targetLookAt=new THREE.Vector3(0,0,0);
-}
-function esc(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
-function escAttr(s){ return esc(s).replace(/"/g,'&quot;').replace(/'/g,'&#39;'); }
-function haversineM(a,b){
-  const R=6371008.8, rad=Math.PI/180;
-  const dLat=(b[1]-a[1])*rad, dLon=(b[0]-a[0])*rad;
-  const s=Math.sin(dLat/2)*Math.sin(dLat/2)+Math.cos(a[1]*rad)*Math.cos(b[1]*rad)*Math.sin(dLon/2)*Math.sin(dLon/2);
-  return 2*R*Math.asin(Math.min(1,Math.sqrt(s)));
-}
-/* poi_data.json → 화면 데이터 (모든 탭의 유일한 원천) */
-function normBlock(b){
-  BLOCK=b;
-  FACTS=(b.basic&&b.basic.facts)||[];
-  HISTORY=(b.basic&&b.basic.history)||[];
-  const office=(b.basic&&b.basic.office)||{};
-  OFFICE={
-    id:'office', name:office.name||'구청', coords:office.coords,
-    tab:'basic', color:'#f59e0b', kind:'office', radius:0,
-    story:'중구의 행정 중심지입니다. '+FACTS.map(function(f){return f.label+' '+f.value;}).join(' · ')+(FACTS.length?' (기준일 '+FACTS[0].as_of+')':''),
-    source:FACTS.length?FACTS[0].source:null
-  };
-  POI_DATA=[OFFICE];
-  const add=function(o){ if(o&&o.id&&o.coords) POI_DATA.push(o); };
-  (b.landmarks||[]).forEach(function(l){
-    add({id:l.id,name:l.name,coords:l.coords,story:l.story,source:l.source,
-      tab:'heritage',color:'#eab308',kind:'landmark',radius:l.highlight_radius_m||60});
-  });
-  (b.markets||[]).forEach(function(m){
-    add({id:m.id,name:m.name,coords:m.coords,story:m.story,source:m.source,
-      tab:'market',color:'#f97316',kind:'market'});
-  });
-  (b.extra_tabs||[]).forEach(function(t){
-    (t.items||[]).forEach(function(it){
-      add({id:it.id,name:it.name,coords:it.coords,story:it.story,source:it.source,
-        tab:'market',color:'#fb923c',kind:'local',group:t.title});
-    });
-  });
-  (b.healing||[]).forEach(function(h){
-    add({id:h.id,name:h.name,coords:h.coords,story:h.story,source:h.source,
-      tab:'healing',color:'#22c55e',kind:'healing',subtype:h.type});
-  });
-  const byId={}; POI_DATA.forEach(function(p){ byId[p.id]=p; });
-  ROUTES=(b.routes||[]).map(function(r){
-    const pts=(r.stops||[]).map(function(id){return byId[id];}).filter(Boolean);
-    const legs=[]; let total=0;
-    for(let i=0;i<pts.length;i++){
-      const d=(i===0)?0:haversineM(pts[i-1].coords, pts[i].coords);
-      legs.push(d); total+=d;
-    }
-    return {id:r.id, days:r.days, title:r.title, walk_km:r.walk_km, source_note:r.source_note,
-      pts:pts, legs:legs, totalM:total, visible:true};
-  });
-}
-function focusPoi(poiId){
-  const t=POI_DATA.find(function(p){return p.id===poiId;}); if(!t) return;
-  const xz=toXZ(t.coords[0],t.coords[1]);
-  const h=(t.kind==='office')?520:300, back=(t.kind==='office')?640:400;
-  const gH=(window.terrainH?terrainH(xz[0],xz[1]):0);
-  targetCamPos=new THREE.Vector3(xz[0], h+gH, xz[1]+back);
-  targetLookAt=new THREE.Vector3(xz[0], 60+gH, xz[1]);
-  selectedPoiId=poiId;
-  markerObjects.forEach(function(m){
-    const on=(m.poi.id===poiId);
-    m.hit.scale.set(on?1.9:1,on?1.9:1,on?1.9:1);
-    m.ring.material.opacity=on?1.0:0.6;
-  });
-  document.querySelectorAll('[data-poi-id]').forEach(function(el){
-    el.classList.toggle('selected', el.getAttribute('data-poi-id')===poiId);
-  });
-  openDetail(t);
-}
-function focusOffice(){
-  if(!OFFICE) return;
-  const xz=toXZ(OFFICE.coords[0], OFFICE.coords[1]);
-  targetCamPos=new THREE.Vector3(xz[0], 560, xz[1]+640);
-  targetLookAt=new THREE.Vector3(xz[0], 40, xz[1]);
-  selectedPoiId='office';
-}
-function overview(h, d){
-  targetCamPos=new THREE.Vector3(0, h||1800, d||2400);
-  targetLookAt=new THREE.Vector3(0,0,0);
-}
-function openDetail(poi){
-  document.getElementById('modal-title').innerText=poi.name;
-  const kind=KIND_LABEL[poi.kind]||'명소';
-  document.getElementById('modal-cat').innerText=(poi.kind==='office')?'기본정보 · 행정':(kind+(poi.group?(' · '+poi.group):''));
-  document.getElementById('modal-body').innerText=poi.story||'';
-  const qb=document.getElementById('modal-quote');
-  if(poi.source&&poi.source.quote){ qb.style.display='block'; qb.innerText=poi.source.quote; }
-  else { qb.style.display='none'; qb.innerText=''; }
-  document.getElementById('modal-source-name').innerText=poi.source?(poi.source.title||poi.source.page_title||''):'';
-  const a=document.getElementById('modal-source-url');
-  if(poi.source&&poi.source.url){ a.href=poi.source.url; a.style.display='inline'; }
-  else { a.removeAttribute('href'); a.style.display='none'; }
-  document.getElementById('modal-extra').innerText = (poi.radius>0) ? ('반경 강조 '+poi.radius+'m · 직선 반경 기준') : (poi.subtype?('유형 '+poi.subtype):'');
-  document.getElementById('poi-modal').style.display='flex';
-}
-function closeModal(){ document.getElementById('poi-modal').style.display='none'; }
-function togglePanel(){
-  const sb=document.getElementById('sidebar'); if(!sb) return;
-  sb.classList.toggle('collapsed');
-  const b=document.getElementById('collapse-btn');
-  if(b) b.textContent = sb.classList.contains('collapsed') ? '▴ 펼치기' : '▾ 접기';
-}
-function resetCamera(){ overview(1800,2400); closeModal(); }
-function startOrbit(h){
-  if(h){ orbitHeight=h; orbitRadius=Math.round(h*1.55); }
-  isOrbiting=true; targetCamPos=null; targetLookAt=new THREE.Vector3(0,0,0);
-  angle=Math.atan2(camera.position.x, camera.position.z||1);
-  const ob=document.getElementById('orbit-btn'); if(ob) ob.style.background='#0284c7';
-  if(currentTab==='drone') renderDrone();
-}
-function stopOrbit(){
-  isOrbiting=false;
-  const ob=document.getElementById('orbit-btn'); if(ob) ob.style.background='';
-  if(currentTab==='drone') renderDrone();
-}
-function setOrbitAltitude(v){ startOrbit(v); }
-function toggleOrbit(){ isOrbiting ? stopOrbit() : startOrbit(); }
-const TAB_META={
-  basic:{name:'기본정보', sub:'poi_data.json basic · 인구·세대·면적·연혁'},
-  heritage:{name:'역사 명소', sub:'poi_data.json landmarks · 성곽·유적'},
-  market:{name:'전통시장·골목', sub:'poi_data.json markets + extra_tabs'},
-  healing:{name:'휴식·힐링', sub:'poi_data.json healing · 공원·수변'},
-  roadmap:{name:'추천 동선', sub:'poi_data.json routes · 1일/2일'},
-  drone:{name:'드론 360', sub:'궤도 자동 회전 · 로컬 타일'}
-};
-function srcLink(s){
-  if(!s) return '';
-  const t=s.title||s.page_title||s.name||'출처';
-  if(s.url) return '<a href="'+escAttr(s.url)+'" target="_blank" rel="noopener">'+esc(t)+'</a>';
-  return esc(t);
-}
-function applyVisibility(){
-  markerObjects.forEach(function(m){
-    let show;
-    if(currentTab==='basic') show=(m.poi.kind==='office');
-    else if(currentTab==='roadmap') show=false;
-    else show=(m.poi.tab===currentTab);
-    m.group.visible=show;
-  });
-  radiusGroup.visible=radiusOn&&(currentTab==='heritage');
-  routeGroup.visible=(currentTab==='roadmap');
-  routeNumberGroup.visible=(currentTab==='roadmap');
-}
-function bindItems(){
-  document.querySelectorAll('#panel-body [data-poi-id]').forEach(function(el){
-    el.onclick=function(){ focusPoi(el.getAttribute('data-poi-id')); };
-  });
-}
-function switchTab(tabKey){
-  currentTab=tabKey;
-  document.querySelectorAll('.main-tab-btn').forEach(function(b){
-    const on=(b.getAttribute('data-tab')===tabKey);
-    b.classList.toggle('active', on);
-    /* 모바일은 탭 바가 가로 스크롤이라, 선택한 탭이 화면 밖이면 가운데로 당겨온다 */
-    if(on && innerWidth<=860 && b.scrollIntoView) b.scrollIntoView({block:'nearest', inline:'center'});
-  });
-  closeModal();
-  const meta=TAB_META[tabKey]||{name:tabKey,sub:''};
-  document.getElementById('sidebar-category-name').innerText=meta.name;
-  document.getElementById('panel-footer').innerText=meta.sub+' · 데이터 poi_data.json · 외부요청 0';
-  const cnt=document.getElementById('sidebar-poi-count');
-  if(tabKey==='roadmap') cnt.innerText=ROUTES.length+'개 코스';
-  else if(tabKey==='basic') cnt.innerText=(FACTS.length+HISTORY.length)+'항목';
-  else if(tabKey==='drone'){ cnt.innerText='자동 회전'; startOrbit(); }
-  else cnt.innerText=POI_DATA.filter(function(p){return p.tab===tabKey;}).length+'곳';
-  if(tabKey!=='drone'&&isOrbiting) stopOrbit();
-  applyVisibility();
-  if(tabKey==='basic') renderBasic();
-  else if(tabKey==='heritage') renderHeritage();
-  else if(tabKey==='market') renderMarket();
-  else if(tabKey==='healing') renderHealing();
-  else if(tabKey==='roadmap') renderRoadmap();
-  else renderDrone();
-  const sb=document.getElementById('sidebar');
-  if(sb&&innerWidth<=860) sb.classList.add('collapsed');
-}
-function renderBasic(){
-  let h='<div class="panel-note">poi_data.json의 <b>basic</b> 블록을 가공 없이 그대로 표시합니다.</div>';
-  h+='<div class="fact-grid">';
-  FACTS.forEach(function(f){
-    var fv=String(f.value==null?'':f.value), fnote='';
-    var pi=fv.indexOf(' (');
-    if(pi>0){ fnote=fv.slice(pi+1); fv=fv.slice(0,pi); }
-    h+='<div class="fact-card"><div class="fact-label">'+esc(f.label)+'</div>'+
-       '<div class="fact-value">'+esc(fv)+'</div>'+
-       (fnote?'<div class="fact-note">'+esc(fnote)+'</div>':'')+
-       '<div class="fact-meta">'+esc(f.as_of||'')+'</div></div>';
-  });
-  h+='</div>';
-  if(OFFICE){
-    h+='<div class="office-head" data-poi-id="office">'+
-       '<div class="office-name">📍 '+esc(OFFICE.name)+'</div>'+
-       '<div class="office-sub">'+OFFICE.coords[1].toFixed(5)+', '+OFFICE.coords[0].toFixed(5)+
-       ' · 클릭하면 3D 카메라가 이동합니다.</div></div>';
-  }
-  h+='<div class="sec-title">연혁 <span class="asof">'+HISTORY.length+'건</span></div><div class="hist-list">';
-  HISTORY.forEach(function(x){
-    h+='<div class="hist-item"><div class="hist-year">'+esc(x.year)+'</div>'+
-       '<div class="hist-text">'+esc(x.text)+'</div></div>';
-  });
-  h+='</div>';
-  if(FACTS.length){
-    h+='<div class="src-note">기준일 '+esc(FACTS[0].as_of||'')+' · '+srcLink(FACTS[0].source)+'</div>';
-  }
-  document.getElementById('panel-body').innerHTML=h;
-  bindItems();
-}
-function fmtM(m){
-  if(!isFinite(m)) return '-';
-  return (m>=1000) ? (m/1000).toFixed(2)+'km' : (Math.round(m)+'m');
-}
-/* 코스 제목: poi_data.json title에 이미 "1일 코스 —"가 들어 있어 접두를 떼고 다시 붙인다 */
-function routeLabel(r){
-  const n=Number(r&&r.days)||1;
-  const t=String((r&&r.title)||('코스 '+n)).replace(/^\s*\d+\s*일\s*코스\s*[—\-–:·]?\s*/,'');
-  return n+'일 코스'+(t?(' · '+t):'');
-}
-function poiCard(p, badges){
-  let b='';
-  (badges||[]).forEach(function(x){ b+='<span class="mini-badge'+(x.gold?' gold':'')+'">'+esc(x.text)+'</span>'; });
-  return '<div class="poi-item" data-poi-id="'+escAttr(p.id)+'">'+
-    '<div class="poi-name"><span class="poi-dot" style="background:'+escAttr(p.color)+'"></span><span>'+esc(p.name)+'</span></div>'+
-    '<div class="poi-desc">'+esc(p.story||'')+'</div>'+
-    (b?('<div class="poi-meta">'+b+'</div>'):'')+'</div>';
-}
-function renderHeritage(){
-  const list=POI_DATA.filter(function(p){return p.tab==='heritage';});
-  let h='<div class="panel-note">성곽·유적 <b>'+list.length+'곳</b>. 바닥 원은 poi_data.json의 <b>highlight_radius_m</b> 값 그대로이며, 직선 반경입니다(보행 반경 아님).</div>';
-  h+='<div class="toolbar"><span>반경 원 '+(radiusOn?'표시 중':'숨김')+'</span>'+
-     '<button class="route-toggle'+(radiusOn?'':' off')+'" onclick="toggleRadius()">'+(radiusOn?'끄기':'켜기')+'</button></div>';
-  h+='<div class="sec-title">명소 목록 <span class="asof">클릭 = 이동 + 설명</span></div>';
-  list.forEach(function(p){ h+=poiCard(p,[{text:'반경 '+p.radius+'m',gold:true}]); });
-  h+='<div class="src-note">명소 설명·출처는 각 항목 모달에서 원문 링크로 확인할 수 있습니다.</div>';
-  document.getElementById('panel-body').innerHTML=h;
-  bindItems();
-  overview(1500,2100);
-}
-
-/* [지형] CPU 레이캐스트도 지형 높이만큼 올려서 판정한다(마커 hit 메쉬만). */
-(function(){var orig=THREE.Mesh.prototype.raycast;THREE.Mesh.prototype.raycast=function(rc,ints){
-  if(this.userData&&this.userData.poiId&&window.terrainH){this.updateWorldMatrix(true,false);var e=this.matrixWorld.elements,old=e[13],h=terrainH(e[12],e[14]);e[13]=old+h;
-    try{orig.call(this,rc,ints)}finally{e[13]=old}}
-  else orig.call(this,rc,ints)};})();
-const raycaster=new THREE.Raycaster(); const mouse=new THREE.Vector2();
-window.addEventListener('click',(e)=>{
-  if(e.target.tagName==='BUTTON'||e.target.closest('#sidebar')||e.target.closest('#poi-modal')||e.target.closest('#top-tab-bar')||e.target.closest('#intro-overlay')) return;
-  mouse.x=(e.clientX/innerWidth)*2-1; mouse.y=-(e.clientY/innerHeight)*2+1;
-  raycaster.setFromCamera(mouse,camera);
-  const targets=markerObjects.filter(m=>m.group.visible).map(m=>m.hit);
-  const hits=raycaster.intersectObjects(targets);
-  if(hits.length>0){ const id=hits[0].object.userData.poiId; if(id) focusPoi(id); }
-});
-function renderMarket(){
-  const markets=POI_DATA.filter(function(p){return p.kind==='market';});
-  const locals=POI_DATA.filter(function(p){return p.kind==='local';});
-  let h='<div class="panel-note">전통시장 <b>'+markets.length+'곳</b> + 골목 <b>'+locals.length+'곳</b>. 모든 항목은 poi_data.json의 markets / extra_tabs에서 왔습니다.</div>';
-  h+='<div class="sec-title">전통시장 <span class="asof">구청에서 직선거리</span></div>';
-  markets.forEach(function(p){
-    h+=poiCard(p,[{text:fmtM(haversineM(OFFICE.coords,p.coords))+' (직선)',gold:true}]);
-  });
-  if(locals.length){
-    h+='<div class="sec-title">골목 <span class="asof">'+esc(locals[0].group||'')+'</span></div>';
-    locals.forEach(function(p){
-      h+=poiCard(p,[{text:fmtM(haversineM(OFFICE.coords,p.coords))+' (직선)'}]);
-    });
-  }
-  h+='<div class="src-note">거리는 좌표 기반 직선거리이며 실제 도보 경로와 다릅니다.</div>';
-  document.getElementById('panel-body').innerHTML=h;
-  bindItems();
-  overview(1500,2100);
-}
-function renderHealing(){
-  const list=POI_DATA.filter(function(p){return p.tab==='healing';});
-  let h='<div class="panel-note">공원·수변 <b>'+list.length+'곳</b>. 유형(type)은 poi_data.json 값을 그대로 표기합니다.</div>';
-  h+='<div class="sec-title">휴식 명소 <span class="asof">'+list.length+'곳</span></div>';
-  list.forEach(function(p){
-    h+=poiCard(p,[{text:p.subtype||'휴식',gold:true},{text:fmtM(haversineM(OFFICE.coords,p.coords))}]);
-  });
-  h+='<div class="src-note">각 항목의 설명·출처는 모달에서 확인할 수 있습니다.</div>';
-  document.getElementById('panel-body').innerHTML=h;
-  bindItems();
-  overview(1500,2100);
-}
-/* #4 계층 라벨: labels_hierarchy.json의 구·동·명소 라벨을 카메라 높이에 따라 단계별로 켠다 */
-const HIER = {levels: [], items: []};
-/* #4 라벨 전용 스프라이트: 글자 길이에 맞춰 캔버스 폭을 늘려 글자가 잘리지 않게 한다 */
-function makeLabelSprite(text, color, hUnits){
-  /* 밝은 지도용 칩 라벨: 흰 칩 + 진한 글자 + 레벨색 점(참고 #4 스타일) */
-  const fs = 54, pad = 26, dot = 44;
-  const c = document.createElement('canvas'); const g0 = c.getContext('2d');
-  g0.font = 'bold ' + fs + 'px "Malgun Gothic", sans-serif';
-  const tw = Math.ceil(g0.measureText(text).width);
-  c.width = tw + pad*2 + dot; c.height = fs + pad*2;
-  const g = c.getContext('2d');
-  g.font = 'bold ' + fs + 'px "Malgun Gothic", sans-serif';
-  g.shadowColor = 'rgba(15,23,42,0.35)'; g.shadowBlur = 8; g.shadowOffsetY = 3;
-  g.fillStyle = 'rgba(255,255,255,0.96)';
-  const r = 24, w = c.width-12, h = c.height-16, x = 6, y = 4;
-  g.beginPath(); g.moveTo(x+r,y); g.arcTo(x+w,y,x+w,y+h,r); g.arcTo(x+w,y+h,x,y+h,r); g.arcTo(x,y+h,x,y,r); g.arcTo(x,y,x+w,y,r); g.closePath();
-  g.fill();
-  g.shadowColor = 'transparent';
-  g.fillStyle = color==='#ffffff' ? '#0284c7' : (color==='#90caf9' ? '#2563eb' : '#f59e0b');
-  g.beginPath(); g.arc(pad+10, y+h/2, 13, 0, Math.PI*2); g.fill();
-  g.fillStyle = '#0f172a'; g.textAlign = 'left'; g.textBaseline = 'middle';
-  g.fillText(text, pad+dot-8, y+h/2+2);
-  const tex = new THREE.CanvasTexture(c);
-  const sp = new THREE.Sprite(new THREE.SpriteMaterial({map: tex, transparent: true, depthWrite: false, depthTest: false}));
-  sp.scale.set(hUnits * c.width / c.height, hUnits, 1); sp.renderOrder = 30;
-  sp.userData.w = sp.scale.x; sp.userData.h = sp.scale.y;
-  return sp;
-}
-/* #8 환경 동기화: 접속 시각에 맞춰 낮·노을·밤·새벽 4단 조명을 자동 적용(외부 요청 0). 버튼으로 자동/낮/밤을 순환한다.
-   날씨는 외부 호출 없이 쓰기 위해 weather.json(주기적으로 서버가 갱신)이 있을 때만 읽는다. */
-const ENV_PRESETS = {
-  day:    {name:'☀️ 낮',  sky:0xe9cfa6, grad:['#5b8fd8','#a9c8ee','#f7dcae'], fog:[3000,25000], amb:[0xffffff,0.42], hemi:[0xdbe8f8,0x8f8a7e,0.92], sun:[0xfff3dc,1.95]},
-  golden: {name:'🌆 노을', sky:0x4a3a4e, fog:[2600,22000], amb:[0xfdba74,0.45], hemi:[0xfdba74,0x3b2f3a,0.7],  sun:[0xf97316,1.35]},
-  night:  {name:'🌙 밤',  sky:0x050b17, fog:[2500,20000], amb:[0x1e293b,0.25], hemi:[0x1e293b,0x020617,0.35], sun:[0x60a5fa,0.5]},
-  dawn:   {name:'🌅 새벽', sky:0x3b4a63, fog:[2800,23000], amb:[0xcfe4ff,0.4],  hemi:[0xcfe4ff,0x2a3340,0.6],  sun:[0xfde68a,0.8]}
-};
-let ENV_MODE = 'auto';
-function envByClock(){
-  const d = new Date(); const h = d.getHours() + d.getMinutes()/60;
-  if(h >= 6.5 && h < 17.0) return 'day';
-  if(h >= 17.0 && h < 18.5) return 'golden';
-  if(h >= 18.5 || h < 5.0) return 'night';
-  return 'dawn';
-}
-function applyEnv(key){
-  const P = ENV_PRESETS[key];
-  scene.background = new THREE.Color(P.sky);
-  if(P.grad){ const cv=document.createElement('canvas'); cv.width=4; cv.height=256; const g2=cv.getContext('2d'); const gr=g2.createLinearGradient(0,0,0,256); gr.addColorStop(0,P.grad[0]); gr.addColorStop(0.55,P.grad[1]); gr.addColorStop(1,P.grad[2]); g2.fillStyle=gr; g2.fillRect(0,0,4,256); scene.background=new THREE.CanvasTexture(cv); }
-  scene.fog = new THREE.Fog(P.sky, P.fog[0], P.fog[1]);
-  scene.children.forEach(function(c){
-    if(c.isAmbientLight){ c.color.setHex(P.amb[0]); c.intensity = P.amb[1]; }
-    if(c.isHemisphereLight){ c.color.setHex(P.hemi[0]); c.groundColor.setHex(P.hemi[1]); c.intensity = P.hemi[2]; }
-    if(c.isDirectionalLight){ c.color.setHex(P.sun[0]); c.intensity = P.sun[1]; }
-  });
-  (window.NIGHT_UNIS||[]).forEach(function(u){ u.value = (key==='night') ? 1.0 : (key==='golden' ? 0.35 : 0.0); });
-  const btn = document.getElementById('btn-daynight');
-  if(btn) btn.textContent = (ENV_MODE==='auto' ? '실시간 ' : '수동 ') + P.name;
-}
-function toggleDayNight(){
-  const order = ['auto','day','night'];
-  ENV_MODE = order[(order.indexOf(ENV_MODE)+1) % order.length];
-  applyEnv(ENV_MODE==='auto' ? envByClock() : ENV_MODE);
-}
-/* #8 날씨: 같은 폴더의 weather.json({condition:'clear|cloudy|rain|snow'})만 읽는다. 외부 호출 없음. ?weather=rain 으로 시험 가능 */
-const WX = {cond:'clear', pts:null, vel:null};
-function applyWeather(cond){
-  WX.cond = cond;
-  if(WX.pts){ scene.remove(WX.pts); WX.pts.geometry.dispose(); WX.pts.material.dispose(); WX.pts = null; }
-  const tint = {clear:0, cloudy:0.35, rain:0.5, snow:0.4}[cond] || 0;
-  if(tint>0){
-    const f = scene.fog; const g = new THREE.Color(0x6b7785);
-    if(scene.background && scene.background.isColor){ scene.background.lerp(g, tint); f.color.copy(scene.background); } else { f.color.lerp(g, tint); }
-    f.near = f.near*0.7; f.far = f.far*(1-0.35*tint);
-  }
-  if(cond==='rain' || cond==='snow'){
-    const N = 2500, pos = new Float32Array(N*3);
-    for(let i=0;i<N;i++){ pos[i*3]=(Math.random()-0.5)*6000; pos[i*3+1]=Math.random()*2500; pos[i*3+2]=(Math.random()-0.5)*6000; }
-    const geo = new THREE.BufferGeometry(); geo.setAttribute('position', new THREE.BufferAttribute(pos,3));
-    const mat = new THREE.PointsMaterial({color: cond==='rain'?0xaed6f1:0xffffff, size: cond==='rain'?5:9, transparent:true, opacity:0.75, depthWrite:false});
-    WX.pts = new THREE.Points(geo, mat); WX.vel = cond==='rain' ? 38 : 7; scene.add(WX.pts);
-  }
-}
-function updateWeather(){
-  if(!WX.pts) return;
-  const a = WX.pts.geometry.attributes.position;
-  for(let i=0;i<a.count;i++){
-    let y = a.getY(i) - WX.vel; if(y<0) y += 2500; a.setY(i, y);
-  }
-  a.needsUpdate = true;
-}
-async function loadWeather(){
-  let cond = new URLSearchParams(location.search).get('weather');
-  if(!cond){
-    try{ const j = await fetch('weather.json', {cache:'no-store'}).then(function(r){ if(!r.ok) throw 0; return r.json(); }); cond = j.condition; }
-    catch(e){ cond = 'clear'; }
-  }
-  applyWeather(cond);
-}
-async function addHierarchyLabels(){
-  try{
-    const j = await fetch('labels_hierarchy.json', {cache:'no-store'}).then(function(r){ return r.json(); });
-    (j.labels||[]).forEach(function(L){
-      const p = toXZ(L.lon, L.lat);
-      const hh = L.level===1 ? 260 : (L.level===2 ? 150 : 100);
-      const color = L.level===1 ? '#ffffff' : (L.level===2 ? '#90caf9' : '#fbbf24');
-      const sp = makeLabelSprite(L.name, color, hh);
-      sp.position.set(p[0], (L.alt||60)+80, p[1]);
-      sp.visible = false;
-      scene.add(sp);
-      HIER.items.push({sp: sp, level: L.level});
-    });
-  }catch(e){ console.warn('[#4 labels]', e); }
-}
-function updateHierarchyLabels(){
-  const y = camera.position.y;
-  HIER.items.forEach(function(it){
-    const on = it.level===1 ? y>3000 : (it.level===2 ? (y>900 && y<=3000) : y<=900);
-    it.sp.visible = on;
-    if(on && it.sp.userData.w){ const d = camera.position.distanceTo(it.sp.position); const k = Math.min(0.85, Math.max(0.16, d/2800)); it.sp.scale.set(it.sp.userData.w*k, it.sp.userData.h*k, 1); }
-  });
-}
-/* #4 수면 레이어: water_meshes.json의 수면 폴리곤을 반투명 메쉬로 올린다 */
-async function addWaterLayer(){
-  try{
-    const W = await fetch('water_meshes.json', {cache:'no-store'}).then(function(r){ return r.json(); });
-    (W.water_bodies||[]).forEach(function(wb){
-      let pts = wb.polygon||[];
-      if(!pts.length && wb.linestring && wb.linestring.length>1){
-        /* 선형 수면(하천): 좌우로 폭/2만큼 벌려 띠 폴리곤을 만든다 */
-        const hw = Math.max((wb.width_meters||12)/2, 24); /* 첫 화면에서 보이도록 최소 폭 48 유지 */
-        const P = wb.linestring.map(function(q){ return toXZ(q[0], q[1]); });
-        const L = [], R = [];
-        P.forEach(function(p,i){
-          const a = P[Math.max(0,i-1)], b = P[Math.min(P.length-1,i+1)];
-          let dx=b[0]-a[0], dz=b[1]-a[1]; const n=Math.hypot(dx,dz)||1; dx/=n; dz/=n;
-          const nx=-dz, nz=dx;
-          L.push([p[0]+nx*hw, p[1]+nz*hw]); R.push([p[0]-nx*hw, p[1]-nz*hw]);
+          const height = Math.max(8, bd.h || 15);
+          const extGeo = new THREE.ExtrudeGeometry(shape, { depth: height, bevelEnabled: false });
+          extGeo.rotateX(-Math.PI / 2);
+          const mesh = new THREE.Mesh(extGeo, bMat);
+          mesh.position.y = 0;
+          scene.add(mesh);
         });
-        const ring = L.concat(R.reverse());
-        const shape = new THREE.Shape();
-        ring.forEach(function(p,i){ if(i===0) shape.moveTo(p[0], -p[1]); else shape.lineTo(p[0], -p[1]); });
-        const mat = new THREE.MeshBasicMaterial({color: wb.material.color, transparent: true, opacity: 0.9, depthWrite: false});
-        const mesh = new THREE.Mesh(new THREE.ShapeGeometry(shape), mat);
-        mesh.rotation.x = -Math.PI/2; mesh.position.y = 6; mesh.renderOrder = 5;
-        mesh.userData.wave = wb.material.wave_speed || 1.2;
-        scene.add(mesh); WATER.push(mesh);
-        return;
-      }
-      if(pts.length<3) return;
-      const shape = new THREE.Shape();
-      pts.forEach(function(q,i){
-        const p = toXZ(q[0], q[1]);
-        if(i===0) shape.moveTo(p[0], -p[1]); else shape.lineTo(p[0], -p[1]);
-      });
-      const mat = new THREE.MeshBasicMaterial({color: wb.material.color, transparent: true, opacity: wb.material.opacity, depthWrite: false});
-      const mesh = new THREE.Mesh(new THREE.ShapeGeometry(shape), mat);
-      mesh.rotation.x = -Math.PI/2; mesh.position.y = 2; mesh.renderOrder = 5;
-      mesh.userData.wave = wb.material.wave_speed || 0.8;
-      scene.add(mesh);
-      WATER.push(mesh);
-    });
-  }catch(e){ console.warn('[#4 water]', e); }
-}
-const WATER = [];
-function updateWater(t){
-  WATER.forEach(function(m){ m.material.opacity = 0.66 + 0.06*Math.sin(t*0.001*m.userData.wave); });
-}
-function animate(){
-  requestAnimationFrame(animate);
-  updateHierarchyLabels();
-  updateWater(performance.now());
-  updateWeather();
-  const time=Date.now()*0.003;
-  markerObjects.forEach(m=>{ const s=1.0+Math.sin(time+m.x)*0.15; m.ring.scale.set(s,s,s); });
-  /* 코스 번호는 카메라 거리에 비례해 키워 화면상 크기를 일정하게 유지한다(멀리서도 읽히게) */
-  if(routeNumberGroup.visible){
-    routeNumberGroup.children.forEach(function(sp){
-      const u=routeNumScale(camera.position.distanceTo(sp.position));
-      sp.scale.set(u,u,1);
-    });
-  }
-  if(targetCamPos){ camera.position.lerp(targetCamPos,0.05); if(camera.position.distanceTo(targetCamPos)<2) targetCamPos=null; }
-  if(targetLookAt){ camera.lookAt(targetLookAt); }
-  if(isOrbiting&&!targetCamPos){
-    angle+=0.0015;
-    camera.position.x=Math.sin(angle)*2400; camera.position.z=Math.cos(angle)*2400;
-    camera.lookAt(0,0,0);
-  }
-  renderer.render(scene,camera);
-}
-function renderRoadmap(){
-  let h='<div class="panel-note">poi_data.json <b>routes</b>의 stops 순서를 그대로 사용합니다. 구간 거리는 좌표 간 <b>직선거리</b>(하버사인)이고, walk_km는 원본에 적힌 값입니다.</div>';
-  ROUTES.forEach(function(r, i){
-    h+='<div class="route-card"><div class="route-head">'+
-       '<div class="route-title">'+esc(routeLabel(r))+'</div>'+
-       '<button class="route-toggle'+(r.visible?'':' off')+'" onclick="toggleRoute('+i+')">'+(r.visible?'표시':'숨김')+'</button>'+
-       '</div>'+
-       '<div class="route-total">원본 '+Number(r.walk_km||0).toFixed(2)+'km · 직선 합계 '+fmtM(r.totalM)+' · 정류 '+r.pts.length+'곳</div>';
-    let cum=0;
-    r.pts.forEach(function(p, j){
-      cum+=r.legs[j]||0;
-      h+='<div class="stop-row'+(r.visible?'':' off')+'" data-poi-id="'+escAttr(p.id)+'" title="직전 정류에서 직선 '+fmtM(r.legs[j]||0)+' · 출발점에서 누적 '+fmtM(cum)+'">'+
-         '<span class="stop-no" style="background:'+escAttr(p.color)+'">'+(j+1)+'</span>'+
-         '<span class="stop-name">'+esc(p.name)+'</span>'+
-         '<span class="stop-dist">'+(j===0?'출발':'+'+fmtM(r.legs[j]))+'</span>'+
-         '<span class="stop-dist">누적 '+fmtM(cum)+'</span></div>';
-    });
-    if(r.source_note) h+='<div class="leg-note">'+esc(r.source_note)+'</div>';
-    h+='<div class="leg-note">지도 위 파란 선·번호 = 1일 코스 순서, 분홍 선·번호 = 2일 코스 순서입니다(목록 동그라미 색은 장소 구분색). 화서문처럼 두 코스가 겹치는 곳은 번호를 서로 다른 높이로 띄워 둘 다 보이게 했습니다. 거리는 직선거리이며 실제 보행로·소요시간이 아닙니다.</div>';
-    h+='</div>';
-  });
-  h+='<div class="src-note">정류를 클릭하면 해당 지점으로 카메라가 이동합니다.</div>';
-  document.getElementById('panel-body').innerHTML=h;
-  bindItems();
-  /* 정류 전체가 화면(패널·탭바 제외)에 들어오도록 카메라를 자동 계산하고, 번호를 겹침 없이 배치한다 */
-  frameRoutes();
-  /* lerp를 기다리면 번호 배치와 실제 화면이 어긋나므로, 계산한 프레임으로 바로 이동한다 */
-  if(targetCamPos){ camera.position.copy(targetCamPos); camera.lookAt(targetLookAt); }
-  layoutRouteNumbers();
-}
-/* ===== 로드맵 카메라 프레이밍 & 코스 번호 배치 =========================
-   번호 스프라이트는 카메라 거리에 비례해 커지므로(화면상 크기 일정) 화면 픽셀
-   좌표로 변환해 배치한다. 위쪽 정류부터 "겹치지 않는 첫 칸"을 잡고,
-   칸이 비어 있지 않으면 위/아래로 한 칸씩 밀어 번호가 포개지지 않게 한다. */
-function routeNumScale(d){ return Math.max(70, Math.min(210, d*0.035)); }
-function routeCanvasPts(){
-  const pts=[];
-  ROUTES.forEach(function(r){
-    if(r.visible===false) return;
-    r.pts.forEach(function(p){
-      const xz=toXZ(p.coords[0], p.coords[1]);
-      pts.push({x:xz[0], z:xz[1]});
-    });
-  });
-  return pts;
-}
-/* 좌측 패널·상단 탭바·우측 컨트롤에 가리지 않는 화면 영역(px) */
-function routeSafeRect(){
-  const mob=innerWidth<=860;
-  return {
-    left:  (mob?8:372),
-    right: innerWidth-(mob?10:22),
-    top:   (mob?212:152),
-    bottom:innerHeight-(mob?64:92)
-  };
-}
-function frameRoutes(){
-  const pts=routeCanvasPts();
-  if(!pts.length) return;
-  let minX=Infinity, maxX=-Infinity, minZ=Infinity, maxZ=-Infinity;
-  pts.forEach(function(p){
-    if(p.x<minX) minX=p.x; if(p.x>maxX) maxX=p.x;
-    if(p.z<minZ) minZ=p.z; if(p.z>maxZ) maxZ=p.z;
-  });
-  const cx=(minX+maxX)/2, cz=(minZ+maxZ)/2;
-  const safe=routeSafeRect(), pad=40;
-  const ndcL=((safe.left+pad)/innerWidth)*2-1, ndcR=((safe.right-pad)/innerWidth)*2-1;
-  const ndcT=1-((safe.top+pad)/innerHeight)*2, ndcB=1-((safe.bottom-pad)/innerHeight)*2;
-  const probe=new THREE.PerspectiveCamera(camera.fov, innerWidth/innerHeight, 1, 150000);
-  const tilt=(innerWidth<=860?56:52)*Math.PI/180;
-  const look=new THREE.Vector3(cx, 0, cz);
-  const v=new THREE.Vector3();
-  function fits(dist){
-    probe.position.set(cx, Math.sin(tilt)*dist, cz+Math.cos(tilt)*dist);
-    probe.lookAt(look); probe.updateMatrixWorld(); probe.updateProjectionMatrix();
-    for(let i=0;i<pts.length;i++){
-      v.set(pts[i].x, 120, pts[i].z).project(probe);
-      if(v.x<ndcL||v.x>ndcR||v.y<ndcB||v.y>ndcT) return false;
+      } catch(e){}
     }
-    return true;
-  }
-  let lo=500, hi=26000;
-  for(let i=0;i<36;i++){ const mid=(lo+hi)/2; if(fits(mid)) hi=mid; else lo=mid; }
-  const dist=hi*1.02;
-  targetCamPos=new THREE.Vector3(cx, Math.sin(tilt)*dist, cz+Math.cos(tilt)*dist);
-  targetLookAt=new THREE.Vector3(cx, 0, cz);
+  } catch(e){}
 }
-function layoutRouteNumbers(){
-  const items=routeNumberGroup.children.filter(function(sp){ return sp.visible!==false; });
-  if(!items.length) return;
-  const probe=new THREE.PerspectiveCamera(camera.fov, innerWidth/innerHeight, 1, 150000);
-  const cp=targetCamPos?targetCamPos.clone():camera.position.clone();
-  probe.position.copy(cp);
-  probe.lookAt(targetLookAt?targetLookAt.clone():new THREE.Vector3(0,0,0));
-  probe.updateMatrixWorld(); probe.updateProjectionMatrix();
-  const tanHalf=Math.tan(camera.fov*Math.PI/360);
-  const safe=routeSafeRect();
-  const v=new THREE.Vector3();
-  const list=items.map(function(sp){
-    const base=(sp.userData&&sp.userData.baseY)||sp.position.y;
-    const d=Math.max(1, cp.distanceTo(new THREE.Vector3(sp.position.x, base, sp.position.z)));
-    const s=routeNumScale(d)*(innerHeight/2)/(d*tanHalf);
-    return {sp:sp, base:base, y:base, x:sp.position.x, z:sp.position.z, w:s, h:s*0.62};
+loadTiles();
+
+// 사이드바 UI 렌더링
+function renderSidebar(list){
+  const el = document.getElementById('blockList');
+  el.innerHTML = '';
+  list.forEach(b => {
+    const item = document.createElement('div');
+    item.className = 'block-item';
+    item.id = 'block-item-' + b.no;
+    item.onclick = () => flyToBlock(b);
+    item.innerHTML = `
+      <div class="block-item-top">
+        <span class="block-no">${b.no}</span>
+        <span class="block-name" title="${b.name}">${b.name}</span>
+      </div>
+      <div class="block-meta">
+        <span class="block-cat">${b.cat}</span>
+        <span class="block-addr" title="${b.addr}">${b.addr}</span>
+      </div>
+    `;
+    el.appendChild(item);
   });
-  function screen(it, yWorld){
-    v.set(it.x, yWorld, it.z).project(probe);
-    return {x:(v.x*0.5+0.5)*innerWidth, y:(0.5-v.y*0.5)*innerHeight};
-  }
-  /* 월드 y +1m가 화면에서 몇 px 위로 가는지(카메라 기울기 반영) + 정류의 기준 화면 좌표 */
-  list.forEach(function(it){
-    const a=screen(it, it.base), b=screen(it, it.base+200);
-    it.ax=a.x; it.ay=a.y;
-    it.dyPerM=Math.max(0.004, (a.y-b.y)/200);
-  });
-  /* 화면 위쪽 정류부터 차례로 "겹치지 않는 첫 칸"에 놓는다 → 번호가 포개지지 않는다 */
-  list.sort(function(a,b){ return a.ay-b.ay; });
-  const placed=[];
-  list.forEach(function(it){
-    const step=it.h*1.15+4;
-    const dyOrder=[0,step,-step,step*2,-step*2,step*3,-step*3,step*4,-step*4,step*5,-step*5,step*6,-step*6,step*7,-step*7];
-    let best=null;
-    for(let k=0;k<dyOrder.length && !best;k++){
-      const cy=it.ay+dyOrder[k];
-      if(cy-it.h/2<safe.top || cy+it.h/2>safe.bottom) continue;
-      let collide=false;
-      for(let i=0;i<placed.length;i++){
-        const p=placed[i];
-        if(Math.abs(it.ax-p.x)<(it.w+p.w)*0.52 && Math.abs(cy-p.y)<(it.h+p.h)*0.5+3){ collide=true; break; }
-      }
-      if(!collide) best={x:it.ax, y:cy, w:it.w, h:it.h};
-    }
-    if(!best) best={x:it.ax, y:it.ay, w:it.w, h:it.h};
-    placed.push(best);
-    /* 화면에서 올린 만큼 월드 y를 높인다(내리면 낮춘다) */
-    it.y=it.base+(it.ay-best.y)/it.dyPerM;
-  });
-  list.forEach(function(it){
-    const sp=it.sp;
-    sp.position.y=it.y;
-    sp.userData.liftM=Math.round(it.y-it.base);
-  });
+  document.getElementById('count-badge').textContent = list.length + '개';
 }
-function factCard(k, v){
-  return '<div class="fact-card"><div class="fact-label">'+esc(k)+'</div><div class="fact-value">'+esc(v)+'</div></div>';
-}
-function renderDrone(){
-  let h='<div class="panel-note">실제 타일 위 <b>360° 자동 궤도</b> 비행입니다. 고도를 바꾸면 궤도 반경도 함께 조정됩니다.</div>';
-  h+='<div class="btn-row">'+
-     '<button class="route-toggle" onclick="setOrbitAltitude(900)">900m</button>'+
-     '<button class="route-toggle" onclick="setOrbitAltitude(1600)">1600m</button>'+
-     '<button class="route-toggle" onclick="setOrbitAltitude(2600)">2600m</button>'+
-     '<button class="route-toggle'+(isOrbiting?'':' off')+'" onclick="toggleOrbit()">'+(isOrbiting?'일시정지':'재생')+'</button>'+
-     '</div>';
-  h+='<div class="sec-title">렌더 상태 <span class="asof">실측값</span></div><div class="fact-grid">'+
-     factCard('건물', lastBuildingCount.toLocaleString()+'동')+
-     factCard('타일', lastTileCount+'개')+
-     factCard('명소', Math.max(0,POI_DATA.length-1)+'곳')+
-     factCard('첫 프레임', Math.round(PERF.firstFrameMs)+'ms')+
-     '</div>';
-  h+='<div class="src-note">건물·타일 수치는 로컬 타일에서 센 값이고, 명소·좌표는 poi_data.json에서 읽습니다.</div>';
-  document.getElementById('panel-body').innerHTML=h;
-}
-/* 지상 반투명 원 = poi_data.json highlight_radius_m (미터 = 월드 단위) */
-function buildRadius(){
-  while(radiusGroup.children.length){ const c=radiusGroup.children.pop(); disposeObj(c); }
-  POI_DATA.forEach(function(p){
-    if(!(p.radius>0)) return;
-    const xz=toXZ(p.coords[0], p.coords[1]);
-    const col=new THREE.Color(p.color);
-    const disc=new THREE.Mesh(new THREE.CircleGeometry(p.radius,48),
-      new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:0.14,side:THREE.DoubleSide,depthWrite:false}));
-    disc.rotation.x=-Math.PI/2; disc.position.set(xz[0],1.0,xz[1]);
-    const ring=new THREE.Mesh(new THREE.RingGeometry(p.radius*0.96,p.radius,64),
-      new THREE.MeshBasicMaterial({color:col,transparent:true,opacity:0.55,side:THREE.DoubleSide,depthWrite:false}));
-    ring.rotation.x=-Math.PI/2; ring.position.set(xz[0],1.4,xz[1]);
-    radiusGroup.add(disc); radiusGroup.add(ring);
-  });
-}
-/* 로드맵: stops 순서대로 직선 연결 + 번호 스프라이트 */
-function buildRoutes(){
-  while(routeGroup.children.length){ const c=routeGroup.children.pop(); disposeObj(c); }
-  while(routeNumberGroup.children.length){ const c=routeNumberGroup.children.pop(); disposeObj(c); }
-  ROUTES.forEach(function(r){
-    r._objs=[];
-    const pts=r.pts.map(function(p){
-      const xz=toXZ(p.coords[0], p.coords[1]);
-      return new THREE.Vector3(xz[0], 10, xz[1]);
-    });
-    if(pts.length>1){
-      const lineColor=(r.days===1)?0x22d3ee:0xff4fa8;
-      const geo=new THREE.BufferGeometry().setFromPoints(pts);
-      const line=new THREE.Line(geo, new THREE.LineBasicMaterial({color:lineColor,transparent:true,opacity:1.0,blending:THREE.AdditiveBlending,depthWrite:false}));
-      routeGroup.add(line); r._objs.push(line);
-      const gpts=pts.map(function(v){ return new THREE.Vector3(v.x,1.2,v.z); });
-      const geo2=new THREE.BufferGeometry().setFromPoints(gpts);
-      const line2=new THREE.Line(geo2, new THREE.LineDashedMaterial({color:lineColor,transparent:true,opacity:0.5,dashSize:26,gapSize:18}));
-      line2.computeLineDistances();
-      routeGroup.add(line2); r._objs.push(line2);
-    }
-    pts.forEach(function(v, i){
-      const spColor=(r.days===1)?'#bfdbfe':'#fbd5e5';
-      /* 1일 코스는 낮게, 2일 코스는 높게 띄운다 → 화서문처럼 두 코스가 같은 정류지를
-         공유해도 번호가 완전히 포개지지 않는다(겹치면 layoutRouteNumbers가 더 올린다) */
-      const baseY=(r.days===1)?110:250;
-      const sp=makeSprite(String(i+1), spColor, 100, 100);
-      sp.position.set(v.x, baseY, v.z);
-      sp.userData={baseY:baseY, course:r.days, idx:i+1, name:(r.pts[i]&&r.pts[i].name)||''};
-      routeNumberGroup.add(sp); r._objs.push(sp);
-    });
-  });
-}
-function toggleRadius(){
-  radiusOn=!radiusOn;
-  const b=document.getElementById('radius-btn');
-  if(b) b.textContent='반경 원 '+(radiusOn?'ON':'OFF');
-  applyVisibility();
-  if(currentTab==='heritage') renderHeritage();
-}
-function toggleRoute(i){
-  const r=ROUTES[i]; if(!r) return;
-  r.visible=!r.visible;
-  (r._objs||[]).forEach(function(o){ o.visible=r.visible; });
-  renderRoadmap();
-}
-window.addEventListener('resize',()=>{
-  camera.aspect=innerWidth/innerHeight; camera.updateProjectionMatrix();
-  renderer.setSize(innerWidth,innerHeight);
-});
-function updateIntroInfo(){
-  const d=document.getElementById('intro-data');
-  if(d) d.textContent=(BLOCK&&BLOCK.name?BLOCK.name:'poi_data.json')+' · '+(BLOCK&&BLOCK.version?('v'+BLOCK.version+' · '):'')+Math.round(PERF.blockMs)+'ms';
-  const p=document.getElementById('intro-poi');
-  if(p) p.textContent='명소 '+Math.max(0,POI_DATA.length-1)+'곳 · 코스 '+ROUTES.length+'개 · 연혁 '+HISTORY.length+'건';
-  const f=document.getElementById('intro-perf');
-  if(f) f.textContent=Math.round(PERF.firstFrameMs)+'ms · 타일 '+lastTileCount+'개';
-}
-(async function init(){
-  const tb=performance.now();
-  try{
-    const res=await fetch('poi_data.json', {cache:'no-store'});
-    if(!res.ok) throw new Error('HTTP '+res.status);
-    normBlock(await res.json());
-    PERF.blockMs=performance.now()-tb;
-  }catch(err){
-    PERF.blockMs=performance.now()-tb;
-    document.getElementById('panel-body').innerHTML='<div class="panel-note">poi_data.json을 읽지 못했습니다: '+esc(err.message)+'<br>HTML과 같은 폴더에 poi_data.json을 두고 실행하세요. (file:// 로 열면 fetch가 차단됩니다 → run_paldal_showcase_real_v3.bat 사용)</div>';
-    document.getElementById('sidebar-poi-count').innerText='0';
-    console.error('[v3] poi_data.json load failed', err);
+renderSidebar(BLOCKS);
+
+function filterBlocks(){
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  if(!q){
+    renderSidebar(BLOCKS);
     return;
   }
-  document.getElementById('panel-footer').innerText='데이터 poi_data.json · 명소 '+Math.max(0,POI_DATA.length-1)+'곳 · 코스 '+ROUTES.length+'개 · 외부요청 0';
-  MAN=await (await fetch('tiles_1000m/tiles_manifest.json')).json();
-  try { const r=await fetch('tiles_1000m/ground_manifest.json'); GMAN=r.ok?await r.json():null; } catch(e){ GMAN=null; }
-  buildMarkers();
-  ensureBaseGround(); /* C14: 상세 바닥을 기다리지 않고 첫 프레임부터 건축물을 지면에 안착 */
-  const tt=performance.now();
-  await loadTiles(VIEW.initialKm, VIEW.initialLod, true);
-  PERF.tilesMs=performance.now()-tt;
-  await addHierarchyLabels();
-  applyEnv(envByClock());
-  await loadWeather();
-  await addWaterLayer();
-  animate();
-  switchTab('basic');
-  requestAnimationFrame(function(){
-    PERF.firstFrameMs=performance.now()-PERF.start;
-    updateIntroInfo();
-    if(currentTab==='drone') renderDrone();
-    scheduleViewExpand();
-  });
-})();
-
-</script>
-<!-- 모바일·PC 직접 조작(2026-11-02): 한 손가락/마우스 드래그=이동, 두 손가락 핀치·휠=확대/축소, 상단 좌측 '목록으로' 버튼 -->
-<style>
-#back-list{position:fixed;left:10px;top:calc(env(safe-area-inset-top,0px) + 98px);z-index:9999;display:flex;align-items:center;min-height:40px;padding:0 14px;border-radius:20px;background:rgba(15,23,42,.88);color:#7dd3fc;border:1px solid rgba(56,189,248,.45);font:700 13px 'Malgun Gothic',sans-serif;text-decoration:none;backdrop-filter:blur(6px)}
-</style>
-<a id="back-list" href="../../index.html">← 목록</a>
-<script>
-(function(){
-  try{ var bl=document.getElementById('back-list'); if(window.self!==window.top){ bl.style.display='none'; } if(window.matchMedia('(max-width:820px)').matches) bl.href='../../m/index.html'; }catch(e){}
-  try{
-    var el=renderer.domElement; el.style.touchAction='none';
-    var ptrs=new Map(), lastDist=0;
-    function lookPt(){ if(!targetLookAt){ targetLookAt=new THREE.Vector3(0,0,0); } return targetLookAt; }
-    function stopAuto(){ targetCamPos=null; if(typeof isOrbiting!=='undefined' && isOrbiting && typeof stopOrbit==='function'){ stopOrbit(); } }
-    function pan(dx,dy){
-      var look=lookPt(), dist=camera.position.distanceTo(look);
-      var k=dist*Math.tan(camera.fov*Math.PI/360)*2/innerHeight;
-      var right=new THREE.Vector3().setFromMatrixColumn(camera.matrixWorld,0); right.y=0; right.normalize();
-      var fwd=new THREE.Vector3(); camera.getWorldDirection(fwd); fwd.y=0; fwd.normalize();
-      var mv=right.multiplyScalar(-dx*k).add(fwd.multiplyScalar(dy*k));
-      camera.position.add(mv); look.add(mv);
-    }
-    function zoom(f){
-      var look=lookPt(), v=camera.position.clone().sub(look);
-      var len=Math.min(40000,Math.max(150,v.length()*f)); v.setLength(len); camera.position.copy(look).add(v);
-    }
-    el.addEventListener('pointerdown',function(e){
-      try{ el.setPointerCapture(e.pointerId); }catch(_){}
-      ptrs.set(e.pointerId,{x:e.clientX,y:e.clientY}); stopAuto();
-      if(ptrs.size===2){ var a=Array.from(ptrs.values()); lastDist=Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y); }
-    });
-    el.addEventListener('pointermove',function(e){
-      var p=ptrs.get(e.pointerId); if(!p) return;
-      var dx=e.clientX-p.x, dy=e.clientY-p.y; p.x=e.clientX; p.y=e.clientY;
-      if(ptrs.size===1){ pan(dx,dy); }
-      else if(ptrs.size===2){ var a=Array.from(ptrs.values()), d=Math.hypot(a[0].x-a[1].x,a[0].y-a[1].y); if(lastDist>0&&d>0){ zoom(lastDist/d); } lastDist=d; }
-    });
-    function up(e){ ptrs.delete(e.pointerId); lastDist=0; }
-    el.addEventListener('pointerup',up); el.addEventListener('pointercancel',up);
-    el.addEventListener('wheel',function(e){ e.preventDefault(); stopAuto(); zoom(1+Math.max(-0.5,Math.min(0.5,e.deltaY*0.001))); },{passive:false});
-  }catch(err){ console.error('touch controls',err); }
-})();
-</script>
-
-<!-- 2D 미니맵(2026-11-02): 카메라 위치·방향과 명소 점을 보여 주고, 탭하면 그 위치로 이동 -->
-<style>
-#minimap{position:fixed;right:10px;bottom:calc(env(safe-area-inset-bottom,0px) + 84px);width:116px;height:116px;z-index:9998;border-radius:14px;overflow:hidden;background:rgba(255,255,255,.94);border:2px solid rgba(15,23,42,.55);box-shadow:0 4px 14px rgba(15,23,42,.35)}
-#minimap canvas{width:100%;height:100%;display:block;touch-action:none}
-#minimap .mm-t{position:absolute;left:6px;bottom:3px;font:700 9px 'Malgun Gothic',sans-serif;color:#334155;pointer-events:none}
-</style>
-<div id="minimap"><canvas id="mm-cv" width="232" height="232"></canvas><span class="mm-t">2D 미니맵</span></div>
-<script>
-(function(){
-  try{
-    var cv=document.getElementById('mm-cv'), g=cv.getContext('2d'), HALF=1800, S=232;
-    function tx(x){ return (x/HALF*0.5+0.5)*S; } function tz(z){ return (z/HALF*0.5+0.5)*S; }
-    function draw(){
-      g.clearRect(0,0,S,S); g.fillStyle='#e6eae6'; g.fillRect(0,0,S,S);
-      g.strokeStyle='rgba(100,116,139,.35)'; g.lineWidth=1;
-      for(var i=1;i<4;i++){ g.beginPath(); g.moveTo(i*S/4,0); g.lineTo(i*S/4,S); g.moveTo(0,i*S/4); g.lineTo(S,i*S/4); g.stroke(); }
-      try{ (POI_DATA||[]).forEach(function(p){ var q=toXZ(p.coords[0],p.coords[1]); g.fillStyle=(p.kind==='office')?'#f59e0b':'#0284c7'; g.beginPath(); g.arc(tx(q[0]),tz(q[1]),(p.kind==='office')?6:4,0,6.283); g.fill(); }); }catch(e){}
-      var cx=camera.position.x, cz=camera.position.z, d=new THREE.Vector3(); camera.getWorldDirection(d);
-      var px=Math.max(6,Math.min(S-6,tx(cx))), pz=Math.max(6,Math.min(S-6,tz(cz))), ang=Math.atan2(d.x,-d.z);
-      g.save(); g.translate(px,pz); g.rotate(ang); g.fillStyle='#ef4444'; g.beginPath(); g.moveTo(0,-11); g.lineTo(7,8); g.lineTo(0,4); g.lineTo(-7,8); g.closePath(); g.fill(); g.restore();
-    }
-    setInterval(draw,250); draw();
-    cv.addEventListener('pointerdown',function(e){
-      var r=cv.getBoundingClientRect(), x=((e.clientX-r.left)/r.width*2-1)*HALF, z=((e.clientY-r.top)/r.height*2-1)*HALF;
-      var look=(typeof targetLookAt!=='undefined'&&targetLookAt)?targetLookAt:new THREE.Vector3(0,0,0);
-      var off=camera.position.clone().sub(look);
-      targetLookAt=new THREE.Vector3(x,0,z); targetCamPos=new THREE.Vector3(x+off.x,Math.max(300,off.y),z+off.z);
-      if(typeof isOrbiting!=='undefined'&&isOrbiting&&typeof stopOrbit==='function'){ stopOrbit(); }
-      e.stopPropagation();
-    });
-  }catch(err){ console.error('minimap',err); }
-})();
-</script>
-
-<!-- MOBILE_SHEET_PATCH -->
-<style>
-@media (max-width:700px){
-  body:has(#sidebar:not(.collapsed)) #minimap{bottom:calc(env(safe-area-inset-bottom,0px) + 46vh + 14px)!important}
-  .sidebar-header{touch-action:none}
+  const filtered = BLOCKS.filter(b => 
+    b.name.toLowerCase().includes(q) || 
+    b.cat.toLowerCase().includes(q) || 
+    b.addr.toLowerCase().includes(q) ||
+    String(b.no).includes(q)
+  );
+  renderSidebar(filtered);
 }
-</style>
-<script>
-(function(){var h=document.querySelector('.sidebar-header'),sb=document.getElementById('sidebar');if(!h||!sb)return;var y0=null;
- h.addEventListener('pointerdown',function(e){y0=e.clientY});
- h.addEventListener('pointerup',function(e){if(y0===null)return;var dy=e.clientY-y0;y0=null;var btn=sb.querySelector('button');
-   var col=sb.classList.contains('collapsed');if(Math.abs(dy)>40&&btn&&((dy>0&&!col)||(dy<0&&col)))btn.click()});
-})();
-</script>
-<!-- NIGHT_TERRAIN_PATCH2 -->
-<script>
-(function(){if(typeof applyEnv!=='function')return;var _ae=applyEnv;var patched=false;
- applyEnv=function(m){var r=_ae.apply(this,arguments);var T=window.TERRAIN_MESH;if(T){var night=(m==='night'||m==='dusk');
-   if(!patched){patched=true;T.material.onBeforeCompile=function(sh){sh.fragmentShader=sh.fragmentShader.replace('vec3 totalEmissiveRadiance = emissive;','vec3 totalEmissiveRadiance = emissive * pow(max(vColor,vec3(0.001)), vec3(2.6)) * 2.4;')};T.material.customProgramCacheKey=function(){return 'night_ridge2'};}
-   T.material.emissive.setHex(night?0x2c5a8c:0x000000);T.material.emissiveIntensity=night?(m==='night'?0.3:0.18):0;T.material.needsUpdate=true}
-   return r};})();
-</script>
-<!-- STAMP_PATCH -->
-<style>#stamp-toast{position:fixed;left:50%;bottom:calc(env(safe-area-inset-bottom,0px) + 70px);transform:translateX(-50%);background:rgba(15,23,42,.94);border:1px solid #fbbf24;color:#fde68a;font:700 13px 'Malgun Gothic',sans-serif;padding:9px 16px;border-radius:20px;z-index:10050;opacity:0;transition:opacity .25s;pointer-events:none;white-space:nowrap}#stamp-toast.on{opacity:1}</style>
-<div id="stamp-toast"></div>
-<script>
-(function(){
- if(typeof focusPoi!=='function')return;
- var m=location.pathname.match(/regions\/(\d+)_/);var code=m?m[1]:null;if(!code)return;
- var KEY='3ai_stamps_v1',_f=focusPoi,tt=null;
- function load(){try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){return {}}}
- focusPoi=function(id){var r=_f.apply(this,arguments);
-  try{var d=load(),o=d[code]||{ids:[],total:0};if(o.ids.indexOf(id)<0)o.ids.push(id);o.total=(typeof POI_DATA!=='undefined'&&POI_DATA.length)||o.total;o.ts=Date.now();d[code]=o;localStorage.setItem(KEY,JSON.stringify(d));
-   var t=document.getElementById('stamp-toast');t.textContent='🏅 도장 '+o.ids.length+(o.total?'/'+o.total:'')+(o.total&&o.ids.length>=o.total?' · 이 동네 완성!':'');t.classList.add('on');clearTimeout(tt);tt=setTimeout(function(){t.classList.remove('on')},2200)}catch(e){}
-  return r};
-})();
-</script>
-<!-- PRECIP_PATCH -->
-<script>
-/* 비·눈 파티클: weather.json(condition)이 rain/snow일 때만 켜진다. 시험: 주소 뒤에 ?wx=rain 또는 ?wx=snow. 구조 참고: stared/warsaw-vibe-voxel (MIT) weather.ts */
-(function(){
- if(typeof THREE==='undefined'||typeof scene==='undefined'||typeof renderer==='undefined')return;
- var q=new URLSearchParams(location.search).get('wx'),mode=q||null,N=9000;
- var V='uniform float uTime;uniform vec3 uCam;uniform float uBox;uniform float uSnow;uniform float uSize;attribute float aEnd;varying float vA;void main(){vec3 p=position*uBox;float fall=mix(9.0,1.1,uSnow)*(uBox/60.0),t=uTime*fall;p.y-=t;p.x+=uTime*mix(1.5,0.5,uSnow)*(uBox/60.0)+uSnow*sin(uTime*0.9+p.z*0.07)*0.6*(uBox/60.0);p.z+=uSnow*cos(uTime*0.7+p.x*0.05)*0.6*(uBox/60.0);p=uCam+mod(p-uCam+uBox*0.5,uBox)-uBox*0.5;if(aEnd>0.5)p+=vec3(-0.06,3.2,0.0)*(1.0-uSnow)*(uBox/60.0);vec4 mv=modelViewMatrix*vec4(p,1.0);gl_Position=projectionMatrix*mv;gl_PointSize=min(uSize/-mv.z,8.0);vA=smoothstep(uBox*0.5,uBox*0.2,length(p-uCam));}';
- var F='uniform float uSnow;uniform vec3 uCol;varying float vA;void main(){float a=vA;if(uSnow>0.5){vec2 q=gl_PointCoord-0.5;a*=smoothstep(0.5,0.2,length(q));}gl_FragColor=vec4(uCol,a*mix(0.65,0.95,uSnow));}';
- var U={uTime:{value:0},uCam:{value:new THREE.Vector3()},uBox:{value:300},uCol:{value:new THREE.Color(0xdfe7ee)}};
- function mat(snow){return new THREE.ShaderMaterial({vertexShader:V,fragmentShader:F,transparent:true,depthWrite:false,uniforms:{uTime:U.uTime,uCam:U.uCam,uBox:U.uBox,uCol:U.uCol,uSnow:{value:snow?1:0},uSize:{value:snow?6000:0}}})}
- var lines=new Float32Array(N*6),ends=new Float32Array(N*2),pts=new Float32Array(N*3),r=function(){return Math.random()-0.5};
- for(var i=0;i<N;i++){var x=r(),y=r(),z=r();lines.set([x,y,z,x,y,z],i*6);ends[i*2+1]=1;pts.set([r(),r(),r()],i*3)}
- var lg=new THREE.BufferGeometry();lg.setAttribute('position',new THREE.BufferAttribute(lines,3));lg.setAttribute('aEnd',new THREE.BufferAttribute(ends,1));
- var pg=new THREE.BufferGeometry();pg.setAttribute('position',new THREE.BufferAttribute(pts,3));pg.setAttribute('aEnd',new THREE.BufferAttribute(new Float32Array(N),1));
- var rain=new THREE.LineSegments(lg,mat(false)),snow=new THREE.Points(pg,mat(true));
- [rain,snow].forEach(function(o){o.frustumCulled=false;o.visible=false;o.name='precip';scene.add(o)});
- function set(m){mode=m;rain.visible=(m==='rain');snow.visible=(m==='snow');window.__PRECIP_MODE=m}
- if(mode==='rain'||mode==='snow')set(mode);
- else fetch('weather.json',{cache:'no-store'}).then(function(r){return r.ok?r.json():null}).then(function(w){if(w&&(w.condition==='rain'||w.condition==='snow'))set(w.condition)}).catch(function(){});
- var _r=renderer.render.bind(renderer);
- renderer.render=function(s,c){if(mode){U.uTime.value=performance.now()/1000;U.uCam.value.copy(c.position);U.uBox.value=Math.min(1200,Math.max(160,c.position.y*0.6));
-   var bg=s.background&&s.background.isColor?s.background:null;var l=bg?(bg.r+bg.g+bg.b)/3:0.6;var k=Math.min(1,0.25+l*1.2);U.uCol.value.setRGB(0.87*k,0.9*k,0.93*k)}
-  _r(s,c)};
- window.__setPrecip=set;
-})();
+
+// 블록 이동 & 상세 표시
+let targetCam = null, targetLook = null;
+let isOrbiting = false;
+
+function flyToBlock(b){
+  const xz = toXZ(b.coords[0], b.coords[1]);
+  targetCam = new THREE.Vector3(xz[0], 280, xz[1] + 360);
+  targetLook = new THREE.Vector3(xz[0], 40, xz[1]);
+  
+  // 마커 하이라이트
+  markerObjects.forEach(m => {
+    const match = (m.block.no === b.no);
+    m.pin.material.color.setHex(match ? 0xfde047 : 0x38bdf8);
+    m.pin.scale.set(match ? 1.8 : 1.0, match ? 1.8 : 1.0, match ? 1.8 : 1.0);
+  });
+  
+  // 사이드바 active 표시
+  document.querySelectorAll('.block-item').forEach(el => el.classList.remove('active'));
+  const activeEl = document.getElementById('block-item-' + b.no);
+  if(activeEl){
+    activeEl.classList.add('active');
+    activeEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // 모달 표시
+  document.getElementById('dtName').textContent = b.name;
+  document.getElementById('dtCat').textContent = '분류: ' + b.cat;
+  document.getElementById('dtAddr').textContent = '주소: ' + b.addr;
+  document.getElementById('dtCoords').textContent = '좌표: ' + b.coords[0].toFixed(5) + ', ' + b.coords[1].toFixed(5);
+  document.getElementById('block-detail').style.display = 'flex';
+}
+
+function closeDetail(){
+  document.getElementById('block-detail').style.display = 'none';
+}
+
+function toggleSidebar(){
+  const sb = document.getElementById('sidebar');
+  sb.classList.toggle('collapsed');
+  document.body.classList.toggle('ui-collapsed', sb.classList.contains('collapsed'));
+}
+
+function resetView(){
+  targetCam = new THREE.Vector3(0, 1300, 1800);
+  targetLook = new THREE.Vector3(0, 40, 0);
+  closeDetail();
+}
+
+function toggleOrbit(){
+  isOrbiting = !isOrbiting;
+  const btn = document.getElementById('btnOrbit');
+  btn.style.background = isOrbiting ? '#0284c7' : '';
+}
+
+// 부드러운 카메라 보간 및 렌더 루프
+function animate(){
+  requestAnimationFrame(animate);
+  
+  if(targetCam && targetLook){
+    camera.position.lerp(targetCam, 0.05);
+    const curLook = new THREE.Vector3();
+    camera.getWorldDirection(curLook);
+    // 간단 보간
+    if(camera.position.distanceTo(targetCam) < 2){
+      targetCam = null;
+    }
+  }
+
+  if(isOrbiting){
+    scene.rotation.y += 0.0015;
+  }
+
+  renderer.render(scene, camera);
+}
+animate();
+
+// 윈도우 리사이즈
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
 </script>
 </body>
 </html>

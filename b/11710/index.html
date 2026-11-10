@@ -1,490 +1,395 @@
 <!DOCTYPE html>
-<html lang="ko"><head><meta charset="UTF-8">
-<title>서울특별시 송파구 3D 지도 (잠실·롯데월드타워 중심)</title>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#0b111e">
+<title>서울특별시 송파구 3D 지도 (잠실·롯데월드타워 중심) · 50블록 정본</title>
 <style>
- html,body{margin:0;height:100%;overflow:hidden;background:#0e1726;color:#e8eefc;font-family:'Malgun Gothic',sans-serif}
- canvas{display:block;filter:brightness(1.65) saturate(0.62) url(#edgeSharpen)}   /* 인라인 캔버스의 하단 여백(descender) 제거 */
- /* 2026-10-22 신안군 보정: 엣지 대비·샤프닝 강화 + 채도 감쇠 — quality4_nosky 재측정 대응 */
- #hud{position:absolute;left:12px;top:10px;z-index:9;font-size:13px;line-height:1.6;background:rgba(10,18,32,.82);
-      padding:10px 13px;border:1px solid #24334d;border-radius:9px;
-      max-width:min(560px,calc(100vw - 24px));max-height:calc(100vh - 150px);overflow:auto;box-sizing:border-box}
- #hud b{color:#7fd1ff} .k{color:#9fb6d6} .warn{color:#ff8b9e}
- /* 적용안 3(2026-10-22): 지역명 + 상위 지명 5개는 1줄 고정(넘치면 말줄임) */
- #regionLine{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
- #hs{width:110px;vertical-align:-4px;accent-color:#7fd1ff}
- #legend{position:absolute;left:12px;bottom:12px;z-index:9;font-size:12px;line-height:1.7;
-      background:rgba(10,18,32,.82);padding:9px 13px;border:1px solid #24334d;border-radius:9px;
-      max-width:calc(100vw - 24px);box-sizing:border-box}
- #legend span{white-space:nowrap;margin-right:8px}   /* 항목 단위로만 줄바꿈 → 1280에서 잘림 방지 */
- #legend i{display:inline-block;width:11px;height:11px;border-radius:2px;margin-right:6px;vertical-align:-1px}
- button{background:#1b2b44;color:#e8eefc;border:1px solid #2c4468;border-radius:6px;padding:4px 9px;margin-right:4px;cursor:pointer}
- button.on{background:#2b6cb0}
- .mono{font-family:Consolas,monospace;font-size:12px;color:#9fb6d6}
- @media (max-width:1366px){
-   #hud{font-size:12px;padding:8px 10px;max-height:calc(100vh - 130px)}
-   #legend{font-size:11px;padding:7px 10px}
- }
-</style></head><body>
-<div id="hud">
-  <b>송파구 1km 타일 뷰어 (건물 + 바닥)</b><br>
-  <span id="regionLine"><b id="regionName">송파구</b> · <span class="k">상위 지명</span> <span id="placeNames">불러오는 중…</span></span><br>
-  <span class="k">반경</span>
-  <button data-km="1">1km</button><button data-km="2" class="on">2km</button><button data-km="3">3km</button>
-  <button id="gbtn" class="on">바닥 ON/OFF</button>
-  <button id="req">타일 로딩</button><br>
-  <span class="k">높이</span> <input id="hs" type="range" min="0.2" max="3" step="0.1" value="1"> <span class="mono" id="hsv">1.0×</span><br>
-  <span id="stat">대기 중…</span><br>
-  <span class="mono" id="detail"></span><br>
-  <span class="k">드래그=회전 · 휠=확대</span>
+  html, body { margin:0; height:100%; overflow:hidden; background:#0b111e; color:#e2e8f0; font-family:'Malgun Gothic', -apple-system, sans-serif; }
+  canvas { display:block; width:100vw; height:100vh; touch-action:none; -webkit-user-select:none; user-select:none; }
+
+  /* 상단 헤더 바 */
+  #header-bar {
+    position:absolute; top:0; left:0; right:0; height:56px;
+    background:linear-gradient(180deg, rgba(11,17,30,0.96) 0%, rgba(11,17,30,0.82) 80%, rgba(11,17,30,0) 100%);
+    display:flex; align-items:center; justify-content:space-between; padding:0 18px; z-index:20;
+    pointer-events:none;
+  }
+  .brand-title { font-size:15px; font-weight:bold; color:#7fd1ff; letter-spacing:0.5px; pointer-events:auto; display:flex; align-items:center; gap:8px; }
+  .brand-badge { background:#1e293b; color:#38bdf8; font-size:11px; padding:3px 9px; border-radius:12px; border:1px solid #0284c7; font-weight:600; }
+  .header-links { pointer-events:auto; display:flex; gap:10px; align-items:center; }
+  .nav-btn { background:rgba(30,41,59,0.8); color:#94a3b8; border:1px solid rgba(148,163,184,0.3); padding:5px 12px; border-radius:8px; font-size:12px; text-decoration:none; transition:all 0.2s; font-weight:600; }
+  .nav-btn:hover { background:#0284c7; color:#fff; border-color:#38bdf8; }
+
+  /* 좌측 사이드바: 50대 정규 블록 목록 */
+  #sidebar {
+    position:fixed; top:66px; left:0; bottom:16px; width:290px; box-sizing:border-box;
+    background:rgba(15,23,42,0.94); backdrop-filter:blur(16px);
+    border:1px solid rgba(148,163,184,0.2); border-radius:0 16px 16px 0;
+    display:flex; flex-direction:column; z-index:50; overflow:hidden;
+    box-shadow:0 12px 32px rgba(0,0,0,0.6);
+    transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  #sidebar.collapsed { transform: translateX(-100%); }
+  #collapse-btn {
+    position:fixed; left:290px; top:120px; width:24px; height:80px; z-index:55;
+    background:rgba(2,132,199,0.92); color:#fff; border:1px solid rgba(56,189,248,0.6);
+    border-radius:0 10px 10px 0; cursor:pointer; display:flex; align-items:center; justify-content:center;
+    writing-mode:vertical-lr; font-size:11px; font-weight:bold; box-shadow:2px 0 10px rgba(0,0,0,0.4);
+    transition: left 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  body.ui-collapsed #collapse-btn { left:0; }
+
+  .sidebar-header {
+    padding:14px 16px; background:rgba(30,41,59,0.75); border-bottom:1px solid rgba(148,163,184,0.15);
+    display:flex; justify-content:space-between; align-items:center;
+  }
+  .sidebar-title { font-size:14px; font-weight:bold; color:#f1f5f9; display:flex; align-items:center; gap:6px; }
+  .sidebar-count { font-size:11px; background:#0284c7; color:#fff; padding:2px 8px; border-radius:10px; font-weight:bold; }
+  
+  .search-box { padding:10px 12px; border-bottom:1px solid rgba(148,163,184,0.1); }
+  .search-box input {
+    width:100%; box-sizing:border-box; background:rgba(30,41,59,0.6); border:1px solid rgba(148,163,184,0.25);
+    border-radius:8px; padding:7px 10px; color:#f1f5f9; font-size:12px; outline:none;
+  }
+  .search-box input:focus { border-color:#38bdf8; background:rgba(30,41,59,0.9); }
+
+  .block-list { flex:1; overflow-y:auto; padding:10px; display:flex; flex-direction:column; gap:6px; }
+  .block-list::-webkit-scrollbar { width:5px; }
+  .block-list::-webkit-scrollbar-thumb { background:rgba(148,163,184,0.3); border-radius:3px; }
+
+  .block-item {
+    padding:9px 11px; background:rgba(30,41,59,0.5); border:1px solid rgba(148,163,184,0.12);
+    border-radius:9px; cursor:pointer; transition:all 0.18s; display:flex; flex-direction:column; gap:3px;
+  }
+  .block-item:hover { background:rgba(51,65,85,0.85); border-color:#38bdf8; transform:translateY(-1px); }
+  .block-item.active { background:rgba(2,132,199,0.28); border-color:#0284c7; box-shadow:0 0 10px rgba(56,189,248,0.2); }
+  
+  .block-item-top { display:flex; align-items:center; gap:7px; }
+  .block-no { font-size:10.5px; font-weight:bold; color:#38bdf8; background:rgba(2,132,199,0.18); padding:1px 5px; border-radius:4px; min-width:18px; text-align:center; }
+  .block-name { font-size:12.5px; font-weight:bold; color:#f8fafc; flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .block-meta { display:flex; align-items:center; gap:6px; font-size:10.5px; color:#94a3b8; }
+  .block-cat { background:rgba(148,163,184,0.15); padding:1px 5px; border-radius:4px; color:#cbd5e1; }
+  .block-addr { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:140px; }
+
+  /* 우측 하단 컨트롤 */
+  #controls {
+    position:absolute; bottom:18px; right:18px; z-index:25;
+    display:flex; flex-direction:column; gap:7px;
+  }
+  .ctrl-btn {
+    background:rgba(15,23,42,0.9); color:#f1f5f9; border:1px solid rgba(148,163,184,0.3);
+    border-radius:9px; padding:8px 13px; font-size:12px; font-weight:bold; cursor:pointer;
+    box-shadow:0 4px 14px rgba(0,0,0,0.5); transition:all 0.2s; display:flex; align-items:center; gap:6px;
+  }
+  .ctrl-btn:hover { background:#0284c7; border-color:#38bdf8; }
+
+  /* 선택된 블록 상세 모달 */
+  #block-detail {
+    position:fixed; bottom:20px; left:305px; z-index:45; max-width:380px;
+    background:rgba(15,23,42,0.95); backdrop-filter:blur(14px);
+    border:1px solid rgba(56,189,248,0.5); border-radius:14px;
+    padding:14px 16px; box-shadow:0 12px 30px rgba(0,0,0,0.7);
+    display:none; flex-direction:column; gap:6px;
+  }
+  body.ui-collapsed #block-detail { left:20px; }
+  .detail-title { font-size:15px; font-weight:bold; color:#7fd1ff; display:flex; justify-content:space-between; align-items:center; }
+  .detail-close { cursor:pointer; color:#94a3b8; font-size:14px; padding:2px 6px; }
+  .detail-close:hover { color:#fff; }
+  .detail-cat { font-size:11px; color:#fde047; }
+  .detail-addr { font-size:11.5px; color:#cbd5e1; line-height:1.4; }
+  .detail-coords { font-size:10px; color:#64748b; font-family:Consolas, monospace; }
+
+  @media (max-width: 768px) {
+    #sidebar { width:240px; }
+    #collapse-btn { left:240px; }
+    #block-detail { left:10px; right:10px; max-width:none; bottom:70px; }
+  }
+</style>
+<script src="../../vendor/three.min.js"></script>
+</head>
+<body>
+
+<div id="header-bar">
+  <div class="brand-title">
+    <span>서울특별시 송파구 3D 지도</span>
+    <span class="brand-badge">50블록 정본 v1.0</span>
+  </div>
+  <div class="header-links">
+    <a class="nav-btn" href="../../index.html">← 전체 포털</a>
+  </div>
 </div>
-<div id="legend">
-  <b>바닥</b>
-  <span><i style="background:#aeb4c4"></i>도로</span><span><i style="background:#338caa"></i>수면</span>
-  <span><i style="background:#357a4f"></i>녹지</span><span><i style="background:#73798a"></i>철도</span>
-  <span><i style="background:#212e40"></i>토지이용</span>
+
+<div id="collapse-btn" onclick="toggleSidebar()">목록</div>
+
+<div id="sidebar">
+  <div class="sidebar-header">
+    <div class="sidebar-title">🏢 50대 정규 블록</div>
+    <div class="sidebar-count" id="count-badge">50개</div>
+  </div>
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="블록 이름 / 주소 검색..." oninput="filterBlocks()">
+  </div>
+  <div class="block-list" id="blockList"></div>
 </div>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
- <filter id="edgeSharpen" x="0" y="0" width="100%" height="100%">
-  <feConvolveMatrix order="3" divisor="1" bias="0" edgeMode="duplicate" preserveAlpha="true"
-                    kernelMatrix="0 -1.5 0 -1.5 7 -1.5 0 -1.5 0"/>
- </filter>
-</svg>
-<script src="./../../vendor/three.min.js"></script>
+
+<div id="block-detail">
+  <div class="detail-title">
+    <span id="dtName">블록 명칭</span>
+    <span class="detail-close" onclick="closeDetail()">✕</span>
+  </div>
+  <div class="detail-cat" id="dtCat">카테고리</div>
+  <div class="detail-addr" id="dtAddr">도로명주소</div>
+  <div class="detail-coords" id="dtCoords">WGS84 좌표</div>
+</div>
+
+<div id="controls">
+  <button class="ctrl-btn" onclick="resetView()">🔄 뷰 리셋</button>
+  <button class="ctrl-btn" id="btnOrbit" onclick="toggleOrbit()">🌐 자동 회전</button>
+</div>
+
 <script>
-const REGION = '송파구';
-const ASSET = './';   // 자산(타일·vendor) 상대경로 접두 — 후보를 pilot/candidates/에 두기 위한 인자(2026-10-23)
-const LON = 88000, LAT = 111000, HSCALE = 1.0;
+const REGION_CODE = '11710';
+const REGION_NAME = '송파구';
+const CENTER = [127.1025, 37.5125];
+const LON = 88000, LAT = 111000;
+const BLOCKS = [{"no": 1, "id": "11710_B01_lotte_world_tower", "name": "롯데월드타워 (555m · 서울스카이)", "cat": "초고층/랜드마크", "coords": [127.1025, 37.5125], "addr": "서울특별시 송파구 올림픽로 300 (신천동)"}, {"no": 2, "id": "11710_B02_lotte_world_magic_island", "name": "롯데월드 어드벤처 매직아일랜드", "cat": "테마파크/수상성곽", "coords": [127.0985, 37.5115], "addr": "서울특별시 송파구 올림픽로 240 (잠실동)"}, {"no": 3, "id": "11710_B03_lotte_world_mall_avenuel", "name": "롯데월드몰 & 에비뉴엘 명품관", "cat": "복합쇼핑/명품관", "coords": [127.1005, 37.5128], "addr": "서울특별시 송파구 올림픽로 300 (신천동)"}, {"no": 4, "id": "11710_B04_seokchon_lake_east", "name": "석촌호수 동호 수변 산책로 & 벚꽃길", "cat": "호수/수변산책로", "coords": [127.1045, 37.508], "addr": "서울특별시 송파구 잠실동 석촌호수 일대"}, {"no": 5, "id": "11710_B05_seokchon_lake_west", "name": "석촌호수 서호 수변무대 & 카페거리", "cat": "호수/수변무대", "coords": [127.0995, 37.506], "addr": "서울특별시 송파구 잠실동 석촌호수 일대"}, {"no": 6, "id": "11710_B06_songpa_district_office", "name": "송파구청 본관 & 송파구의회 청사", "cat": "공공청사/행정", "coords": [127.112, 37.5145], "addr": "서울특별시 송파구 올림픽로 326 (잠실동)"}, {"no": 7, "id": "11710_B07_jamsil_station_transfer_center", "name": "잠실역 지하 광역환승센터 & 롯데지하광장", "cat": "환승센터/교통", "coords": [127.1005, 37.5133], "addr": "서울특별시 송파구 올림픽로 지하 265 (잠실동)"}, {"no": 8, "id": "11710_B08_songpanaru_park", "name": "송파나루공원 황포돛배 조형물 & 잔디광장", "cat": "공원/조형광장", "coords": [127.1135, 37.5065], "addr": "서울특별시 송파구 송파대로 지선 (송파동)"}, {"no": 9, "id": "11710_B09_galleria_palace_lottecastle_gold", "name": "잠실 갤러리아팰리스 & 롯데캐슬골드 트윈타워", "cat": "주거/트윈타워", "coords": [127.1057, 37.5165], "addr": "서울특별시 송파구 올림픽로 212 (잠실동)"}, {"no": 10, "id": "11710_B10_bangimotgol_gate", "name": "방이맛골 전통 먹자골목 상징 패루게이트", "cat": "상권/전통패루", "coords": [127.1115, 37.511], "addr": "서울특별시 송파구 방이동 먹자골목 일대"}, {"no": 11, "id": "11710_B11_olympic_park_world_peace_gate", "name": "올림픽공원 평화의 문", "cat": "기념조형/공원정문", "coords": [127.1215, 37.5202], "addr": "서울특별시 송파구 올림픽로 424 (방이동)"}, {"no": 12, "id": "11710_B12_mongchontoseong_walkway", "name": "올림픽공원 몽촌토성 산책로 & 망월봉", "cat": "고대토성/산책로", "coords": [127.118, 37.522], "addr": "서울특별시 송파구 올림픽로 424 (방이동)"}, {"no": 13, "id": "11710_B13_olympic_park_lone_tree", "name": "올림픽공원 나홀로나무", "cat": "공원/상징수목", "coords": [127.1155, 37.5235], "addr": "서울특별시 송파구 올림픽로 424 (방이동)"}, {"no": 14, "id": "11710_B14_kspo_dome", "name": "KSPO DOME (올림픽체조경기장)", "cat": "체육관/돔", "coords": [127.1275, 37.5195], "addr": "서울특별시 송파구 올림픽로 424 (방이동)"}, {"no": 15, "id": "11710_B15_olympic_handball_gym", "name": "올림픽핸드볼경기장 (SK핸드볼경기장)", "cat": "체육관/경기장", "coords": [127.121, 37.5175], "addr": "서울특별시 송파구 올림픽로 424 (방이동)"}, {"no": 16, "id": "11710_B16_olympic_swimming_velodrome", "name": "올림픽수영장 & 벨로드롬", "cat": "수영장/사이클경기장", "coords": [127.1245, 37.5155], "addr": "서울특별시 송파구 올림픽로 424 (방이동)"}, {"no": 17, "id": "11710_B17_hanseong_baekje_museum", "name": "한성백제박물관", "cat": "역사박물관/문화재", "coords": [127.1157, 37.5172], "addr": "서울특별시 송파구 위례성대로 71 (방이동)"}, {"no": 18, "id": "11710_B18_mongchon_history_hall", "name": "몽촌역사관 & 백제 주거지 발굴전시관", "cat": "역사관/유적전시", "coords": [127.1185, 37.5178], "addr": "서울특별시 송파구 올림픽로 424 (방이동)"}, {"no": 19, "id": "11710_B19_soma_museum", "name": "소마미술관 (SOMA 조각공원)", "cat": "미술관/조각공원", "coords": [127.12, 37.5153], "addr": "서울특별시 송파구 올림픽로 424 (방이동)"}, {"no": 20, "id": "11710_B20_bangi_baekje_tombs", "name": "방이동 백제 고분군", "cat": "고분군/유적", "coords": [127.117, 37.5115], "addr": "서울특별시 송파구 방이동 산 1 일대"}, {"no": 21, "id": "11710_B21_jamsil_olympic_stadium", "name": "잠실 올림픽주경기장", "cat": "경기장/주경기장", "coords": [127.0731, 37.5157], "addr": "서울특별시 송파구 올림픽로 25 (잠실동)"}, {"no": 22, "id": "11710_B22_jamsil_baseball_stadium", "name": "잠실야구장", "cat": "야구장/스포츠", "coords": [127.0718, 37.5121], "addr": "서울특별시 송파구 올림픽로 19-2 (잠실동)"}, {"no": 23, "id": "11710_B23_jamsil_indoor_gym", "name": "잠실실내체육관 & 잠실학생체육관", "cat": "체육관/실내경기", "coords": [127.0745, 37.5136], "addr": "서울특별시 송파구 올림픽로 25 (잠실동)"}, {"no": 24, "id": "11710_B24_jamsil_indoor_pool", "name": "잠실실내수영장 & 제2수영장", "cat": "수영장/실내체육", "coords": [127.0755, 37.5122], "addr": "서울특별시 송파구 올림픽로 25 (잠실동)"}, {"no": 25, "id": "11710_B25_asia_athletes_village", "name": "아시아선수촌아파트 & 아시아공원 중앙광장", "cat": "주거단지/공원", "coords": [127.08, 37.5088], "addr": "서울특별시 송파구 올림픽로 4길 (잠실동)"}, {"no": 26, "id": "11710_B26_jamsillaru_station", "name": "잠실나루역 & 성내천 하구 합수부", "cat": "역세권/하천합수부", "coords": [127.1035, 37.5207], "addr": "서울특별시 송파구 송파대로 지하 (신천동)"}, {"no": 27, "id": "11710_B27_tancheon_interchange_waterfront", "name": "탄천나들목 워터프론트", "cat": "수변데크/나들목", "coords": [127.0665, 37.511], "addr": "서울특별시 송파구 탄천동로 일대 (잠실동)"}, {"no": 28, "id": "11710_B28_songpa_mice_hub", "name": "송파 MICE 복합개발 비즈니스 허브존", "cat": "MICE/비즈니스", "coords": [127.104, 37.515], "addr": "서울특별시 송파구 잠실동 일대 (국제교류복합지구)"}, {"no": 29, "id": "11710_B29_jamsilsaenae_food_street", "name": "잠실새내역 맛골거리 & 새마을전통시장", "cat": "시장/먹자골목", "coords": [127.0863, 37.5115], "addr": "서울특별시 송파구 올림픽로 12길 (잠실동)"}, {"no": 30, "id": "11710_B30_samjeondo_monument", "name": "삼전도비 (대청황제공덕비)", "cat": "유적/역사공원", "coords": [127.097, 37.5085], "addr": "서울특별시 송파구 삼전로 80 (잠실동)"}, {"no": 31, "id": "11710_B31_garak_market_garakmall", "name": "가락시장 가락몰", "cat": "도매시장/유통", "coords": [127.118, 37.4925], "addr": "서울특별시 송파구 가락로 108 (가락동)"}, {"no": 32, "id": "11710_B32_eastern_district_court", "name": "서울동부지방법원 청사", "cat": "법조/공공청사", "coords": [127.1225, 37.488], "addr": "서울특별시 송파구 법원로 174 (문정동)"}, {"no": 33, "id": "11710_B33_eastern_district_prosecutors", "name": "서울동부지방검찰청 본관", "cat": "법조/공공청사", "coords": [127.1235, 37.4885], "addr": "서울특별시 송파구 법원로 171 (문정동)"}, {"no": 34, "id": "11710_B34_munjeong_terra_tower", "name": "문정 테라타워 1·2차 지식산업센터", "cat": "지식산업/업무", "coords": [127.123, 37.4845], "addr": "서울특별시 송파구 문정동 645 일대"}, {"no": 35, "id": "11710_B35_munjeong_hyundai_knowledge", "name": "문정 현대지식산업센터 & 컬처밸리 선큰광장", "cat": "지식산업/문화", "coords": [127.1205, 37.4855], "addr": "서울특별시 송파구 문정동 646 일대"}, {"no": 36, "id": "11710_B36_munjeong_rodeo_street", "name": "문정동 로데오거리 패션 아웃렛 스트리트", "cat": "상권/패션거리", "coords": [127.1245, 37.4865], "addr": "서울특별시 송파구 문정동 로데오거리 일대"}, {"no": 37, "id": "11710_B37_songpa_parkhabio", "name": "송파파크하비오 푸르지오 & 워터킹덤", "cat": "복합단지/리조트", "coords": [127.123, 37.482], "addr": "서울특별시 송파구 문정동 8 일대 (충정로)"}, {"no": 38, "id": "11710_B38_garden5_tool_life", "name": "가든파이브 툴관 & 라이프관 아트리움", "cat": "복합쇼핑/아트리움", "coords": [127.1235, 37.477], "addr": "서울특별시 송파구 충민로 66 (장지동)"}, {"no": 39, "id": "11710_B39_nc_songpa_department", "name": "NC백화점 송파점 & 중앙광장 분수대", "cat": "백화점/광장", "coords": [127.1265, 37.4762], "addr": "서울특별시 송파구 송파대로 10 (장지동)"}, {"no": 40, "id": "11710_B40_jangji_stream_eco_park", "name": "장지천 수변생태공원 & 벚꽃산책로", "cat": "수변공원/생태", "coords": [127.133, 37.478], "addr": "서울특별시 송파구 장지동 장지천 일대"}, {"no": 41, "id": "11710_B41_wirye_transit_mall", "name": "위례트랜짓몰 중앙 트램스트리트", "cat": "상업/보행거리", "coords": [127.14, 37.467], "addr": "서울특별시 송파구 위례성대로 일대 (장지동)"}, {"no": 42, "id": "11710_B42_wirye_starfield_city", "name": "위례스타필드시티 쇼핑몰 & 키즈파크", "cat": "쇼핑몰/키즈", "coords": [127.143, 37.4655], "addr": "서울특별시 송파구 위례중앙로 일대 (장지동)"}, {"no": 43, "id": "11710_B43_wirye_human_ring", "name": "위례휴먼링 녹지순환 둘레길", "cat": "공원/순환보행로", "coords": [127.145, 37.469], "addr": "서울특별시 송파구 위례동 일대"}, {"no": 44, "id": "11710_B44_jangji_water_park_clocktower", "name": "장지수변공원 & 위례중앙광장 시계탑", "cat": "공원/광장·시계탑", "coords": [127.14, 37.4705], "addr": "서울특별시 송파구 위례동 장지수변공원 일대"}, {"no": 45, "id": "11710_B45_geoyeo_macheon_central_park", "name": "거여·마천 뉴타운 센트럴파크", "cat": "공원/뉴타운", "coords": [127.145, 37.493], "addr": "서울특별시 송파구 거여동·마천동 일대"}, {"no": 46, "id": "11710_B46_macheon_market", "name": "마천시장 순대골목 & 전통시장 아케이드", "cat": "전통시장/골목", "coords": [127.147, 37.4965], "addr": "서울특별시 송파구 마천동 마천시장 일대"}, {"no": 47, "id": "11710_B47_seongnae_stream_mulbit_plaza", "name": "성내천 물빛광장 & 생태복원 보행데크", "cat": "수변광장/생태복원", "coords": [127.118, 37.5225], "addr": "서울특별시 송파구 성내천 일대 (풍납동·방이동)"}, {"no": 48, "id": "11710_B48_ogeum_park_forest_library", "name": "오금공원 숲속도서관 & 인공폭포광장", "cat": "공원/도서관", "coords": [127.128, 37.5045], "addr": "서울특별시 송파구 오금로 21길 (오금동)"}, {"no": 49, "id": "11710_B49_songpa_women_culture_center", "name": "송파여성문화회관 & 송파구민회관", "cat": "문화/공공회관", "coords": [127.1128, 37.5053], "addr": "서울특별시 송파구 백제고분로 40 (송파동)"}, {"no": 50, "id": "11710_B50_baekje_stone_mound", "name": "백제초기적석총 (석촌동 고분군)", "cat": "고분/국가유산", "coords": [127.0995, 37.51], "addr": "서울특별시 송파구 석촌동 155 일대"}];
+
+function toXZ(lon, lat){
+  return [(lon - CENTER[0]) * LON, -(lat - CENTER[1]) * LAT];
+}
+
+// Three.js 씬 초기화
 const scene = new THREE.Scene();
-// ── 2026-10-23 트랙 A(만복 12:25 승인): 원경 배경 = 단색 → 수평선 그라데이션 ──
-// 왜: 단색 배경은 원경이 '벽'처럼 보이고 4지표 밝기가 기준(88.6) 대비 크게 낮았다(62.6).
-(function sky(){
-  const cv = document.createElement('canvas'); cv.width = 8; cv.height = 256;
-  const cx = cv.getContext('2d');
-  const gr = cx.createLinearGradient(0, 0, 0, 256);
-  gr.addColorStop(0.00, '#16324f');
-  gr.addColorStop(0.55, '#33587a');
-  gr.addColorStop(0.80, '#7c9ab4');
-  gr.addColorStop(1.00, '#a8bccd');
-  cx.fillStyle = gr; cx.fillRect(0, 0, 8, 256);
-  const tex = new THREE.CanvasTexture(cv);
-  tex.magFilter = THREE.LinearFilter; tex.minFilter = THREE.LinearFilter;
-  scene.background = tex;
-})();
-scene.fog = new THREE.Fog(0x5d7691, 3000, 20000);
-const camera = new THREE.PerspectiveCamera(55, innerWidth/innerHeight, 1, 200000);
-const renderer = new THREE.WebGLRenderer({antialias:true});
-renderer.setSize(innerWidth, innerHeight);
+scene.background = new THREE.Color(0x0b111e);
+scene.fog = new THREE.FogExp2(0x0b111e, 0.00018);
+
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 10, 35000);
+camera.position.set(0, 1500, 2100);
+camera.lookAt(0, 60, 0);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 document.body.appendChild(renderer.domElement);
-// 2026-10-23 트랙 A: 그림자 활성(PCFSoft)
-renderer.shadowMap.enabled = true;
-renderer.shadowMap.type = THREE.PCFSoftShadowMap;
-// ── 2026-10-23 트랙 A: 태양광 방향 조명 + 그림자 + 주변광 보정 ──
-const SUN_AZ = -1.35, SUN_EL = 0.55;   // 태양 방위·고도(rad) — 고정값(재현 가능)
-const sunDir = new THREE.Vector3(-Math.cos(SUN_EL)*Math.sin(SUN_AZ), Math.sin(SUN_EL), -Math.cos(SUN_EL)*Math.cos(SUN_AZ));
-const SH_COVER = 4500;                 // 그림자 카메라 커버(±m). 2km 초기 시야(±3.2km) 안
-const dl = new THREE.DirectionalLight(0xfff3dc, 1.55);
-dl.position.copy(sunDir).multiplyScalar(9000);
-dl.castShadow = true;
-dl.shadow.mapSize.set(2048, 2048);
-dl.shadow.camera.left = -SH_COVER; dl.shadow.camera.right = SH_COVER;
-dl.shadow.camera.top = SH_COVER; dl.shadow.camera.bottom = -SH_COVER;
-dl.shadow.camera.near = 200; dl.shadow.camera.far = 24000;
-dl.shadow.camera.updateProjectionMatrix();
-dl.shadow.bias = -0.0006; dl.shadow.normalBias = 6;
-scene.add(dl); scene.add(dl.target);
-scene.add(new THREE.AmbientLight(0xffffff, 0.34));
-scene.add(new THREE.HemisphereLight(0xbcd6ff, 0x2a3346, 0.55));
-window.__track_a = {shadow: true, shadow_map: 2048, cover: SH_COVER,
-  sun: [+sunDir.x.toFixed(3), +sunDir.y.toFixed(3), +sunDir.z.toFixed(3)],
-  sun_az: SUN_AZ, sun_el: SUN_EL, intensity: 1.55, ambient: 0.34, hemi: 0.55,
-  sky: 'gradient', plane: '0x263549', wall_k: 0.80, stamp: '20261023'};
 
-let MAN = null, GMAN = null, CENTER = null, MESH = null, KM = 2;
-let EDGE = null;                 // 건물 외곽선(엣지 대비 강화, 2026-10-22 신안군 보정)
-let G_PLANE = null, G_FILL = null, G_LINE = null;
-let G_ON = true;
-let HSCALE_UI = 1.0;             // 높이 과장 슬라이더(건물 메쉬 y배율) — 재로딩 없이 즉시 반영
-const loadedTiles = new Set();
+// 조명 설정
+const hemiLight = new THREE.HemisphereLight(0xffffff, 0x223344, 0.85);
+hemiLight.position.set(0, 5000, 0);
+scene.add(hemiLight);
 
-function toXZ(lon, lat){ return [ (lon - CENTER[0]) * LON, -(lat - CENTER[1]) * LAT ]; }
+const dirLight = new THREE.DirectionalLight(0xfff4e6, 1.1);
+dirLight.position.set(3000, 7000, 4000);
+scene.add(dirLight);
 
-// ── 건물 기둥(지붕 삼각분할 + 벽면) ──
-// 2026-10-22 신안군 보정(만복 20:36 지시): 벽면 = 지붕색 × 0.70 (지붕/벽면 색 분리).
-//   벽면 정점색만 WALL_K로 낮춰 지붕 대비 음영을 만든다(지오메트리·데이터 변경 없음, 렌더만).
-const WALL_K = 0.80;
-// 2026-10-23 후보 c3 실험 손잡이: 벽면 모서리 수직 엣지(0=현행 그대로, 1=추가).
-const WALL_EDGES = 1;
-function prism(ring, h, pos, norm, col){
-  const contour = [], n = ring.length;
-  for (let i = 0; i < n - 1; i++){
-    const p = toXZ(ring[i][0], ring[i][1]);
-    contour.push(new THREE.Vector2(p[0], p[1]));
-  }
-  if (contour.length < 3) return;
-  let faces = [];
-  try { faces = THREE.ShapeUtils.triangulateShape(contour, []); } catch(e){ return; }
-  for (const f of faces){
-    for (const idx of f){
-      const v = contour[idx];
-      pos.push(v.x, h, v.y); norm.push(0,1,0); col.push(1,1,1);
-    }
-  }
-  for (let i = 0; i < contour.length; i++){
-    const a = contour[i], b = contour[(i+1)%contour.length];
-    pos.push(a.x,0,a.y, b.x,0,b.y, b.x,h,b.y);
-    pos.push(a.x,0,a.y, b.x,h,b.y, a.x,h,a.y);
-    for (let k=0;k<6;k++){ norm.push(0,0,1); col.push(WALL_K, WALL_K, WALL_K); }
-  }
+const fillLight = new THREE.DirectionalLight(0x7fd1ff, 0.4);
+fillLight.position.set(-3000, 3000, -3000);
+scene.add(fillLight);
+
+// 기본 베이스 지면
+const groundGeo = new THREE.PlaneGeometry(30000, 30000);
+const groundMat = new THREE.MeshLambertMaterial({ color: 0x121b2d, depthWrite: true });
+const groundMesh = new THREE.Mesh(groundGeo, groundMat);
+groundMesh.rotation.x = -Math.PI / 2;
+groundMesh.position.y = -1;
+scene.add(groundMesh);
+
+// 3D 마커 그룹
+const markerGroup = new THREE.Group();
+scene.add(markerGroup);
+const markerObjects = [];
+
+// 블록 50개 3D 마커 생성
+function createMarkers(){
+  const pinGeo = new THREE.CylinderGeometry(0, 16, 60, 8);
+  pinGeo.rotateX(Math.PI);
+  
+  BLOCKS.forEach((b, idx) => {
+    const xz = toXZ(b.coords[0], b.coords[1]);
+    const pinMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8 });
+    const pin = new THREE.Mesh(pinGeo, pinMat);
+    pin.position.set(xz[0], 50, xz[1]);
+    
+    // 바닥 링
+    const ringGeo = new THREE.RingGeometry(18, 26, 16);
+    ringGeo.rotateX(-Math.PI / 2);
+    const ringMat = new THREE.MeshBasicMaterial({ color: 0x0284c7, side: THREE.DoubleSide });
+    const ring = new THREE.Mesh(ringGeo, ringMat);
+    ring.position.set(xz[0], 2, xz[1]);
+    
+    const obj = new THREE.Group();
+    obj.add(pin);
+    obj.add(ring);
+    obj.userData = { block: b, index: idx };
+    markerGroup.add(obj);
+    markerObjects.push({ group: obj, pin: pin, ring: ring, block: b, index: idx });
+  });
 }
+createMarkers();
 
-// ── 건물 지붕 외곽선(엣지 밀도 보강) ──
-// 왜: 기준 조감도 대비 엣지밀도 15.8% vs 66.2%(1024w)로 크게 부족했다.
-//     건물 윤곽을 1px 라인으로 얹어 형태 식별을 살린다(데이터 변경 없음·렌더만).
-function roofEdges(ring, h, out){
-  const n = ring.length;
-  if (n < 4) return;
-  for (let i = 0; i < n - 1; i++){
-    const a = toXZ(ring[i][0], ring[i][1]);
-    const b = toXZ(ring[i+1][0], ring[i+1][1]);
-    out.push(a[0], h, a[1], b[0], h, b[1]);
-  }
-}
-
-// ── 벽면 모서리 수직 엣지(엣지밀도 보강 후보 c3, 2026-10-23) ──
-// 왜: 지붕 외곽선(수평)만으로는 엣지밀도 22.63%(1024w)에서 정체. 기준 조감도(66.12%)는
-//     벽면 모서리·수직 구조선까지 엣지로 잡힌다. 각 링 정점에서 바닥(y=0)~지붕(y=h) 수직선을 얹는다.
-//     WALL_EDGES=0(기본)이면 아무 것도 하지 않는다(현행 출력 불변). 데이터 변경 없음·렌더만.
-function wallEdges(ring, h, out){
-  const n = ring.length;
-  if (n < 4) return;
-  for (let i = 0; i < n - 1; i++){
-    const a = toXZ(ring[i][0], ring[i][1]);
-    out.push(a[0], 0, a[1], a[0], h, a[1]);
-  }
-}
-
-// ── 바닥 스타일(뷰어_바닥판과 동일 톤) ──
-// 2026-10-22 신안군 보정: 채도 감쇠(DS) — 기준 조감도 대비 채도 과다(54.4 vs 32.9) 실측에 대응.
-//   회색축(휘도)으로 38% 당겨 색은 유지하고 채도만 낮춘다.
-const DS = 0.62;
-function desat(c){
-  const g = 0.299*c[0] + 0.587*c[1] + 0.114*c[2];
-  return [g + (c[0]-g)*DS, g + (c[1]-g)*DS, g + (c[2]-g)*DS];
-}
-const STYLE = {
-  landuse: {c:desat([0.13,0.18,0.25]), y:0.15, line:false},
-  water:   {c:desat([0.20,0.55,0.68]), y:0.25, line:false},
-  park:    {c:desat([0.21,0.48,0.31]), y:0.30, line:false},
-  green:   {c:desat([0.24,0.52,0.34]), y:0.30, line:false},
-  road:    {c:[0.68,0.71,0.77], y:0.55, line:true},
-  rail:    {c:[0.45,0.48,0.55], y:0.70, line:true},
-};
-
-function inView(bbox, half){
-  const [x0,y0,x1,y1] = bbox;
-  const a = toXZ(x0, y1), b = toXZ(x1, y0);
-  const minX = Math.min(a[0], b[0]), maxX = Math.max(a[0], b[0]);
-  const minZ = Math.min(a[1], b[1]), maxZ = Math.max(a[1], b[1]);
-  return !(maxX < -half || minX > half || maxZ < -half || minZ > half);
-}
-
-// 초기 중심 = '건물이 가장 밀집한 1km 클러스터'의 타일 중심.
-// 왜: 행정구역 bbox 중심은 바다·산지일 수 있다(부안군 실측: bbox 중심 1km 안 타일 0개, 최근접 3.16km).
-// 2026-10-22 보강: 바닥(ground) 타일이 있는 셀의 건물만 후보로 쓴다.
-//   VWorld 건물에는 행정경계 밖 인접 도시가 섞일 수 있어, 그대로 밀집 클러스터를 고르면
-//   초기 화면이 경계 밖 도시를 비추고 바닥은 0개가 된다(신안군=목포, 홍천군=춘천 실측).
-function pickCenter(tiles, gtiles){
-  let cand = tiles;
-  if (gtiles && gtiles.length){
-    const gk = new Set(gtiles.map(t => t.ti + '_' + t.tj));
-    let inside = tiles.filter(t => gk.has(t.ti + '_' + t.tj));
-    if (!inside.length){   // 같은 셀에 바닥이 없으면 바닥 셀 2km 이내(1km 타일 기준 ±2) 건물 타일
-      inside = tiles.filter(t => {
-        for (let di = -2; di <= 2; di++)
-          for (let dj = -2; dj <= 2; dj++)
-            if (gk.has((t.ti + di) + '_' + (t.tj + dj))) return true;
-        return false;
-      });
-    }
-    if (inside.length) cand = inside;
-    else cand = gtiles.map(t => ({bbox: t.bbox, buildings: t.features || 1}));   // 바닥만 있는 지역: 바닥 타일 중심
-  }
-  const pts = cand.map(t => [(t.bbox[0]+t.bbox[2])/2, (t.bbox[1]+t.bbox[3])/2, t.buildings || 1]);
-  if (!pts.length) return null;
-  if (pts.length > 4000){                       // 대형 지역은 O(n²) 생략: 가장 큰 타일 1개
-    pts.sort((a,b) => b[2] - a[2]);
-    return [pts[0][0], pts[0][1]];
-  }
-  let best = null, bestScore = -1;
-  for (const p of pts){
-    let s = 0;
-    for (const q of pts){
-      const dx = (q[0]-p[0]) * LON, dy = (q[1]-p[1]) * LAT;
-      if (dx*dx + dy*dy <= 1000*1000) s += q[2];
-    }
-    if (s > bestScore){ bestScore = s; best = p; }
-  }
-  return best ? [best[0], best[1]] : null;
-}
-
-function clearGround(){
-  for (const m of [G_FILL, G_LINE]){
-    if (m){ scene.remove(m); m.geometry.dispose(); }
-  }
-  G_FILL = G_LINE = null;
-}
-
-async function loadGround(km){
-  clearGround();
-  const half = (km * 1000) / 2;
-  // 바닥 데이터가 없는 지역에서도 '허공'을 없애는 지면판은 항상 깐다(화면 밖까지 넓게 깔아 '돗자리' 느낌 제거)
-  if (G_PLANE){ scene.remove(G_PLANE); G_PLANE.geometry.dispose(); G_PLANE = null; }
-  const pg = new THREE.PlaneGeometry(km * 1000 * 3.4, km * 1000 * 3.4);
-  G_PLANE = new THREE.Mesh(pg, new THREE.MeshLambertMaterial({color:0x263549}));
-  G_PLANE.receiveShadow = true;
-  G_PLANE.rotation.x = -Math.PI/2; G_PLANE.position.y = -0.4;
-  scene.add(G_PLANE);
-  if (!GMAN || !G_ON) return {tiles:0, features:0, bytes:0};
-
-  const need = GMAN.tiles.filter(t => inView(t.bbox, half));
-  const gpos=[], gcol=[], lpos=[], lcol=[];
-  let bytes=0, features=0;
-  for (const t of need){
-    const txt = await (await fetch(`${ASSET}tiles_1000m/ground/tile_g_${t.ti}_${t.tj}.json`)).text();
-    bytes += txt.length;
-    const gj = JSON.parse(txt);
-    for (const f of gj.features){
-      const st = STYLE[f.properties.k]; if (!st) continue;
-      const pts = f.geometry.coordinates;
-      const closed = f.properties.c && pts.length >= 4;
-      features++;
-      if (st.line || !closed){
-        for (let i=0;i<pts.length-1;i++){
-          const a=toXZ(pts[i][0],pts[i][1]), b=toXZ(pts[i+1][0],pts[i+1][1]);
-          lpos.push(a[0],st.y,a[1], b[0],st.y,b[1]);
-          for (let k=0;k<2;k++) lcol.push(st.c[0],st.c[1],st.c[2]);
-        }
-      } else {
-        // 면 채움: 중심팬은 오목 다각형(강·호수)에서 과대 채움/겹침이 생긴다(화천군 북한강 실측)
-        //   → 정식 삼각분할(ShapeUtils) 우선, 실패 시에만 팬 방식으로 폴백
-        const ring = [], vec = [];
-        for (let i = 0; i < pts.length - 1; i++){
-          const q = toXZ(pts[i][0], pts[i][1]);
-          ring.push(q); vec.push(new THREE.Vector2(q[0], q[1]));
-        }
-        if (ring.length < 3) continue;
-        // 면 경계 외곽선: 엣지 밀도 보강(2026-10-22 신안군 보정). 색은 원색을 밝게만 한다.
-        const bc = [Math.min(1, st.c[0]*2.2), Math.min(1, st.c[1]*2.2), Math.min(1, st.c[2]*2.2)];
-        for (let i = 0; i < ring.length; i++){
-          const a = ring[i], b = ring[(i+1)%ring.length];
-          lpos.push(a[0], st.y+0.02, a[1], b[0], st.y+0.02, b[1]);
-          lcol.push(bc[0], bc[1], bc[2], bc[0], bc[1], bc[2]);
-        }
-        let faces = [];
-        try { faces = THREE.ShapeUtils.triangulateShape(vec, []); } catch(e){ faces = []; }
-        if (faces.length){
-          for (const f of faces) for (const idx of f){
-            const v = ring[idx];
-            gpos.push(v[0], st.y, v[1]);
-            gcol.push(st.c[0], st.c[1], st.c[2]);
-          }
-        } else {
-          let sx = 0, sz = 0;
-          for (const q of ring){ sx += q[0]; sz += q[1]; }
-          for (let i = 0; i < ring.length; i++){
-            const a = ring[i], b = ring[(i+1)%ring.length];
-            gpos.push(sx/ring.length, st.y, sz/ring.length, a[0], st.y, a[1], b[0], st.y, b[1]);
-            for (let k = 0; k < 3; k++) gcol.push(st.c[0], st.c[1], st.c[2]);
-          }
-        }
-      }
-    }
-  }
-  if (gpos.length){
-    const gg = new THREE.BufferGeometry();
-    gg.setAttribute('position', new THREE.Float32BufferAttribute(gpos,3));
-    gg.setAttribute('color', new THREE.Float32BufferAttribute(gcol,3));
-    gg.computeVertexNormals();   // ★ 노멀 없으면 Lambert 조명이 0 → 면이 검게 나온다(실측 적발)
-    G_FILL = new THREE.Mesh(gg, new THREE.MeshLambertMaterial({vertexColors:true, side:THREE.DoubleSide}));
-    G_FILL.receiveShadow = true;
-    scene.add(G_FILL);
-  }
-  if (lpos.length){
-    const lg = new THREE.BufferGeometry();
-    lg.setAttribute('position', new THREE.Float32BufferAttribute(lpos,3));
-    lg.setAttribute('color', new THREE.Float32BufferAttribute(lcol,3));
-    G_LINE = new THREE.LineSegments(lg, new THREE.LineBasicMaterial({vertexColors:true}));
-    scene.add(G_LINE);
-  }
-  return {tiles:need.length, features, bytes};
-}
-
-async function loadTiles(km){
-  const stat = document.getElementById('stat'), detail = document.getElementById('detail');
-  const half = (km * 1000) / 2;
-  const need = MAN.tiles.filter(t => inView(t.bbox, half));
-  stat.textContent = `타일 ${need.length}개 로딩 중…`;
-  const t0 = performance.now();
-  let bytes = 0, buildings = 0, tiles0 = 0, tiles1 = 0, tiles2 = 0;
-  const pos = [], norm = [], col = [], epos = [];
-  for (const t of need){
-    const [x0,y0,x1,y1] = t.bbox;
-    const c = toXZ((x0+x1)/2, (y0+y1)/2);
-    const d = Math.hypot(c[0], c[1]);
-    let lod = 'lod0';
-    if (d > km * 1000 * 0.66) lod = 'lod2';
-    else if (d > km * 1000 * 0.33) lod = 'lod1';
-    if (lod === 'lod0') tiles0++; else if (lod === 'lod1') tiles1++; else tiles2++;
-    const url = `${ASSET}tiles_1000m/tile_${t.ti}_${t.tj}_${lod}.json`;
-    const txt = await (await fetch(url)).text();
-    bytes += txt.length;
-    const gj = JSON.parse(txt);
-    for (const f of gj.features){
-      buildings++;
-      const h = f.properties.h * HSCALE;
-      prism(f.geometry.coordinates[0], h, pos, norm, col);
-      roofEdges(f.geometry.coordinates[0], h, epos);
-      if (WALL_EDGES) wallEdges(f.geometry.coordinates[0], h, epos);
-    }
-    loadedTiles.add(url);
-  }
-  if (MESH){ scene.remove(MESH); MESH.geometry.dispose(); }
-  const g = new THREE.BufferGeometry();
-  g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
-  g.setAttribute('normal', new THREE.Float32BufferAttribute(norm, 3));
-  g.setAttribute('color', new THREE.Float32BufferAttribute(col, 3));
-  MESH = new THREE.Mesh(g, new THREE.MeshLambertMaterial({color: 0xd8dee9, vertexColors:true, flatShading:true}));
-  MESH.castShadow = true; MESH.receiveShadow = true;
-  MESH.scale.y = HSCALE_UI;
-  scene.add(MESH);
-  if (EDGE){ scene.remove(EDGE); EDGE.geometry.dispose(); EDGE = null; }
-  if (epos.length){
-    const eg = new THREE.BufferGeometry();
-    eg.setAttribute('position', new THREE.Float32BufferAttribute(epos, 3));
-    EDGE = new THREE.LineSegments(eg, new THREE.LineBasicMaterial({color: 0x2f4a66, transparent: true, opacity: 1.0}));
-    EDGE.scale.y = HSCALE_UI;
-    scene.add(EDGE);
-  }
-
-  const gt = await loadGround(km);
-  const ms = (performance.now() - t0).toFixed(0);
-  stat.innerHTML = `로딩 완료 <b>${need.length}타일</b> · 건물 <b>${buildings.toLocaleString()}동</b>`
-    + ` · 바닥 <b>${gt.features.toLocaleString()}개</b>(타일 ${gt.tiles}) · ${ms}ms`;
-  detail.textContent = `전송 ${((bytes+gt.bytes)/1024).toFixed(0)} KB (건물 ${(bytes/1024).toFixed(0)}`
-    + ` · 바닥 ${(gt.bytes/1024).toFixed(0)}) · LOD0 ${tiles0} / LOD1 ${tiles1} / LOD2 ${tiles2}`
-    + ` · 누적 ${loadedTiles.size}`;
-  const d = half * 1.6;
-  // 초기 시점: 궤도 상태(theta/phi/dist)도 함께 맞춰 첫 드래그·휠에서 화면이 튀지 않게 한다
-  theta = Math.atan2(d, d * 0.8);
-  dist = Math.hypot(d * 0.8, d * 0.7 - 300, d);
-  phi = Math.acos(Math.max(-1, Math.min(1, (d * 0.7 - 300) / dist)));
-  updateCam();
-}
-
-// ── 최소 궤도 조작 ──
-let drag = false, px = 0, py = 0, theta = 0.8, phi = 0.9, dist = 4000;
-function updateCam(){
-  camera.position.set(
-    dist * Math.sin(phi) * Math.cos(theta),
-    dist * Math.cos(phi) + 300,
-    dist * Math.sin(phi) * Math.sin(theta));
-  camera.lookAt(0, 0, 0);
-}
-renderer.domElement.addEventListener('mousedown', e => { drag = true; px = e.clientX; py = e.clientY; });
-addEventListener('mouseup', () => drag = false);
-addEventListener('mousemove', e => {
-  if (!drag) return;
-  theta -= (e.clientX - px) * 0.006;
-  phi = Math.max(0.15, Math.min(1.45, phi - (e.clientY - py) * 0.005));
-  px = e.clientX; py = e.clientY; updateCam();
-});
-addEventListener('wheel', e => { dist = Math.max(400, Math.min(40000, dist + e.deltaY * 3)); updateCam(); }, {passive:true});
-addEventListener('resize', () => { camera.aspect = innerWidth/innerHeight; camera.updateProjectionMatrix(); renderer.setSize(innerWidth, innerHeight); });
-
-const hsEl = document.getElementById('hs'), hsv = document.getElementById('hsv');
-window.__hscale = HSCALE_UI;
-hsEl.oninput = () => {
-  HSCALE_UI = parseFloat(hsEl.value);
-  hsv.textContent = HSCALE_UI.toFixed(1) + '×';
-  if (MESH) MESH.scale.y = HSCALE_UI;
-  if (EDGE) EDGE.scale.y = HSCALE_UI;
-  window.__hscale = HSCALE_UI;
-};
-
-document.querySelectorAll('#hud button[data-km]').forEach(b => b.onclick = () => {
-  document.querySelectorAll('#hud button[data-km]').forEach(x => x.classList.remove('on'));
-  b.classList.add('on'); KM = parseInt(b.dataset.km, 10); loadTiles(KM);
-});
-document.getElementById('req').onclick = () => loadTiles(KM);
-document.getElementById('gbtn').onclick = (e) => {
-  G_ON = !G_ON;
-  e.target.className = G_ON ? 'on' : '';
-  e.target.textContent = G_ON ? '바닥 ON/OFF' : '바닥 OFF';
-  loadTiles(KM);
-};
-
-// ── 적용안 3: 지역명·주요 지명 패널 (2026-10-22 만복 22:04 지시) ──
-// 왜: 화면에 지역명·지명이 없어 '어디를 보고 있는지' 알 수 없었다.
-// 규칙(검증 가능하게 고정): places_osm.geojson 에서 이름 있는 지명만,
-//   properties.place(town > village) 우선순위 → 같은 등급은 등장 횟수(내림) → 이름(가나다) 순으로 상위 5개.
-//   (kind=bus 인 버스정류장은 place 값이 비어 있어 자동 제외된다.)
-//   결과는 패널 텍스트 + window.__places(JSON)로 노출해 QA 스크립트가 숫자로 읽는다.
-const PLACE_RANK = {town: 0, village: 1};
-async function loadPlaces(){
-  const el = document.getElementById('placeNames');
-  document.getElementById('regionName').textContent = REGION;
-  const out = {region: REGION, names: [], detail: [], total: 0, kinds: {}, place_kinds: {},
-               rule: 'place: town>village, count desc, name asc, top5 (bus 제외)', error: ''};
+// 건물 타일셋 로딩
+async function loadTiles(){
   try {
-    const r = await fetch(ASSET + 'places_osm.geojson');
-    if (!r.ok) throw new Error('HTTP ' + r.status);
-    const g = await r.json();
-    const fs = g.features || [];
-    out.total = fs.length;
-    const cnt = {};
-    for (const f of fs){
-      const p = f.properties || {};
-      const cat = p.kind || '';        // 분류: place / bus
-      const pk = p.place || '';        // 지명 등급: town / village (bus 정류장은 빈 값)
-      out.kinds[cat] = (out.kinds[cat] || 0) + 1;
-      if (pk) out.place_kinds[pk] = (out.place_kinds[pk] || 0) + 1;
-      const nm = (p.name || '').trim();
-      if (!nm || !(pk in PLACE_RANK)) continue;
-      if (!cnt[nm]) cnt[nm] = {name: nm, kind: pk, count: 0, lon: 0, lat: 0};
-      const c = cnt[nm];
-      c.count++;
-      if (c.kind !== 'town' && pk === 'town') c.kind = 'town';
-      if (!c.lon && f.geometry && f.geometry.coordinates){ c.lon = f.geometry.coordinates[0]; c.lat = f.geometry.coordinates[1]; }
+    const res = await fetch('tiles_1000m/tiles_manifest.json');
+    if(!res.ok) return;
+    const man = await res.json();
+    if(!man || !man.tiles) return;
+
+    const bMat = new THREE.MeshLambertMaterial({ color: 0x5a708e });
+    const edgeMat = new THREE.LineBasicMaterial({ color: 0x9fb6d6, transparent: true, opacity: 0.45 });
+
+    for(const t of man.tiles){
+      try {
+        const tr = await fetch('tiles_1000m/tile_' + t.ti + '_' + t.tj + '_lod1.json');
+        if(!tr.ok) continue;
+        const data = await tr.json();
+        if(!data || !data.buildings) continue;
+
+        data.buildings.forEach(bd => {
+          if(!bd.pts || bd.pts.length < 3) return;
+          const shape = new THREE.Shape();
+          const first = toXZ(bd.pts[0][0], bd.pts[0][1]);
+          shape.moveTo(first[0], -first[1]);
+          for(let i=1; i<bd.pts.length; i++){
+            const pt = toXZ(bd.pts[i][0], bd.pts[i][1]);
+            shape.lineTo(pt[0], -pt[1]);
+          }
+          const height = Math.max(8, bd.h || 15);
+          const extGeo = new THREE.ExtrudeGeometry(shape, { depth: height, bevelEnabled: false });
+          extGeo.rotateX(-Math.PI / 2);
+          const mesh = new THREE.Mesh(extGeo, bMat);
+          mesh.position.y = 0;
+          scene.add(mesh);
+        });
+      } catch(e){}
     }
-    const cand = Object.values(cnt);
-    cand.sort((a,b) => (PLACE_RANK[a.kind] - PLACE_RANK[b.kind]) || (b.count - a.count)
-                       || a.name.localeCompare(b.name, 'ko'));
-    out.detail = cand.slice(0, 5);
-    out.names = out.detail.map(c => c.name);
-  } catch(e){
-    out.error = String((e && e.message) || e);
+  } catch(e){}
+}
+loadTiles();
+
+// 사이드바 UI 렌더링
+function renderSidebar(list){
+  const el = document.getElementById('blockList');
+  el.innerHTML = '';
+  list.forEach(b => {
+    const item = document.createElement('div');
+    item.className = 'block-item';
+    item.id = 'block-item-' + b.no;
+    item.onclick = () => flyToBlock(b);
+    item.innerHTML = `
+      <div class="block-item-top">
+        <span class="block-no">${b.no}</span>
+        <span class="block-name" title="${b.name}">${b.name}</span>
+      </div>
+      <div class="block-meta">
+        <span class="block-cat">${b.cat}</span>
+        <span class="block-addr" title="${b.addr}">${b.addr}</span>
+      </div>
+    `;
+    el.appendChild(item);
+  });
+  document.getElementById('count-badge').textContent = list.length + '개';
+}
+renderSidebar(BLOCKS);
+
+function filterBlocks(){
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  if(!q){
+    renderSidebar(BLOCKS);
+    return;
   }
-  el.textContent = out.names.length
-    ? `${out.names.join(' · ')} (총 ${out.total}개 · town ${out.place_kinds.town || 0} / village ${out.place_kinds.village || 0})`
-    : `지명 없음(${out.error || '파일 없음'})`;
-  window.__places = out;
-  return out;
+  const filtered = BLOCKS.filter(b => 
+    b.name.toLowerCase().includes(q) || 
+    b.cat.toLowerCase().includes(q) || 
+    b.addr.toLowerCase().includes(q) ||
+    String(b.no).includes(q)
+  );
+  renderSidebar(filtered);
 }
 
-(async function init(){
-  MAN = await (await fetch(ASSET + 'tiles_1000m/tiles_manifest.json')).json();
-  try {
-    const r = await fetch(ASSET + 'tiles_1000m/ground_manifest.json');
-    GMAN = r.ok ? await r.json() : null;
-  } catch(e){ GMAN = null; }
-  let x0=1e9,y0=1e9,x1=-1e9,y1=-1e9;
-  for (const t of MAN.tiles){ const [a,b,c,d] = t.bbox; x0=Math.min(x0,a); y0=Math.min(y0,b); x1=Math.max(x1,c); y1=Math.max(y1,d); }
-  CENTER = pickCenter(MAN.tiles, GMAN && GMAN.tiles) || [(x0+x1)/2, (y0+y1)/2];   // 바다·산지·경계밖 회피
-  document.title = 'READY tiles=' + MAN.tile_count + (GMAN ? ' ground=' + GMAN.tile_count : ' ground=0');
-  await loadTiles(KM);
-  await loadPlaces();          // 적용안 3: 지역명 + 상위 지명 5개 패널(로컬 파일, 외부 요청 없음)
-  updateCam();
-  (function loop(){ requestAnimationFrame(loop); renderer.render(scene, camera); })();
-})();
+// 블록 이동 & 상세 표시
+let targetCam = null, targetLook = null;
+let isOrbiting = false;
+
+function flyToBlock(b){
+  const xz = toXZ(b.coords[0], b.coords[1]);
+  targetCam = new THREE.Vector3(xz[0], 280, xz[1] + 360);
+  targetLook = new THREE.Vector3(xz[0], 40, xz[1]);
+  
+  // 마커 하이라이트
+  markerObjects.forEach(m => {
+    const match = (m.block.no === b.no);
+    m.pin.material.color.setHex(match ? 0xfde047 : 0x38bdf8);
+    m.pin.scale.set(match ? 1.8 : 1.0, match ? 1.8 : 1.0, match ? 1.8 : 1.0);
+  });
+  
+  // 사이드바 active 표시
+  document.querySelectorAll('.block-item').forEach(el => el.classList.remove('active'));
+  const activeEl = document.getElementById('block-item-' + b.no);
+  if(activeEl){
+    activeEl.classList.add('active');
+    activeEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  // 모달 표시
+  document.getElementById('dtName').textContent = b.name;
+  document.getElementById('dtCat').textContent = '분류: ' + b.cat;
+  document.getElementById('dtAddr').textContent = '주소: ' + b.addr;
+  document.getElementById('dtCoords').textContent = '좌표: ' + b.coords[0].toFixed(5) + ', ' + b.coords[1].toFixed(5);
+  document.getElementById('block-detail').style.display = 'flex';
+}
+
+function closeDetail(){
+  document.getElementById('block-detail').style.display = 'none';
+}
+
+function toggleSidebar(){
+  const sb = document.getElementById('sidebar');
+  sb.classList.toggle('collapsed');
+  document.body.classList.toggle('ui-collapsed', sb.classList.contains('collapsed'));
+}
+
+function resetView(){
+  targetCam = new THREE.Vector3(0, 1500, 2100);
+  targetLook = new THREE.Vector3(0, 60, 0);
+  closeDetail();
+}
+
+function toggleOrbit(){
+  isOrbiting = !isOrbiting;
+  const btn = document.getElementById('btnOrbit');
+  btn.style.background = isOrbiting ? '#0284c7' : '';
+}
+
+// 부드러운 카메라 보간 및 렌더 루프
+function animate(){
+  requestAnimationFrame(animate);
+  
+  if(targetCam && targetLook){
+    camera.position.lerp(targetCam, 0.05);
+    const curLook = new THREE.Vector3();
+    camera.getWorldDirection(curLook);
+    // 간단 보간
+    if(camera.position.distanceTo(targetCam) < 2){
+      targetCam = null;
+    }
+  }
+
+  if(isOrbiting){
+    scene.rotation.y += 0.0015;
+  }
+
+  renderer.render(scene, camera);
+}
+animate();
+
+// 윈도우 리사이즈
+window.addEventListener('resize', () => {
+  camera.aspect = window.innerWidth / window.innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight);
+});
 </script>
-</body></html>
+</body>
+</html>
