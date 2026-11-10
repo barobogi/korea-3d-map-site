@@ -87,7 +87,7 @@
 
   /* 선택된 블록 상세 모달 */
   #block-detail {
-    position:fixed; bottom:20px; left:305px; z-index:45; max-width:380px;
+    position:fixed; bottom:20px; left:305px; z-index:45; max-width:400px;
     background:rgba(15,23,42,0.95); backdrop-filter:blur(14px);
     border:1px solid rgba(56,189,248,0.5); border-radius:14px;
     padding:14px 16px; box-shadow:0 12px 30px rgba(0,0,0,0.7);
@@ -99,6 +99,7 @@
   .detail-close:hover { color:#fff; }
   .detail-cat { font-size:11px; color:#fde047; }
   .detail-addr { font-size:11.5px; color:#cbd5e1; line-height:1.4; }
+  .detail-status { font-size:11px; color:#38bdf8; font-weight:bold; }
   .detail-coords { font-size:10px; color:#64748b; font-family:Consolas, monospace; }
 
   @media (max-width: 768px) {
@@ -141,6 +142,7 @@
   </div>
   <div class="detail-cat" id="dtCat">카테고리</div>
   <div class="detail-addr" id="dtAddr">도로명주소</div>
+  <div class="detail-status" id="dtStatus">3D 실물 모델 로딩 중…</div>
   <div class="detail-coords" id="dtCoords">WGS84 좌표</div>
 </div>
 
@@ -154,7 +156,7 @@ const REGION_CODE = '11710';
 const REGION_NAME = '송파구';
 const CENTER = [127.1025, 37.5125];
 const LON = 88000, LAT = 111000;
-const BLOCKS = [{"no": 1, "id": "11710_B01_lotte_world_tower", "name": "롯데월드타워 (555m · 서울스카이)", "cat": "초고층/랜드마크", "coords": [127.1025, 37.5125], "addr": "서울특별시 송파구 올림픽로 300 (신천동)"}, {"no": 2, "id": "11710_B02_lotte_world_magic_island", "name": "롯데월드 어드벤처 매직아일랜드", "cat": "테마파크/수상성곽", "coords": [127.0985, 37.5115], "addr": "서울특별시 송파구 올림픽로 240 (잠실동)"}, {"no": 3, "id": "11710_B03_lotte_world_mall_avenuel", "name": "롯데월드몰 & 에비뉴엘 명품관", "cat": "복합쇼핑/명품관", "coords": [127.1005, 37.5128], "addr": "서울특별시 송파구 올림픽로 300 (신천동)"}, {"no": 4, "id": "11710_B04_seokchon_lake_east", "name": "석촌호수 동호 수변 산책로 & 벚꽃길", "cat": "호수/수변산책로", "coords": [127.1045, 37.508], "addr": "서울특별시 송파구 잠실동 석촌호수 일대"}, {"no": 5, "id": "11710_B05_seokchon_lake_west", "name": "석촌호수 서호 수변무대 & 카페거리", "cat": "호수/수변무대", "coords": [127.0995, 37.506], "addr": "서울특별시 송파구 잠실동 석촌호수 일대"}, {"no": 6, "id": "11710_B06_songpa_district_office", "name": "송파구청 본관 & 송파구의회 청사", "cat": "공공청사/행정", "coords": [127.112, 37.5145], "addr": "서울특별시 송파구 올림픽로 326 (잠실동)"}, {"no": 7, "id": "11710_B07_jamsil_station_transfer_center", "name": "잠실역 지하 광역환승센터 & 롯데지하광장", "cat": "환승센터/교통", "coords": [127.1005, 37.5133], "addr": "서울특별시 송파구 올림픽로 지하 265 (잠실동)"}, {"no": 8, "id": "11710_B08_songpanaru_park", "name": "송파나루공원 황포돛배 조형물 & 잔디광장", "cat": "공원/조형광장", "coords": [127.1135, 37.5065], "addr": "서울특별시 송파구 송파대로 지선 (송파동)"}, {"no": 9, "id": "11710_B09_galleria_palace_lottecastle_gold", "name": "잠실 갤러리아팰리스 & 롯데캐슬골드 트윈타워", "cat": "주거/트윈타워", "coords": [127.1057, 37.5165], "addr": "서울특별시 송파구 올림픽로 212 (잠실동)"}, {"no": 10, "id": "11710_B10_bangimotgol_gate", "name": "방이맛골 전통 먹자골목 상징 패루게이트", "cat": "상권/전통패루", "coords": [127.1115, 37.511], "addr": "서울특별시 송파구 방이동 먹자골목 일대"}, {"no": 11, "id": "11710_B11_olympic_park_world_peace_gate", "name": "올림픽공원 평화의 문", "cat": "기념조형/공원정문", "coords": [127.1215, 37.5202], "addr": "서울특별시 송파구 올림픽로 424 (방이동)"}, {"no": 12, "id": "11710_B12_mongchontoseong_walkway", "name": "올림픽공원 몽촌토성 산책로 & 망월봉", "cat": "고대토성/산책로", "coords": [127.118, 37.522], "addr": "서울특별시 송파구 올림픽로 424 (방이동)"}, {"no": 13, "id": "11710_B13_olympic_park_lone_tree", "name": "올림픽공원 나홀로나무", "cat": "공원/상징수목", "coords": [127.1155, 37.5235], "addr": "서울특별시 송파구 올림픽로 424 (방이동)"}, {"no": 14, "id": "11710_B14_kspo_dome", "name": "KSPO DOME (올림픽체조경기장)", "cat": "체육관/돔", "coords": [127.1275, 37.5195], "addr": "서울특별시 송파구 올림픽로 424 (방이동)"}, {"no": 15, "id": "11710_B15_olympic_handball_gym", "name": "올림픽핸드볼경기장 (SK핸드볼경기장)", "cat": "체육관/경기장", "coords": [127.121, 37.5175], "addr": "서울특별시 송파구 올림픽로 424 (방이동)"}, {"no": 16, "id": "11710_B16_olympic_swimming_velodrome", "name": "올림픽수영장 & 벨로드롬", "cat": "수영장/사이클경기장", "coords": [127.1245, 37.5155], "addr": "서울특별시 송파구 올림픽로 424 (방이동)"}, {"no": 17, "id": "11710_B17_hanseong_baekje_museum", "name": "한성백제박물관", "cat": "역사박물관/문화재", "coords": [127.1157, 37.5172], "addr": "서울특별시 송파구 위례성대로 71 (방이동)"}, {"no": 18, "id": "11710_B18_mongchon_history_hall", "name": "몽촌역사관 & 백제 주거지 발굴전시관", "cat": "역사관/유적전시", "coords": [127.1185, 37.5178], "addr": "서울특별시 송파구 올림픽로 424 (방이동)"}, {"no": 19, "id": "11710_B19_soma_museum", "name": "소마미술관 (SOMA 조각공원)", "cat": "미술관/조각공원", "coords": [127.12, 37.5153], "addr": "서울특별시 송파구 올림픽로 424 (방이동)"}, {"no": 20, "id": "11710_B20_bangi_baekje_tombs", "name": "방이동 백제 고분군", "cat": "고분군/유적", "coords": [127.117, 37.5115], "addr": "서울특별시 송파구 방이동 산 1 일대"}, {"no": 21, "id": "11710_B21_jamsil_olympic_stadium", "name": "잠실 올림픽주경기장", "cat": "경기장/주경기장", "coords": [127.0731, 37.5157], "addr": "서울특별시 송파구 올림픽로 25 (잠실동)"}, {"no": 22, "id": "11710_B22_jamsil_baseball_stadium", "name": "잠실야구장", "cat": "야구장/스포츠", "coords": [127.0718, 37.5121], "addr": "서울특별시 송파구 올림픽로 19-2 (잠실동)"}, {"no": 23, "id": "11710_B23_jamsil_indoor_gym", "name": "잠실실내체육관 & 잠실학생체육관", "cat": "체육관/실내경기", "coords": [127.0745, 37.5136], "addr": "서울특별시 송파구 올림픽로 25 (잠실동)"}, {"no": 24, "id": "11710_B24_jamsil_indoor_pool", "name": "잠실실내수영장 & 제2수영장", "cat": "수영장/실내체육", "coords": [127.0755, 37.5122], "addr": "서울특별시 송파구 올림픽로 25 (잠실동)"}, {"no": 25, "id": "11710_B25_asia_athletes_village", "name": "아시아선수촌아파트 & 아시아공원 중앙광장", "cat": "주거단지/공원", "coords": [127.08, 37.5088], "addr": "서울특별시 송파구 올림픽로 4길 (잠실동)"}, {"no": 26, "id": "11710_B26_jamsillaru_station", "name": "잠실나루역 & 성내천 하구 합수부", "cat": "역세권/하천합수부", "coords": [127.1035, 37.5207], "addr": "서울특별시 송파구 송파대로 지하 (신천동)"}, {"no": 27, "id": "11710_B27_tancheon_interchange_waterfront", "name": "탄천나들목 워터프론트", "cat": "수변데크/나들목", "coords": [127.0665, 37.511], "addr": "서울특별시 송파구 탄천동로 일대 (잠실동)"}, {"no": 28, "id": "11710_B28_songpa_mice_hub", "name": "송파 MICE 복합개발 비즈니스 허브존", "cat": "MICE/비즈니스", "coords": [127.104, 37.515], "addr": "서울특별시 송파구 잠실동 일대 (국제교류복합지구)"}, {"no": 29, "id": "11710_B29_jamsilsaenae_food_street", "name": "잠실새내역 맛골거리 & 새마을전통시장", "cat": "시장/먹자골목", "coords": [127.0863, 37.5115], "addr": "서울특별시 송파구 올림픽로 12길 (잠실동)"}, {"no": 30, "id": "11710_B30_samjeondo_monument", "name": "삼전도비 (대청황제공덕비)", "cat": "유적/역사공원", "coords": [127.097, 37.5085], "addr": "서울특별시 송파구 삼전로 80 (잠실동)"}, {"no": 31, "id": "11710_B31_garak_market_garakmall", "name": "가락시장 가락몰", "cat": "도매시장/유통", "coords": [127.118, 37.4925], "addr": "서울특별시 송파구 가락로 108 (가락동)"}, {"no": 32, "id": "11710_B32_eastern_district_court", "name": "서울동부지방법원 청사", "cat": "법조/공공청사", "coords": [127.1225, 37.488], "addr": "서울특별시 송파구 법원로 174 (문정동)"}, {"no": 33, "id": "11710_B33_eastern_district_prosecutors", "name": "서울동부지방검찰청 본관", "cat": "법조/공공청사", "coords": [127.1235, 37.4885], "addr": "서울특별시 송파구 법원로 171 (문정동)"}, {"no": 34, "id": "11710_B34_munjeong_terra_tower", "name": "문정 테라타워 1·2차 지식산업센터", "cat": "지식산업/업무", "coords": [127.123, 37.4845], "addr": "서울특별시 송파구 문정동 645 일대"}, {"no": 35, "id": "11710_B35_munjeong_hyundai_knowledge", "name": "문정 현대지식산업센터 & 컬처밸리 선큰광장", "cat": "지식산업/문화", "coords": [127.1205, 37.4855], "addr": "서울특별시 송파구 문정동 646 일대"}, {"no": 36, "id": "11710_B36_munjeong_rodeo_street", "name": "문정동 로데오거리 패션 아웃렛 스트리트", "cat": "상권/패션거리", "coords": [127.1245, 37.4865], "addr": "서울특별시 송파구 문정동 로데오거리 일대"}, {"no": 37, "id": "11710_B37_songpa_parkhabio", "name": "송파파크하비오 푸르지오 & 워터킹덤", "cat": "복합단지/리조트", "coords": [127.123, 37.482], "addr": "서울특별시 송파구 문정동 8 일대 (충정로)"}, {"no": 38, "id": "11710_B38_garden5_tool_life", "name": "가든파이브 툴관 & 라이프관 아트리움", "cat": "복합쇼핑/아트리움", "coords": [127.1235, 37.477], "addr": "서울특별시 송파구 충민로 66 (장지동)"}, {"no": 39, "id": "11710_B39_nc_songpa_department", "name": "NC백화점 송파점 & 중앙광장 분수대", "cat": "백화점/광장", "coords": [127.1265, 37.4762], "addr": "서울특별시 송파구 송파대로 10 (장지동)"}, {"no": 40, "id": "11710_B40_jangji_stream_eco_park", "name": "장지천 수변생태공원 & 벚꽃산책로", "cat": "수변공원/생태", "coords": [127.133, 37.478], "addr": "서울특별시 송파구 장지동 장지천 일대"}, {"no": 41, "id": "11710_B41_wirye_transit_mall", "name": "위례트랜짓몰 중앙 트램스트리트", "cat": "상업/보행거리", "coords": [127.14, 37.467], "addr": "서울특별시 송파구 위례성대로 일대 (장지동)"}, {"no": 42, "id": "11710_B42_wirye_starfield_city", "name": "위례스타필드시티 쇼핑몰 & 키즈파크", "cat": "쇼핑몰/키즈", "coords": [127.143, 37.4655], "addr": "서울특별시 송파구 위례중앙로 일대 (장지동)"}, {"no": 43, "id": "11710_B43_wirye_human_ring", "name": "위례휴먼링 녹지순환 둘레길", "cat": "공원/순환보행로", "coords": [127.145, 37.469], "addr": "서울특별시 송파구 위례동 일대"}, {"no": 44, "id": "11710_B44_jangji_water_park_clocktower", "name": "장지수변공원 & 위례중앙광장 시계탑", "cat": "공원/광장·시계탑", "coords": [127.14, 37.4705], "addr": "서울특별시 송파구 위례동 장지수변공원 일대"}, {"no": 45, "id": "11710_B45_geoyeo_macheon_central_park", "name": "거여·마천 뉴타운 센트럴파크", "cat": "공원/뉴타운", "coords": [127.145, 37.493], "addr": "서울특별시 송파구 거여동·마천동 일대"}, {"no": 46, "id": "11710_B46_macheon_market", "name": "마천시장 순대골목 & 전통시장 아케이드", "cat": "전통시장/골목", "coords": [127.147, 37.4965], "addr": "서울특별시 송파구 마천동 마천시장 일대"}, {"no": 47, "id": "11710_B47_seongnae_stream_mulbit_plaza", "name": "성내천 물빛광장 & 생태복원 보행데크", "cat": "수변광장/생태복원", "coords": [127.118, 37.5225], "addr": "서울특별시 송파구 성내천 일대 (풍납동·방이동)"}, {"no": 48, "id": "11710_B48_ogeum_park_forest_library", "name": "오금공원 숲속도서관 & 인공폭포광장", "cat": "공원/도서관", "coords": [127.128, 37.5045], "addr": "서울특별시 송파구 오금로 21길 (오금동)"}, {"no": 49, "id": "11710_B49_songpa_women_culture_center", "name": "송파여성문화회관 & 송파구민회관", "cat": "문화/공공회관", "coords": [127.1128, 37.5053], "addr": "서울특별시 송파구 백제고분로 40 (송파동)"}, {"no": 50, "id": "11710_B50_baekje_stone_mound", "name": "백제초기적석총 (석촌동 고분군)", "cat": "고분/국가유산", "coords": [127.0995, 37.51], "addr": "서울특별시 송파구 석촌동 155 일대"}];
+const BLOCKS = [{"no": 1, "id": "11710_B01_lotte_world_tower", "name": "롯데월드타워 (555m · 서울스카이)", "cat": "초고층/랜드마크", "coords": [127.1025, 37.5125], "addr": "서울특별시 송파구 올림픽로 300 (신천동)", "folder": "b01_롯데월드타워__555m___서울스카이_"}, {"no": 2, "id": "11710_B02_lotte_world_magic_island", "name": "롯데월드 어드벤처 매직아일랜드", "cat": "테마파크/수상성곽", "coords": [127.0985, 37.5115], "addr": "서울특별시 송파구 올림픽로 240 (잠실동)", "folder": "b02_롯데월드_어드벤처_매직아일랜드"}, {"no": 3, "id": "11710_B03_lotte_world_mall_avenuel", "name": "롯데월드몰 & 에비뉴엘 명품관", "cat": "복합쇼핑/명품관", "coords": [127.1005, 37.5128], "addr": "서울특별시 송파구 올림픽로 300 (신천동)", "folder": "b03_롯데월드몰___에비뉴엘_명품관"}, {"no": 4, "id": "11710_B04_seokchon_lake_east", "name": "석촌호수 동호 수변 산책로 & 벚꽃길", "cat": "호수/수변산책로", "coords": [127.1045, 37.508], "addr": "서울특별시 송파구 잠실동 석촌호수 일대", "folder": "b04_석촌호수_동호_수변_산책로___벚꽃길"}, {"no": 5, "id": "11710_B05_seokchon_lake_west", "name": "석촌호수 서호 수변무대 & 카페거리", "cat": "호수/수변무대", "coords": [127.0995, 37.506], "addr": "서울특별시 송파구 잠실동 석촌호수 일대", "folder": "b05_석촌호수_서호_수변무대___카페거리"}, {"no": 6, "id": "11710_B06_songpa_district_office", "name": "송파구청 본관 & 송파구의회 청사", "cat": "공공청사/행정", "coords": [127.112, 37.5145], "addr": "서울특별시 송파구 올림픽로 326 (잠실동)", "folder": "b06_송파구청_본관___송파구의회_청사"}, {"no": 7, "id": "11710_B07_jamsil_station_transfer_center", "name": "잠실역 지하 광역환승센터 & 롯데지하광장", "cat": "환승센터/교통", "coords": [127.1005, 37.5133], "addr": "서울특별시 송파구 올림픽로 지하 265 (잠실동)", "folder": "b07_잠실역_지하_광역환승센터___롯데지하광장"}, {"no": 8, "id": "11710_B08_songpanaru_park", "name": "송파나루공원 황포돛배 조형물 & 잔디광장", "cat": "공원/조형광장", "coords": [127.1135, 37.5065], "addr": "서울특별시 송파구 송파대로 지선 (송파동)", "folder": "b08_송파나루공원_황포돛배_조형물___잔디광장"}, {"no": 9, "id": "11710_B09_galleria_palace_lottecastle_gold", "name": "잠실 갤러리아팰리스 & 롯데캐슬골드 트윈타워", "cat": "주거/트윈타워", "coords": [127.1057, 37.5165], "addr": "서울특별시 송파구 올림픽로 212 (잠실동)", "folder": "b09_잠실_갤러리아팰리스___롯데캐슬골드_트윈타워"}, {"no": 10, "id": "11710_B10_bangimotgol_gate", "name": "방이맛골 전통 먹자골목 상징 패루게이트", "cat": "상권/전통패루", "coords": [127.1115, 37.511], "addr": "서울특별시 송파구 방이동 먹자골목 일대", "folder": "b10_방이맛골_전통_먹자골목_상징_패루게이트"}, {"no": 11, "id": "11710_B11_olympic_park_world_peace_gate", "name": "올림픽공원 평화의 문", "cat": "기념조형/공원정문", "coords": [127.1215, 37.5202], "addr": "서울특별시 송파구 올림픽로 424 (방이동)", "folder": "b11_올림픽공원_평화의_문"}, {"no": 12, "id": "11710_B12_mongchontoseong_walkway", "name": "올림픽공원 몽촌토성 산책로 & 망월봉", "cat": "고대토성/산책로", "coords": [127.118, 37.522], "addr": "서울특별시 송파구 올림픽로 424 (방이동)", "folder": "b12_올림픽공원_몽촌토성_산책로___망월봉"}, {"no": 13, "id": "11710_B13_olympic_park_lone_tree", "name": "올림픽공원 나홀로나무", "cat": "공원/상징수목", "coords": [127.1155, 37.5235], "addr": "서울특별시 송파구 올림픽로 424 (방이동)", "folder": "b13_올림픽공원_나홀로나무"}, {"no": 14, "id": "11710_B14_kspo_dome", "name": "KSPO DOME (올림픽체조경기장)", "cat": "체육관/돔", "coords": [127.1275, 37.5195], "addr": "서울특별시 송파구 올림픽로 424 (방이동)", "folder": "b14_KSPO_DOME__올림픽체조경기장_"}, {"no": 15, "id": "11710_B15_olympic_handball_gym", "name": "올림픽핸드볼경기장 (SK핸드볼경기장)", "cat": "체육관/경기장", "coords": [127.121, 37.5175], "addr": "서울특별시 송파구 올림픽로 424 (방이동)", "folder": "b15_올림픽핸드볼경기장__SK핸드볼경기장_"}, {"no": 16, "id": "11710_B16_olympic_swimming_velodrome", "name": "올림픽수영장 & 벨로드롬", "cat": "수영장/사이클경기장", "coords": [127.1245, 37.5155], "addr": "서울특별시 송파구 올림픽로 424 (방이동)", "folder": "b16_올림픽수영장___벨로드롬"}, {"no": 17, "id": "11710_B17_hanseong_baekje_museum", "name": "한성백제박물관", "cat": "역사박물관/문화재", "coords": [127.1157, 37.5172], "addr": "서울특별시 송파구 위례성대로 71 (방이동)", "folder": "b17_한성백제박물관"}, {"no": 18, "id": "11710_B18_mongchon_history_hall", "name": "몽촌역사관 & 백제 주거지 발굴전시관", "cat": "역사관/유적전시", "coords": [127.1185, 37.5178], "addr": "서울특별시 송파구 올림픽로 424 (방이동)", "folder": "b18_몽촌역사관___백제_주거지_발굴전시관"}, {"no": 19, "id": "11710_B19_soma_museum", "name": "소마미술관 (SOMA 조각공원)", "cat": "미술관/조각공원", "coords": [127.12, 37.5153], "addr": "서울특별시 송파구 올림픽로 424 (방이동)", "folder": "b19_소마미술관__SOMA_조각공원_"}, {"no": 20, "id": "11710_B20_bangi_baekje_tombs", "name": "방이동 백제 고분군", "cat": "고분군/유적", "coords": [127.117, 37.5115], "addr": "서울특별시 송파구 방이동 산 1 일대", "folder": "b20_방이동_백제_고분군"}, {"no": 21, "id": "11710_B21_jamsil_olympic_stadium", "name": "잠실 올림픽주경기장", "cat": "경기장/주경기장", "coords": [127.0731, 37.5157], "addr": "서울특별시 송파구 올림픽로 25 (잠실동)", "folder": "b21_잠실_올림픽주경기장"}, {"no": 22, "id": "11710_B22_jamsil_baseball_stadium", "name": "잠실야구장", "cat": "야구장/스포츠", "coords": [127.0718, 37.5121], "addr": "서울특별시 송파구 올림픽로 19-2 (잠실동)", "folder": "b22_잠실야구장"}, {"no": 23, "id": "11710_B23_jamsil_indoor_gym", "name": "잠실실내체육관 & 잠실학생체육관", "cat": "체육관/실내경기", "coords": [127.0745, 37.5136], "addr": "서울특별시 송파구 올림픽로 25 (잠실동)", "folder": "b23_잠실실내체육관___잠실학생체육관"}, {"no": 24, "id": "11710_B24_jamsil_indoor_pool", "name": "잠실실내수영장 & 제2수영장", "cat": "수영장/실내체육", "coords": [127.0755, 37.5122], "addr": "서울특별시 송파구 올림픽로 25 (잠실동)", "folder": "b24_잠실실내수영장___제2수영장"}, {"no": 25, "id": "11710_B25_asia_athletes_village", "name": "아시아선수촌아파트 & 아시아공원 중앙광장", "cat": "주거단지/공원", "coords": [127.08, 37.5088], "addr": "서울특별시 송파구 올림픽로 4길 (잠실동)", "folder": "b25_아시아선수촌아파트___아시아공원_중앙광장"}, {"no": 26, "id": "11710_B26_jamsillaru_station", "name": "잠실나루역 & 성내천 하구 합수부", "cat": "역세권/하천합수부", "coords": [127.1035, 37.5207], "addr": "서울특별시 송파구 송파대로 지하 (신천동)", "folder": "b26_잠실나루역___성내천_하구_합수부"}, {"no": 27, "id": "11710_B27_tancheon_interchange_waterfront", "name": "탄천나들목 워터프론트", "cat": "수변데크/나들목", "coords": [127.0665, 37.511], "addr": "서울특별시 송파구 탄천동로 일대 (잠실동)", "folder": "b27_탄천나들목_워터프론트"}, {"no": 28, "id": "11710_B28_songpa_mice_hub", "name": "송파 MICE 복합개발 비즈니스 허브존", "cat": "MICE/비즈니스", "coords": [127.104, 37.515], "addr": "서울특별시 송파구 잠실동 일대 (국제교류복합지구)", "folder": "b28_송파_MICE_복합개발_비즈니스_허브존"}, {"no": 29, "id": "11710_B29_jamsilsaenae_food_street", "name": "잠실새내역 맛골거리 & 새마을전통시장", "cat": "시장/먹자골목", "coords": [127.0863, 37.5115], "addr": "서울특별시 송파구 올림픽로 12길 (잠실동)", "folder": "b29_잠실새내역_맛골거리___새마을전통시장"}, {"no": 30, "id": "11710_B30_samjeondo_monument", "name": "삼전도비 (대청황제공덕비)", "cat": "유적/역사공원", "coords": [127.097, 37.5085], "addr": "서울특별시 송파구 삼전로 80 (잠실동)", "folder": "b30_삼전도비__대청황제공덕비_"}, {"no": 31, "id": "11710_B31_garak_market_garakmall", "name": "가락시장 가락몰", "cat": "도매시장/유통", "coords": [127.118, 37.4925], "addr": "서울특별시 송파구 가락로 108 (가락동)", "folder": "b31_가락시장_가락몰"}, {"no": 32, "id": "11710_B32_eastern_district_court", "name": "서울동부지방법원 청사", "cat": "법조/공공청사", "coords": [127.1225, 37.488], "addr": "서울특별시 송파구 법원로 174 (문정동)", "folder": "b32_서울동부지방법원_청사"}, {"no": 33, "id": "11710_B33_eastern_district_prosecutors", "name": "서울동부지방검찰청 본관", "cat": "법조/공공청사", "coords": [127.1235, 37.4885], "addr": "서울특별시 송파구 법원로 171 (문정동)", "folder": "b33_서울동부지방검찰청_본관"}, {"no": 34, "id": "11710_B34_munjeong_terra_tower", "name": "문정 테라타워 1·2차 지식산업센터", "cat": "지식산업/업무", "coords": [127.123, 37.4845], "addr": "서울특별시 송파구 문정동 645 일대", "folder": "b34_문정_테라타워_1_2차_지식산업센터"}, {"no": 35, "id": "11710_B35_munjeong_hyundai_knowledge", "name": "문정 현대지식산업센터 & 컬처밸리 선큰광장", "cat": "지식산업/문화", "coords": [127.1205, 37.4855], "addr": "서울특별시 송파구 문정동 646 일대", "folder": "b35_문정_현대지식산업센터___컬처밸리_선큰광장"}, {"no": 36, "id": "11710_B36_munjeong_rodeo_street", "name": "문정동 로데오거리 패션 아웃렛 스트리트", "cat": "상권/패션거리", "coords": [127.1245, 37.4865], "addr": "서울특별시 송파구 문정동 로데오거리 일대", "folder": "b36_문정동_로데오거리_패션_아웃렛_스트리트"}, {"no": 37, "id": "11710_B37_songpa_parkhabio", "name": "송파파크하비오 푸르지오 & 워터킹덤", "cat": "복합단지/리조트", "coords": [127.123, 37.482], "addr": "서울특별시 송파구 문정동 8 일대 (충정로)", "folder": "b37_송파파크하비오_푸르지오___워터킹덤"}, {"no": 38, "id": "11710_B38_garden5_tool_life", "name": "가든파이브 툴관 & 라이프관 아트리움", "cat": "복합쇼핑/아트리움", "coords": [127.1235, 37.477], "addr": "서울특별시 송파구 충민로 66 (장지동)", "folder": "b38_가든파이브_툴관___라이프관_아트리움"}, {"no": 39, "id": "11710_B39_nc_songpa_department", "name": "NC백화점 송파점 & 중앙광장 분수대", "cat": "백화점/광장", "coords": [127.1265, 37.4762], "addr": "서울특별시 송파구 송파대로 10 (장지동)", "folder": "b39_NC백화점_송파점___중앙광장_분수대"}, {"no": 40, "id": "11710_B40_jangji_stream_eco_park", "name": "장지천 수변생태공원 & 벚꽃산책로", "cat": "수변공원/생태", "coords": [127.133, 37.478], "addr": "서울특별시 송파구 장지동 장지천 일대", "folder": "b40_장지천_수변생태공원___벚꽃산책로"}, {"no": 41, "id": "11710_B41_wirye_transit_mall", "name": "위례트랜짓몰 중앙 트램스트리트", "cat": "상업/보행거리", "coords": [127.14, 37.467], "addr": "서울특별시 송파구 위례성대로 일대 (장지동)", "folder": "b41_위례트랜짓몰_중앙_트램스트리트"}, {"no": 42, "id": "11710_B42_wirye_starfield_city", "name": "위례스타필드시티 쇼핑몰 & 키즈파크", "cat": "쇼핑몰/키즈", "coords": [127.143, 37.4655], "addr": "서울특별시 송파구 위례중앙로 일대 (장지동)", "folder": "b42_위례스타필드시티_쇼핑몰___키즈파크"}, {"no": 43, "id": "11710_B43_wirye_human_ring", "name": "위례휴먼링 녹지순환 둘레길", "cat": "공원/순환보행로", "coords": [127.145, 37.469], "addr": "서울특별시 송파구 위례동 일대", "folder": "b43_위례휴먼링_녹지순환_둘레길"}, {"no": 44, "id": "11710_B44_jangji_water_park_clocktower", "name": "장지수변공원 & 위례중앙광장 시계탑", "cat": "공원/광장·시계탑", "coords": [127.14, 37.4705], "addr": "서울특별시 송파구 위례동 장지수변공원 일대", "folder": "b44_장지수변공원___위례중앙광장_시계탑"}, {"no": 45, "id": "11710_B45_geoyeo_macheon_central_park", "name": "거여·마천 뉴타운 센트럴파크", "cat": "공원/뉴타운", "coords": [127.145, 37.493], "addr": "서울특별시 송파구 거여동·마천동 일대", "folder": "b45_거여_마천_뉴타운_센트럴파크"}, {"no": 46, "id": "11710_B46_macheon_market", "name": "마천시장 순대골목 & 전통시장 아케이드", "cat": "전통시장/골목", "coords": [127.147, 37.4965], "addr": "서울특별시 송파구 마천동 마천시장 일대", "folder": "b46_마천시장_순대골목___전통시장_아케이드"}, {"no": 47, "id": "11710_B47_seongnae_stream_mulbit_plaza", "name": "성내천 물빛광장 & 생태복원 보행데크", "cat": "수변광장/생태복원", "coords": [127.118, 37.5225], "addr": "서울특별시 송파구 성내천 일대 (풍납동·방이동)", "folder": "b47_성내천_물빛광장___생태복원_보행데크"}, {"no": 48, "id": "11710_B48_ogeum_park_forest_library", "name": "오금공원 숲속도서관 & 인공폭포광장", "cat": "공원/도서관", "coords": [127.128, 37.5045], "addr": "서울특별시 송파구 오금로 21길 (오금동)", "folder": "b48_오금공원_숲속도서관___인공폭포광장"}, {"no": 49, "id": "11710_B49_songpa_women_culture_center", "name": "송파여성문화회관 & 송파구민회관", "cat": "문화/공공회관", "coords": [127.1128, 37.5053], "addr": "서울특별시 송파구 백제고분로 40 (송파동)", "folder": "b49_송파여성문화회관___송파구민회관"}, {"no": 50, "id": "11710_B50_baekje_stone_mound", "name": "백제초기적석총 (석촌동 고분군)", "cat": "고분/국가유산", "coords": [127.0995, 37.51], "addr": "서울특별시 송파구 석촌동 155 일대", "folder": "b50_백제초기적석총__석촌동_고분군_"}];
 
 function toXZ(lon, lat){
   return [(lon - CENTER[0]) * LON, -(lat - CENTER[1]) * LAT];
@@ -163,44 +165,49 @@ function toXZ(lon, lat){
 // Three.js 씬 초기화
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x0b111e);
-scene.fog = new THREE.FogExp2(0x0b111e, 0.00018);
+scene.fog = new THREE.FogExp2(0x0b111e, 0.00015);
 
-const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 10, 35000);
-camera.position.set(0, 1500, 2100);
-camera.lookAt(0, 60, 0);
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 5, 45000);
+camera.position.set(0, 950, 1500);
+camera.lookAt(0, 40, 0);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+if(THREE.sRGBEncoding) renderer.outputEncoding = THREE.sRGBEncoding;
 document.body.appendChild(renderer.domElement);
 
 // 조명 설정
-const hemiLight = new THREE.HemisphereLight(0xffffff, 0x223344, 0.85);
+const hemiLight = new THREE.HemisphereLight(0xddeeff, 0x1a2638, 0.9);
 hemiLight.position.set(0, 5000, 0);
 scene.add(hemiLight);
 
-const dirLight = new THREE.DirectionalLight(0xfff4e6, 1.1);
-dirLight.position.set(3000, 7000, 4000);
+const dirLight = new THREE.DirectionalLight(0xfff6ea, 1.25);
+dirLight.position.set(3500, 8000, 4500);
 scene.add(dirLight);
 
-const fillLight = new THREE.DirectionalLight(0x7fd1ff, 0.4);
-fillLight.position.set(-3000, 3000, -3000);
+const fillLight = new THREE.DirectionalLight(0x7fd1ff, 0.5);
+fillLight.position.set(-3500, 3500, -3500);
 scene.add(fillLight);
 
 // 기본 베이스 지면
-const groundGeo = new THREE.PlaneGeometry(30000, 30000);
-const groundMat = new THREE.MeshLambertMaterial({ color: 0x121b2d, depthWrite: true });
+const groundGeo = new THREE.PlaneGeometry(40000, 40000);
+const groundMat = new THREE.MeshLambertMaterial({ color: 0x141e30, depthWrite: true });
 const groundMesh = new THREE.Mesh(groundGeo, groundMat);
 groundMesh.rotation.x = -Math.PI / 2;
 groundMesh.position.y = -1;
 scene.add(groundMesh);
 
-// 3D 마커 그룹
+// 3D 마커 및 glTF 홀더 그룹
 const markerGroup = new THREE.Group();
 scene.add(markerGroup);
 const markerObjects = [];
 
-// 블록 50개 3D 마커 생성
+const gltfHolderGroup = new THREE.Group();
+scene.add(gltfHolderGroup);
+let activeGltfMesh = null;
+
+// 블록 50개 3D 핀 생성
 function createMarkers(){
   const pinGeo = new THREE.CylinderGeometry(0, 16, 60, 8);
   pinGeo.rotateX(Math.PI);
@@ -209,7 +216,7 @@ function createMarkers(){
     const xz = toXZ(b.coords[0], b.coords[1]);
     const pinMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8 });
     const pin = new THREE.Mesh(pinGeo, pinMat);
-    pin.position.set(xz[0], 50, xz[1]);
+    pin.position.set(xz[0], 55, xz[1]);
     
     // 바닥 링
     const ringGeo = new THREE.RingGeometry(18, 26, 16);
@@ -228,7 +235,42 @@ function createMarkers(){
 }
 createMarkers();
 
-// 건물 타일셋 로딩
+// ── 건물 기둥 삼각분할(BufferGeometry) ──
+function prism(ring, h, pos, norm, col){
+  if (!ring || ring.length < 3) return;
+  const contour = [];
+  for (let i = 0; i < ring.length - 1; i++){
+    const p = toXZ(ring[i][0], ring[i][1]);
+    contour.push(new THREE.Vector2(p[0], p[1]));
+  }
+  if (contour.length < 3) return;
+  let faces = [];
+  try { faces = THREE.ShapeUtils.triangulateShape(contour, []); } catch(e){ return; }
+  for (const f of faces){
+    for (const idx of f){
+      const v = contour[idx];
+      pos.push(v.x, h, v.y); norm.push(0, 1, 0); col.push(0.85, 0.90, 0.98);
+    }
+  }
+  const wallK = 0.65;
+  for (let i = 0; i < contour.length; i++){
+    const a = contour[i], b = contour[(i+1)%contour.length];
+    pos.push(a.x, 0, a.y, b.x, 0, b.y, b.x, h, b.y);
+    pos.push(a.x, 0, a.y, b.x, h, b.y, a.x, h, a.y);
+    for (let k = 0; k < 6; k++){ norm.push(0, 0, 1); col.push(wallK, wallK*1.05, wallK*1.15); }
+  }
+}
+
+function roofEdges(ring, h, out){
+  if (!ring || ring.length < 4) return;
+  for (let i = 0; i < ring.length - 1; i++){
+    const a = toXZ(ring[i][0], ring[i][1]);
+    const b = toXZ(ring[i+1][0], ring[i+1][1]);
+    out.push(a[0], h + 0.1, a[1], b[0], h + 0.1, b[1]);
+  }
+}
+
+// ── 건물 타일셋 배경 전체 로딩 ──
 async function loadTiles(){
   try {
     const res = await fetch('tiles_1000m/tiles_manifest.json');
@@ -236,39 +278,140 @@ async function loadTiles(){
     const man = await res.json();
     if(!man || !man.tiles) return;
 
-    const bMat = new THREE.MeshLambertMaterial({ color: 0x5a708e });
-    const edgeMat = new THREE.LineBasicMaterial({ color: 0x9fb6d6, transparent: true, opacity: 0.45 });
+    const pos = [], norm = [], col = [], epos = [];
+    const limit = Math.min(man.tiles.length, 12);
 
-    for(const t of man.tiles){
+    for(let i = 0; i < limit; i++){
+      const t = man.tiles[i];
       try {
-        const tr = await fetch('tiles_1000m/tile_' + t.ti + '_' + t.tj + '_lod1.json');
+        const url = 'tiles_1000m/tile_' + t.ti + '_' + t.tj + '_lod1.json';
+        const tr = await fetch(url);
         if(!tr.ok) continue;
-        const data = await tr.json();
-        if(!data || !data.buildings) continue;
+        const gj = await tr.json();
+        if(!gj || !gj.features) continue;
 
-        data.buildings.forEach(bd => {
-          if(!bd.pts || bd.pts.length < 3) return;
-          const shape = new THREE.Shape();
-          const first = toXZ(bd.pts[0][0], bd.pts[0][1]);
-          shape.moveTo(first[0], -first[1]);
-          for(let i=1; i<bd.pts.length; i++){
-            const pt = toXZ(bd.pts[i][0], bd.pts[i][1]);
-            shape.lineTo(pt[0], -pt[1]);
-          }
-          const height = Math.max(8, bd.h || 15);
-          const extGeo = new THREE.ExtrudeGeometry(shape, { depth: height, bevelEnabled: false });
-          extGeo.rotateX(-Math.PI / 2);
-          const mesh = new THREE.Mesh(extGeo, bMat);
-          mesh.position.y = 0;
-          scene.add(mesh);
-        });
+        for(const f of gj.features){
+          if(!f.geometry || !f.geometry.coordinates || !f.geometry.coordinates[0]) continue;
+          const h = (f.properties && f.properties.h) ? Math.max(8, f.properties.h) : 15;
+          prism(f.geometry.coordinates[0], h, pos, norm, col);
+          roofEdges(f.geometry.coordinates[0], h, epos);
+        }
       } catch(e){}
+    }
+
+    if(pos.length){
+      const g = new THREE.BufferGeometry();
+      g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+      g.setAttribute('normal', new THREE.Float32BufferAttribute(norm, 3));
+      g.setAttribute('color', new THREE.Float32BufferAttribute(col, 3));
+      const bldgMesh = new THREE.Mesh(g, new THREE.MeshLambertMaterial({ vertexColors: true, flatShading: true }));
+      scene.add(bldgMesh);
+    }
+
+    if(epos.length){
+      const eg = new THREE.BufferGeometry();
+      eg.setAttribute('position', new THREE.Float32BufferAttribute(epos, 3));
+      const edgeLine = new THREE.LineSegments(eg, new THREE.LineBasicMaterial({ color: 0x3b5575, transparent: true, opacity: 0.8 }));
+      scene.add(edgeLine);
     }
   } catch(e){}
 }
 loadTiles();
 
-// 사이드바 UI 렌더링
+// ── 경량 순수 JS glTF 바이너리 파서 ──
+function decDataUri(u){
+  const b = atob(u.split(',')[1]);
+  const a = new Uint8Array(b.length);
+  for(let i=0; i<b.length; i++) a[i] = b.charCodeAt(i);
+  return a.buffer;
+}
+
+function getAccessorData(g, bufs, i){
+  const a = g.accessors[i];
+  const bv = g.bufferViews[a.bufferView];
+  const numComps = { SCALAR: 1, VEC2: 2, VEC3: 3, VEC4: 4 }[a.type];
+  const T = { 5126: Float32Array, 5125: Uint32Array, 5123: Uint16Array, 5121: Uint8Array }[a.componentType];
+  return new T(bufs[bv.buffer], (bv.byteOffset || 0) + (a.byteOffset || 0), a.count * numComps);
+}
+
+function buildGltfMesh(g, tex, bufs){
+  const mats = (g.materials || [{}]).map(m => {
+    const pb = m.pbrMetallicRoughness || {};
+    const o = { roughness: pb.roughnessFactor == null ? 0.7 : pb.roughnessFactor, metalness: pb.metallicFactor || 0.1, side: THREE.DoubleSide };
+    if(pb.baseColorTexture && tex) o.map = tex;
+    else if(pb.baseColorFactor) o.color = new THREE.Color(pb.baseColorFactor[0], pb.baseColorFactor[1], pb.baseColorFactor[2]);
+    else if(tex) o.map = tex;
+    return new THREE.MeshStandardMaterial(o);
+  });
+  const root = new THREE.Group();
+  g.nodes.forEach(nd => {
+    if(nd.mesh == null) return;
+    g.meshes[nd.mesh].primitives.forEach(p => {
+      const geo = new THREE.BufferGeometry();
+      geo.setAttribute('position', new THREE.BufferAttribute(getAccessorData(g, bufs, p.attributes.POSITION), 3));
+      if(p.attributes.NORMAL != null) geo.setAttribute('normal', new THREE.BufferAttribute(getAccessorData(g, bufs, p.attributes.NORMAL), 3));
+      if(p.attributes.TEXCOORD_0 != null) geo.setAttribute('uv', new THREE.BufferAttribute(getAccessorData(g, bufs, p.attributes.TEXCOORD_0), 2));
+      if(p.indices != null) geo.setIndex(new THREE.BufferAttribute(getAccessorData(g, bufs, p.indices), 1));
+      if(p.attributes.NORMAL == null) geo.computeVertexNormals();
+      const m = new THREE.Mesh(geo, mats[p.material || 0]);
+      if(nd.translation) m.position.fromArray(nd.translation);
+      if(nd.scale) m.scale.fromArray(nd.scale);
+      if(nd.rotation) m.quaternion.fromArray(nd.rotation);
+      root.add(m);
+    });
+  });
+  return root;
+}
+
+// ── 블록별 3D glTF 로더 ──
+async function loadBlockGltf(b, xz){
+  const dtStatus = document.getElementById('dtStatus');
+  dtStatus.textContent = '3D 실물 모델 로딩 중…';
+  const base = 'blocks/' + b.folder + '/';
+  try {
+    const gltfRes = await fetch(base + 'model_lod2.gltf').catch(() => null);
+    if(!gltfRes || !gltfRes.ok) throw new Error('gltf not found');
+    const g = await gltfRes.json();
+    
+    const bufs = await Promise.all(g.buffers.map(buf => {
+      if(buf.uri.startsWith('data:')) return Promise.resolve(decDataUri(buf.uri));
+      return fetch(base + buf.uri).then(r => r.arrayBuffer());
+    }));
+
+    const texLoader = new THREE.TextureLoader();
+    texLoader.load(base + 'texture_atlas.webp', (tex) => {
+      tex.flipY = true;
+      if(THREE.sRGBEncoding) tex.encoding = THREE.sRGBEncoding;
+      mountGltf(g, tex, bufs, xz, b);
+    }, undefined, () => {
+      mountGltf(g, null, bufs, xz, b);
+    });
+  } catch(e) {
+    dtStatus.textContent = '3D 랜드마크 핀 위치 확인됨';
+  }
+}
+
+function mountGltf(g, tex, bufs, xz, b){
+  if(activeGltfMesh) gltfHolderGroup.remove(activeGltfMesh);
+  activeGltfMesh = buildGltfMesh(g, tex, bufs);
+  
+  // 크기 자동 정규화 및 바닥 안착
+  const bb = new THREE.Box3().setFromObject(activeGltfMesh);
+  const sz = bb.getSize(new THREE.Vector3());
+  const maxDim = Math.max(sz.x, sz.z);
+  const targetScale = Math.min(2.5, Math.max(0.8, 120 / (maxDim || 100)));
+  activeGltfMesh.scale.set(targetScale, targetScale, targetScale);
+  
+  // 정밀 위치 배치
+  activeGltfMesh.position.set(xz[0], 2, xz[1]);
+  gltfHolderGroup.add(activeGltfMesh);
+
+  let tri = 0;
+  activeGltfMesh.traverse(o => { if(o.geometry) tri += (o.geometry.index ? o.geometry.index.count : o.geometry.attributes.position.count) / 3; });
+  document.getElementById('dtStatus').textContent = '✅ 3D 실물 모델 로딩 완료 (삼각형 ' + Math.round(tri).toLocaleString() + '개)';
+}
+
+// ── 사이드바 UI 렌더링 ──
 function renderSidebar(list){
   const el = document.getElementById('blockList');
   el.innerHTML = '';
@@ -308,14 +451,14 @@ function filterBlocks(){
   renderSidebar(filtered);
 }
 
-// 블록 이동 & 상세 표시
+// ── 블록 이동 & 상세 표시 & glTF 마운트 ──
 let targetCam = null, targetLook = null;
 let isOrbiting = false;
 
 function flyToBlock(b){
   const xz = toXZ(b.coords[0], b.coords[1]);
-  targetCam = new THREE.Vector3(xz[0], 280, xz[1] + 360);
-  targetLook = new THREE.Vector3(xz[0], 40, xz[1]);
+  targetCam = new THREE.Vector3(xz[0], 220, xz[1] + 280);
+  targetLook = new THREE.Vector3(xz[0], 35, xz[1]);
   
   // 마커 하이라이트
   markerObjects.forEach(m => {
@@ -338,6 +481,9 @@ function flyToBlock(b){
   document.getElementById('dtAddr').textContent = '주소: ' + b.addr;
   document.getElementById('dtCoords').textContent = '좌표: ' + b.coords[0].toFixed(5) + ', ' + b.coords[1].toFixed(5);
   document.getElementById('block-detail').style.display = 'flex';
+
+  // 3D glTF 로드 및 실물 표시
+  loadBlockGltf(b, xz);
 }
 
 function closeDetail(){
@@ -351,8 +497,8 @@ function toggleSidebar(){
 }
 
 function resetView(){
-  targetCam = new THREE.Vector3(0, 1500, 2100);
-  targetLook = new THREE.Vector3(0, 60, 0);
+  targetCam = new THREE.Vector3(0, 950, 1500);
+  targetLook = new THREE.Vector3(0, 40, 0);
   closeDetail();
 }
 
@@ -370,7 +516,6 @@ function animate(){
     camera.position.lerp(targetCam, 0.05);
     const curLook = new THREE.Vector3();
     camera.getWorldDirection(curLook);
-    // 간단 보간
     if(camera.position.distanceTo(targetCam) < 2){
       targetCam = null;
     }
@@ -383,6 +528,13 @@ function animate(){
   renderer.render(scene, camera);
 }
 animate();
+
+// 1번 블록 기본 프리로드
+setTimeout(() => {
+  if(BLOCKS && BLOCKS.length){
+    flyToBlock(BLOCKS[0]);
+  }
+}, 800);
 
 // 윈도우 리사이즈
 window.addEventListener('resize', () => {

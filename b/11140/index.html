@@ -87,7 +87,7 @@
 
   /* 선택된 블록 상세 모달 */
   #block-detail {
-    position:fixed; bottom:20px; left:305px; z-index:45; max-width:380px;
+    position:fixed; bottom:20px; left:305px; z-index:45; max-width:400px;
     background:rgba(15,23,42,0.95); backdrop-filter:blur(14px);
     border:1px solid rgba(56,189,248,0.5); border-radius:14px;
     padding:14px 16px; box-shadow:0 12px 30px rgba(0,0,0,0.7);
@@ -99,6 +99,7 @@
   .detail-close:hover { color:#fff; }
   .detail-cat { font-size:11px; color:#fde047; }
   .detail-addr { font-size:11.5px; color:#cbd5e1; line-height:1.4; }
+  .detail-status { font-size:11px; color:#38bdf8; font-weight:bold; }
   .detail-coords { font-size:10px; color:#64748b; font-family:Consolas, monospace; }
 
   @media (max-width: 768px) {
@@ -141,6 +142,7 @@
   </div>
   <div class="detail-cat" id="dtCat">카테고리</div>
   <div class="detail-addr" id="dtAddr">도로명주소</div>
+  <div class="detail-status" id="dtStatus">3D 실물 모델 로딩 중…</div>
   <div class="detail-coords" id="dtCoords">WGS84 좌표</div>
 </div>
 
@@ -154,7 +156,7 @@ const REGION_CODE = '11140';
 const REGION_NAME = '중구';
 const CENTER = [126.9753, 37.5599];
 const LON = 88000, LAT = 111000;
-const BLOCKS = [{"no": 1, "id": "11140_B01_숭례문_국보_제1호_남대문", "name": "숭례문", "cat": "성곽/국보", "coords": [126.9753, 37.5599], "addr": "서울특별시 중구 세종대로 40 (남대문로4가)"}, {"no": 2, "id": "11140_B02_덕수궁_대한문_정문", "name": "덕수궁 대한문 (정문)", "cat": "궁궐/정문", "coords": [126.9768, 37.5658], "addr": "서울특별시 중구 세종대로 99 (정동 5-1)"}, {"no": 3, "id": "11140_B03_덕수궁_중화전_정전", "name": "덕수궁 중화전 (정전)", "cat": "궁궐/정전", "coords": [126.9749, 37.5661], "addr": "서울특별시 중구 세종대로 99 (정동 5-1, 덕수궁 내)"}, {"no": 4, "id": "11140_B04_덕수궁_석조전", "name": "덕수궁 석조전", "cat": "근대건축/석조건축", "coords": [126.9742, 37.5663], "addr": "서울특별시 중구 세종대로 99 (정동 5-1, 덕수궁 내)"}, {"no": 5, "id": "11140_B05_덕수궁_정관헌", "name": "덕수궁 정관헌", "cat": "궁궐/동서절충누각", "coords": [126.9754, 37.5667], "addr": "서울특별시 중구 세종대로 99 (정동 5-1, 덕수궁 내)"}, {"no": 6, "id": "11140_B06_덕수궁_돌담길_정동길_입구", "name": "덕수궁 돌담길 (정동길 입구)", "cat": "문화거리/돌담길", "coords": [126.9758, 37.5652], "addr": "서울특별시 중구 정동길 일대 (덕수궁 남동측 담장)"}, {"no": 7, "id": "11140_B07_정동제일교회_벧엘예배당", "name": "정동제일교회 벧엘예배당", "cat": "근대건축/사적성당", "coords": [126.9728, 37.5664], "addr": "서울특별시 중구 정동길 46 (정동 34-2)"}, {"no": 8, "id": "11140_B08_덕수궁_중명전", "name": "덕수궁 중명전", "cat": "대한제국유적/사적", "coords": [126.9718, 37.5672], "addr": "서울특별시 중구 정동 5-1 (덕수궁 내 중명전)"}, {"no": 9, "id": "11140_B09_서울시립미술관_서소문본관", "name": "서울시립미술관 서소문본관", "cat": "문화예술/근대건축", "coords": [126.9734, 37.5641], "addr": "서울특별시 중구 덕수궁길 61 (서소문동 37)"}, {"no": 10, "id": "11140_B10_배재학당_역사박물관", "name": "배재학당 역사박물관", "cat": "근대교육/사적", "coords": [126.9721, 37.5638], "addr": "서울특별시 중구 서소문로 11길 19 (정동 34-5)"}, {"no": 11, "id": "11140_B11_명동성당_대성당", "name": "명동성당 대성당", "cat": "종교유적/고딕성당", "coords": [126.9872, 37.5632], "addr": "서울특별시 중구 명동길 74 (명동 3-1)"}, {"no": 12, "id": "11140_B12_명동_메인스트리트_보행자거리", "name": "명동 메인스트리트 보행자거리", "cat": "글로벌상권/보행거리", "coords": [126.9854, 37.5618], "addr": "서울특별시 중구 명동길 일대 (명동 2가 중심 상권)"}, {"no": 13, "id": "11140_B13_명동예술극장_파사드", "name": "명동예술극장 파사드", "cat": "문화공연/근대극장", "coords": [126.9848, 37.5636], "addr": "서울특별시 중구 명동길 41 (명동 2가 56-1)"}, {"no": 14, "id": "11140_B14_남대문시장_칼국수·갈치골목", "name": "남대문시장 칼국수·갈치골목", "cat": "전통시장/아케이드", "coords": [126.9798, 37.5613], "addr": "서울특별시 중구 남대문시장4길 21 (남창동)"}, {"no": 15, "id": "11140_B15_한국은행_구_본관_(화폐박물관)", "name": "한국은행 구 본관 (화폐박물관)", "cat": "근대건축/사적", "coords": [126.9812, 37.5624], "addr": "서울특별시 중구 남대문로 39 (남대문로3가)"}, {"no": 16, "id": "11140_B16_롯데백화점_본점_파사드_&_애비뉴엘", "name": "롯데백화점 본점 파사드 & 애비뉴엘", "cat": "도심상업/백화점", "coords": [126.9818, 37.5654], "addr": "서울특별시 중구 남대문로 81 (소공동)"}, {"no": 17, "id": "11140_B17_신세계백화점_본점_본관_&_미디어파사드", "name": "신세계백화점 본점 본관 & 미디어파사드", "cat": "근대건축/미디어아트", "coords": [126.9808, 37.5604], "addr": "서울특별시 중구 소공로 63 (충무로1가)"}, {"no": 18, "id": "11140_B18_서울광장_잔디광장_&_서울도서관", "name": "서울광장 잔디광장 & 서울도서관", "cat": "도심광장/역사도서관", "coords": [126.9778, 37.5663], "addr": "서울특별시 중구 세종대로 110 (태평로1가)"}, {"no": 19, "id": "11140_B19_서울시청_신청사_&_수직정원", "name": "서울시청 신청사 & 수직정원", "cat": "현대건축/친환경청사", "coords": [126.9784, 37.5668], "addr": "서울특별시 중구 세종대로 110 (태평로1가)"}, {"no": 20, "id": "11140_B20_을지로_노가리호프골목", "name": "을지로 노가리호프골목", "cat": "도시문화/뉴트로골목", "coords": [126.9912, 37.5664], "addr": "서울특별시 중구 을지로13길 일대 (을지로3가)"}, {"no": 21, "id": "11140_B21_N서울타워_(남산타워_메가전망대)", "name": "N서울타워 (남산타워 메가전망대)", "cat": "초고층전망대/메가랜드마크", "coords": [126.9882, 37.5512], "addr": "서울특별시 중구 남산공원길 105 (용산동2가)"}, {"no": 22, "id": "11140_B22_남산_케이블카_상하부_정류장_&_캐빈", "name": "남산 케이블카 상하부 정류장 & 캐빈", "cat": "관광교통/케이블카", "coords": [126.9852, 37.5564], "addr": "서울특별시 중구 남산공원길 83 (예장동)"}, {"no": 23, "id": "11140_B23_남산_팔각정_&_봉수대", "name": "남산 팔각정 & 봉수대", "cat": "전통누각/통신유적", "coords": [126.9878, 37.5516], "addr": "서울특별시 중구 남산공원길 105 (예장동)"}, {"no": 24, "id": "11140_B24_한양도성_남산구간_(목멱산_성곽길)", "name": "한양도성 남산구간 (목멱산 성곽길)", "cat": "세계유산/산악성곽", "coords": [126.9812, 37.5534], "addr": "서울특별시 중구 남산공원길 일대 (회현동)"}, {"no": 25, "id": "11140_B25_백범광장_잔디공원_&_김구선생_동상", "name": "백범광장 잔디공원 & 김구선생 동상", "cat": "호국보훈/기념공원", "coords": [126.9782, 37.5552], "addr": "서울특별시 중구 남산공원길 일대 (예장동)"}, {"no": 26, "id": "11140_B26_안중근의사기념관", "name": "안중근의사기념관", "cat": "역사기념관/현대건축", "coords": [126.9798, 37.5548], "addr": "서울특별시 중구 소월로 91 (남대문로5가)"}, {"no": 27, "id": "11140_B27_남산골한옥마을_&_천우각", "name": "남산골한옥마을 & 천우각", "cat": "전통가옥/한국정원", "coords": [126.9938, 37.5592], "addr": "서울특별시 중구 퇴계로34길 28 (필동2가)"}, {"no": 28, "id": "11140_B28_국립극장_해오름극장", "name": "국립극장 해오름극장", "cat": "문화예술/국립극장", "coords": [127.0008, 37.5524], "addr": "서울특별시 중구 장충단로 59 (장충동2가)"}, {"no": 29, "id": "11140_B29_남산_야외식물원_&_소나무힐링숲", "name": "남산 야외식물원 & 소나무힐링숲", "cat": "도심식물원/힐링숲", "coords": [126.9942, 37.5468], "addr": "서울특별시 중구 소파로 43 (예장동)"}, {"no": 30, "id": "11140_B30_장충단공원_수표교_(중구수변천_원형석교)", "name": "장충단공원 수표교 (중구수변천 원형석교)", "cat": "역사교량/문화유산", "coords": [127.0048, 37.5584], "addr": "서울특별시 중구 장충단로 60 (장충동2기)"}, {"no": 31, "id": "11140_B31_을지로_조명상가_스트리트", "name": "을지로 조명상가 스트리트", "cat": "특화상권/빛의거리", "coords": [126.9948, 37.5668], "addr": "서울특별시 중구 을지로 일대 (을지로3가·4가)"}, {"no": 32, "id": "11140_B32_을지로_인쇄골목_미로파사드", "name": "을지로 인쇄골목 미로파사드", "cat": "산업유산/도심제조", "coords": [126.9972, 37.5654], "addr": "서울특별시 중구 을지로35길 일대 (을지로4가)"}, {"no": 33, "id": "11140_B33_충무로_영화의거리", "name": "충무로 영화의거리", "cat": "대중문화/영화역사", "coords": [126.9942, 37.5622], "addr": "서울특별시 중구 충무로 일대 (충무로3가·4가)"}, {"no": 34, "id": "11140_B34_세운상가_남측_대림상가_보행데크", "name": "세운상가 남측 대림상가 보행데크", "cat": "공중보행로/메이커스페이스", "coords": [126.9968, 37.5672], "addr": "서울특별시 중구 중구수변천로 159 (산림동)"}, {"no": 35, "id": "11140_B35_인현시장_먹자골목_&_PJ호텔", "name": "인현시장 먹자골목 & PJ호텔", "cat": "전통먹자골목/호텔", "coords": [126.9984, 37.5642], "addr": "서울특별시 중구 마른내로 24 (인현동2가)"}, {"no": 36, "id": "11140_B36_신당동_떡볶이타운_입구_아치", "name": "신당동 떡볶이타운 입구 아치", "cat": "음식특화거리/명소", "coords": [127.0142, 37.5614], "addr": "서울특별시 중구 퇴계로76길 일대 (신당동)"}, {"no": 37, "id": "11140_B37_동대문디자인플라자_(DDP)_알림터·살림터", "name": "동대문디자인플라자 (DDP) 알림터·살림터", "cat": "비정형건축/디자인랜드마크", "coords": [127.0098, 37.5671], "addr": "서울특별시 중구 을지로 281 (을지로7가)"}, {"no": 38, "id": "11140_B38_DDP_어울림광장_&_동대문역사문화공원", "name": "DDP 어울림광장 & 동대문역사문화공원", "cat": "도시광장/유적공원", "coords": [127.0084, 37.5662], "addr": "서울특별시 중구 을지로 281 일대 (을지로7가)"}, {"no": 39, "id": "11140_B39_동대문_평화시장_&_신평화패션타운", "name": "동대문 평화시장 & 신평화패션타운", "cat": "의류도매/상설시장", "coords": [127.0088, 37.5694], "addr": "서울특별시 중구 중구수변천로 360 (을지로6가)"}, {"no": 40, "id": "11140_B40_밀리오레_&_두타몰_패션타워", "name": "밀리오레 & 두타몰 패션타워", "cat": "대형쇼핑몰/패션랜드마크", "coords": [127.0068, 37.5688], "addr": "서울특별시 중구 장충단로 275 (을지로6가)"}, {"no": 41, "id": "11140_B41_중구수변천_남측_수변산책로_(광통교~수표교)", "name": "중구수변천 남측 수변산책로 (광통교~수표교)", "cat": "하천친수/수변산책로", "coords": [126.9852, 37.5689], "addr": "서울특별시 중구 중구수변천로 일대 (관철동)"}, {"no": 42, "id": "11140_B42_중구수변천_삼일교_&_한화빌딩_파사드", "name": "중구수변천 삼일교 & 한화빌딩 파사드", "cat": "도심오피스/친환경파사드", "coords": [126.9878, 37.5688], "addr": "서울특별시 중구 중구수변천로 86 (삼각동)"}, {"no": 43, "id": "11140_B43_퇴계로_간선도로_&_충무로역_환승허브", "name": "퇴계로 간선도로 & 충무로역 환승허브", "cat": "간선교통/지하철허브", "coords": [126.9932, 37.5612], "addr": "서울특별시 중구 퇴계로 지하 199 (충무로3가)"}, {"no": 44, "id": "11140_B44_서울로7017_공중정원_(중구방면_램프)", "name": "서울로7017 공중정원 (중구방면 램프)", "cat": "도시재생/공중보행로", "coords": [126.9732, 37.5574], "addr": "서울특별시 중구 서울로 일대 (봉래동2가)"}, {"no": 45, "id": "11140_B45_서소문성지_역사박물관_&_순교성지", "name": "서소문성지 역사박물관 & 순교성지", "cat": "종교역사/지하건축명작", "coords": [126.9682, 37.5584], "addr": "서울특별시 중구 칠패로 5 (서소문동)"}, {"no": 46, "id": "11140_B46_동국대학교_서울캠퍼스_팔정도_&_명진관", "name": "동국대학교 서울캠퍼스 팔정도 & 명진관", "cat": "대학캠퍼스/역사건물", "coords": [127.0042, 37.5578], "addr": "서울특별시 중구 필동로1길 30 (필동3가)"}, {"no": 47, "id": "11140_B47_장충체육관_(대한민국_최초_실내돔)", "name": "장충체육관 (대한민국 최초 실내돔)", "cat": "스포츠/돔체육관", "coords": [127.0072, 37.5582], "addr": "서울특별시 중구 동호로 241 (장충동2가)"}, {"no": 48, "id": "11140_B48_호텔신라_서울_영빈관_(전통한옥)", "name": "호텔신라 서울 영빈관 (전통한옥)", "cat": "한옥영빈관/전통건축", "coords": [127.0054, 37.5562], "addr": "서울특별시 중구 동호로 249 (장충동2가)"}, {"no": 49, "id": "11140_B49_남산_북측_순환산책로_(친환경보행로)", "name": "남산 북측 순환산책로 (친환경보행로)", "cat": "자연생태/무장애둘레길", "coords": [126.9912, 37.5538], "addr": "서울특별시 중구 남산공원길 일대 (예장동)"}, {"no": 50, "id": "11140_B50_중구_스마트_가로등_&_도심야경_관제망", "name": "중구 스마트 가로등 & 도심야경 관제망", "cat": "IoT조명/스마트시티인프라", "coords": [126.9824, 37.5634], "addr": "서울특별시 중구 세종대로 일대"}];
+const BLOCKS = [{"no": 1, "id": "11140_B01_숭례문_국보_제1호_남대문", "name": "숭례문", "cat": "성곽/국보", "coords": [126.9753, 37.5599], "addr": "서울특별시 중구 세종대로 40 (남대문로4가)", "folder": "11140_B01_숭례문_국보_제1호_남대문"}, {"no": 2, "id": "11140_B02_덕수궁_대한문_정문", "name": "덕수궁 대한문 (정문)", "cat": "궁궐/정문", "coords": [126.9768, 37.5658], "addr": "서울특별시 중구 세종대로 99 (정동 5-1)", "folder": "11140_B02_덕수궁_대한문_정문"}, {"no": 3, "id": "11140_B03_덕수궁_중화전_정전", "name": "덕수궁 중화전 (정전)", "cat": "궁궐/정전", "coords": [126.9749, 37.5661], "addr": "서울특별시 중구 세종대로 99 (정동 5-1, 덕수궁 내)", "folder": "11140_B03_덕수궁_중화전_정전"}, {"no": 4, "id": "11140_B04_덕수궁_석조전", "name": "덕수궁 석조전", "cat": "근대건축/석조건축", "coords": [126.9742, 37.5663], "addr": "서울특별시 중구 세종대로 99 (정동 5-1, 덕수궁 내)", "folder": "11140_B04_덕수궁_석조전"}, {"no": 5, "id": "11140_B05_덕수궁_정관헌", "name": "덕수궁 정관헌", "cat": "궁궐/동서절충누각", "coords": [126.9754, 37.5667], "addr": "서울특별시 중구 세종대로 99 (정동 5-1, 덕수궁 내)", "folder": "11140_B05_덕수궁_정관헌"}, {"no": 6, "id": "11140_B06_덕수궁_돌담길_정동길_입구", "name": "덕수궁 돌담길 (정동길 입구)", "cat": "문화거리/돌담길", "coords": [126.9758, 37.5652], "addr": "서울특별시 중구 정동길 일대 (덕수궁 남동측 담장)", "folder": "11140_B06_덕수궁_돌담길_정동길_입구"}, {"no": 7, "id": "11140_B07_정동제일교회_벧엘예배당", "name": "정동제일교회 벧엘예배당", "cat": "근대건축/사적성당", "coords": [126.9728, 37.5664], "addr": "서울특별시 중구 정동길 46 (정동 34-2)", "folder": "11140_B07_정동제일교회_벧엘예배당"}, {"no": 8, "id": "11140_B08_덕수궁_중명전", "name": "덕수궁 중명전", "cat": "대한제국유적/사적", "coords": [126.9718, 37.5672], "addr": "서울특별시 중구 정동 5-1 (덕수궁 내 중명전)", "folder": "11140_B08_덕수궁_중명전"}, {"no": 9, "id": "11140_B09_서울시립미술관_서소문본관", "name": "서울시립미술관 서소문본관", "cat": "문화예술/근대건축", "coords": [126.9734, 37.5641], "addr": "서울특별시 중구 덕수궁길 61 (서소문동 37)", "folder": "11140_B09_서울시립미술관_서소문본관"}, {"no": 10, "id": "11140_B10_배재학당_역사박물관", "name": "배재학당 역사박물관", "cat": "근대교육/사적", "coords": [126.9721, 37.5638], "addr": "서울특별시 중구 서소문로 11길 19 (정동 34-5)", "folder": "11140_B10_배재학당_역사박물관"}, {"no": 11, "id": "11140_B11_명동성당_대성당", "name": "명동성당 대성당", "cat": "종교유적/고딕성당", "coords": [126.9872, 37.5632], "addr": "서울특별시 중구 명동길 74 (명동 3-1)", "folder": "11140_B11_명동성당_대성당"}, {"no": 12, "id": "11140_B12_명동_메인스트리트_보행자거리", "name": "명동 메인스트리트 보행자거리", "cat": "글로벌상권/보행거리", "coords": [126.9854, 37.5618], "addr": "서울특별시 중구 명동길 일대 (명동 2가 중심 상권)", "folder": "11140_B12_명동_메인스트리트_보행자거리"}, {"no": 13, "id": "11140_B13_명동예술극장_파사드", "name": "명동예술극장 파사드", "cat": "문화공연/근대극장", "coords": [126.9848, 37.5636], "addr": "서울특별시 중구 명동길 41 (명동 2가 56-1)", "folder": "11140_B13_명동예술극장_파사드"}, {"no": 14, "id": "11140_B14_남대문시장_칼국수·갈치골목", "name": "남대문시장 칼국수·갈치골목", "cat": "전통시장/아케이드", "coords": [126.9798, 37.5613], "addr": "서울특별시 중구 남대문시장4길 21 (남창동)", "folder": "11140_B14_남대문시장_칼국수_갈치골목"}, {"no": 15, "id": "11140_B15_한국은행_구_본관_(화폐박물관)", "name": "한국은행 구 본관 (화폐박물관)", "cat": "근대건축/사적", "coords": [126.9812, 37.5624], "addr": "서울특별시 중구 남대문로 39 (남대문로3가)", "folder": "11140_B15_한국은행_구_본관_화폐박물관"}, {"no": 16, "id": "11140_B16_롯데백화점_본점_파사드_&_애비뉴엘", "name": "롯데백화점 본점 파사드 & 애비뉴엘", "cat": "도심상업/백화점", "coords": [126.9818, 37.5654], "addr": "서울특별시 중구 남대문로 81 (소공동)", "folder": "11140_B16_롯데백화점_본점_파사드_&_애비뉴엘"}, {"no": 17, "id": "11140_B17_신세계백화점_본점_본관_&_미디어파사드", "name": "신세계백화점 본점 본관 & 미디어파사드", "cat": "근대건축/미디어아트", "coords": [126.9808, 37.5604], "addr": "서울특별시 중구 소공로 63 (충무로1가)", "folder": "11140_B17_신세계백화점_본점_본관_&_미디어파사드"}, {"no": 18, "id": "11140_B18_서울광장_잔디광장_&_서울도서관", "name": "서울광장 잔디광장 & 서울도서관", "cat": "도심광장/역사도서관", "coords": [126.9778, 37.5663], "addr": "서울특별시 중구 세종대로 110 (태평로1가)", "folder": "11140_B18_서울광장_잔디광장_&_서울도서관"}, {"no": 19, "id": "11140_B19_서울시청_신청사_&_수직정원", "name": "서울시청 신청사 & 수직정원", "cat": "현대건축/친환경청사", "coords": [126.9784, 37.5668], "addr": "서울특별시 중구 세종대로 110 (태평로1가)", "folder": "11140_B19_서울시청_신청사_&_수직정원"}, {"no": 20, "id": "11140_B20_을지로_노가리호프골목", "name": "을지로 노가리호프골목", "cat": "도시문화/뉴트로골목", "coords": [126.9912, 37.5664], "addr": "서울특별시 중구 을지로13길 일대 (을지로3가)", "folder": "11140_B20_을지로_노가리호프골목"}, {"no": 21, "id": "11140_B21_N서울타워_(남산타워_메가전망대)", "name": "N서울타워 (남산타워 메가전망대)", "cat": "초고층전망대/메가랜드마크", "coords": [126.9882, 37.5512], "addr": "서울특별시 중구 남산공원길 105 (용산동2가)", "folder": "11140_B21_N서울타워_남산타워_메가전망대"}, {"no": 22, "id": "11140_B22_남산_케이블카_상하부_정류장_&_캐빈", "name": "남산 케이블카 상하부 정류장 & 캐빈", "cat": "관광교통/케이블카", "coords": [126.9852, 37.5564], "addr": "서울특별시 중구 남산공원길 83 (예장동)", "folder": "11140_B22_남산_케이블카_상하부_정류장_&_캐빈"}, {"no": 23, "id": "11140_B23_남산_팔각정_&_봉수대", "name": "남산 팔각정 & 봉수대", "cat": "전통누각/통신유적", "coords": [126.9878, 37.5516], "addr": "서울특별시 중구 남산공원길 105 (예장동)", "folder": "11140_B23_남산_팔각정_&_봉수대"}, {"no": 24, "id": "11140_B24_한양도성_남산구간_(목멱산_성곽길)", "name": "한양도성 남산구간 (목멱산 성곽길)", "cat": "세계유산/산악성곽", "coords": [126.9812, 37.5534], "addr": "서울특별시 중구 남산공원길 일대 (회현동)", "folder": "11140_B24_한양도성_남산구간_목멱산_성곽길"}, {"no": 25, "id": "11140_B25_백범광장_잔디공원_&_김구선생_동상", "name": "백범광장 잔디공원 & 김구선생 동상", "cat": "호국보훈/기념공원", "coords": [126.9782, 37.5552], "addr": "서울특별시 중구 남산공원길 일대 (예장동)", "folder": "11140_B25_백범광장_잔디공원_&_김구선생_동상"}, {"no": 26, "id": "11140_B26_안중근의사기념관", "name": "안중근의사기념관", "cat": "역사기념관/현대건축", "coords": [126.9798, 37.5548], "addr": "서울특별시 중구 소월로 91 (남대문로5가)", "folder": "11140_B26_안중근의사기념관"}, {"no": 27, "id": "11140_B27_남산골한옥마을_&_천우각", "name": "남산골한옥마을 & 천우각", "cat": "전통가옥/한국정원", "coords": [126.9938, 37.5592], "addr": "서울특별시 중구 퇴계로34길 28 (필동2가)", "folder": "11140_B27_남산골한옥마을_&_천우각"}, {"no": 28, "id": "11140_B28_국립극장_해오름극장", "name": "국립극장 해오름극장", "cat": "문화예술/국립극장", "coords": [127.0008, 37.5524], "addr": "서울특별시 중구 장충단로 59 (장충동2가)", "folder": "11140_B28_국립극장_해오름극장"}, {"no": 29, "id": "11140_B29_남산_야외식물원_&_소나무힐링숲", "name": "남산 야외식물원 & 소나무힐링숲", "cat": "도심식물원/힐링숲", "coords": [126.9942, 37.5468], "addr": "서울특별시 중구 소파로 43 (예장동)", "folder": "11140_B29_남산_야외식물원_&_소나무힐링숲"}, {"no": 30, "id": "11140_B30_장충단공원_수표교_(중구수변천_원형석교)", "name": "장충단공원 수표교 (중구수변천 원형석교)", "cat": "역사교량/문화유산", "coords": [127.0048, 37.5584], "addr": "서울특별시 중구 장충단로 60 (장충동2기)", "folder": "11140_B30_장충단공원_수표교_중구수변천_원형석교"}, {"no": 31, "id": "11140_B31_을지로_조명상가_스트리트", "name": "을지로 조명상가 스트리트", "cat": "특화상권/빛의거리", "coords": [126.9948, 37.5668], "addr": "서울특별시 중구 을지로 일대 (을지로3가·4가)", "folder": "11140_B31_을지로_조명상가_스트리트"}, {"no": 32, "id": "11140_B32_을지로_인쇄골목_미로파사드", "name": "을지로 인쇄골목 미로파사드", "cat": "산업유산/도심제조", "coords": [126.9972, 37.5654], "addr": "서울특별시 중구 을지로35길 일대 (을지로4가)", "folder": "11140_B32_을지로_인쇄골목_미로파사드"}, {"no": 33, "id": "11140_B33_충무로_영화의거리", "name": "충무로 영화의거리", "cat": "대중문화/영화역사", "coords": [126.9942, 37.5622], "addr": "서울특별시 중구 충무로 일대 (충무로3가·4가)", "folder": "11140_B33_충무로_영화의거리"}, {"no": 34, "id": "11140_B34_세운상가_남측_대림상가_보행데크", "name": "세운상가 남측 대림상가 보행데크", "cat": "공중보행로/메이커스페이스", "coords": [126.9968, 37.5672], "addr": "서울특별시 중구 중구수변천로 159 (산림동)", "folder": "11140_B34_세운상가_남측_대림상가_보행데크"}, {"no": 35, "id": "11140_B35_인현시장_먹자골목_&_PJ호텔", "name": "인현시장 먹자골목 & PJ호텔", "cat": "전통먹자골목/호텔", "coords": [126.9984, 37.5642], "addr": "서울특별시 중구 마른내로 24 (인현동2가)", "folder": "11140_B35_인현시장_먹자골목_&_PJ호텔"}, {"no": 36, "id": "11140_B36_신당동_떡볶이타운_입구_아치", "name": "신당동 떡볶이타운 입구 아치", "cat": "음식특화거리/명소", "coords": [127.0142, 37.5614], "addr": "서울특별시 중구 퇴계로76길 일대 (신당동)", "folder": "11140_B36_신당동_떡볶이타운_입구_아치"}, {"no": 37, "id": "11140_B37_동대문디자인플라자_(DDP)_알림터·살림터", "name": "동대문디자인플라자 (DDP) 알림터·살림터", "cat": "비정형건축/디자인랜드마크", "coords": [127.0098, 37.5671], "addr": "서울특별시 중구 을지로 281 (을지로7가)", "folder": "11140_B37_동대문디자인플라자_DDP_알림터_살림터"}, {"no": 38, "id": "11140_B38_DDP_어울림광장_&_동대문역사문화공원", "name": "DDP 어울림광장 & 동대문역사문화공원", "cat": "도시광장/유적공원", "coords": [127.0084, 37.5662], "addr": "서울특별시 중구 을지로 281 일대 (을지로7가)", "folder": "11140_B38_DDP_어울림광장_&_동대문역사문화공원"}, {"no": 39, "id": "11140_B39_동대문_평화시장_&_신평화패션타운", "name": "동대문 평화시장 & 신평화패션타운", "cat": "의류도매/상설시장", "coords": [127.0088, 37.5694], "addr": "서울특별시 중구 중구수변천로 360 (을지로6가)", "folder": "11140_B39_동대문_평화시장_&_신평화패션타운"}, {"no": 40, "id": "11140_B40_밀리오레_&_두타몰_패션타워", "name": "밀리오레 & 두타몰 패션타워", "cat": "대형쇼핑몰/패션랜드마크", "coords": [127.0068, 37.5688], "addr": "서울특별시 중구 장충단로 275 (을지로6가)", "folder": "11140_B40_밀리오레_&_두타몰_패션타워"}, {"no": 41, "id": "11140_B41_중구수변천_남측_수변산책로_(광통교~수표교)", "name": "중구수변천 남측 수변산책로 (광통교~수표교)", "cat": "하천친수/수변산책로", "coords": [126.9852, 37.5689], "addr": "서울특별시 중구 중구수변천로 일대 (관철동)", "folder": "11140_B41_중구수변천_남측_수변산책로_광통교~수표교_중구측"}, {"no": 42, "id": "11140_B42_중구수변천_삼일교_&_한화빌딩_파사드", "name": "중구수변천 삼일교 & 한화빌딩 파사드", "cat": "도심오피스/친환경파사드", "coords": [126.9878, 37.5688], "addr": "서울특별시 중구 중구수변천로 86 (삼각동)", "folder": "11140_B42_중구수변천_삼일교_&_한화빌딩_파사드"}, {"no": 43, "id": "11140_B43_퇴계로_간선도로_&_충무로역_환승허브", "name": "퇴계로 간선도로 & 충무로역 환승허브", "cat": "간선교통/지하철허브", "coords": [126.9932, 37.5612], "addr": "서울특별시 중구 퇴계로 지하 199 (충무로3가)", "folder": "11140_B43_퇴계로_간선도로_&_충무로역_환승허브"}, {"no": 44, "id": "11140_B44_서울로7017_공중정원_(중구방면_램프)", "name": "서울로7017 공중정원 (중구방면 램프)", "cat": "도시재생/공중보행로", "coords": [126.9732, 37.5574], "addr": "서울특별시 중구 서울로 일대 (봉래동2가)", "folder": "11140_B44_서울로7017_공중정원_중구방면_램프"}, {"no": 45, "id": "11140_B45_서소문성지_역사박물관_&_순교성지", "name": "서소문성지 역사박물관 & 순교성지", "cat": "종교역사/지하건축명작", "coords": [126.9682, 37.5584], "addr": "서울특별시 중구 칠패로 5 (서소문동)", "folder": "11140_B45_서소문성지_역사박물관_&_순교성지"}, {"no": 46, "id": "11140_B46_동국대학교_서울캠퍼스_팔정도_&_명진관", "name": "동국대학교 서울캠퍼스 팔정도 & 명진관", "cat": "대학캠퍼스/역사건물", "coords": [127.0042, 37.5578], "addr": "서울특별시 중구 필동로1길 30 (필동3가)", "folder": "11140_B46_동국대학교_서울캠퍼스_팔정도_&_명진관"}, {"no": 47, "id": "11140_B47_장충체육관_(대한민국_최초_실내돔)", "name": "장충체육관 (대한민국 최초 실내돔)", "cat": "스포츠/돔체육관", "coords": [127.0072, 37.5582], "addr": "서울특별시 중구 동호로 241 (장충동2가)", "folder": "11140_B47_장충체육관_대한민국_최초_실내돔"}, {"no": 48, "id": "11140_B48_호텔신라_서울_영빈관_(전통한옥)", "name": "호텔신라 서울 영빈관 (전통한옥)", "cat": "한옥영빈관/전통건축", "coords": [127.0054, 37.5562], "addr": "서울특별시 중구 동호로 249 (장충동2가)", "folder": "11140_B48_호텔신라_서울_영빈관_전통한옥"}, {"no": 49, "id": "11140_B49_남산_북측_순환산책로_(친환경보행로)", "name": "남산 북측 순환산책로 (친환경보행로)", "cat": "자연생태/무장애둘레길", "coords": [126.9912, 37.5538], "addr": "서울특별시 중구 남산공원길 일대 (예장동)", "folder": "11140_B49_남산_북측_순환산책로_친환경보행로"}, {"no": 50, "id": "11140_B50_중구_스마트_가로등_&_도심야경_관제망", "name": "중구 스마트 가로등 & 도심야경 관제망", "cat": "IoT조명/스마트시티인프라", "coords": [126.9824, 37.5634], "addr": "서울특별시 중구 세종대로 일대", "folder": "11140_B50_중구_스마트_가로등_&_도심야경_관제망"}];
 
 function toXZ(lon, lat){
   return [(lon - CENTER[0]) * LON, -(lat - CENTER[1]) * LAT];
@@ -163,44 +165,49 @@ function toXZ(lon, lat){
 // Three.js 씬 초기화
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x0b111e);
-scene.fog = new THREE.FogExp2(0x0b111e, 0.00018);
+scene.fog = new THREE.FogExp2(0x0b111e, 0.00015);
 
-const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 10, 35000);
-camera.position.set(0, 1300, 1800);
-camera.lookAt(0, 40, 0);
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 5, 45000);
+camera.position.set(0, 850, 1300);
+camera.lookAt(0, 20, 0);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+if(THREE.sRGBEncoding) renderer.outputEncoding = THREE.sRGBEncoding;
 document.body.appendChild(renderer.domElement);
 
 // 조명 설정
-const hemiLight = new THREE.HemisphereLight(0xffffff, 0x223344, 0.85);
+const hemiLight = new THREE.HemisphereLight(0xddeeff, 0x1a2638, 0.9);
 hemiLight.position.set(0, 5000, 0);
 scene.add(hemiLight);
 
-const dirLight = new THREE.DirectionalLight(0xfff4e6, 1.1);
-dirLight.position.set(3000, 7000, 4000);
+const dirLight = new THREE.DirectionalLight(0xfff6ea, 1.25);
+dirLight.position.set(3500, 8000, 4500);
 scene.add(dirLight);
 
-const fillLight = new THREE.DirectionalLight(0x7fd1ff, 0.4);
-fillLight.position.set(-3000, 3000, -3000);
+const fillLight = new THREE.DirectionalLight(0x7fd1ff, 0.5);
+fillLight.position.set(-3500, 3500, -3500);
 scene.add(fillLight);
 
 // 기본 베이스 지면
-const groundGeo = new THREE.PlaneGeometry(30000, 30000);
-const groundMat = new THREE.MeshLambertMaterial({ color: 0x121b2d, depthWrite: true });
+const groundGeo = new THREE.PlaneGeometry(40000, 40000);
+const groundMat = new THREE.MeshLambertMaterial({ color: 0x141e30, depthWrite: true });
 const groundMesh = new THREE.Mesh(groundGeo, groundMat);
 groundMesh.rotation.x = -Math.PI / 2;
 groundMesh.position.y = -1;
 scene.add(groundMesh);
 
-// 3D 마커 그룹
+// 3D 마커 및 glTF 홀더 그룹
 const markerGroup = new THREE.Group();
 scene.add(markerGroup);
 const markerObjects = [];
 
-// 블록 50개 3D 마커 생성
+const gltfHolderGroup = new THREE.Group();
+scene.add(gltfHolderGroup);
+let activeGltfMesh = null;
+
+// 블록 50개 3D 핀 생성
 function createMarkers(){
   const pinGeo = new THREE.CylinderGeometry(0, 16, 60, 8);
   pinGeo.rotateX(Math.PI);
@@ -209,7 +216,7 @@ function createMarkers(){
     const xz = toXZ(b.coords[0], b.coords[1]);
     const pinMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8 });
     const pin = new THREE.Mesh(pinGeo, pinMat);
-    pin.position.set(xz[0], 50, xz[1]);
+    pin.position.set(xz[0], 55, xz[1]);
     
     // 바닥 링
     const ringGeo = new THREE.RingGeometry(18, 26, 16);
@@ -228,7 +235,42 @@ function createMarkers(){
 }
 createMarkers();
 
-// 건물 타일셋 로딩
+// ── 건물 기둥 삼각분할(BufferGeometry) ──
+function prism(ring, h, pos, norm, col){
+  if (!ring || ring.length < 3) return;
+  const contour = [];
+  for (let i = 0; i < ring.length - 1; i++){
+    const p = toXZ(ring[i][0], ring[i][1]);
+    contour.push(new THREE.Vector2(p[0], p[1]));
+  }
+  if (contour.length < 3) return;
+  let faces = [];
+  try { faces = THREE.ShapeUtils.triangulateShape(contour, []); } catch(e){ return; }
+  for (const f of faces){
+    for (const idx of f){
+      const v = contour[idx];
+      pos.push(v.x, h, v.y); norm.push(0, 1, 0); col.push(0.85, 0.90, 0.98);
+    }
+  }
+  const wallK = 0.65;
+  for (let i = 0; i < contour.length; i++){
+    const a = contour[i], b = contour[(i+1)%contour.length];
+    pos.push(a.x, 0, a.y, b.x, 0, b.y, b.x, h, b.y);
+    pos.push(a.x, 0, a.y, b.x, h, b.y, a.x, h, a.y);
+    for (let k = 0; k < 6; k++){ norm.push(0, 0, 1); col.push(wallK, wallK*1.05, wallK*1.15); }
+  }
+}
+
+function roofEdges(ring, h, out){
+  if (!ring || ring.length < 4) return;
+  for (let i = 0; i < ring.length - 1; i++){
+    const a = toXZ(ring[i][0], ring[i][1]);
+    const b = toXZ(ring[i+1][0], ring[i+1][1]);
+    out.push(a[0], h + 0.1, a[1], b[0], h + 0.1, b[1]);
+  }
+}
+
+// ── 건물 타일셋 배경 전체 로딩 ──
 async function loadTiles(){
   try {
     const res = await fetch('tiles_1000m/tiles_manifest.json');
@@ -236,39 +278,140 @@ async function loadTiles(){
     const man = await res.json();
     if(!man || !man.tiles) return;
 
-    const bMat = new THREE.MeshLambertMaterial({ color: 0x5a708e });
-    const edgeMat = new THREE.LineBasicMaterial({ color: 0x9fb6d6, transparent: true, opacity: 0.45 });
+    const pos = [], norm = [], col = [], epos = [];
+    const limit = Math.min(man.tiles.length, 12);
 
-    for(const t of man.tiles){
+    for(let i = 0; i < limit; i++){
+      const t = man.tiles[i];
       try {
-        const tr = await fetch('tiles_1000m/tile_' + t.ti + '_' + t.tj + '_lod1.json');
+        const url = 'tiles_1000m/tile_' + t.ti + '_' + t.tj + '_lod1.json';
+        const tr = await fetch(url);
         if(!tr.ok) continue;
-        const data = await tr.json();
-        if(!data || !data.buildings) continue;
+        const gj = await tr.json();
+        if(!gj || !gj.features) continue;
 
-        data.buildings.forEach(bd => {
-          if(!bd.pts || bd.pts.length < 3) return;
-          const shape = new THREE.Shape();
-          const first = toXZ(bd.pts[0][0], bd.pts[0][1]);
-          shape.moveTo(first[0], -first[1]);
-          for(let i=1; i<bd.pts.length; i++){
-            const pt = toXZ(bd.pts[i][0], bd.pts[i][1]);
-            shape.lineTo(pt[0], -pt[1]);
-          }
-          const height = Math.max(8, bd.h || 15);
-          const extGeo = new THREE.ExtrudeGeometry(shape, { depth: height, bevelEnabled: false });
-          extGeo.rotateX(-Math.PI / 2);
-          const mesh = new THREE.Mesh(extGeo, bMat);
-          mesh.position.y = 0;
-          scene.add(mesh);
-        });
+        for(const f of gj.features){
+          if(!f.geometry || !f.geometry.coordinates || !f.geometry.coordinates[0]) continue;
+          const h = (f.properties && f.properties.h) ? Math.max(8, f.properties.h) : 15;
+          prism(f.geometry.coordinates[0], h, pos, norm, col);
+          roofEdges(f.geometry.coordinates[0], h, epos);
+        }
       } catch(e){}
+    }
+
+    if(pos.length){
+      const g = new THREE.BufferGeometry();
+      g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+      g.setAttribute('normal', new THREE.Float32BufferAttribute(norm, 3));
+      g.setAttribute('color', new THREE.Float32BufferAttribute(col, 3));
+      const bldgMesh = new THREE.Mesh(g, new THREE.MeshLambertMaterial({ vertexColors: true, flatShading: true }));
+      scene.add(bldgMesh);
+    }
+
+    if(epos.length){
+      const eg = new THREE.BufferGeometry();
+      eg.setAttribute('position', new THREE.Float32BufferAttribute(epos, 3));
+      const edgeLine = new THREE.LineSegments(eg, new THREE.LineBasicMaterial({ color: 0x3b5575, transparent: true, opacity: 0.8 }));
+      scene.add(edgeLine);
     }
   } catch(e){}
 }
 loadTiles();
 
-// 사이드바 UI 렌더링
+// ── 경량 순수 JS glTF 바이너리 파서 ──
+function decDataUri(u){
+  const b = atob(u.split(',')[1]);
+  const a = new Uint8Array(b.length);
+  for(let i=0; i<b.length; i++) a[i] = b.charCodeAt(i);
+  return a.buffer;
+}
+
+function getAccessorData(g, bufs, i){
+  const a = g.accessors[i];
+  const bv = g.bufferViews[a.bufferView];
+  const numComps = { SCALAR: 1, VEC2: 2, VEC3: 3, VEC4: 4 }[a.type];
+  const T = { 5126: Float32Array, 5125: Uint32Array, 5123: Uint16Array, 5121: Uint8Array }[a.componentType];
+  return new T(bufs[bv.buffer], (bv.byteOffset || 0) + (a.byteOffset || 0), a.count * numComps);
+}
+
+function buildGltfMesh(g, tex, bufs){
+  const mats = (g.materials || [{}]).map(m => {
+    const pb = m.pbrMetallicRoughness || {};
+    const o = { roughness: pb.roughnessFactor == null ? 0.7 : pb.roughnessFactor, metalness: pb.metallicFactor || 0.1, side: THREE.DoubleSide };
+    if(pb.baseColorTexture && tex) o.map = tex;
+    else if(pb.baseColorFactor) o.color = new THREE.Color(pb.baseColorFactor[0], pb.baseColorFactor[1], pb.baseColorFactor[2]);
+    else if(tex) o.map = tex;
+    return new THREE.MeshStandardMaterial(o);
+  });
+  const root = new THREE.Group();
+  g.nodes.forEach(nd => {
+    if(nd.mesh == null) return;
+    g.meshes[nd.mesh].primitives.forEach(p => {
+      const geo = new THREE.BufferGeometry();
+      geo.setAttribute('position', new THREE.BufferAttribute(getAccessorData(g, bufs, p.attributes.POSITION), 3));
+      if(p.attributes.NORMAL != null) geo.setAttribute('normal', new THREE.BufferAttribute(getAccessorData(g, bufs, p.attributes.NORMAL), 3));
+      if(p.attributes.TEXCOORD_0 != null) geo.setAttribute('uv', new THREE.BufferAttribute(getAccessorData(g, bufs, p.attributes.TEXCOORD_0), 2));
+      if(p.indices != null) geo.setIndex(new THREE.BufferAttribute(getAccessorData(g, bufs, p.indices), 1));
+      if(p.attributes.NORMAL == null) geo.computeVertexNormals();
+      const m = new THREE.Mesh(geo, mats[p.material || 0]);
+      if(nd.translation) m.position.fromArray(nd.translation);
+      if(nd.scale) m.scale.fromArray(nd.scale);
+      if(nd.rotation) m.quaternion.fromArray(nd.rotation);
+      root.add(m);
+    });
+  });
+  return root;
+}
+
+// ── 블록별 3D glTF 로더 ──
+async function loadBlockGltf(b, xz){
+  const dtStatus = document.getElementById('dtStatus');
+  dtStatus.textContent = '3D 실물 모델 로딩 중…';
+  const base = 'blocks/' + b.folder + '/';
+  try {
+    const gltfRes = await fetch(base + 'model_lod2.gltf').catch(() => null);
+    if(!gltfRes || !gltfRes.ok) throw new Error('gltf not found');
+    const g = await gltfRes.json();
+    
+    const bufs = await Promise.all(g.buffers.map(buf => {
+      if(buf.uri.startsWith('data:')) return Promise.resolve(decDataUri(buf.uri));
+      return fetch(base + buf.uri).then(r => r.arrayBuffer());
+    }));
+
+    const texLoader = new THREE.TextureLoader();
+    texLoader.load(base + 'texture_atlas.webp', (tex) => {
+      tex.flipY = true;
+      if(THREE.sRGBEncoding) tex.encoding = THREE.sRGBEncoding;
+      mountGltf(g, tex, bufs, xz, b);
+    }, undefined, () => {
+      mountGltf(g, null, bufs, xz, b);
+    });
+  } catch(e) {
+    dtStatus.textContent = '3D 랜드마크 핀 위치 확인됨';
+  }
+}
+
+function mountGltf(g, tex, bufs, xz, b){
+  if(activeGltfMesh) gltfHolderGroup.remove(activeGltfMesh);
+  activeGltfMesh = buildGltfMesh(g, tex, bufs);
+  
+  // 크기 자동 정규화 및 바닥 안착
+  const bb = new THREE.Box3().setFromObject(activeGltfMesh);
+  const sz = bb.getSize(new THREE.Vector3());
+  const maxDim = Math.max(sz.x, sz.z);
+  const targetScale = Math.min(2.5, Math.max(0.8, 120 / (maxDim || 100)));
+  activeGltfMesh.scale.set(targetScale, targetScale, targetScale);
+  
+  // 정밀 위치 배치
+  activeGltfMesh.position.set(xz[0], 2, xz[1]);
+  gltfHolderGroup.add(activeGltfMesh);
+
+  let tri = 0;
+  activeGltfMesh.traverse(o => { if(o.geometry) tri += (o.geometry.index ? o.geometry.index.count : o.geometry.attributes.position.count) / 3; });
+  document.getElementById('dtStatus').textContent = '✅ 3D 실물 모델 로딩 완료 (삼각형 ' + Math.round(tri).toLocaleString() + '개)';
+}
+
+// ── 사이드바 UI 렌더링 ──
 function renderSidebar(list){
   const el = document.getElementById('blockList');
   el.innerHTML = '';
@@ -308,14 +451,14 @@ function filterBlocks(){
   renderSidebar(filtered);
 }
 
-// 블록 이동 & 상세 표시
+// ── 블록 이동 & 상세 표시 & glTF 마운트 ──
 let targetCam = null, targetLook = null;
 let isOrbiting = false;
 
 function flyToBlock(b){
   const xz = toXZ(b.coords[0], b.coords[1]);
-  targetCam = new THREE.Vector3(xz[0], 280, xz[1] + 360);
-  targetLook = new THREE.Vector3(xz[0], 40, xz[1]);
+  targetCam = new THREE.Vector3(xz[0], 220, xz[1] + 280);
+  targetLook = new THREE.Vector3(xz[0], 35, xz[1]);
   
   // 마커 하이라이트
   markerObjects.forEach(m => {
@@ -338,6 +481,9 @@ function flyToBlock(b){
   document.getElementById('dtAddr').textContent = '주소: ' + b.addr;
   document.getElementById('dtCoords').textContent = '좌표: ' + b.coords[0].toFixed(5) + ', ' + b.coords[1].toFixed(5);
   document.getElementById('block-detail').style.display = 'flex';
+
+  // 3D glTF 로드 및 실물 표시
+  loadBlockGltf(b, xz);
 }
 
 function closeDetail(){
@@ -351,8 +497,8 @@ function toggleSidebar(){
 }
 
 function resetView(){
-  targetCam = new THREE.Vector3(0, 1300, 1800);
-  targetLook = new THREE.Vector3(0, 40, 0);
+  targetCam = new THREE.Vector3(0, 850, 1300);
+  targetLook = new THREE.Vector3(0, 20, 0);
   closeDetail();
 }
 
@@ -370,7 +516,6 @@ function animate(){
     camera.position.lerp(targetCam, 0.05);
     const curLook = new THREE.Vector3();
     camera.getWorldDirection(curLook);
-    // 간단 보간
     if(camera.position.distanceTo(targetCam) < 2){
       targetCam = null;
     }
@@ -383,6 +528,13 @@ function animate(){
   renderer.render(scene, camera);
 }
 animate();
+
+// 1번 블록 기본 프리로드
+setTimeout(() => {
+  if(BLOCKS && BLOCKS.length){
+    flyToBlock(BLOCKS[0]);
+  }
+}, 800);
 
 // 윈도우 리사이즈
 window.addEventListener('resize', () => {

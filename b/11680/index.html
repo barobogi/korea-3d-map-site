@@ -87,7 +87,7 @@
 
   /* 선택된 블록 상세 모달 */
   #block-detail {
-    position:fixed; bottom:20px; left:305px; z-index:45; max-width:380px;
+    position:fixed; bottom:20px; left:305px; z-index:45; max-width:400px;
     background:rgba(15,23,42,0.95); backdrop-filter:blur(14px);
     border:1px solid rgba(56,189,248,0.5); border-radius:14px;
     padding:14px 16px; box-shadow:0 12px 30px rgba(0,0,0,0.7);
@@ -99,6 +99,7 @@
   .detail-close:hover { color:#fff; }
   .detail-cat { font-size:11px; color:#fde047; }
   .detail-addr { font-size:11.5px; color:#cbd5e1; line-height:1.4; }
+  .detail-status { font-size:11px; color:#38bdf8; font-weight:bold; }
   .detail-coords { font-size:10px; color:#64748b; font-family:Consolas, monospace; }
 
   @media (max-width: 768px) {
@@ -141,6 +142,7 @@
   </div>
   <div class="detail-cat" id="dtCat">카테고리</div>
   <div class="detail-addr" id="dtAddr">도로명주소</div>
+  <div class="detail-status" id="dtStatus">3D 실물 모델 로딩 중…</div>
   <div class="detail-coords" id="dtCoords">WGS84 좌표</div>
 </div>
 
@@ -154,7 +156,7 @@ const REGION_CODE = '11680';
 const REGION_NAME = '강남구';
 const CENTER = [127.0598, 37.5101];
 const LON = 88000, LAT = 111000;
-const BLOCKS = [{"no": 1, "id": "11680_B01_coex_convention_center", "name": "코엑스 컨벤션 센터 본관", "cat": "MICE/전시", "coords": [127.0598, 37.5101], "addr": "서울특별시 강남구 영동대로 513 (삼성동)"}, {"no": 2, "id": "11680_B02_byeolmadang_library", "name": "스타필드 코엑스 별마당도서관", "cat": "문화/도서관", "coords": [127.0601, 37.5107], "addr": "서울특별시 강남구 영동대로 513 (삼성동)"}, {"no": 3, "id": "11680_B03_trade_tower", "name": "한국종합무역센터 트레이드타워", "cat": "초고층/비즈니스", "coords": [127.0609, 37.5098], "addr": "서울특별시 강남구 영동대로 511 (삼성동)"}, {"no": 4, "id": "11680_B04_parnas_tower", "name": "그랜드인터컨티넨탈 파르나스타워", "cat": "호텔/복합타워", "coords": [127.0617, 37.5085], "addr": "서울특별시 강남구 테헤란로 521 (삼성동)"}, {"no": 5, "id": "11680_B05_asem_tower", "name": "아셈타워 (ASEM Tower)", "cat": "초고층/국제기구", "coords": [127.0583, 37.5135], "addr": "서울특별시 강남구 삼성로 524 (삼성동)"}, {"no": 6, "id": "11680_B06_bongeunsa_temple", "name": "봉은사 미륵대불 및 대웅전", "cat": "전통사찰/문화재", "coords": [127.0573, 37.5153], "addr": "서울특별시 강남구 봉은사로 531 (삼성동)"}, {"no": 7, "id": "11680_B07_seonjeongneung_royal", "name": "선정릉 (선릉·정릉 세계문화유산)", "cat": "왕릉/유네스코", "coords": [127.0489, 37.5074], "addr": "서울특별시 강남구 선릉로 100길 3 (삼성동)"}, {"no": 8, "id": "11680_B08_gangnam_finance_center", "name": "강남파이낸스센터 (GFC)", "cat": "초고층/금융", "coords": [127.0372, 37.5002], "addr": "서울특별시 강남구 테헤란로 231 (역삼동)"}, {"no": 9, "id": "11680_B09_gangnam_stn_meritz", "name": "강남역 메리츠타워 & 몬테소리", "cat": "상업/교통거점", "coords": [127.0286, 37.4975], "addr": "서울특별시 강남구 강남대로 390 (역삼동)"}, {"no": 10, "id": "11680_B10_gt_tower_east", "name": "GT타워 (GT Tower East 곡선빌딩)", "cat": "현대건축/랜드마크", "coords": [127.0259, 37.4982], "addr": "서울특별시 강남구 서초대로 415 (양재동)"}, {"no": 11, "id": "11680_B11_kyobo_tower", "name": "교보타워 (신논현역 마리오 보타 명작)", "cat": "문화/건축명소", "coords": [127.0241, 37.5042], "addr": "서울특별시 강남구 강남대로 456 (역삼동)"}, {"no": 12, "id": "11680_B12_hyundai_gbc", "name": "현대자동차 GBC 복합업무단지", "cat": "초대형개발/비즈니스", "coords": [127.0645, 37.5118], "addr": "서울특별시 강남구 테헤란로 129 (대치동)"}, {"no": 13, "id": "11680_B13_dosan_park", "name": "도산공원 및 도산안창호기념관", "cat": "역사공원/기념관", "coords": [127.0361, 37.5244], "addr": "서울특별시 강남구 도산대로 323 (신사동)"}, {"no": 14, "id": "11680_B14_apgujeong_rodeo_street", "name": "압구정 로데오거리 상징조형물", "cat": "트렌드/패션거리", "coords": [127.0389, 37.5268], "addr": "서울특별시 강남구 압구정로 404 (압구정동)"}, {"no": 15, "id": "11680_B15_galleria_dept", "name": "갤러리아백화점 명품관 (WEST/EAST)", "cat": "쇼핑/패션명소", "coords": [127.0409, 37.5284], "addr": "서울특별시 강남구 도산대로 407 (압구정동)"}, {"no": 16, "id": "11680_B16_cheongdam_luxury_belt", "name": "청담동 명품거리 아트빌딩 벨트", "cat": "패션/명품거리", "coords": [127.0463, 37.5256], "addr": "서울특별시 강남구 도산대로 601 (청담동)"}, {"no": 17, "id": "11680_B17_sm_ent_cheongdam", "name": "SM엔터테인먼트 청담 셀러브리티센터", "cat": "K-POP/한류문화", "coords": [127.0494, 37.5241], "addr": "서울특별시 강남구 도산대로 113 (청담동)"}, {"no": 18, "id": "11680_B18_gangnam_gu_office", "name": "강남구청 본관 및 강남보건소", "cat": "행정/공공기관", "coords": [127.0475, 37.5173], "addr": "서울특별시 강남구 학동로 426 (논현동)"}, {"no": 19, "id": "11680_B19_setec_convention", "name": "SETEC (서울무역전시장 콘벤션)", "cat": "전시/산업지원", "coords": [127.0709, 37.4947], "addr": "서울특별시 강남구 삼성로 223 (대치동)"}, {"no": 20, "id": "11680_B20_yangjaecheon_eco_park", "name": "양재천 영동3교 물길 생태공원", "cat": "수변공원/친환경", "coords": [127.0515, 37.4842], "addr": "서울특별시 강남구 양재대로 일대 (대치동)"}, {"no": 21, "id": "11680_B21_daechi_academy_crossing", "name": "대치동 학원가 사거리 은마사거리", "cat": "교육/교육특구", "coords": [127.0628, 37.4984], "addr": "서울특별시 강남구 영동대로 일대 (대치동)"}, {"no": 22, "id": "11680_B22_eunma_mall", "name": "은마아파트 종합상가 및 랜드마크", "cat": "상업/생활명소", "coords": [127.0658, 37.4971], "addr": "서울특별시 강남구 삼성로 138 (대치동)"}, {"no": 23, "id": "11680_B23_tower_palace_skyline", "name": "타워팰리스 1·2·3차 스카이라인", "cat": "초고층주거/상징", "coords": [127.0543, 37.4891], "addr": "서울특별시 강남구 도곡로 123 (도곡동)"}, {"no": 24, "id": "11680_B24_dogok_academy_sweet", "name": "도곡동 아카데미스위트 & 삼성사옥", "cat": "복합주거/업무", "coords": [127.0519, 37.4898], "addr": "서울특별시 강남구 남부순환로 일대 (도곡동)"}, {"no": 25, "id": "11680_B25_suseo_srt_station", "name": "수서역 SRT 고속철도 역사 복합환승센터", "cat": "교통/복합환승", "coords": [127.1039, 37.4878], "addr": "서울특별시 강남구 광평로 300 (수서동)"}, {"no": 26, "id": "11680_B26_gangnam_severance_hospital", "name": "강남세브란스병원 미래의학관", "cat": "의료/종합병원", "coords": [127.0464, 37.4927], "addr": "서울특별시 강남구 언주로 211 (역삼동)"}, {"no": 27, "id": "11680_B27_samsung_seoul_hospital", "name": "삼성서울병원 본관 및 암병원", "cat": "의료/첨단의학", "coords": [127.0851, 37.4883], "addr": "서울특별시 강남구 일원로 81 (일원동)"}, {"no": 28, "id": "11680_B28_daemosan_eco_forest", "name": "일원동 대모산 자연공원 숲길생태숲", "cat": "도시자연공원", "coords": [127.0818, 37.4765], "addr": "서울특별시 강남구 일원동 일원동산길 일대"}, {"no": 29, "id": "11680_B29_guryongsan_deck", "name": "개포동 구룡산 전망데크 산책로", "cat": "도시전망/생태", "coords": [127.0578, 37.4729], "addr": "서울특별시 강남구 개포동 구룡산길 일대"}, {"no": 30, "id": "11680_B30_tancheon_marupark", "name": "탄천물재생센터 마루공원 & 체육광장", "cat": "환경친화공원", "coords": [127.0864, 37.4981], "addr": "서울특별시 강남구 밤고개로 117 (일원동)"}, {"no": 31, "id": "11680_B31_hyundai_busan_tradedept", "name": "현대백화점 무역센터점", "cat": "쇼핑/백화점", "coords": [127.0602, 37.5088], "addr": "서울특별시 강남구 테헤란로 517 (삼성동)"}, {"no": 32, "id": "11680_B32_hyundai_apgujeong_dept", "name": "현대백화점 압구정본점", "cat": "쇼핑/백화점", "coords": [127.0275, 37.5273], "addr": "서울특별시 강남구 압구정로 297 (압구정동)"}, {"no": 33, "id": "11680_B33_starfield_coexmall_atrium", "name": "스타필드 코엑스몰 메인아트리움", "cat": "복합몰/쇼핑", "coords": [127.0594, 37.5115], "addr": "서울특별시 강남구 영동대로 513 (삼성동)"}, {"no": 34, "id": "11680_B34_yeoksam_centerfield", "name": "역삼 센터필드 (Centerfield East/West)", "cat": "프라임오피스", "coords": [127.0423, 37.5028], "addr": "서울특별시 강남구 테헤란로 141 (역삼동)"}, {"no": 35, "id": "11680_B35_posco_center", "name": "포스코센터 (POSCO Center 아트리움/아쿠아리움)", "cat": "기업본사/문화", "coords": [127.0545, 37.5057], "addr": "서울특별시 강남구 테헤란로 440 (삼성동)"}, {"no": 36, "id": "11680_B36_teheranro_venture_valley", "name": "테헤란로 벤처밸리 게이트웨이", "cat": "IT벤처/스타트업", "coords": [127.0401, 37.5015], "addr": "서울특별시 강남구 테헤란로 123 (역삼동)"}, {"no": 37, "id": "11680_B37_seolleung_techhub", "name": "선릉역 테크허브 D.CAMP 벨트", "cat": "스타트업/창업", "coords": [127.0488, 37.5045], "addr": "서울특별시 강남구 선릉로 725 (역삼동)"}, {"no": 38, "id": "11680_B38_sinsa_garosugil", "name": "신사동 가로수길 메인스트리트 상권", "cat": "트렌드/쇼핑거리", "coords": [127.0219, 37.5208], "addr": "서울특별시 강남구 압구정로13길 일대 (신사동)"}, {"no": 39, "id": "11680_B39_sinsa_mulberryhills", "name": "신사역 멀버리힐스 복합타워", "cat": "복합상업/메디컬", "coords": [127.0189, 37.5158], "addr": "서울특별시 강남구 강남대로 375 (신사동)"}, {"no": 40, "id": "11680_B40_nonhyeon_furniture_street", "name": "논현동 가구거리 디자인 스트리트", "cat": "특화거리/인테리어", "coords": [127.0273, 37.5134], "addr": "서울특별시 강남구 논현로 일대 (논현동)"}, {"no": 41, "id": "11680_B41_hakdong_park_library", "name": "학동공원 숲속 도서쉼터", "cat": "도시공원/휴식", "coords": [127.0267, 37.5186], "addr": "서울특별시 강남구 학동로 일대 (논현동)"}, {"no": 42, "id": "11680_B42_cha_gangnam_medical", "name": "차병원 강남본원 여성의학연구소", "cat": "특화의료/병원", "coords": [127.0347, 37.5065], "addr": "서울특별시 강남구 삼성로 215 (대치동)"}, {"no": 43, "id": "11680_B43_kukkiwon_taekwondo", "name": "국기원 (세계태권도본부 본관)", "cat": "스포츠/세계본부", "coords": [127.0303, 37.5019], "addr": "서울특별시 강남구 테헤란로 145 (역삼동)"}, {"no": 44, "id": "11680_B44_national_children_library", "name": "국립어린이청소년도서관 본관", "cat": "국립도서관/문화", "coords": [127.0312, 37.5027], "addr": "서울특별시 강남구 도산대로 81 (역삼동)"}, {"no": 45, "id": "11680_B45_gs_tower_yeoksam", "name": "GS타워 (역삼역 랜드마크)", "cat": "초고층/기업본사", "coords": [127.0378, 37.5016], "addr": "서울특별시 강남구 테헤란로 508 (역삼동)"}, {"no": 46, "id": "11680_B46_gangnam_square_plaza", "name": "강남스퀘어 (강남역 11번출구 랜드마크광장)", "cat": "도시광장/만남명소", "coords": [127.0281, 37.4988], "addr": "서울특별시 강남구 강남대로 지하 296 (역삼동)"}, {"no": 47, "id": "11680_B47_segaok_bogeumjae", "name": "세곡동 보금자리 복합문화센터", "cat": "주민편의/복합문화", "coords": [127.1085, 37.4654], "addr": "서울특별시 강남구 세곡동 중곡로 일대"}, {"no": 48, "id": "11680_B48_mongol_hanok_library", "name": "자곡동 못골한옥어린이도서관", "cat": "전통한옥/도서관", "coords": [127.0988, 37.4716], "addr": "서울특별시 강남구 자곡동 일대"}, {"no": 49, "id": "11680_B49_yulhyeon_park", "name": "율현공원 잔디마당 및 수변정원", "cat": "생태공원/산책로", "coords": [127.1124, 37.4741], "addr": "서울특별시 강남구 수서동 율현로 일대"}, {"no": 50, "id": "11680_B50_suseo_rd_cluster", "name": "수서역세권 로봇 & AI 혁신 R&D 클러스터", "cat": "미래산업/연구단지", "coords": [127.1062, 37.4839], "addr": "서울특별시 강남구 수서동 광평로 일대"}];
+const BLOCKS = [{"no": 1, "id": "11680_B01_coex_convention_center", "name": "코엑스 컨벤션 센터 본관", "cat": "MICE/전시", "coords": [127.0598, 37.5101], "addr": "서울특별시 강남구 영동대로 513 (삼성동)", "folder": "b01_코엑스_컨벤션_센터_본관"}, {"no": 2, "id": "11680_B02_byeolmadang_library", "name": "스타필드 코엑스 별마당도서관", "cat": "문화/도서관", "coords": [127.0601, 37.5107], "addr": "서울특별시 강남구 영동대로 513 (삼성동)", "folder": "b02_스타필드_코엑스_별마당도서관"}, {"no": 3, "id": "11680_B03_trade_tower", "name": "한국종합무역센터 트레이드타워", "cat": "초고층/비즈니스", "coords": [127.0609, 37.5098], "addr": "서울특별시 강남구 영동대로 511 (삼성동)", "folder": "b03_한국종합무역센터_트레이드타워"}, {"no": 4, "id": "11680_B04_parnas_tower", "name": "그랜드인터컨티넨탈 파르나스타워", "cat": "호텔/복합타워", "coords": [127.0617, 37.5085], "addr": "서울특별시 강남구 테헤란로 521 (삼성동)", "folder": "b04_그랜드인터컨티넨탈_파르나스타워"}, {"no": 5, "id": "11680_B05_asem_tower", "name": "아셈타워 (ASEM Tower)", "cat": "초고층/국제기구", "coords": [127.0583, 37.5135], "addr": "서울특별시 강남구 삼성로 524 (삼성동)", "folder": "b05_아셈타워__ASEM_Tower_"}, {"no": 6, "id": "11680_B06_bongeunsa_temple", "name": "봉은사 미륵대불 및 대웅전", "cat": "전통사찰/문화재", "coords": [127.0573, 37.5153], "addr": "서울특별시 강남구 봉은사로 531 (삼성동)", "folder": "b06_봉은사_미륵대불_및_대웅전"}, {"no": 7, "id": "11680_B07_seonjeongneung_royal", "name": "선정릉 (선릉·정릉 세계문화유산)", "cat": "왕릉/유네스코", "coords": [127.0489, 37.5074], "addr": "서울특별시 강남구 선릉로 100길 3 (삼성동)", "folder": "b07_선정릉__선릉_정릉_세계문화유산_"}, {"no": 8, "id": "11680_B08_gangnam_finance_center", "name": "강남파이낸스센터 (GFC)", "cat": "초고층/금융", "coords": [127.0372, 37.5002], "addr": "서울특별시 강남구 테헤란로 231 (역삼동)", "folder": "b08_강남파이낸스센터__GFC_"}, {"no": 9, "id": "11680_B09_gangnam_stn_meritz", "name": "강남역 메리츠타워 & 몬테소리", "cat": "상업/교통거점", "coords": [127.0286, 37.4975], "addr": "서울특별시 강남구 강남대로 390 (역삼동)", "folder": "b09_강남역_메리츠타워___몬테소리"}, {"no": 10, "id": "11680_B10_gt_tower_east", "name": "GT타워 (GT Tower East 곡선빌딩)", "cat": "현대건축/랜드마크", "coords": [127.0259, 37.4982], "addr": "서울특별시 강남구 서초대로 415 (양재동)", "folder": "b10_GT타워__GT_Tower_East_곡선빌딩_"}, {"no": 11, "id": "11680_B11_kyobo_tower", "name": "교보타워 (신논현역 마리오 보타 명작)", "cat": "문화/건축명소", "coords": [127.0241, 37.5042], "addr": "서울특별시 강남구 강남대로 456 (역삼동)", "folder": "b11_교보타워__신논현역_마리오_보타_명작_"}, {"no": 12, "id": "11680_B12_hyundai_gbc", "name": "현대자동차 GBC 복합업무단지", "cat": "초대형개발/비즈니스", "coords": [127.0645, 37.5118], "addr": "서울특별시 강남구 테헤란로 129 (대치동)", "folder": "b12_현대자동차_GBC_복합업무단지"}, {"no": 13, "id": "11680_B13_dosan_park", "name": "도산공원 및 도산안창호기념관", "cat": "역사공원/기념관", "coords": [127.0361, 37.5244], "addr": "서울특별시 강남구 도산대로 323 (신사동)", "folder": "b13_도산공원_및_도산안창호기념관"}, {"no": 14, "id": "11680_B14_apgujeong_rodeo_street", "name": "압구정 로데오거리 상징조형물", "cat": "트렌드/패션거리", "coords": [127.0389, 37.5268], "addr": "서울특별시 강남구 압구정로 404 (압구정동)", "folder": "b14_압구정_로데오거리_상징조형물"}, {"no": 15, "id": "11680_B15_galleria_dept", "name": "갤러리아백화점 명품관 (WEST/EAST)", "cat": "쇼핑/패션명소", "coords": [127.0409, 37.5284], "addr": "서울특별시 강남구 도산대로 407 (압구정동)", "folder": "b15_갤러리아백화점_명품관__WEST_EAST_"}, {"no": 16, "id": "11680_B16_cheongdam_luxury_belt", "name": "청담동 명품거리 아트빌딩 벨트", "cat": "패션/명품거리", "coords": [127.0463, 37.5256], "addr": "서울특별시 강남구 도산대로 601 (청담동)", "folder": "b16_청담동_명품거리_아트빌딩_벨트"}, {"no": 17, "id": "11680_B17_sm_ent_cheongdam", "name": "SM엔터테인먼트 청담 셀러브리티센터", "cat": "K-POP/한류문화", "coords": [127.0494, 37.5241], "addr": "서울특별시 강남구 도산대로 113 (청담동)", "folder": "b17_SM엔터테인먼트_청담_셀러브리티센터"}, {"no": 18, "id": "11680_B18_gangnam_gu_office", "name": "강남구청 본관 및 강남보건소", "cat": "행정/공공기관", "coords": [127.0475, 37.5173], "addr": "서울특별시 강남구 학동로 426 (논현동)", "folder": "b18_강남구청_본관_및_강남보건소"}, {"no": 19, "id": "11680_B19_setec_convention", "name": "SETEC (서울무역전시장 콘벤션)", "cat": "전시/산업지원", "coords": [127.0709, 37.4947], "addr": "서울특별시 강남구 삼성로 223 (대치동)", "folder": "b19_SETEC__서울무역전시장_콘벤션_"}, {"no": 20, "id": "11680_B20_yangjaecheon_eco_park", "name": "양재천 영동3교 물길 생태공원", "cat": "수변공원/친환경", "coords": [127.0515, 37.4842], "addr": "서울특별시 강남구 양재대로 일대 (대치동)", "folder": "b20_양재천_영동3교_물길_생태공원"}, {"no": 21, "id": "11680_B21_daechi_academy_crossing", "name": "대치동 학원가 사거리 은마사거리", "cat": "교육/교육특구", "coords": [127.0628, 37.4984], "addr": "서울특별시 강남구 영동대로 일대 (대치동)", "folder": "b21_대치동_학원가_사거리_은마사거리"}, {"no": 22, "id": "11680_B22_eunma_mall", "name": "은마아파트 종합상가 및 랜드마크", "cat": "상업/생활명소", "coords": [127.0658, 37.4971], "addr": "서울특별시 강남구 삼성로 138 (대치동)", "folder": "b22_은마아파트_종합상가_및_랜드마크"}, {"no": 23, "id": "11680_B23_tower_palace_skyline", "name": "타워팰리스 1·2·3차 스카이라인", "cat": "초고층주거/상징", "coords": [127.0543, 37.4891], "addr": "서울특별시 강남구 도곡로 123 (도곡동)", "folder": "b23_타워팰리스_1_2_3차_스카이라인"}, {"no": 24, "id": "11680_B24_dogok_academy_sweet", "name": "도곡동 아카데미스위트 & 삼성사옥", "cat": "복합주거/업무", "coords": [127.0519, 37.4898], "addr": "서울특별시 강남구 남부순환로 일대 (도곡동)", "folder": "b24_도곡동_아카데미스위트___삼성사옥"}, {"no": 25, "id": "11680_B25_suseo_srt_station", "name": "수서역 SRT 고속철도 역사 복합환승센터", "cat": "교통/복합환승", "coords": [127.1039, 37.4878], "addr": "서울특별시 강남구 광평로 300 (수서동)", "folder": "b25_수서역_SRT_고속철도_역사_복합환승센터"}, {"no": 26, "id": "11680_B26_gangnam_severance_hospital", "name": "강남세브란스병원 미래의학관", "cat": "의료/종합병원", "coords": [127.0464, 37.4927], "addr": "서울특별시 강남구 언주로 211 (역삼동)", "folder": "b26_강남세브란스병원_미래의학관"}, {"no": 27, "id": "11680_B27_samsung_seoul_hospital", "name": "삼성서울병원 본관 및 암병원", "cat": "의료/첨단의학", "coords": [127.0851, 37.4883], "addr": "서울특별시 강남구 일원로 81 (일원동)", "folder": "b27_삼성서울병원_본관_및_암병원"}, {"no": 28, "id": "11680_B28_daemosan_eco_forest", "name": "일원동 대모산 자연공원 숲길생태숲", "cat": "도시자연공원", "coords": [127.0818, 37.4765], "addr": "서울특별시 강남구 일원동 일원동산길 일대", "folder": "b28_일원동_대모산_자연공원_숲길생태숲"}, {"no": 29, "id": "11680_B29_guryongsan_deck", "name": "개포동 구룡산 전망데크 산책로", "cat": "도시전망/생태", "coords": [127.0578, 37.4729], "addr": "서울특별시 강남구 개포동 구룡산길 일대", "folder": "b29_개포동_구룡산_전망데크_산책로"}, {"no": 30, "id": "11680_B30_tancheon_marupark", "name": "탄천물재생센터 마루공원 & 체육광장", "cat": "환경친화공원", "coords": [127.0864, 37.4981], "addr": "서울특별시 강남구 밤고개로 117 (일원동)", "folder": "b30_탄천물재생센터_마루공원___체육광장"}, {"no": 31, "id": "11680_B31_hyundai_busan_tradedept", "name": "현대백화점 무역센터점", "cat": "쇼핑/백화점", "coords": [127.0602, 37.5088], "addr": "서울특별시 강남구 테헤란로 517 (삼성동)", "folder": "b31_현대백화점_무역센터점"}, {"no": 32, "id": "11680_B32_hyundai_apgujeong_dept", "name": "현대백화점 압구정본점", "cat": "쇼핑/백화점", "coords": [127.0275, 37.5273], "addr": "서울특별시 강남구 압구정로 297 (압구정동)", "folder": "b32_현대백화점_압구정본점"}, {"no": 33, "id": "11680_B33_starfield_coexmall_atrium", "name": "스타필드 코엑스몰 메인아트리움", "cat": "복합몰/쇼핑", "coords": [127.0594, 37.5115], "addr": "서울특별시 강남구 영동대로 513 (삼성동)", "folder": "b33_스타필드_코엑스몰_메인아트리움"}, {"no": 34, "id": "11680_B34_yeoksam_centerfield", "name": "역삼 센터필드 (Centerfield East/West)", "cat": "프라임오피스", "coords": [127.0423, 37.5028], "addr": "서울특별시 강남구 테헤란로 141 (역삼동)", "folder": "b34_역삼_센터필드__Centerfield_East_West_"}, {"no": 35, "id": "11680_B35_posco_center", "name": "포스코센터 (POSCO Center 아트리움/아쿠아리움)", "cat": "기업본사/문화", "coords": [127.0545, 37.5057], "addr": "서울특별시 강남구 테헤란로 440 (삼성동)", "folder": "b35_포스코센터__POSCO_Center_아트리움_아쿠아리움_"}, {"no": 36, "id": "11680_B36_teheranro_venture_valley", "name": "테헤란로 벤처밸리 게이트웨이", "cat": "IT벤처/스타트업", "coords": [127.0401, 37.5015], "addr": "서울특별시 강남구 테헤란로 123 (역삼동)", "folder": "b36_테헤란로_벤처밸리_게이트웨이"}, {"no": 37, "id": "11680_B37_seolleung_techhub", "name": "선릉역 테크허브 D.CAMP 벨트", "cat": "스타트업/창업", "coords": [127.0488, 37.5045], "addr": "서울특별시 강남구 선릉로 725 (역삼동)", "folder": "b37_선릉역_테크허브_D_CAMP_벨트"}, {"no": 38, "id": "11680_B38_sinsa_garosugil", "name": "신사동 가로수길 메인스트리트 상권", "cat": "트렌드/쇼핑거리", "coords": [127.0219, 37.5208], "addr": "서울특별시 강남구 압구정로13길 일대 (신사동)", "folder": "b38_신사동_가로수길_메인스트리트_상권"}, {"no": 39, "id": "11680_B39_sinsa_mulberryhills", "name": "신사역 멀버리힐스 복합타워", "cat": "복합상업/메디컬", "coords": [127.0189, 37.5158], "addr": "서울특별시 강남구 강남대로 375 (신사동)", "folder": "b39_신사역_멀버리힐스_복합타워"}, {"no": 40, "id": "11680_B40_nonhyeon_furniture_street", "name": "논현동 가구거리 디자인 스트리트", "cat": "특화거리/인테리어", "coords": [127.0273, 37.5134], "addr": "서울특별시 강남구 논현로 일대 (논현동)", "folder": "b40_논현동_가구거리_디자인_스트리트"}, {"no": 41, "id": "11680_B41_hakdong_park_library", "name": "학동공원 숲속 도서쉼터", "cat": "도시공원/휴식", "coords": [127.0267, 37.5186], "addr": "서울특별시 강남구 학동로 일대 (논현동)", "folder": "b41_학동공원_숲속_도서쉼터"}, {"no": 42, "id": "11680_B42_cha_gangnam_medical", "name": "차병원 강남본원 여성의학연구소", "cat": "특화의료/병원", "coords": [127.0347, 37.5065], "addr": "서울특별시 강남구 삼성로 215 (대치동)", "folder": "b42_차병원_강남본원_여성의학연구소"}, {"no": 43, "id": "11680_B43_kukkiwon_taekwondo", "name": "국기원 (세계태권도본부 본관)", "cat": "스포츠/세계본부", "coords": [127.0303, 37.5019], "addr": "서울특별시 강남구 테헤란로 145 (역삼동)", "folder": "b43_국기원__세계태권도본부_본관_"}, {"no": 44, "id": "11680_B44_national_children_library", "name": "국립어린이청소년도서관 본관", "cat": "국립도서관/문화", "coords": [127.0312, 37.5027], "addr": "서울특별시 강남구 도산대로 81 (역삼동)", "folder": "b44_국립어린이청소년도서관_본관"}, {"no": 45, "id": "11680_B45_gs_tower_yeoksam", "name": "GS타워 (역삼역 랜드마크)", "cat": "초고층/기업본사", "coords": [127.0378, 37.5016], "addr": "서울특별시 강남구 테헤란로 508 (역삼동)", "folder": "b45_GS타워__역삼역_랜드마크_"}, {"no": 46, "id": "11680_B46_gangnam_square_plaza", "name": "강남스퀘어 (강남역 11번출구 랜드마크광장)", "cat": "도시광장/만남명소", "coords": [127.0281, 37.4988], "addr": "서울특별시 강남구 강남대로 지하 296 (역삼동)", "folder": "b46_강남스퀘어__강남역_11번출구_랜드마크광장_"}, {"no": 47, "id": "11680_B47_segaok_bogeumjae", "name": "세곡동 보금자리 복합문화센터", "cat": "주민편의/복합문화", "coords": [127.1085, 37.4654], "addr": "서울특별시 강남구 세곡동 중곡로 일대", "folder": "b47_세곡동_보금자리_복합문화센터"}, {"no": 48, "id": "11680_B48_mongol_hanok_library", "name": "자곡동 못골한옥어린이도서관", "cat": "전통한옥/도서관", "coords": [127.0988, 37.4716], "addr": "서울특별시 강남구 자곡동 일대", "folder": "b48_자곡동_못골한옥어린이도서관"}, {"no": 49, "id": "11680_B49_yulhyeon_park", "name": "율현공원 잔디마당 및 수변정원", "cat": "생태공원/산책로", "coords": [127.1124, 37.4741], "addr": "서울특별시 강남구 수서동 율현로 일대", "folder": "b49_율현공원_잔디마당_및_수변정원"}, {"no": 50, "id": "11680_B50_suseo_rd_cluster", "name": "수서역세권 로봇 & AI 혁신 R&D 클러스터", "cat": "미래산업/연구단지", "coords": [127.1062, 37.4839], "addr": "서울특별시 강남구 수서동 광평로 일대", "folder": "b50_수서역세권_로봇___AI_혁신_R_D_클러스터"}];
 
 function toXZ(lon, lat){
   return [(lon - CENTER[0]) * LON, -(lat - CENTER[1]) * LAT];
@@ -163,44 +165,49 @@ function toXZ(lon, lat){
 // Three.js 씬 초기화
 const scene = new THREE.Scene();
 scene.background = new THREE.Color(0x0b111e);
-scene.fog = new THREE.FogExp2(0x0b111e, 0.00018);
+scene.fog = new THREE.FogExp2(0x0b111e, 0.00015);
 
-const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 10, 35000);
-camera.position.set(0, 1400, 1900);
-camera.lookAt(0, 50, 0);
+const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 5, 45000);
+camera.position.set(0, 900, 1400);
+camera.lookAt(0, 30, 0);
 
 const renderer = new THREE.WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+if(THREE.sRGBEncoding) renderer.outputEncoding = THREE.sRGBEncoding;
 document.body.appendChild(renderer.domElement);
 
 // 조명 설정
-const hemiLight = new THREE.HemisphereLight(0xffffff, 0x223344, 0.85);
+const hemiLight = new THREE.HemisphereLight(0xddeeff, 0x1a2638, 0.9);
 hemiLight.position.set(0, 5000, 0);
 scene.add(hemiLight);
 
-const dirLight = new THREE.DirectionalLight(0xfff4e6, 1.1);
-dirLight.position.set(3000, 7000, 4000);
+const dirLight = new THREE.DirectionalLight(0xfff6ea, 1.25);
+dirLight.position.set(3500, 8000, 4500);
 scene.add(dirLight);
 
-const fillLight = new THREE.DirectionalLight(0x7fd1ff, 0.4);
-fillLight.position.set(-3000, 3000, -3000);
+const fillLight = new THREE.DirectionalLight(0x7fd1ff, 0.5);
+fillLight.position.set(-3500, 3500, -3500);
 scene.add(fillLight);
 
 // 기본 베이스 지면
-const groundGeo = new THREE.PlaneGeometry(30000, 30000);
-const groundMat = new THREE.MeshLambertMaterial({ color: 0x121b2d, depthWrite: true });
+const groundGeo = new THREE.PlaneGeometry(40000, 40000);
+const groundMat = new THREE.MeshLambertMaterial({ color: 0x141e30, depthWrite: true });
 const groundMesh = new THREE.Mesh(groundGeo, groundMat);
 groundMesh.rotation.x = -Math.PI / 2;
 groundMesh.position.y = -1;
 scene.add(groundMesh);
 
-// 3D 마커 그룹
+// 3D 마커 및 glTF 홀더 그룹
 const markerGroup = new THREE.Group();
 scene.add(markerGroup);
 const markerObjects = [];
 
-// 블록 50개 3D 마커 생성
+const gltfHolderGroup = new THREE.Group();
+scene.add(gltfHolderGroup);
+let activeGltfMesh = null;
+
+// 블록 50개 3D 핀 생성
 function createMarkers(){
   const pinGeo = new THREE.CylinderGeometry(0, 16, 60, 8);
   pinGeo.rotateX(Math.PI);
@@ -209,7 +216,7 @@ function createMarkers(){
     const xz = toXZ(b.coords[0], b.coords[1]);
     const pinMat = new THREE.MeshBasicMaterial({ color: 0x38bdf8 });
     const pin = new THREE.Mesh(pinGeo, pinMat);
-    pin.position.set(xz[0], 50, xz[1]);
+    pin.position.set(xz[0], 55, xz[1]);
     
     // 바닥 링
     const ringGeo = new THREE.RingGeometry(18, 26, 16);
@@ -228,7 +235,42 @@ function createMarkers(){
 }
 createMarkers();
 
-// 건물 타일셋 로딩
+// ── 건물 기둥 삼각분할(BufferGeometry) ──
+function prism(ring, h, pos, norm, col){
+  if (!ring || ring.length < 3) return;
+  const contour = [];
+  for (let i = 0; i < ring.length - 1; i++){
+    const p = toXZ(ring[i][0], ring[i][1]);
+    contour.push(new THREE.Vector2(p[0], p[1]));
+  }
+  if (contour.length < 3) return;
+  let faces = [];
+  try { faces = THREE.ShapeUtils.triangulateShape(contour, []); } catch(e){ return; }
+  for (const f of faces){
+    for (const idx of f){
+      const v = contour[idx];
+      pos.push(v.x, h, v.y); norm.push(0, 1, 0); col.push(0.85, 0.90, 0.98);
+    }
+  }
+  const wallK = 0.65;
+  for (let i = 0; i < contour.length; i++){
+    const a = contour[i], b = contour[(i+1)%contour.length];
+    pos.push(a.x, 0, a.y, b.x, 0, b.y, b.x, h, b.y);
+    pos.push(a.x, 0, a.y, b.x, h, b.y, a.x, h, a.y);
+    for (let k = 0; k < 6; k++){ norm.push(0, 0, 1); col.push(wallK, wallK*1.05, wallK*1.15); }
+  }
+}
+
+function roofEdges(ring, h, out){
+  if (!ring || ring.length < 4) return;
+  for (let i = 0; i < ring.length - 1; i++){
+    const a = toXZ(ring[i][0], ring[i][1]);
+    const b = toXZ(ring[i+1][0], ring[i+1][1]);
+    out.push(a[0], h + 0.1, a[1], b[0], h + 0.1, b[1]);
+  }
+}
+
+// ── 건물 타일셋 배경 전체 로딩 ──
 async function loadTiles(){
   try {
     const res = await fetch('tiles_1000m/tiles_manifest.json');
@@ -236,39 +278,140 @@ async function loadTiles(){
     const man = await res.json();
     if(!man || !man.tiles) return;
 
-    const bMat = new THREE.MeshLambertMaterial({ color: 0x5a708e });
-    const edgeMat = new THREE.LineBasicMaterial({ color: 0x9fb6d6, transparent: true, opacity: 0.45 });
+    const pos = [], norm = [], col = [], epos = [];
+    const limit = Math.min(man.tiles.length, 12);
 
-    for(const t of man.tiles){
+    for(let i = 0; i < limit; i++){
+      const t = man.tiles[i];
       try {
-        const tr = await fetch('tiles_1000m/tile_' + t.ti + '_' + t.tj + '_lod1.json');
+        const url = 'tiles_1000m/tile_' + t.ti + '_' + t.tj + '_lod1.json';
+        const tr = await fetch(url);
         if(!tr.ok) continue;
-        const data = await tr.json();
-        if(!data || !data.buildings) continue;
+        const gj = await tr.json();
+        if(!gj || !gj.features) continue;
 
-        data.buildings.forEach(bd => {
-          if(!bd.pts || bd.pts.length < 3) return;
-          const shape = new THREE.Shape();
-          const first = toXZ(bd.pts[0][0], bd.pts[0][1]);
-          shape.moveTo(first[0], -first[1]);
-          for(let i=1; i<bd.pts.length; i++){
-            const pt = toXZ(bd.pts[i][0], bd.pts[i][1]);
-            shape.lineTo(pt[0], -pt[1]);
-          }
-          const height = Math.max(8, bd.h || 15);
-          const extGeo = new THREE.ExtrudeGeometry(shape, { depth: height, bevelEnabled: false });
-          extGeo.rotateX(-Math.PI / 2);
-          const mesh = new THREE.Mesh(extGeo, bMat);
-          mesh.position.y = 0;
-          scene.add(mesh);
-        });
+        for(const f of gj.features){
+          if(!f.geometry || !f.geometry.coordinates || !f.geometry.coordinates[0]) continue;
+          const h = (f.properties && f.properties.h) ? Math.max(8, f.properties.h) : 15;
+          prism(f.geometry.coordinates[0], h, pos, norm, col);
+          roofEdges(f.geometry.coordinates[0], h, epos);
+        }
       } catch(e){}
+    }
+
+    if(pos.length){
+      const g = new THREE.BufferGeometry();
+      g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+      g.setAttribute('normal', new THREE.Float32BufferAttribute(norm, 3));
+      g.setAttribute('color', new THREE.Float32BufferAttribute(col, 3));
+      const bldgMesh = new THREE.Mesh(g, new THREE.MeshLambertMaterial({ vertexColors: true, flatShading: true }));
+      scene.add(bldgMesh);
+    }
+
+    if(epos.length){
+      const eg = new THREE.BufferGeometry();
+      eg.setAttribute('position', new THREE.Float32BufferAttribute(epos, 3));
+      const edgeLine = new THREE.LineSegments(eg, new THREE.LineBasicMaterial({ color: 0x3b5575, transparent: true, opacity: 0.8 }));
+      scene.add(edgeLine);
     }
   } catch(e){}
 }
 loadTiles();
 
-// 사이드바 UI 렌더링
+// ── 경량 순수 JS glTF 바이너리 파서 ──
+function decDataUri(u){
+  const b = atob(u.split(',')[1]);
+  const a = new Uint8Array(b.length);
+  for(let i=0; i<b.length; i++) a[i] = b.charCodeAt(i);
+  return a.buffer;
+}
+
+function getAccessorData(g, bufs, i){
+  const a = g.accessors[i];
+  const bv = g.bufferViews[a.bufferView];
+  const numComps = { SCALAR: 1, VEC2: 2, VEC3: 3, VEC4: 4 }[a.type];
+  const T = { 5126: Float32Array, 5125: Uint32Array, 5123: Uint16Array, 5121: Uint8Array }[a.componentType];
+  return new T(bufs[bv.buffer], (bv.byteOffset || 0) + (a.byteOffset || 0), a.count * numComps);
+}
+
+function buildGltfMesh(g, tex, bufs){
+  const mats = (g.materials || [{}]).map(m => {
+    const pb = m.pbrMetallicRoughness || {};
+    const o = { roughness: pb.roughnessFactor == null ? 0.7 : pb.roughnessFactor, metalness: pb.metallicFactor || 0.1, side: THREE.DoubleSide };
+    if(pb.baseColorTexture && tex) o.map = tex;
+    else if(pb.baseColorFactor) o.color = new THREE.Color(pb.baseColorFactor[0], pb.baseColorFactor[1], pb.baseColorFactor[2]);
+    else if(tex) o.map = tex;
+    return new THREE.MeshStandardMaterial(o);
+  });
+  const root = new THREE.Group();
+  g.nodes.forEach(nd => {
+    if(nd.mesh == null) return;
+    g.meshes[nd.mesh].primitives.forEach(p => {
+      const geo = new THREE.BufferGeometry();
+      geo.setAttribute('position', new THREE.BufferAttribute(getAccessorData(g, bufs, p.attributes.POSITION), 3));
+      if(p.attributes.NORMAL != null) geo.setAttribute('normal', new THREE.BufferAttribute(getAccessorData(g, bufs, p.attributes.NORMAL), 3));
+      if(p.attributes.TEXCOORD_0 != null) geo.setAttribute('uv', new THREE.BufferAttribute(getAccessorData(g, bufs, p.attributes.TEXCOORD_0), 2));
+      if(p.indices != null) geo.setIndex(new THREE.BufferAttribute(getAccessorData(g, bufs, p.indices), 1));
+      if(p.attributes.NORMAL == null) geo.computeVertexNormals();
+      const m = new THREE.Mesh(geo, mats[p.material || 0]);
+      if(nd.translation) m.position.fromArray(nd.translation);
+      if(nd.scale) m.scale.fromArray(nd.scale);
+      if(nd.rotation) m.quaternion.fromArray(nd.rotation);
+      root.add(m);
+    });
+  });
+  return root;
+}
+
+// ── 블록별 3D glTF 로더 ──
+async function loadBlockGltf(b, xz){
+  const dtStatus = document.getElementById('dtStatus');
+  dtStatus.textContent = '3D 실물 모델 로딩 중…';
+  const base = 'blocks/' + b.folder + '/';
+  try {
+    const gltfRes = await fetch(base + 'model_lod2.gltf').catch(() => null);
+    if(!gltfRes || !gltfRes.ok) throw new Error('gltf not found');
+    const g = await gltfRes.json();
+    
+    const bufs = await Promise.all(g.buffers.map(buf => {
+      if(buf.uri.startsWith('data:')) return Promise.resolve(decDataUri(buf.uri));
+      return fetch(base + buf.uri).then(r => r.arrayBuffer());
+    }));
+
+    const texLoader = new THREE.TextureLoader();
+    texLoader.load(base + 'texture_atlas.webp', (tex) => {
+      tex.flipY = true;
+      if(THREE.sRGBEncoding) tex.encoding = THREE.sRGBEncoding;
+      mountGltf(g, tex, bufs, xz, b);
+    }, undefined, () => {
+      mountGltf(g, null, bufs, xz, b);
+    });
+  } catch(e) {
+    dtStatus.textContent = '3D 랜드마크 핀 위치 확인됨';
+  }
+}
+
+function mountGltf(g, tex, bufs, xz, b){
+  if(activeGltfMesh) gltfHolderGroup.remove(activeGltfMesh);
+  activeGltfMesh = buildGltfMesh(g, tex, bufs);
+  
+  // 크기 자동 정규화 및 바닥 안착
+  const bb = new THREE.Box3().setFromObject(activeGltfMesh);
+  const sz = bb.getSize(new THREE.Vector3());
+  const maxDim = Math.max(sz.x, sz.z);
+  const targetScale = Math.min(2.5, Math.max(0.8, 120 / (maxDim || 100)));
+  activeGltfMesh.scale.set(targetScale, targetScale, targetScale);
+  
+  // 정밀 위치 배치
+  activeGltfMesh.position.set(xz[0], 2, xz[1]);
+  gltfHolderGroup.add(activeGltfMesh);
+
+  let tri = 0;
+  activeGltfMesh.traverse(o => { if(o.geometry) tri += (o.geometry.index ? o.geometry.index.count : o.geometry.attributes.position.count) / 3; });
+  document.getElementById('dtStatus').textContent = '✅ 3D 실물 모델 로딩 완료 (삼각형 ' + Math.round(tri).toLocaleString() + '개)';
+}
+
+// ── 사이드바 UI 렌더링 ──
 function renderSidebar(list){
   const el = document.getElementById('blockList');
   el.innerHTML = '';
@@ -308,14 +451,14 @@ function filterBlocks(){
   renderSidebar(filtered);
 }
 
-// 블록 이동 & 상세 표시
+// ── 블록 이동 & 상세 표시 & glTF 마운트 ──
 let targetCam = null, targetLook = null;
 let isOrbiting = false;
 
 function flyToBlock(b){
   const xz = toXZ(b.coords[0], b.coords[1]);
-  targetCam = new THREE.Vector3(xz[0], 280, xz[1] + 360);
-  targetLook = new THREE.Vector3(xz[0], 40, xz[1]);
+  targetCam = new THREE.Vector3(xz[0], 220, xz[1] + 280);
+  targetLook = new THREE.Vector3(xz[0], 35, xz[1]);
   
   // 마커 하이라이트
   markerObjects.forEach(m => {
@@ -338,6 +481,9 @@ function flyToBlock(b){
   document.getElementById('dtAddr').textContent = '주소: ' + b.addr;
   document.getElementById('dtCoords').textContent = '좌표: ' + b.coords[0].toFixed(5) + ', ' + b.coords[1].toFixed(5);
   document.getElementById('block-detail').style.display = 'flex';
+
+  // 3D glTF 로드 및 실물 표시
+  loadBlockGltf(b, xz);
 }
 
 function closeDetail(){
@@ -351,8 +497,8 @@ function toggleSidebar(){
 }
 
 function resetView(){
-  targetCam = new THREE.Vector3(0, 1400, 1900);
-  targetLook = new THREE.Vector3(0, 50, 0);
+  targetCam = new THREE.Vector3(0, 900, 1400);
+  targetLook = new THREE.Vector3(0, 30, 0);
   closeDetail();
 }
 
@@ -370,7 +516,6 @@ function animate(){
     camera.position.lerp(targetCam, 0.05);
     const curLook = new THREE.Vector3();
     camera.getWorldDirection(curLook);
-    // 간단 보간
     if(camera.position.distanceTo(targetCam) < 2){
       targetCam = null;
     }
@@ -383,6 +528,13 @@ function animate(){
   renderer.render(scene, camera);
 }
 animate();
+
+// 1번 블록 기본 프리로드
+setTimeout(() => {
+  if(BLOCKS && BLOCKS.length){
+    flyToBlock(BLOCKS[0]);
+  }
+}, 800);
 
 // 윈도우 리사이즈
 window.addEventListener('resize', () => {
