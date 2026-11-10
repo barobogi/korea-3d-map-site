@@ -1,0 +1,148 @@
+{
+  "block_id": "11680",
+  "name": "서울특별시 강남구",
+  "version": "1.1",
+  "updated": "2026-11-01",
+  "basic": {
+    "office": {
+      "name": "강남구청",
+      "address": "서울특별시 강남구 학동로 426 (삼성동)",
+      "coords": [
+        127.0474,
+        37.5173
+      ],
+      "coords_source": "국토교통부 브이월드 도로명주소 POI 지오코딩 실측 WGS84",
+      "source": {
+        "title": "강남구청 공식 포털",
+        "url": "https://www.gangnam.go.kr",
+        "page_title": "강남구청",
+        "quote": "강남구청"
+      }
+    },
+    "scale": {
+      "building_count": 46770,
+      "road_feature_count": 6277,
+      "tile_count_1000m": 264
+    }
+  },
+  "landmarks": [
+    {
+      "id": "coex_starfield_library",
+      "name": "코엑스몰 별마당도서관",
+      "coords": [
+        127.0598,
+        37.5101
+      ],
+      "coords_source": "국토교통부 브이월드 POI 및 카카오맵 도로명주소 실측 WGS84",
+      "highlight_radius_m": 120,
+      "source": {
+        "title": "비짓강남 강남구 공식 관광 포털",
+        "url": "https://visitgangnam.net/places/byulmadang-library",
+        "page_title": "코엑스몰 별마당도서관 — Visit Gangnam",
+        "quote": "코엑스몰 중심에 위치한 총 2,800㎡의 ‘열린 도서관’"
+      }
+    },
+    {
+      "id": "gangnam_mice_zone",
+      "name": "강남 마이스 관광특구",
+      "coords": [
+        127.0588,
+        37.5118
+      ],
+      "coords_source": "국토교통부 브이월드 POI 및 카카오맵 도로명주소 실측 WGS84",
+      "highlight_radius_m": 150,
+      "source": {
+        "title": "비짓강남 강남구 공식 관광 포털",
+        "url": "https://visitgangnam.net/about/mice",
+        "page_title": "강남 마이스 관광특구 — Visit Gangnam",
+        "quote": "컨벤션, 전시, 비즈니스 관광의 중심"
+      }
+    },
+    {
+      "id": "seonjeongneung",
+      "name": "선정릉 (선릉과 정릉)",
+      "coords": [
+        127.0489,
+        37.5088
+      ],
+      "coords_source": "국가유산포털 사적지 지정 좌표 및 브이월드 POI 실측 WGS84",
+      "highlight_radius_m": 180,
+      "source": {
+        "title": "비짓강남 강남구 공식 관광 포털",
+        "url": "https://visitgangnam.net/places/seolleung-and-jeongneung-royal-tombs-unesco-world-heritage-site-in-gangnam",
+        "page_title": "선정릉 — Visit Gangnam",
+        "quote": "선정릉은 조선 시대의 왕릉으로, 조선 제9대 왕 성종과 그의 계비 정현왕후의 무덤인 선릉, 그리고 11대 왕 중종의 무덤인 정릉으로 구성된 문화재다."
+      }
+    },
+    {
+      "id": "bongeunsa_temple",
+      "name": "봉은사",
+      "coords": [
+        127.0573,
+        37.5144
+      ],
+      "coords_source": "국토교통부 브이월드 문화재 POI 및 카카오맵 실측 WGS84",
+      "highlight_radius_m": 150,
+      "source": {
+        "title": "비짓강남 강남구 공식 관광 포털",
+        "url": "https://visitgangnam.net/places/bongeunsa-temple-millennium-temple-in-the-city",
+        "page_title": "봉은사 도심 속 천년 사찰 — Visit Gangnam",
+        "quote": "우리나라 선종 불교의 대표적 사찰. 신라 원성왕 시절 ‘견성사’란 이름으로 창건됐다."
+      }
+    },
+    {
+      "id": "apgujeong_rodeo",
+      "name": "압구정 로데오거리",
+      "coords": [
+        127.0374,
+        37.5268
+      ],
+      "coords_source": "국토교통부 브이월드 상권 POI 실측 WGS84",
+      "highlight_radius_m": 150,
+      "source": {
+        "title": "비짓강남 강남구 공식 관광 포털",
+        "url": "https://visitgangnam.net",
+        "page_title": "비짓강남 — 강남구 공식 관광 포털",
+        "quote": "최신 패션과 트렌드가 가장 빠르게 시작되는 트렌드 세터들의 중심지"
+      }
+    },
+    {
+      "id": "yangjaecheon_waterside",
+      "name": "강남둘레길 · 양재천 구간",
+      "coords": [
+        127.0628,
+        37.4912
+      ],
+      "coords_source": "국토교통부 브이월드 하천생태 POI 실측 WGS84",
+      "highlight_radius_m": 150,
+      "source": {
+        "title": "비짓강남 공식 둘레길 포털",
+        "url": "https://visitgangnam.net/gangnamtrail",
+        "page_title": "강남둘레길 — Visit Gangnam",
+        "quote": "강남둘레길은 서울 강남구의 자연과 도심을 잇는 총 37.2km의 산책로로, 6개 코스로 구성되어 있습니다. 양재천, 탄천, 한강을 따라 걷다 보면 시원한 하천 풍경과 다양한 생태를 만날 수 있으며"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "id": "gangnam_trail",
+      "name": "강남둘레길 힐링 트레킹",
+      "source": {
+        "title": "비짓강남 공식 둘레길 포털",
+        "url": "https://visitgangnam.net/gangnamtrail",
+        "page_title": "강남둘레길 — Visit Gangnam",
+        "quote": "강남둘레길은 서울 강남구의 자연과 도심을 잇는 총 37.2km의 산책로로, 6개 코스로 구성되어 있습니다. 양재천, 탄천, 한강을 따라 걷다 보면 시원한 하천 풍경과 다양한 생태를 만날 수 있으며"
+      }
+    }
+  ],
+  "healing": [
+    {
+      "id": "seonjeongneung_forest",
+      "name": "선정릉 왕릉 숲길 산책",
+      "status": "수집완료"
+    }
+  ],
+  "attributions": [
+    "지형 고도: Open-Meteo/Copernicus DEM 90m 또는 AWS Terrain Tiles(Tilezen 오픈 DEM) · 성곽선: OpenStreetMap contributors (ODbL)"
+  ]
+}

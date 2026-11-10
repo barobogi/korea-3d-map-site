@@ -1,0 +1,151 @@
+{
+  "block_id": "11140",
+  "name": "서울특별시 중구",
+  "version": "1.0",
+  "updated": "2026-11-02",
+  "basic": {
+    "office": {
+      "name": "중구청",
+      "address": "서울특별시 중구 창경궁로 17 (예관동)",
+      "coords": [
+        126.9975659,
+        37.563758
+      ],
+      "coords_source": "OpenStreetMap Nominatim 조회(2026-11-02), WGS84 [경도, 위도]",
+      "source": {
+        "title": "중구청 공식 포털(오시는길)",
+        "url": "https://www.junggu.seoul.kr/content.do?cmsid=14070",
+        "page_title": "중구청 | 오시는길 | 구청안내 | 중구소개 | 서울시 중구청",
+        "quote": "서울시 중구 창경궁로 17 (예관동)",
+        "checked": "2026-11-02"
+      }
+    },
+    "scale": {
+      "building_count": 32527,
+      "road_feature_count": 4245,
+      "tile_count_1000m": 24
+    }
+  },
+  "landmarks": [
+    {
+      "id": "sungnyemun",
+      "name": "숭례문",
+      "coords": [
+        126.9753556,
+        37.559992
+      ],
+      "coords_source": "OpenStreetMap Nominatim 조회(2026-11-02), WGS84 [경도, 위도]",
+      "highlight_radius_m": 120,
+      "source": {
+        "title": "뉴시스 기사",
+        "url": "https://www.newsis.com/view/NISX20211119_0001657691",
+        "page_title": "'국보 1호' 숭례문? '국보' 숭례문!...문화재 지정번호 폐지(종합) :: 공감언론 뉴시스 ::",
+        "quote": "1962년 시행된 문화재보호법에 의해 숭례문이 국보 1호가 됐다.",
+        "checked": "2026-11-02"
+      }
+    },
+    {
+      "id": "myeongdong_cathedral",
+      "name": "명동성당",
+      "coords": [
+        126.9871556,
+        37.5631588
+      ],
+      "coords_source": "OpenStreetMap Nominatim 조회(2026-11-02), WGS84 [경도, 위도]",
+      "highlight_radius_m": 120,
+      "source": {
+        "title": "서울시 미디어허브(내 손안에 서울)",
+        "url": "https://mediahub.seoul.go.kr/archives/2000733",
+        "page_title": "서울시 - 내 손안에 서울",
+        "quote": "명동성당은 우리나라 최초로 지어진 대규모 고딕 양식의 천주교 성당이자 한국 최초의 본당이라 부른다.",
+        "checked": "2026-11-02"
+      }
+    },
+    {
+      "id": "seokjojeon",
+      "name": "덕수궁 석조전",
+      "coords": [
+        126.9742419,
+        37.5663436
+      ],
+      "coords_source": "OpenStreetMap Nominatim 조회(2026-11-02), WGS84 [경도, 위도]",
+      "highlight_radius_m": 120,
+      "source": {
+        "title": "서울시 미디어허브(내 손안에 서울)",
+        "url": "https://mediahub.seoul.go.kr/archives/1195449",
+        "page_title": "서울시 - 내 손안에 서울",
+        "quote": "영국인 고문 하딩의 건의로 1900년부터 만들어지기 시작한 석조전",
+        "checked": "2026-11-02"
+      }
+    },
+    {
+      "id": "namdaemun_market",
+      "name": "남대문시장",
+      "coords": [
+        126.9798678,
+        37.5612987
+      ],
+      "coords_source": "OpenStreetMap Nominatim 조회(2026-11-02), WGS84 [경도, 위도]",
+      "highlight_radius_m": 120,
+      "source": {
+        "title": "서울시 미디어허브(내 손안에 서울)",
+        "url": "https://mediahub.seoul.go.kr/archives/2000817",
+        "page_title": "서울시 - 내 손안에 서울",
+        "quote": "남대문시장의 전신은 조선시대 시작된 칠패시장이다.",
+        "checked": "2026-11-02"
+      }
+    },
+    {
+      "id": "gwangtonggyo",
+      "name": "청계천 광통교",
+      "coords": [
+        126.9810367,
+        37.5690064
+      ],
+      "coords_source": "OpenStreetMap Nominatim 조회(2026-11-02), WGS84 [경도, 위도]",
+      "highlight_radius_m": 120,
+      "source": {
+        "title": "서울시 미디어허브(내 손안에 서울)",
+        "url": "https://mediahub.seoul.go.kr/archives/152480",
+        "page_title": "서울시 - 내 손안에 서울",
+        "quote": "2003년 7월1일 공사 착공에서부터 2005년 9월30일 완공에 이르기까지 2년3개월이 소요되었다",
+        "checked": "2026-11-02"
+      }
+    },
+    {
+      "id": "ddp",
+      "name": "동대문디자인플라자(DDP)",
+      "coords": [
+        127.009899,
+        37.5670686
+      ],
+      "coords_source": "OpenStreetMap Nominatim 조회(2026-11-02), WGS84 [경도, 위도]",
+      "highlight_radius_m": 120,
+      "source": {
+        "title": "서울시 미디어허브(내 손안에 서울)",
+        "url": "https://mediahub.seoul.go.kr/archives/2006740",
+        "page_title": "서울시 - 내 손안에 서울",
+        "quote": "DDP는 세계 최대 규모의 3차원 비정형 건축물이다.",
+        "checked": "2026-11-02"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "id": "cheonggye_restoration",
+      "name": "청계천 복원 구간 산책(광통교 일대)",
+      "source": {
+        "title": "서울시 미디어허브(내 손안에 서울)",
+        "url": "https://mediahub.seoul.go.kr/archives/152480",
+        "page_title": "서울시 - 내 손안에 서울",
+        "quote": "2003년 7월1일 공사 착공에서부터 2005년 9월30일 완공에 이르기까지 2년3개월이 소요되었다",
+        "checked": "2026-11-02"
+      }
+    }
+  ],
+  "healing": [],
+  "markets": [],
+  "attributions": [
+    "지형 고도: Open-Meteo/Copernicus DEM 90m 또는 AWS Terrain Tiles(Tilezen 오픈 DEM) · 성곽선: OpenStreetMap contributors (ODbL)"
+  ]
+}
