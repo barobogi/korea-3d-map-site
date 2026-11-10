@@ -593,15 +593,18 @@ function toggleOrbit(){
 }
 
 // 부드러운 카메라 보간 및 렌더 루프
+let currentLook = new THREE.Vector3(0, 20, 0);
+
 function animate(){
   requestAnimationFrame(animate);
   
   if(targetCam && targetLook){
-    camera.position.lerp(targetCam, 0.05);
-    const curLook = new THREE.Vector3();
-    camera.getWorldDirection(curLook);
-    if(camera.position.distanceTo(targetCam) < 2){
+    camera.position.lerp(targetCam, 0.08);
+    currentLook.lerp(targetLook, 0.08);
+    camera.lookAt(currentLook);
+    if(camera.position.distanceTo(targetCam) < 2 && currentLook.distanceTo(targetLook) < 2){
       targetCam = null;
+      targetLook = null;
     }
   }
 
