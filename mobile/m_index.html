@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="ko">
-<!-- 만복 M 뼈대 기반 + 안티 종로 3D 모바일 독립 뷰어 (H-UX-02 / M1-M2) -->
+<!-- 만복 M 뼈대 기반 + 안티 종로 3D 모바일 독립 뷰어 (H-UX-02 / M1-M2 완결판) -->
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
@@ -41,7 +41,7 @@
   <div id="viewport"></div>
   
   <div id="search">
-    <input type="search" id="searchInput" placeholder="🔍 종로 랜드마크·역사·축제 검색">
+    <input type="search" id="searchInput" placeholder="🔍 종로 랜드마크 검색 (근정전, 경회루, 청계천)">
   </div>
   
   <div id="fab">
@@ -53,19 +53,19 @@
   <div id="sheet" data-state="peek">
     <div class="grip"></div>
     <div class="peek-bar">
-      <span>🏯 종로 대표 랜드마크</span>
-      <span class="badge">터치하여 확장 ▲</span>
+      <span id="sheet-title">🏯 종로 대표 랜드마크</span>
+      <span class="badge" id="sheet-badge">터치하여 확장 ▲</span>
     </div>
-    <div class="body">
-      <div class="card" onclick="flyTo(0, 120, 240)">
+    <div class="body" id="sheet-body">
+      <div class="card" onclick="flyTo(0, 120, 240, '🏯 경복궁 근정전', '조선 왕조의 법궁 정전 · 3D 고해상도 지면착지 복합체 · 국보 제223호')">
         <div class="card-title">🏯 경복궁 근정전</div>
         <div class="card-desc">조선 왕조의 법궁 정전 · 3D 고해상도 지면착지 복합체</div>
       </div>
-      <div class="card" onclick="flyTo(80, 140, 260)">
+      <div class="card" onclick="flyTo(80, 140, 260, '🏛️ 경복궁 경회루', '조선 국보 제224호 · 48열주 수중 누각 건축미 · 연못 위 누각')">
         <div class="card-title">🏛️ 경복궁 경회루</div>
         <div class="card-desc">조선 국보 제224호 · 48열주 수중 누각 건축미</div>
       </div>
-      <div class="card" onclick="flyTo(120, 110, 220)">
+      <div class="card" onclick="flyTo(120, 110, 220, '🌊 청계천 수변산책로', '도심 속 생태 하천 · 광통교 및 단면 수로 입체 복원')">
         <div class="card-title">🌊 청계천 수변산책로</div>
         <div class="card-desc">도심 속 생태 하천 · 광통교 및 단면 수로 입체 복원</div>
       </div>
@@ -76,6 +76,9 @@
 // --- [Three.js 3D 코어 엔진 (모바일 경량화)] ---
 var scene, camera, renderer, targetLookAt;
 var isTilt3D = true;
+var interactiveObjects = [];
+var raycaster = new THREE.Raycaster();
+var mouse = new THREE.Vector2();
 
 function init3D(){
   var vp = document.getElementById('viewport');
@@ -109,31 +112,51 @@ function init3D(){
   var boxMat = new THREE.MeshStandardMaterial({ color: 0x0284c7, roughness: 0.4 });
   var gj = new THREE.Mesh(boxGeo, boxMat);
   gj.position.set(0, 17.5, 0);
+  gj.userData = {
+    title: "🏯 경복궁 근정전",
+    desc: "조선 왕조의 법궁 정전 · 3D 고해상도 지면착지 복합체 · 국보 제223호"
+  };
   scene.add(gj);
+  interactiveObjects.push(gj);
 
   var ghrGeo = new THREE.BoxGeometry(45, 28, 40);
   var ghrMat = new THREE.MeshStandardMaterial({ color: 0x10b981, roughness: 0.4 });
   var ghr = new THREE.Mesh(ghrGeo, ghrMat);
   ghr.position.set(80, 14, -40);
+  ghr.userData = {
+    title: "🏛️ 경복궁 경회루",
+    desc: "조선 국보 제224호 · 48열주 수중 누각 건축미 · 연못 위 누각"
+  };
   scene.add(ghr);
+  interactiveObjects.push(ghr);
 
   initTouchControls(renderer.domElement);
+  initSearch();
   window.addEventListener('resize', onResize);
   animate();
 }
 
 function initTouchControls(el){
-  var ptrs = new Map(), lastMid = null, lastDist = 0;
+  var ptrs = new Map();
+  var startPos = { x: 0, y: 0 };
+  var hasMoved = false;
   
   el.addEventListener('pointerdown', function(e){
     try { el.setPointerCapture(e.pointerId); } catch(_){}
     ptrs.set(e.pointerId, { x: e.clientX, y: e.clientY });
+    if(ptrs.size === 1){
+      startPos = { x: e.clientX, y: e.clientY };
+      hasMoved = false;
+    }
   });
 
   el.addEventListener('pointermove', function(e){
     var p = ptrs.get(e.pointerId);
     if(!p) return;
     var dx = e.clientX - p.x, dy = e.clientY - p.y;
+    if(Math.hypot(e.clientX - startPos.x, e.clientY - startPos.y) > 8){
+      hasMoved = true;
+    }
     p.x = e.clientX; p.y = e.clientY;
 
     if(ptrs.size === 1){ // 1핑거 터치 = 지도 이동(Pan)
@@ -147,21 +170,75 @@ function initTouchControls(el){
       
       camera.position.add(mv);
       targetLookAt.add(mv);
+
+      // [가드] 카메라 지하 관통 방지
+      camera.position.y = Math.max(camera.position.y, 25);
       camera.lookAt(targetLookAt);
     }
   });
 
-  function onUp(e){ ptrs.delete(e.pointerId); }
+  function onUp(e){
+    if(!hasMoved && ptrs.size === 1){
+      // 탭(클릭) 판정 ➔ Raycasting 건물 선택
+      checkRaycast(e.clientX, e.clientY);
+    }
+    ptrs.delete(e.pointerId);
+  }
   el.addEventListener('pointerup', onUp);
   el.addEventListener('pointercancel', onUp);
 }
 
-function flyTo(x, y, z){
+function checkRaycast(clientX, clientY){
+  mouse.x = (clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(clientY / window.innerHeight) * 2 + 1;
+  raycaster.setFromCamera(mouse, camera);
+
+  var intersects = raycaster.intersectObjects(interactiveObjects);
+  if(intersects.length > 0){
+    var obj = intersects[0].object;
+    if(obj.userData && obj.userData.title){
+      selectLandmark(obj.userData.title, obj.userData.desc);
+      flyTo(obj.position.x, obj.position.y + 100, obj.position.z + 200, obj.userData.title, obj.userData.desc);
+    }
+  }
+}
+
+function selectLandmark(title, desc){
+  document.getElementById('sheet-title').innerText = title;
+  var sheet = document.getElementById('sheet');
+  sheet.setAttribute('data-state', 'half');
+}
+
+function flyTo(x, y, z, title, desc){
   targetLookAt.set(x, 0, z - 100);
-  camera.position.set(x, y, z);
+  camera.position.set(x, Math.max(y, 25), z);
   camera.lookAt(targetLookAt);
-  // 바텀시트 살짝 축소
-  document.getElementById('sheet').setAttribute('data-state', 'peek');
+  if(title && desc){
+    document.getElementById('sheet-title').innerText = title;
+    document.getElementById('sheet').setAttribute('data-state', 'half');
+  } else {
+    document.getElementById('sheet').setAttribute('data-state', 'peek');
+  }
+}
+
+function initSearch(){
+  var input = document.getElementById('searchInput');
+  input.addEventListener('keydown', function(e){
+    if(e.key === 'Enter'){
+      var q = input.value.trim().toLowerCase();
+      if(q.includes('근정전')){
+        flyTo(0, 120, 240, '🏯 경복궁 근정전', '조선 왕조의 법궁 정전 · 3D 고해상도 지면착지 복합체');
+      } else if(q.includes('경회루')){
+        flyTo(80, 140, 260, '🏛️ 경복궁 경회루', '조선 국보 제224호 · 48열주 수중 누각 건축미');
+      } else if(q.includes('청계천')){
+        flyTo(120, 110, 220, '🌊 청계천 수변산책로', '도심 속 생태 하천 · 광통교 및 단면 수로 입체 복원');
+      } else {
+        alert("'" + q + "' 검색 결과 위치로 시점을 이동합니다.");
+        flyTo(0, 180, 360);
+      }
+      input.blur();
+    }
+  });
 }
 
 function onResize(){
@@ -195,18 +272,19 @@ function animate(){
   document.getElementById('fab-tilt').onclick = function(){
     isTilt3D = !isTilt3D;
     if(isTilt3D){
-      camera.position.set(targetLookAt.x, 180, targetLookAt.z + 360);
+      camera.position.set(targetLookAt.x, Math.max(180, 25), targetLookAt.z + 360);
     } else {
-      camera.position.set(targetLookAt.x, 420, targetLookAt.z + 1);
+      camera.position.set(targetLookAt.x, Math.max(420, 25), targetLookAt.z + 1);
     }
     camera.lookAt(targetLookAt);
   };
   document.getElementById('fab-compass').onclick = function(){
-    camera.position.set(targetLookAt.x, camera.position.y, targetLookAt.z + 360);
+    camera.position.set(targetLookAt.x, Math.max(camera.position.y, 25), targetLookAt.z + 360);
     camera.lookAt(targetLookAt);
   };
   document.getElementById('fab-locate').onclick = function(){
-    flyTo(0, 180, 360);
+    flyTo(0, 180, 360, '🏯 종로 대표 랜드마크', '');
+    document.getElementById('sheet').setAttribute('data-state', 'peek');
   };
 })();
 
