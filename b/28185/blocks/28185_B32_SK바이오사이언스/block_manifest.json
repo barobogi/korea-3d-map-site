@@ -1,0 +1,304 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B32",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B32",
+  "pr_number": 493,
+  "pr_number_assigned": 493,
+  "block_number": 32,
+  "composite_id": "28185_01_21987_032",
+  "block_id": "28185_B32_SK바이오사이언스",
+  "name": "SK바이오사이언스 송도 글로벌 R&PD 센터",
+  "name_en": "SK bioscience Global R&PD Center",
+  "category": "CAT32_BIO_HEALTHCARE",
+  "category_label": "백신개발/글로벌R&PD/바이오프로세스파일럿플랜트",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 송도동 첨단산업클러스터 내 (송도)",
+  "postal_code": "21987",
+  "floors": "지상 7층 (높이 36.5m 백신&바이오 R&PD 센터 본관 및 파일럿 플랜트)",
+  "height_m": 36.5,
+  "architectural_style": "현대식 블루 글래스 커튼월 및 SK 오렌지/레드 시그니처 윙 바이오 R&PD 센터",
+  "architect": "간삼건축종합건축사사무소 & SK에코플랜트",
+  "coordinates": [
+    126.6542,
+    37.3752
+  ],
+  "orientation_deg": 0.0,
+  "heading": 0.0,
+  "heading_note": "캠퍼스 주출입구에서 SK바이오사이언스 글로벌 R&PD 센터를 정면으로 조망하는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.15,
+  "lod_switch_distance": 230.0,
+  "spec_dimensions_m": {
+    "rpd_tower": {
+      "width_x_m": 22.0,
+      "depth_z_m": 22.0,
+      "height_m": 36.5
+    },
+    "pilot_plant": {
+      "width_x_m": 24.0,
+      "depth_z_m": 22.0,
+      "height_m": 20.5
+    },
+    "sunken_garden": {
+      "width_x_m": 44.0,
+      "depth_z_m": 12.0,
+      "height_m": 0.2
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "curtain_wall": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "pilot_and_lawn": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "promenade_tiles": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "sk_brand_and_trees": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.02~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "rpd_towers": 1,
+    "pilot_plants": 1,
+    "solar_fins": 18,
+    "campus_trees": 16,
+    "smart_streetlights": 10
+  },
+  "sign": {
+    "characters": "SK bioscience (SK바이오사이언스 글로벌 R&PD 센터)",
+    "type": "캠퍼스 주출입구 화강석 문주 위 SK 오렌지/레드 입체 명판",
+    "board_size_m": [
+      4.0,
+      1.8
+    ],
+    "frame": "SK 오렌지 & 스테인리스 스틸 헤어라인 프레임"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_01_21987_032_01",
+      "label": "SK바이오사이언스 지상 7층 36.5m 글로벌 R&PD 본관 타워",
+      "mesh_nodes": [
+        "28185_01_21987_032_01__rpd_tower"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21987_032_02",
+      "label": "백신 공정개발 파일럿 플랜트 윙 & 레드 캐노피",
+      "mesh_nodes": [
+        "28185_01_21987_032_02__pilot_plant"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21987_032_03",
+      "label": "외벽 일사조절 수직 루버 핀 & 유리 커튼월 입면",
+      "mesh_nodes": [
+        "28185_01_21987_032_03__louvers"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21987_032_04",
+      "label": "중앙 선큰 잔디광장 & 조경수목·가로등·문주 입체 명판",
+      "mesh_nodes": [
+        "28185_01_21987_032_04__garden_and_monument"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 4000,
+    "phase_link": "일몰 후 15분 점등 / 24:00 소등 (바이오 클러스터 연동)",
+    "spots": [
+      {
+        "id": "night_light_orange_crown",
+        "offset_m": [
+          13.0,
+          36.5,
+          -9.0
+        ],
+        "aim": "R&PD 타워 옥상 SK 오렌지 파라펫 라인 경관조명"
+      },
+      {
+        "id": "night_light_red_canopy",
+        "offset_m": [
+          0.0,
+          5.2,
+          4.0
+        ],
+        "aim": "주출입구 레드 캐노피 다운라이트"
+      },
+      {
+        "id": "night_light_sunken_lights",
+        "offset_m": [
+          0.0,
+          0.5,
+          14.0
+        ],
+        "aim": "선큰 잔디광장 정원등"
+      },
+      {
+        "id": "night_light_gate_monument",
+        "offset_m": [
+          -15.5,
+          2.5,
+          3.1
+        ],
+        "aim": "캠퍼스 문주 명판 조명"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_rpd_tower_lobby",
+      "label": "글로벌 R&PD 센터 로비",
+      "offset_m": [
+        13.0,
+        0.15,
+        2.0
+      ]
+    },
+    {
+      "id": "hotspot_pilot_plant_entrance",
+      "label": "백신 파일럿 플랜트 게이트",
+      "offset_m": [
+        -14.0,
+        0.15,
+        2.0
+      ]
+    },
+    {
+      "id": "hotspot_sunken_lawn_plaza",
+      "label": "중앙 선큰 잔디광장",
+      "offset_m": [
+        0.0,
+        0.35,
+        14.0
+      ]
+    },
+    {
+      "id": "hotspot_sk_main_gate",
+      "label": "SK바이오사이언스 정문 표지석",
+      "offset_m": [
+        -15.5,
+        0.15,
+        3.1
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_01_21987_032_01",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "SK바이오사이언스 공식 사이트 송도 글로벌 R&PD 센터 소개",
+      "url": "https://www.skbioscience.co.kr/",
+      "note": "송도 첨단산업클러스터 내 글로벌 연구 및 공정개발 센터 건축 제원"
+    },
+    {
+      "title": "IFEZ 인천경제자유구역청 송도 바이오클러스터 기업 인프라 현황",
+      "url": "https://www.ifez.go.kr/",
+      "note": "송도동 첨단산단 내 SK바이오사이언스 부지 인허가 정보"
+    },
+    {
+      "title": "간삼건축종합건축사사무소 SK바이오사이언스 송도 R&PD 센터 설계 포트폴리오",
+      "url": "https://www.gansam.com/",
+      "note": "글로벌 R&PD 센터 및 파일럿 플랜트 실시설계 데이터"
+    }
+  ],
+  "reference_note": "간삼건축 및 SK에코플랜트 준공도면 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B32 SK bioscience)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -28.0,
+      0.0,
+      -24.6
+    ],
+    "max": [
+      27.95,
+      36.5,
+      24.6
+    ],
+    "size": [
+      55.95,
+      36.5,
+      49.2
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 11024,
+      "bytes": 1070742
+    },
+    "model_lod2.gltf": {
+      "triangles": 360,
+      "bytes": 38597
+    },
+    "texture_atlas.webp": {
+      "bytes": 119494,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1231833,
+  "anchor_nodes": [
+    "hotspot_rpd_tower_lobby",
+    "hotspot_pilot_plant_entrance",
+    "hotspot_sunken_lawn_plaza",
+    "hotspot_sk_main_gate",
+    "night_light_orange_crown",
+    "night_light_red_canopy",
+    "night_light_sunken_lights",
+    "night_light_gate_monument"
+  ]
+}

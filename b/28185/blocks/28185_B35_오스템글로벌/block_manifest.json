@@ -1,0 +1,299 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B35",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B35",
+  "pr_number": 496,
+  "pr_number_assigned": 496,
+  "block_number": 35,
+  "composite_id": "28185_01_21987_035",
+  "block_id": "28185_B35_오스템글로벌",
+  "name": "오스템글로벌 송도 사옥 및 연구소",
+  "name_en": "Osstem Global Songdo HQ & Dental R&D Center",
+  "category": "CAT32_BIO_HEALTHCARE",
+  "category_label": "치과의료기기/글로벌임플란트/덴탈트레이닝연구소",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 송도동 첨단산업클러스터 내 (송도)",
+  "postal_code": "21987",
+  "floors": "지상 7층 (높이 36.5m 현대식 글래스 커튼월 오스템글로벌 사옥 및 덴탈 R&D 센터)",
+  "height_m": 36.5,
+  "architectural_style": "오스템 시그니처 오렌지 액센트 모던 글래스 커튼월 글로벌 덴탈 R&D 캠퍼스",
+  "architect": "창조종합건축사사무소 & 한화건설",
+  "coordinates": [
+    126.6518,
+    37.3768
+  ],
+  "orientation_deg": 0.0,
+  "heading": 0.0,
+  "heading_note": "캠퍼스 주진입로에서 오스템글로벌 송도 사옥을 정면으로 조망하는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.15,
+  "lod_switch_distance": 220.0,
+  "spec_dimensions_m": {
+    "hq_tower": {
+      "width_x_m": 22.0,
+      "depth_z_m": 22.0,
+      "height_m": 36.5
+    },
+    "dental_wing": {
+      "width_x_m": 24.0,
+      "depth_z_m": 22.0,
+      "height_m": 20.5
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "curtain_wall": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "panels_and_lawn": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "promenade_tiles": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "osstem_brand_and_trees": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.02~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "hq_towers": 1,
+    "dental_wings": 1,
+    "solar_fins": 18,
+    "campus_trees": 16,
+    "smart_streetlights": 10
+  },
+  "sign": {
+    "characters": "OSSTEM GLOBAL (오스템글로벌 송도사옥)",
+    "type": "캠퍼스 주출입구 화강석 문주 위 오스템 오렌지/실버 입체 명판",
+    "board_size_m": [
+      4.0,
+      1.8
+    ],
+    "frame": "오스템 오렌지 & 스테인리스 스틸 헤어라인 프레임"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_01_21987_035_01",
+      "label": "오스템글로벌 7층 사옥 및 덴탈 R&D 본관 타워 & 오렌지 루프",
+      "mesh_nodes": [
+        "28185_01_21987_035_01__hq_tower"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21987_035_02",
+      "label": "치과의료기기 시제품 연구동 및 글로벌 덴탈 아카데미 윙",
+      "mesh_nodes": [
+        "28185_01_21987_035_02__dental_wing"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21987_035_03",
+      "label": "외벽 일사조절 수직 루버 핀 & 유리 커튼월 입면",
+      "mesh_nodes": [
+        "28185_01_21987_035_03__louvers"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21987_035_04",
+      "label": "캠퍼스 중앙광장 & 조경수목·가로등·문주 명판",
+      "mesh_nodes": [
+        "28185_01_21987_035_04__garden_and_monument"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 4000,
+    "phase_link": "일몰 후 15분 점등 / 24:00 소등 (바이오 클러스터 연동)",
+    "spots": [
+      {
+        "id": "night_light_orange_crown",
+        "offset_m": [
+          13.0,
+          36.5,
+          -9.0
+        ],
+        "aim": "본관 옥상 오렌지 파라펫 라인 경관조명"
+      },
+      {
+        "id": "night_light_entrance_canopy",
+        "offset_m": [
+          0.0,
+          5.2,
+          4.0
+        ],
+        "aim": "주출입구 캐노피 다운라이트"
+      },
+      {
+        "id": "night_light_sunken_lights",
+        "offset_m": [
+          0.0,
+          0.5,
+          14.0
+        ],
+        "aim": "중앙광장 정원등 조명"
+      },
+      {
+        "id": "night_light_gate_monument",
+        "offset_m": [
+          -15.5,
+          2.5,
+          3.1
+        ],
+        "aim": "캠퍼스 문주 명판 조명"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_hq_tower_lobby",
+      "label": "오스템글로벌 사옥 로비",
+      "offset_m": [
+        13.0,
+        0.15,
+        2.0
+      ]
+    },
+    {
+      "id": "hotspot_dental_wing_entrance",
+      "label": "덴탈 트레이닝 아카데미 입구",
+      "offset_m": [
+        -14.0,
+        0.15,
+        2.0
+      ]
+    },
+    {
+      "id": "hotspot_campus_garden_plaza",
+      "label": "캠퍼스 중앙광장",
+      "offset_m": [
+        0.0,
+        0.35,
+        14.0
+      ]
+    },
+    {
+      "id": "hotspot_osstem_main_gate",
+      "label": "오스템글로벌 송도 정문",
+      "offset_m": [
+        -15.5,
+        0.15,
+        3.1
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_01_21987_035_01",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "오스템임플란트/오스템글로벌 공식 사이트 송도 캠퍼스 소개",
+      "url": "https://www.osstem.com/",
+      "note": "송도 첨단산업클러스터 오스템글로벌 사옥 및 연구소 건축 제원"
+    },
+    {
+      "title": "IFEZ 인천경제자유구역청 송도 바이오클러스터 기업 인프라 현황",
+      "url": "https://www.ifez.go.kr/",
+      "note": "송도동 첨단산단 내 오스템글로벌 부지 인허가 정보"
+    },
+    {
+      "title": "창조종합건축사사무소 오스템글로벌 송도 사옥 설계 포트폴리오",
+      "url": "https://www.cja.co.kr/",
+      "note": "글로벌 사옥 및 덴탈 연구소 실시설계 데이터"
+    }
+  ],
+  "reference_note": "창조건축 및 한화건설 준공도면 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B35 Osstem Global)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -28.0,
+      0.0,
+      -24.6
+    ],
+    "max": [
+      27.95,
+      36.5,
+      24.6
+    ],
+    "size": [
+      55.95,
+      36.5,
+      49.2
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 11024,
+      "bytes": 1070734
+    },
+    "model_lod2.gltf": {
+      "triangles": 360,
+      "bytes": 38589
+    },
+    "texture_atlas.webp": {
+      "bytes": 123906,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1236229,
+  "anchor_nodes": [
+    "hotspot_hq_tower_lobby",
+    "hotspot_dental_wing_entrance",
+    "hotspot_campus_garden_plaza",
+    "hotspot_osstem_main_gate",
+    "night_light_orange_crown",
+    "night_light_entrance_canopy",
+    "night_light_sunken_lights",
+    "night_light_gate_monument"
+  ]
+}

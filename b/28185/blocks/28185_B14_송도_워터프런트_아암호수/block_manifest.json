@@ -1,0 +1,304 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B14",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B14",
+  "pr_number": 475,
+  "pr_number_assigned": 475,
+  "block_number": 14,
+  "composite_id": "28185_02_21987_014",
+  "block_id": "28185_B14_송도_워터프런트_아암호수",
+  "name": "송도 워터프런트 아암호수 수변보행로 & 수문타워",
+  "name_en": "Songdo Waterfront Aam Lake Promenade & Sluice Gate Tower",
+  "category": "CAT41_WATERFRONT_CANAL",
+  "category_label": "워터프런트/호수공원/수문관제타워",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 아암대로 일원 (송도동)",
+  "postal_code": "21987",
+  "floors": "지상 4층 (수문 관제 전망타워)",
+  "height_m": 28.5,
+  "architectural_style": "워터프런트 수문 관제 전망타워 & 호안 수문 갑문 & 친수 목재 보행 데크교량",
+  "architect": "인천경제자유구역청(IFEZ) & 대우건설 컨소시엄",
+  "coordinates": [
+    126.6215,
+    37.4088
+  ],
+  "orientation_deg": 0.0,
+  "heading": 0.0,
+  "heading_note": "아암호수 수변 산책로에서 수문타워와 호수 수면을 조망하는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.15,
+  "lod_switch_distance": 250.0,
+  "spec_dimensions_m": {
+    "control_tower": {
+      "width_x_m": 11.0,
+      "depth_z_m": 13.0,
+      "height_m": 28.5
+    },
+    "sluice_gates": {
+      "width_x_m": 24.0,
+      "height_m": 9.5
+    },
+    "deck_bridge": {
+      "length_x_m": 48.0,
+      "width_z_m": 3.0,
+      "clearance_y_m": 2.2
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "tower_facade": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "lake_water": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "boardwalk_wood": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "sluice_metal_and_trees": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.02~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "sluice_towers": 1,
+    "sluice_radial_gates": 2,
+    "deck_bridges": 1,
+    "promenade_benches": 8,
+    "smart_streetlights": 15,
+    "coastal_pine_trees": 12
+  },
+  "sign": {
+    "characters": "송도 워터프런트 아암호수 (SONGDO WATERFRONT AAM LAKE)",
+    "type": "호안 산책로 입구 화강석 좌대 위 황동/브론즈 입체 명판",
+    "board_size_m": [
+      3.5,
+      1.6
+    ],
+    "frame": "스테인리스 스틸 & 브론즈 헤어라인"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_02_21987_014_01",
+      "label": "아암호수 친수 수변보행로 & 천연 목재 보행데크 교량",
+      "mesh_nodes": [
+        "28185_02_21987_014_01__boardwalk_and_bridge"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_02_21987_014_02",
+      "label": "워터프런트 아암호수 수위조절 수문타워 관제전망대",
+      "mesh_nodes": [
+        "28185_02_21987_014_02__sluice_control_tower"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_02_21987_014_03",
+      "label": "아암호수 24m 유압식 수문 갑문 & 수로 수면 메쉬",
+      "mesh_nodes": [
+        "28185_02_21987_014_03__sluice_gate_and_water"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_02_21987_014_04",
+      "label": "수변 휴게 벤치 테라스 & 해안 방풍 소나무 조경림",
+      "mesh_nodes": [
+        "28185_02_21987_014_04__benches_and_coastal_pines"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3500,
+    "phase_link": "일몰 후 15분 점등 / 24:00 소등 (호안 수중 LED 조명 연동)",
+    "spots": [
+      {
+        "id": "night_light_tower_apex",
+        "offset_m": [
+          -13.0,
+          28.0,
+          4.0
+        ],
+        "aim": "수문타워 최상부 항공장애등/경관조명"
+      },
+      {
+        "id": "night_light_bridge_deck",
+        "offset_m": [
+          0.0,
+          3.0,
+          6.0
+        ],
+        "aim": "보행데크 하부 수면반사 간접등"
+      },
+      {
+        "id": "night_light_sluice_pier",
+        "offset_m": [
+          6.0,
+          8.5,
+          11.0
+        ],
+        "aim": "수문 교각 투광등"
+      },
+      {
+        "id": "night_light_promenade",
+        "offset_m": [
+          0.0,
+          5.5,
+          -10.0
+        ],
+        "aim": "산책로 스마트가로등"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_tower_observatory",
+      "label": "수문타워 전망대",
+      "offset_m": [
+        -13.0,
+        24.0,
+        4.0
+      ]
+    },
+    {
+      "id": "hotspot_deck_bridge_center",
+      "label": "아암호수 보행데크 중앙",
+      "offset_m": [
+        0.0,
+        2.5,
+        6.0
+      ]
+    },
+    {
+      "id": "hotspot_promenade_bench",
+      "label": "수변 조망 휴게 벤치",
+      "offset_m": [
+        0.0,
+        0.5,
+        -3.0
+      ]
+    },
+    {
+      "id": "hotspot_monument_entrance",
+      "label": "워터프런트 입구 광장",
+      "offset_m": [
+        -24.0,
+        0.15,
+        -1.0
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_02_21987_014_01",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "IFEZ 인천경제자유구역청 송도 워터프런트 프로젝트 1-1단계 현황",
+      "url": "https://www.ifez.go.kr/",
+      "note": "아암호수 수문 및 친수 보행데크 조성 계획"
+    },
+    {
+      "title": "연수구청 송도 워터프런트 호수공원 수변 인프라",
+      "url": "https://www.yeonsu.go.kr/",
+      "note": "아암호수 수변공원 및 생태 산책로 제원"
+    },
+    {
+      "title": "인천광역시 해양수산 워터프런트 수질 및 수문 관리 시스템",
+      "url": "https://www.incheon.go.kr/",
+      "note": "서해 조석 연계 자동 수문 갑문 제어 규격"
+    }
+  ],
+  "reference_note": "IFEZ 송도 워터프런트 1-1단계 실시설계 도면 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B14 Aam Lake Waterfront)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -28.0,
+      0.0,
+      -24.0
+    ],
+    "max": [
+      27.95,
+      28.5,
+      23.95
+    ],
+    "size": [
+      55.95,
+      28.5,
+      47.95
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 10344,
+      "bytes": 1001139
+    },
+    "model_lod2.gltf": {
+      "triangles": 468,
+      "bytes": 49532
+    },
+    "texture_atlas.webp": {
+      "bytes": 117958,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1171629,
+  "anchor_nodes": [
+    "hotspot_tower_observatory",
+    "hotspot_deck_bridge_center",
+    "hotspot_promenade_bench",
+    "hotspot_monument_entrance",
+    "night_light_tower_apex",
+    "night_light_bridge_deck",
+    "night_light_sluice_pier",
+    "night_light_promenade"
+  ]
+}

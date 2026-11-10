@@ -1,0 +1,303 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B19",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B19",
+  "pr_number": 480,
+  "pr_number_assigned": 480,
+  "block_number": 19,
+  "composite_id": "28185_01_21998_019",
+  "block_id": "28185_B19_송도국제교_사장교_주탑",
+  "name": "송도국제교 (송도 1교 랜드마크 사장교 주탑)",
+  "name_en": "Songdo International Bridge (Songdo Bridge 1 Cable-stayed Pylon)",
+  "category": "CAT12_BRIDGE_INFRASTRUCTURE",
+  "category_label": "교량인프라/사장교주탑/관문랜드마크",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 송도동 송도 1교 일원",
+  "postal_code": "21998",
+  "floors": "교량 주탑 (높이 72.0m 역Y자형 사장교 콘크리트 주탑)",
+  "height_m": 72.0,
+  "architectural_style": "역Y자형(Inverted-Y) 랜드마크 사장교 주탑 & 부채꼴 케이블 팬 & 강합성 상판",
+  "architect": "인천경제자유구역청(IFEZ) & 유신엔지니어링 & 현대건설",
+  "coordinates": [
+    126.6668,
+    37.3995
+  ],
+  "orientation_deg": 0.0,
+  "heading": 0.0,
+  "heading_note": "송도 진입방면에서 송도국제교 랜드마크 사장교 주탑을 정면으로 조망하는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.15,
+  "lod_switch_distance": 300.0,
+  "spec_dimensions_m": {
+    "pylon_tower": {
+      "width_x_m": 13.0,
+      "depth_z_m": 9.0,
+      "height_m": 72.0
+    },
+    "bridge_deck": {
+      "length_x_m": 56.0,
+      "width_z_m": 36.0,
+      "lanes": 8
+    },
+    "stay_cables": {
+      "count": 28,
+      "material": "High-tensile steel wire with white HDPE sheath"
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "pylon_concrete": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "canal_water": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "bridge_asphalt": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "cables_and_girders": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.02~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "pylon_towers": 1,
+    "stay_cables": 28,
+    "cable_dampers": 28,
+    "bridge_light_poles": 12,
+    "aviation_obstruction_spires": 1
+  },
+  "sign": {
+    "characters": "송도국제교 (SONGDO INTERNATIONAL BRIDGE)",
+    "type": "교량 진입부 방호벽 위 브론즈 주물 입체 교명판",
+    "board_size_m": [
+      3.5,
+      1.5
+    ],
+    "frame": "스테인리스 스틸 헤어라인 프레임"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_01_21998_019_01",
+      "label": "송도국제교 왕복 8차선 강합성 상판 & 중앙분리대·방호벽",
+      "mesh_nodes": [
+        "28185_01_21998_019_01__bridge_deck_and_barriers"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21998_019_02",
+      "label": "송도 1교 72m 랜드마크 사장교 역Y자형 콘크리트 주탑",
+      "mesh_nodes": [
+        "28185_01_21998_019_02__inverted_y_pylon"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21998_019_03",
+      "label": "28가닥 고장력 스테이 케이블 팬 어레이 & 감쇠 댐퍼 포드",
+      "mesh_nodes": [
+        "28185_01_21998_019_03__stay_cables_and_dampers"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21998_019_04",
+      "label": "하부 북송도수로 해수 수면 & 교각 케이슨 기초 피어",
+      "mesh_nodes": [
+        "28185_01_21998_019_04__canal_water_and_caisson"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 4000,
+    "phase_link": "일몰 후 15분 점등 / 24:00 소등 (인천 관문 랜드마크 연동)",
+    "spots": [
+      {
+        "id": "night_light_pylon_uplight",
+        "offset_m": [
+          0.0,
+          36.0,
+          0.0
+        ],
+        "aim": "주탑 상부 사면 투광등"
+      },
+      {
+        "id": "night_light_cable_linear",
+        "offset_m": [
+          0.0,
+          50.0,
+          10.0
+        ],
+        "aim": "케이블 라인 경관조명"
+      },
+      {
+        "id": "night_light_deck_lanterns",
+        "offset_m": [
+          0.0,
+          15.0,
+          17.5
+        ],
+        "aim": "교량 가로등 조명"
+      },
+      {
+        "id": "night_light_aviation_beacon",
+        "offset_m": [
+          0.0,
+          72.0,
+          0.0
+        ],
+        "aim": "최상단 항공장애등"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_pylon_pier",
+      "label": "사장교 주탑 하부",
+      "offset_m": [
+        0.0,
+        9.2,
+        0.0
+      ]
+    },
+    {
+      "id": "hotspot_bridge_viewpoint",
+      "label": "송도국제교 조망 보행로",
+      "offset_m": [
+        0.0,
+        9.2,
+        17.0
+      ]
+    },
+    {
+      "id": "hotspot_canal_underpass",
+      "label": "북송도수로 수면",
+      "offset_m": [
+        0.0,
+        0.2,
+        0.0
+      ]
+    },
+    {
+      "id": "hotspot_bridge_plaque",
+      "label": "송도국제교 교명비",
+      "offset_m": [
+        -24.0,
+        9.2,
+        15.5
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_01_21998_019_01",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "IFEZ 인천경제자유구역청 송도국제교(송도 1교) 교량 현황",
+      "url": "https://www.ifez.go.kr/",
+      "note": "송도 1교 랜드마크 사장교 주탑 및 연장 제원"
+    },
+    {
+      "title": "연수구청 도로교통과 송도 진입 광역교량 인프라",
+      "url": "https://www.yeonsu.go.kr/",
+      "note": "송도국제대로 연결 교량 구조 및 차선 안내"
+    },
+    {
+      "title": "한국교량및구조공학회 송도 1교 사장교 설계 및 시공 논문",
+      "url": "https://kibse.or.kr/",
+      "note": "역Y자형 콘크리트 주탑 및 스테이 케이블 구조 동역학 규격"
+    }
+  ],
+  "reference_note": "IFEZ 및 유신엔지니어링 송도 1교 실시설계도 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B19 Songdo Bridge Pylon)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -28.0,
+      0.0,
+      -24.0
+    ],
+    "max": [
+      28.0,
+      72.0,
+      24.0
+    ],
+    "size": [
+      56.0,
+      72.0,
+      48.0
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 10160,
+      "bytes": 976009
+    },
+    "model_lod2.gltf": {
+      "triangles": 528,
+      "bytes": 54563
+    },
+    "texture_atlas.webp": {
+      "bytes": 111326,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1144898,
+  "anchor_nodes": [
+    "hotspot_pylon_pier",
+    "hotspot_bridge_viewpoint",
+    "hotspot_canal_underpass",
+    "hotspot_bridge_plaque",
+    "night_light_pylon_uplight",
+    "night_light_cable_linear",
+    "night_light_deck_lanterns",
+    "night_light_aviation_beacon"
+  ]
+}

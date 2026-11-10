@@ -1,0 +1,325 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B07",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B07",
+  "pr_number": 468,
+  "pr_number_assigned": 468,
+  "block_number": 7,
+  "composite_id": "28185_01_21998_007",
+  "block_id": "28185_B07_센트럴파크_이스트보트하우스",
+  "name": "센트럴파크 이스트보트하우스",
+  "name_en": "Central Park East Boathouse",
+  "category": "CAT54_WATER_LEISURE_MARINA",
+  "category_label": "수상레저/마리나",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 컨벤시아대로 160 (송도동 83)",
+  "postal_code": "21998",
+  "floors": "지상 2층",
+  "height_m": 9.8,
+  "architectural_style": "현대식 수상 마리나 클럽하우스 & 부유식 폰툰 계류장 (Modern Waterfront Marina Clubhouse & Floating Pontoon Pier)",
+  "architect": "인천시설공단 & 송도국제도시개발유한회사(NSIC)",
+  "coordinates": [
+    126.6455,
+    37.3928
+  ],
+  "orientation_deg": 180.0,
+  "heading": 180.0,
+  "heading_note": "센트럴파크 해수수로 남서측 수면 및 마리나 계류장을 정면으로 바라보는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.35,
+  "lod_switch_distance": 200.0,
+  "spec_dimensions_m": {
+    "clubhouse": {
+      "width_x_m": 32.0,
+      "depth_z_m": 15.0,
+      "height_m": 9.8
+    },
+    "floating_pontoon": {
+      "length_m": 44.0,
+      "width_m": 3.5
+    },
+    "canal_water_basin": {
+      "width_m": 52.0,
+      "depth_m": 18.0
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "granite_marina_deck": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "marine_white_clubhouse": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "seawater_canal_glass": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "moon_boat_and_bronze": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.04~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "moon_boats": 12,
+    "mooring_cleats": 32,
+    "cafe_tables": 8,
+    "promenade_tiles": 384,
+    "floating_piers": 1
+  },
+  "sign": {
+    "characters": "센트럴파크 이스트보트하우스 (EAST BOATHOUSE)",
+    "type": "입구 화강석 좌대 위 황동/브론즈 입체 명판",
+    "board_size_m": [
+      6.2,
+      1.4
+    ],
+    "frame": "마린 네이비 바탕 + 골드 테두리"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_01_21998_007_01",
+      "label": "수변 산책로 기단 및 부유식 폰툰 계류 데크",
+      "mesh_nodes": [
+        "28185_01_21998_007_01__promenade_base"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21998_007_02",
+      "label": "2층 마리나 클럽하우스 및 2층 선셋 카페 테라스",
+      "mesh_nodes": [
+        "28185_01_21998_007_02__clubhouse_mass"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21998_007_03",
+      "label": "센트럴파크 해수수로 수면 및 3면 통유리 전망창",
+      "mesh_nodes": [
+        "28185_01_21998_007_03__seawater_canal"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21998_007_04",
+      "label": "초승달 LED 문보트 12척·계류 볼라드·이스트보트하우스 명판",
+      "mesh_nodes": [
+        "28185_01_21998_007_04__moon_boats_signs"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3000,
+    "phase_link": "일몰 후 30분 점등 / 23:00 소등",
+    "spots": [
+      {
+        "id": "night_light_spotlight_SE_3000K",
+        "offset_m": [
+          22.0,
+          1.0,
+          20.0
+        ],
+        "aim": "클럽하우스 남동 파사드 투사"
+      },
+      {
+        "id": "night_light_spotlight_SW_3000K",
+        "offset_m": [
+          -22.0,
+          1.0,
+          20.0
+        ],
+        "aim": "클럽하우스 남서 테라스 투사"
+      },
+      {
+        "id": "night_light_spotlight_NE_3000K",
+        "offset_m": [
+          22.0,
+          1.0,
+          -20.0
+        ],
+        "aim": "해수수로 동측 수면 및 문보트 투사"
+      },
+      {
+        "id": "night_light_spotlight_NW_3000K",
+        "offset_m": [
+          -22.0,
+          1.0,
+          -20.0
+        ],
+        "aim": "해수수로 서측 수면 및 폰툰 투사"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_east_boathouse_dock_entrance",
+      "label": "이스트보트하우스 1층 매표소 현관",
+      "offset_m": [
+        0.0,
+        1.7,
+        16.0
+      ]
+    },
+    {
+      "id": "hotspot_sunset_cafe_terrace_2F",
+      "label": "2층 선셋 루프탑 카페 테라스",
+      "offset_m": [
+        0.0,
+        6.2,
+        8.0
+      ]
+    },
+    {
+      "id": "hotspot_moon_boat_boarding_pontoon",
+      "label": "문보트 승하선 폰툰 데크",
+      "offset_m": [
+        0.0,
+        0.45,
+        -6.0
+      ]
+    },
+    {
+      "id": "hotspot_seawater_canal_water_view",
+      "label": "해수수로 수면 조망 포인트",
+      "offset_m": [
+        0.0,
+        0.2,
+        -18.0
+      ]
+    },
+    {
+      "id": "hotspot_east_dock_monument_plaza",
+      "label": "마리나 광장 조형물 뷰",
+      "offset_m": [
+        -14.0,
+        1.7,
+        16.0
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_01_21998_007_02",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "인천시설공단 — 송도 센트럴파크 해수수로 및 보트하우스",
+      "url": "https://www.insiseol.or.kr/",
+      "note": "센트럴파크 수상레저 마리나 시설 공식 안내"
+    },
+    {
+      "title": "인천경제자유구역청 (IFEZ) — 센트럴파크 수상레저",
+      "url": "https://www.ifez.go.kr/",
+      "note": "송도국제도시 해수공원 문보트 및 구름보트 고증"
+    },
+    {
+      "title": "연수구청 포털 — 센트럴파크 이스트보트하우스",
+      "url": "https://www.yeonsu.go.kr/",
+      "note": "연수구 송도동 83번지 수상마리나 실측 제원"
+    }
+  ],
+  "reference_note": "인천시설공단 및 IFEZ 공식 기준 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B07 East Boathouse)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -29.0,
+      0.0,
+      -23.0
+    ],
+    "max": [
+      29.0,
+      9.65,
+      23.0
+    ],
+    "size": [
+      58.0,
+      9.65,
+      46.0
+    ],
+    "core_min": [
+      -27.0,
+      0.0,
+      -20.0
+    ],
+    "core_max": [
+      27.0,
+      10.0,
+      20.0
+    ],
+    "note": "min/max는 LOD3 실측 바운딩박스, core는 클럽하우스 및 마리나 범위다."
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 10132,
+      "vertices": 20264,
+      "bytes": 951520
+    },
+    "model_lod2.gltf": {
+      "triangles": 348,
+      "vertices": 696,
+      "bytes": 38279
+    },
+    "texture_atlas.webp": {
+      "bytes": 165318,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1155117,
+  "anchor_nodes": [
+    "hotspot_east_boathouse_dock_entrance",
+    "hotspot_sunset_cafe_terrace_2F",
+    "hotspot_moon_boat_boarding_pontoon",
+    "hotspot_seawater_canal_water_view",
+    "hotspot_east_dock_monument_plaza",
+    "night_light_spotlight_SE_3000K",
+    "night_light_spotlight_SW_3000K",
+    "night_light_spotlight_NE_3000K",
+    "night_light_spotlight_NW_3000K"
+  ]
+}

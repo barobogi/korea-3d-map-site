@@ -1,0 +1,404 @@
+{
+  "schema_version": "2.1_junggu_spec117_B04",
+  "spec_ref": "TASK_REQUEST_20261108_JUNGGU_LEGO_50BLOCKS.md §1~§3 / 117호 블록 장착 규약 v1",
+  "task_slot_id": "11140-B04",
+  "pr_number": 312,
+  "pr_number_assigned": 310,
+  "block_number": 4,
+  "composite_id": "11140_02_04519_003",
+  "block_id": "11140_B04_덕수궁_석조전",
+  "name": "덕수궁 석조전",
+  "name_en": "Seokjojeon Hall of Deoksugung Palace, Seoul",
+  "category": "CAT07_MODERN_STONE_BUILDING",
+  "category_label": "근대건축/석조건축",
+  "district": "서울특별시 중구",
+  "road_address": "서울특별시 중구 세종대로 99 (정동 5-1, 덕수궁 내)",
+  "postal_code": "04519",
+  "heritage": {
+    "designation": "사적",
+    "number": 124,
+    "name": "덕수궁 (사적 제124호, 개별 구성요소 포함)",
+    "designated_on_note": "지정 연도는 국가유산청 고시 원문 대조 전까지 확정하지 않는다.",
+    "manager": "국가유산청 궁능유적본부 덕수궁관리소",
+    "number_note": "덕수궁은 사적 제124호(1963년 지정)이며, 해당 건물·구간은 그 사적 범위 안의 개별 구성요소로 다룬다. 세부 지정 원문은 국가유산청 고시 대조 대상."
+  },
+  "coordinates": [
+    126.9742,
+    37.5663
+  ],
+  "orientation_deg": 180.0,
+  "heading": 180.0,
+  "heading_note": "정남향(정동길→포르티코 진입축)을 기준으로 한 연출값이다. 실제 석조전의 축은 정동길 선형과 덕수궁 배치선에 따라 수 도(度) 범위에서 어긋날 수 있으며, 정밀실측 대조 전까지는 연출 기준값이다.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "포석 광장 바닥면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 1.4,
+  "lod_switch_distance": 220.0,
+  "spec_dimensions_m": {
+    "main_block": {
+      "width_x": 44.0,
+      "depth_z": 22.0,
+      "plinth_y": 1.4,
+      "basement_floor_h": 3.2,
+      "main_floor_h": 5.2,
+      "cornice_y": 9.8
+    },
+    "pavilion": {
+      "width_x": 16.0,
+      "depth_z": 6.0,
+      "height_y": 14.0,
+      "note": "중앙 파빌리온. 포르티코 위 현판과 상부 아치창."
+    },
+    "portico": {
+      "columns": 6,
+      "order": "이오니아",
+      "column_r_m": 0.42,
+      "column_h_m": 6.9,
+      "pediment": "삼각 페디먼트"
+    },
+    "dome": {
+      "radius_m": 4.4,
+      "type": "동판 돔",
+      "lantern_top_m": 20.25
+    },
+    "wings": {
+      "count": 2,
+      "size_m": [
+        12.0,
+        16.0
+      ],
+      "height_y": 9.5
+    },
+    "floor_count": 2,
+    "total_height_with_ornament_m": 20.25
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q86",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "granite_walls": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "sash_timber_glass": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "copper_roof": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "hyunpan_plaque": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ],
+        "sub_plaque": [
+          0.02,
+          0.02,
+          0.96,
+          0.44
+        ],
+        "sub_entrance_door": [
+          0.02,
+          0.5,
+          0.44,
+          0.46
+        ],
+        "sub_gold_frame": [
+          0.5,
+          0.5,
+          0.46,
+          0.22
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 내부 0.04~0.48 창을 주기 반복하며, 현판·출입문·금테는 부분영역 정확 UV(1:1)로 문자·못 배열의 왜곡이 없다."
+  },
+  "detail_counts": {
+    "plinth_ashlar_courses": 1,
+    "pilasters_front": 8,
+    "pilasters_side": 8,
+    "portico_columns": 6,
+    "window_arch_count": 9,
+    "window_rect_basement": 8,
+    "window_side": 10,
+    "entrance_doors": 3,
+    "wings": 2,
+    "trees": 4,
+    "balustrade_balusters": 28,
+    "hyunpan_characters": 3,
+    "hyunpan_emboss_cells": 134
+  },
+  "hyunpan": {
+    "characters": "石造殿",
+    "type": "가로형 3자",
+    "board_size_m": [
+      2.6,
+      0.86
+    ],
+    "frame": "황금 이중 테두리 + 옻칠 바탕 + 3D 양각"
+  },
+  "hierarchical_components": [
+    {
+      "id": "11140_02_04519_003_01",
+      "label": "신고전주의 석조 벽체·기단·필라스터·코니스·좌우 날개",
+      "mesh_nodes": [
+        "11140_02_04519_003_01__stone_masonry_walls"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_003_02",
+      "label": "중앙 파빌리온·이오니아 포르티코 6주·페디먼트·동판 돔·랜턴",
+      "mesh_nodes": [
+        "11140_02_04519_003_02__portico_pavilion_body",
+        "11140_02_04519_003_02__copper_dome_lantern",
+        "11140_02_04519_003_02__dome_lantern_finial"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_003_03",
+      "label": "아치창 9개소·지석층 창·측면 창·출입문 3조",
+      "mesh_nodes": [
+        "11140_02_04519_003_03__arch_window_sash",
+        "11140_02_04519_003_03__entrance_door_panels"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_003_04",
+      "label": "석조전 현판 石造殿(가로 3자)·황금 테두리·3D 양각",
+      "mesh_nodes": [
+        "11140_02_04519_003_04__hyeonpan_board",
+        "11140_02_04519_003_04__hyeonpan_gold_frame",
+        "11140_02_04519_003_04__hyeonpan_yanggak_emboss"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_003_05",
+      "label": "테라스 철제 난간 28기",
+      "mesh_nodes": [
+        "11140_02_04519_003_05__metal_balustrade_iron"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_003_06",
+      "label": "포석 광장·수목 4그루·울타리",
+      "mesh_nodes": [
+        "11140_02_04519_003_06__boseok_plaza_paving",
+        "11140_02_04519_003_06__plaza_greenery_hedge"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3000,
+    "phase_link": "일몰 후 30분 점등 / 23:00 소등",
+    "spots": [
+      {
+        "id": "night_light_spotlight_SE_3000K",
+        "offset_m": [
+          26.0,
+          1.0,
+          16.0
+        ],
+        "aim": "정동길 남동 파사드 상향"
+      },
+      {
+        "id": "night_light_spotlight_SW_3000K",
+        "offset_m": [
+          -26.0,
+          1.0,
+          16.0
+        ],
+        "aim": "정동길 남서 파사드 상향"
+      },
+      {
+        "id": "night_light_spotlight_NE_3000K",
+        "offset_m": [
+          26.0,
+          1.0,
+          -16.0
+        ],
+        "aim": "날개 북동면 조사"
+      },
+      {
+        "id": "night_light_spotlight_NW_3000K",
+        "offset_m": [
+          -26.0,
+          1.0,
+          -16.0
+        ],
+        "aim": "날개 북서면 조사"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_portico_colonnade_entrance",
+      "label": "포르티코 기둥 6주 진입",
+      "offset_m": [
+        0.0,
+        2.2,
+        20.0
+      ]
+    },
+    {
+      "id": "hotspot_hyeonpan_seokjojeon_closeup",
+      "label": "현판 石造殿 양각 근접",
+      "offset_m": [
+        0.0,
+        9.1,
+        18.4
+      ]
+    },
+    {
+      "id": "hotspot_dome_lantern_upview",
+      "label": "동판 돔·랜턴 올려보기",
+      "offset_m": [
+        0.0,
+        12.0,
+        14.0
+      ]
+    },
+    {
+      "id": "hotspot_archwindow_front_view",
+      "label": "본층 아치창 열람",
+      "offset_m": [
+        0.0,
+        6.4,
+        14.0
+      ]
+    },
+    {
+      "id": "hotspot_dome_top_observatory",
+      "label": "돔 위 정동길 조망",
+      "offset_m": [
+        0.0,
+        21.0,
+        0.0
+      ]
+    }
+  ],
+  "key_expansion_rule": "11140_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 11140_02_04519_003_02",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "국가유산포털 — 사적 「덕수궁」 지정정보",
+      "url": "https://www.heritage.go.kr/",
+      "note": "국가유산청 지정·관리 정보 원문 포털"
+    },
+    {
+      "title": "궁능유적본부 — 덕수궁 석조전 안내",
+      "url": "https://royal.khs.go.kr/",
+      "note": "석조전 배치·연혁·관람 안내"
+    },
+    {
+      "title": "한국민족문화대백과 — 덕수궁 석조전",
+      "url": "https://encykorea.aks.ac.kr/",
+      "note": "신고전주의 석조건축, 중앙 돔·포르티코 형식"
+    },
+    {
+      "title": "서울특별시 문화유산 — 중구 세종대로 99 일대",
+      "url": "https://www.seoul.go.kr/",
+      "note": "소재지·도로명주소 대조"
+    }
+  ],
+  "reference_note": "위 4건은 포털 루트 주소이며, 검수 시 각 포털에서 「덕수궁 석조전」 항목으로 진입해 치수·지정일을 재확인한다. 웹 검색 없이 발주서 제원표와 이전 검증 데이터로 작성된 블록이므로, 상세 주소는 포털 검색 경로를 기준으로 안내한다.",
+  "generation": {
+    "generator": "pimang junggu seokjojeon parametric builder (workspace-side)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "생성 스크립트·임시파일은 저장소에 포함되지 않는다. PR에는 위 4종 에셋만 반영."
+  },
+  "bbox_local_m": {
+    "min": [
+      -34.17,
+      0.0,
+      -18.0
+    ],
+    "max": [
+      34.17,
+      20.098,
+      22.48
+    ],
+    "size": [
+      68.34,
+      20.098,
+      40.48
+    ],
+    "core_min": [
+      -22.0,
+      0.0,
+      -11.0
+    ],
+    "core_max": [
+      22.0,
+      20.25,
+      18.0
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 15560,
+      "vertices": 17498,
+      "bytes": 1008336
+    },
+    "model_lod2.gltf": {
+      "triangles": 718,
+      "vertices": 886,
+      "bytes": 53912
+    },
+    "texture_atlas.webp": {
+      "bytes": 108506,
+      "size_px": 1024,
+      "format": "webp_lossy_q86"
+    }
+  },
+  "package_total_bytes": 1170754,
+  "anchor_nodes": [
+    "night_light_spotlight_SE_3000K",
+    "night_light_spotlight_SW_3000K",
+    "night_light_spotlight_NE_3000K",
+    "night_light_spotlight_NW_3000K",
+    "hotspot_portico_colonnade_entrance",
+    "hotspot_hyeonpan_seokjojeon_closeup",
+    "hotspot_dome_lantern_upview",
+    "hotspot_archwindow_front_view",
+    "hotspot_dome_top_observatory"
+  ]
+}

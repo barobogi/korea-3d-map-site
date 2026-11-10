@@ -1,0 +1,376 @@
+{
+  "schema_version": "2.1_songpa_spec117_B08",
+  "spec_ref": "TASK_REQUEST_PIMANG_SEOUL_SONGPA_50BLOCKS.md §1~§4 (Issue #411) / 117호 블록 장착 규약 v1",
+  "task_slot_id": "11710-B08",
+  "pr_number": 418,
+  "pr_number_assigned": 418,
+  "block_number": 8,
+  "composite_id": "11710_01_05545_007",
+  "block_id": "11710_B08_songpanaru_park",
+  "name": "송파나루공원 황포돛배 조형물 & 잔디광장",
+  "name_en": "songpanaru-park",
+  "category": "CAT08_RIVERSIDE_PARK",
+  "category_label": "공원/조형광장",
+  "district": "서울특별시 송파구",
+  "road_address": "서울특별시 송파구 송파대로 지선 (송파동)",
+  "address_note": "도로명주소·우편번호는 공개 자료 기준이며, 검수 시 도로명주소 안내에서 재확인한다.",
+  "postal_code": "05545",
+  "heritage": {
+    "designation": "해당 없음",
+    "name": "송파나루공원",
+    "note": "옛 송파나루 나루터를 기억하며 조성된 수변공원으로, 황포돛배 조형물과 잔디광장이 있다.",
+    "manager": "서울특별시 송파구 / 송파구공원관리"
+  },
+  "coordinates": [
+    127.1135,
+    37.5065
+  ],
+  "orientation_deg": 180.0,
+  "heading": 180.0,
+  "heading_note": "정면축을 기준으로 한 연출값이며, 정밀실측 대조 전까지는 연출 기준값으로 취급한다.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.5,
+  "lod_switch_distance": 200.0,
+  "spec_dimensions_m": {
+    "lawn_plaza": {
+      "length_x": 104.0,
+      "width_z": 66.0,
+      "height_y": 0.25,
+      "note": "잔디광장(연출)"
+    },
+    "hwangpo_boat": {
+      "length_x": 22.0,
+      "width_z": 7.0,
+      "height_y": 2.2,
+      "note": "황포돛배 선체 조형"
+    },
+    "mast": {
+      "height_y": 13.0
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q86",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "granite_stone": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "wall_masonry": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "roof_tile": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "sign_plaque": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ],
+        "sub_plaque": [
+          0.02,
+          0.02,
+          0.96,
+          0.44
+        ],
+        "sub_door_hongchil": [
+          0.02,
+          0.5,
+          0.44,
+          0.46
+        ],
+        "sub_gold_frame": [
+          0.5,
+          0.5,
+          0.46,
+          0.22
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 내부 0.04~0.48 창을 주기 반복하며, 간판·문은 부분영역 정확 UV(1:1)이다."
+  },
+  "detail_counts": {
+    "massing_units": 4,
+    "sail_masts": 1,
+    "lawn_area_m2": 6800
+  },
+  "sign": {
+    "characters": "송파나루",
+    "type": "가로형 4자",
+    "board_size_m": [
+      6.8,
+      2.0
+    ],
+    "frame": "이중 금속 테두리 + 옻칠 바탕 + 3D 양각"
+  },
+  "hierarchical_components": [
+    {
+      "id": "11710_01_05545_007_01",
+      "label": "기단·지면 판석·포장",
+      "mesh_nodes": [
+        "11710_01_05545_007_01__plinth_ground_base"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11710_01_05545_007_02",
+      "label": "본체 매스·창렬·파사드",
+      "mesh_nodes": [
+        "11710_01_05545_007_02__mass_body_facade"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11710_01_05545_007_03",
+      "label": "지붕·데크·옥상 구조",
+      "mesh_nodes": [
+        "11710_01_05545_007_03__roof_deck_structure",
+        "11710_01_05545_007_03__roof_metal_ornament"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11710_01_05545_007_04",
+      "label": "표지 3D 양각·금테",
+      "mesh_nodes": [
+        "11710_01_05545_007_04__sign_board",
+        "11710_01_05545_007_04__sign_gold_frame",
+        "11710_01_05545_007_04__sign_yanggak_emboss"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11710_01_05545_007_05",
+      "label": "창호·출입문·철물",
+      "mesh_nodes": [
+        "11710_01_05545_007_05__window_sash_glass",
+        "11710_01_05545_007_05__door_hardware_iron"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11710_01_05545_007_06",
+      "label": "조경·가로시설",
+      "mesh_nodes": [
+        "11710_01_05545_007_06__landscape_greenery"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3000,
+    "phase_link": "일몰 후 30분 점등 / 23:00 소등",
+    "spots": [
+      {
+        "id": "night_light_spotlight_SE_3000K",
+        "offset_m": [
+          67.0,
+          0.9,
+          51.0
+        ],
+        "aim": "남동 파사드 상향"
+      },
+      {
+        "id": "night_light_spotlight_SW_3000K",
+        "offset_m": [
+          -67.0,
+          0.9,
+          51.0
+        ],
+        "aim": "남서 파사드 상향"
+      },
+      {
+        "id": "night_light_spotlight_NE_3000K",
+        "offset_m": [
+          67.0,
+          0.9,
+          -51.0
+        ],
+        "aim": "배면 북동 조사"
+      },
+      {
+        "id": "night_light_spotlight_NW_3000K",
+        "offset_m": [
+          -67.0,
+          0.9,
+          -51.0
+        ],
+        "aim": "배면 북서 조사"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_main_entrance_dive",
+      "label": "송파나루공원 정면 진입",
+      "offset_m": [
+        0.0,
+        1.7,
+        40.0
+      ]
+    },
+    {
+      "id": "hotspot_sign_closeup",
+      "label": "표지 송파나루 양각 근접",
+      "offset_m": [
+        0.0,
+        9.8,
+        28.0
+      ]
+    },
+    {
+      "id": "hotspot_facade_upview",
+      "label": "파사드 올려보기",
+      "offset_m": [
+        0.0,
+        7.7,
+        30.0
+      ]
+    },
+    {
+      "id": "hotspot_roof_overlook",
+      "label": "상부·옥상 조망",
+      "offset_m": [
+        0.0,
+        14.6,
+        0.0
+      ]
+    },
+    {
+      "id": "hotspot_side_passage",
+      "label": "측면 통로",
+      "offset_m": [
+        8.0,
+        1.7,
+        0.0
+      ]
+    }
+  ],
+  "key_expansion_rule": "11710_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 11710_01_05545_007_03",
+  "lod_budget": {
+    "lod3_triangles": [
+      11000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "서울특별시 송파구 — 공식 포털(구정·명소 안내)",
+      "url": "https://www.songpa.go.kr/",
+      "note": "시설 소재지·운영 정보 대조"
+    },
+    {
+      "title": "서울특별시 — 도로명주소·도시계획 안내",
+      "url": "https://www.seoul.go.kr/",
+      "note": "도로명주소·지구단위계획 대조"
+    },
+    {
+      "title": "국가유산포털 — 지정문화재 원문 포털",
+      "url": "https://www.heritage.go.kr/",
+      "note": "국가유산청 지정·관리 정보 원문"
+    },
+    {
+      "title": "한국민족문화대백과 — 서울 송파 지역 유적",
+      "url": "https://encykorea.aks.ac.kr/",
+      "note": "역사·형식 대조"
+    },
+    {
+      "title": "한국관광공사 — 송파권 관광·문화 자원",
+      "url": "https://kto.visitkorea.or.kr/",
+      "note": "운영·이용 정보 대조"
+    }
+  ],
+  "reference_note": "포털 루트 주소이며, 검수 시 각 포털에서 해당 항목으로 진입해 치수·지정정보를 재확인한다.",
+  "generation": {
+    "generator": "pimang songpa songpanaru-park parametric builder (workspace-side)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "생성 스크립트·임시파일은 저장소에 포함되지 않는다. PR에는 위 4종 에셋만 반영."
+  },
+  "bbox_local_m": {
+    "min": [
+      -79.975,
+      0.0,
+      -55.775
+    ],
+    "max": [
+      79.975,
+      17.4,
+      60.175
+    ],
+    "size": [
+      159.95,
+      17.4,
+      115.95
+    ],
+    "core_min": [
+      -79.975,
+      0.0,
+      -55.775
+    ],
+    "core_max": [
+      79.975,
+      17.4,
+      60.175
+    ],
+    "note": "min/max는 LOD3 실측 바운딩박스, core는 본체 범위다."
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 15644,
+      "vertices": 21198,
+      "bytes": 1165572
+    },
+    "model_lod2.gltf": {
+      "triangles": 448,
+      "vertices": 594,
+      "bytes": 39585
+    },
+    "texture_atlas.webp": {
+      "bytes": 104462,
+      "size_px": 1024,
+      "format": "webp_lossy_q86"
+    }
+  },
+  "package_total_bytes": 1309619,
+  "anchor_nodes": [
+    "night_light_spotlight_SE_3000K",
+    "night_light_spotlight_SW_3000K",
+    "night_light_spotlight_NE_3000K",
+    "night_light_spotlight_NW_3000K",
+    "hotspot_main_entrance_dive",
+    "hotspot_sign_closeup",
+    "hotspot_facade_upview",
+    "hotspot_roof_overlook",
+    "hotspot_side_passage"
+  ]
+}

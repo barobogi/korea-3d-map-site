@@ -1,0 +1,409 @@
+{
+  "schema_version": "2.1_junggu_spec117_B07",
+  "spec_ref": "TASK_REQUEST_20261108_JUNGGU_LEGO_50BLOCKS.md §1~§3 / 117호 블록 장착 규약 v1",
+  "task_slot_id": "11140-B07",
+  "pr_number": 315,
+  "pr_number_assigned": 313,
+  "block_number": 7,
+  "composite_id": "11140_02_04519_006",
+  "block_id": "11140_B07_정동제일교회_벧엘예배당",
+  "name": "정동제일교회 벧엘예배당",
+  "name_en": "Bethel Chapel of Chungdong First Methodist Church, Seoul",
+  "category": "CAT09_MODERN_BRICK_GOTHIC",
+  "category_label": "근대건축/사적성당",
+  "district": "서울특별시 중구",
+  "road_address": "서울특별시 중구 정동길 46 (정동 34-2)",
+  "postal_code": "04519",
+  "heritage": {
+    "designation": "사적",
+    "number": 256,
+    "name": "서울 정동제일교회 벧엘예배당 (사적 제256호로 알려짐)",
+    "designated_on_note": "지정번호·연도는 국가유산청 고시 원문 대조 전까지 확정하지 않는다. 본 매니페스트는 통용 표기를 기재하고 검수 시 원문 대조를 요청한다.",
+    "manager": "국가유산청 / 정동제일교회"
+  },
+  "coordinates": [
+    126.9728,
+    37.5664
+  ],
+  "orientation_deg": 180.0,
+  "heading": 180.0,
+  "heading_note": "정면 첨탑과 박공이 정동길 쪽을 향하는 것으로 잡은 연출값이다. 실제 예배당의 축은 정동길 선형에 따라 수 도(度) 어긋날 수 있으며, 정밀실측 대조 전까지는 연출 기준값이다.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "교회 마당 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.9,
+  "lod_switch_distance": 180.0,
+  "spec_dimensions_m": {
+    "nave": {
+      "width_x": 16.0,
+      "depth_z": 10.0,
+      "eave_y": 9.2,
+      "ridge_y": 13.2,
+      "brick_lister_cols": 12,
+      "brick_lister_rows": 8,
+      "note": "붉은 벽돌 조적 본당. 정면·배면 박공벽 6단 계단식 조적."
+    },
+    "tower": {
+      "width_x": 4.4,
+      "depth_z": 4.4,
+      "body_top_y": 17.6,
+      "spire_top_y": 23.4,
+      "spire": "8각 콘형 스파이어 + 십자",
+      "corner_pinnacles": 4
+    },
+    "windows": {
+      "pointed_arch": 10,
+      "rose_window": 1,
+      "arch_height_m": 4.2
+    },
+    "buttresses": {
+      "count": 6,
+      "steps": 3,
+      "depth_m": 1.1
+    },
+    "roof": {
+      "type": "슬레이트 박공지붕",
+      "courses": 16,
+      "cols": 36
+    },
+    "entrance": {
+      "doors": 2,
+      "stair_steps": 4,
+      "stair_width_m": 4.0
+    },
+    "sign": {
+      "characters": "貞洞敎會",
+      "size_m": [
+        1.7,
+        0.58
+      ],
+      "location": "배면(-Z) 벽면"
+    },
+    "total_height_with_ornament_m": 24.5
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q86",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "granite_plinth": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "red_brick_masonry": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "slate_roof": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "sign_plaque": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ],
+        "sub_plaque": [
+          0.02,
+          0.02,
+          0.96,
+          0.44
+        ],
+        "sub_entrance_door": [
+          0.02,
+          0.5,
+          0.44,
+          0.46
+        ],
+        "sub_gold_frame": [
+          0.5,
+          0.5,
+          0.46,
+          0.22
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 내부 0.04~0.48 창을 주기 반복하며, 표지·출입문은 부분영역 정확 UV(1:1)로 문자 왜곡이 없다."
+  },
+  "detail_counts": {
+    "plinth_ashlar_courses": 1,
+    "plinth_sangmyeon_panseok": 117,
+    "stairs_front_flights": 1,
+    "stairs_steps_total": 4,
+    "somaldol": 2,
+    "brick_lister_bricks": 404,
+    "brick_gable_bricks": 96,
+    "pointed_arch_windows": 10,
+    "rose_windows": 1,
+    "entrance_doors": 2,
+    "buttresses": 6,
+    "buttress_steps": 3,
+    "slate_roof_courses": 16,
+    "slate_roof_tiles": 1152,
+    "spire_corner_pinnacles": 4,
+    "cross": 1,
+    "trees": 4,
+    "sign_characters": 3,
+    "sign_emboss_cells": 184
+  },
+  "hierarchical_components": [
+    {
+      "id": "11140_02_04519_006_01",
+      "label": "화강암 기단·정면 4단 계단·소맷돌·마당 포장",
+      "mesh_nodes": [
+        "11140_02_04519_006_01__granite_plinth_stone"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_006_02",
+      "label": "붉은 벽돌 본당·박공벽·코스 몰딩·부벽 6개소",
+      "mesh_nodes": [
+        "11140_02_04519_006_02__red_brick_nave_buttress"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_006_03",
+      "label": "슬레이트 박공지붕·용마루·정면 첨탑·십자·피너클 4기",
+      "mesh_nodes": [
+        "11140_02_04519_006_03__slate_gable_roof",
+        "11140_02_04519_006_03__spire_cross_pinnacle"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_006_04",
+      "label": "정동제일교회 표지 貞洞敎會(가로 3자)·황금 테두리·3D 양각",
+      "mesh_nodes": [
+        "11140_02_04519_006_04__church_sign_board",
+        "11140_02_04519_006_04__church_sign_gold_frame",
+        "11140_02_04519_006_04__church_sign_yanggak_emboss"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_006_05",
+      "label": "첨두 아치 창 10개소·장미창·출입문 2짝",
+      "mesh_nodes": [
+        "11140_02_04519_006_05__pointed_arch_stained_glass",
+        "11140_02_04519_006_05__entrance_door_panels"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_006_06",
+      "label": "교회 마당 포장·수목 4그루·울타리",
+      "mesh_nodes": [
+        "11140_02_04519_006_06__churchyard_paving",
+        "11140_02_04519_006_06__churchyard_trees"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3000,
+    "phase_link": "일몰 후 30분 점등 / 23:00 소등",
+    "spots": [
+      {
+        "id": "night_light_spotlight_SE_3000K",
+        "offset_m": [
+          16.0,
+          0.8,
+          14.0
+        ],
+        "aim": "정면 남동 파사드 상향"
+      },
+      {
+        "id": "night_light_spotlight_SW_3000K",
+        "offset_m": [
+          -16.0,
+          0.8,
+          14.0
+        ],
+        "aim": "정면 남서 파사드 상향"
+      },
+      {
+        "id": "night_light_spotlight_NE_3000K",
+        "offset_m": [
+          16.0,
+          0.8,
+          -14.0
+        ],
+        "aim": "배면 북동면 조사"
+      },
+      {
+        "id": "night_light_spotlight_NW_3000K",
+        "offset_m": [
+          -16.0,
+          0.8,
+          -14.0
+        ],
+        "aim": "배면 북서면 조사"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_entrance_stair_dive",
+      "label": "정면 4단 계단·출입문 진입",
+      "offset_m": [
+        -2.0,
+        1.6,
+        12.0
+      ]
+    },
+    {
+      "id": "hotspot_rose_window_upview",
+      "label": "첨탑 장미창 올려보기",
+      "offset_m": [
+        -6.0,
+        4.0,
+        10.0
+      ]
+    },
+    {
+      "id": "hotspot_sign_jeongdong_church",
+      "label": "표지 貞洞敎會 양각 근접",
+      "offset_m": [
+        0.0,
+        2.5,
+        -8.0
+      ]
+    },
+    {
+      "id": "hotspot_spire_cross_lookup",
+      "label": "첨탑·십자 올려보기",
+      "offset_m": [
+        -6.0,
+        8.0,
+        9.0
+      ]
+    },
+    {
+      "id": "hotspot_nave_arch_windows",
+      "label": "첨두 아치 창 열람",
+      "offset_m": [
+        0.0,
+        4.5,
+        9.0
+      ]
+    }
+  ],
+  "key_expansion_rule": "11140_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 11140_02_04519_006_03",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "국가유산포털 — 정동제일교회 벧엘예배당 지정정보",
+      "url": "https://www.heritage.go.kr/",
+      "note": "국가유산청 지정·관리 정보 원문 포털"
+    },
+    {
+      "title": "국가유산청 문화유산 정보 — 정동제일교회",
+      "url": "https://www.cha.go.kr/",
+      "note": "벧엘예배당 연혁·지정정보 대조"
+    },
+    {
+      "title": "한국민족문화대백과 — 정동제일교회",
+      "url": "https://encykorea.aks.ac.kr/",
+      "note": "1897년 벧엘예배당 건립, 붉은 벽돌 고딕 리바이벌 형식"
+    },
+    {
+      "title": "서울특별시 문화유산 — 중구 정동길 일대",
+      "url": "https://www.seoul.go.kr/",
+      "note": "소재지·도로명주소 대조"
+    }
+  ],
+  "reference_note": "위 4건은 포털 루트 주소이며, 검수 시 각 포털에서 「정동제일교회 벧엘예배당」 항목으로 진입해 치수·지정번호를 재확인한다. 특히 지정번호(사적 제256호)는 통용 표기로 기재했으므로 국가유산청 고시 원문 대조를 요청한다.",
+  "generation": {
+    "generator": "pimang junggu jeongdong-church parametric builder (workspace-side)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "생성 스크립트·임시파일은 저장소에 포함되지 않는다. PR에는 위 4종 에셋만 반영."
+  },
+  "bbox_local_m": {
+    "min": [
+      -20.0,
+      0.0,
+      -15.0
+    ],
+    "max": [
+      20.0,
+      24.5,
+      15.0
+    ],
+    "size": [
+      40.0,
+      24.5,
+      30.0
+    ],
+    "core_min": [
+      -9.1,
+      0.0,
+      -6.1
+    ],
+    "core_max": [
+      9.1,
+      24.5,
+      10.0
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 13482,
+      "vertices": 16655,
+      "bytes": 938008
+    },
+    "model_lod2.gltf": {
+      "triangles": 350,
+      "vertices": 424,
+      "bytes": 29809
+    },
+    "texture_atlas.webp": {
+      "bytes": 108342,
+      "size_px": 1024,
+      "format": "webp_lossy_q86"
+    }
+  },
+  "package_total_bytes": 1076159,
+  "anchor_nodes": [
+    "night_light_spotlight_SE_3000K",
+    "night_light_spotlight_SW_3000K",
+    "night_light_spotlight_NE_3000K",
+    "night_light_spotlight_NW_3000K",
+    "hotspot_entrance_stair_dive",
+    "hotspot_rose_window_upview",
+    "hotspot_sign_jeongdong_church",
+    "hotspot_spire_cross_lookup",
+    "hotspot_nave_arch_windows"
+  ]
+}

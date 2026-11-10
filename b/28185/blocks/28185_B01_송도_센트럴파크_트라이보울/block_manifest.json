@@ -1,0 +1,345 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B01",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / 117호 블록 장착 규약 v1",
+  "task_slot_id": "28185-B01",
+  "pr_number": 409,
+  "pr_number_assigned": 409,
+  "block_number": 1,
+  "composite_id": "28185_01_21987_001",
+  "block_id": "28185_B01_송도_센트럴파크_트라이보울",
+  "name": "송도 센트럴파크 & 트라이볼",
+  "name_en": "Songdo Central Park & Tri-bowl",
+  "category": "CAT51_MODERN_FUTURE_ARCHITECTURE",
+  "category_label": "미래건축/수상공원",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 인천타워대로 250 (송도동 24-6)",
+  "postal_code": "21987",
+  "floors": "지상 1~3층",
+  "height_m": 19.5,
+  "architectural_style": "비정형 유선형 노출콘크리트 역원추 쉘 구조 (Inverted Cone Curved Shell Structure)",
+  "heritage": {
+    "designation": "인천세계도시축전 기념 건축물",
+    "name": "송도 트라이볼 (Tri-bowl)",
+    "note": "세계 최초의 역원추형 유선형 쉘 건축물. 하늘·바다·땅을 상징하는 3개의 원형 볼이 하나로 결합된 복합 문화예술 공간.",
+    "manager": "인천문화재단 / 인천시설공단"
+  },
+  "coordinates": [
+    126.6324,
+    37.3932
+  ],
+  "orientation_deg": 180.0,
+  "heading": 180.0,
+  "heading_note": "트라이볼 정면 진입교량 축(남측)을 기준으로 한 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.35,
+  "lod_switch_distance": 200.0,
+  "spec_dimensions_m": {
+    "bowl_main_south": {
+      "diameter_top_m": 31.0,
+      "height_m": 18.8
+    },
+    "bowl_east_gallery": {
+      "diameter_top_m": 25.6,
+      "height_m": 16.2
+    },
+    "bowl_west_platform": {
+      "diameter_top_m": 23.2,
+      "height_m": 14.8
+    },
+    "reflecting_pond": {
+      "width_x_m": 42.0,
+      "depth_z_m": 28.0,
+      "water_depth_m": 0.45
+    },
+    "canal_section": {
+      "width_x_m": 18.0,
+      "length_z_m": 72.0
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "granite_plaza": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "tribowl_concrete_shell": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "seawater_reflecting_pond": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "glass_deck_sign": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "사분면별 0.04~0.48 창을 타일링하며, 안내판 표석은 정확 1:1 UV 매핑이다."
+  },
+  "detail_counts": {
+    "inverted_shells": 3,
+    "connecting_saddles": 3,
+    "pedestrian_bridges": 2,
+    "water_taxi_boats": 2,
+    "pine_trees": 12,
+    "streetlights": 8,
+    "granite_benches": 16
+  },
+  "sign": {
+    "characters": "송도 트라이보울 & 센트럴파크",
+    "type": "가로형 황동 입체 표석",
+    "board_size_m": [
+      4.2,
+      1.4
+    ],
+    "frame": "화강암 좌대 + 황동 양각 명판"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_01_21987_001_01",
+      "label": "센트럴파크 기단·광장 포장·석축 연석",
+      "mesh_nodes": [
+        "28185_01_21987_001_01__plaza_ground_base"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21987_001_02",
+      "label": "트라이볼 3구체 비정형 역원추 곡면 쉘 & 새들 브릿지",
+      "mesh_nodes": [
+        "28185_01_21987_001_02__tribowl_curved_shells"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21987_001_03",
+      "label": "트라이볼 반사 수조 & 센트럴파크 인공 해수수로",
+      "mesh_nodes": [
+        "28185_01_21987_001_03__reflecting_pond_canal"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21987_001_04",
+      "label": "보행 진입교량·보트하우스 데크·수상택시·수목 조경",
+      "mesh_nodes": [
+        "28185_01_21987_001_04__bridges_decks_amenities"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3000,
+    "phase_link": "일몰 후 30분 점등 / 23:00 소등",
+    "spots": [
+      {
+        "id": "night_light_spotlight_SE_3000K",
+        "offset_m": [
+          28.0,
+          1.0,
+          24.0
+        ],
+        "aim": "트라이볼 남동 쉘 상향 투사"
+      },
+      {
+        "id": "night_light_spotlight_SW_3000K",
+        "offset_m": [
+          -28.0,
+          1.0,
+          24.0
+        ],
+        "aim": "트라이볼 남서 쉘 상향 투사"
+      },
+      {
+        "id": "night_light_spotlight_NE_3000K",
+        "offset_m": [
+          28.0,
+          1.0,
+          -24.0
+        ],
+        "aim": "해수수로 및 북동 쉘 투사"
+      },
+      {
+        "id": "night_light_spotlight_NW_3000K",
+        "offset_m": [
+          -28.0,
+          1.0,
+          -24.0
+        ],
+        "aim": "서측 이벤트볼 상향 투사"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_tribowl_bridge_dive",
+      "label": "트라이볼 진입교량 1인칭 조망",
+      "offset_m": [
+        0.0,
+        1.7,
+        18.0
+      ]
+    },
+    {
+      "id": "hotspot_canal_promenade",
+      "label": "센트럴파크 해수수로 산책로",
+      "offset_m": [
+        24.0,
+        1.2,
+        0.0
+      ]
+    },
+    {
+      "id": "hotspot_tribowl_interior_lobby",
+      "label": "트라이볼 하부 중정 로비",
+      "offset_m": [
+        0.0,
+        4.5,
+        0.0
+      ]
+    },
+    {
+      "id": "hotspot_water_taxi_dock",
+      "label": "수상택시 보트하우스 선착장",
+      "offset_m": [
+        26.0,
+        0.8,
+        -24.0
+      ]
+    },
+    {
+      "id": "hotspot_skyline_view",
+      "label": "송도국제도시 초고층 스카이라인 뷰",
+      "offset_m": [
+        -24.0,
+        1.7,
+        -18.0
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_01_21987_001_02",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "인천광역시 연수구 문화관광 포털 — 송도 센트럴파크 & 트라이볼 안내",
+      "url": "https://www.yeonsu.go.kr/tour/",
+      "note": "연수구청 문화관광 공식 포털 제원 대조"
+    },
+    {
+      "title": "인천관광공사 — 트라이볼(Tri-bowl) 복합문화공간 공식 안내",
+      "url": "https://www.tribowl.kr/",
+      "note": "트라이볼 건축 제원(연면적 2,713㎡, 높이 19.5m, 역쉘 구조) 공식 데이터"
+    },
+    {
+      "title": "인천시설공단 — 송도 센트럴파크 시설 안내",
+      "url": "https://www.insiseol.or.kr/",
+      "note": "센트럴파크 해수수로(1.8km) 및 보트하우스 공식 안내"
+    },
+    {
+      "title": "한국민족문화대백과 — 송도국제도시 및 센트럴파크",
+      "url": "https://encykorea.aks.ac.kr/",
+      "note": "역사·도시계획 고증"
+    }
+  ],
+  "reference_note": "공식 기관 공공 포털 데이터 기준 실측값 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B01 Songdo Central Park & Tri-bowl)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -37.0,
+      0.0,
+      -25.0
+    ],
+    "max": [
+      37.2,
+      19.35,
+      26.0
+    ],
+    "size": [
+      74.2,
+      19.35,
+      51.0
+    ],
+    "core_min": [
+      -21.0,
+      0.0,
+      -14.0
+    ],
+    "core_max": [
+      21.0,
+      19.5,
+      14.0
+    ],
+    "note": "min/max는 LOD3 실측 바운딩박스, core는 트라이볼 본체 및 반사수조 범위다."
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 15360,
+      "vertices": 30720,
+      "bytes": 1439498
+    },
+    "model_lod2.gltf": {
+      "triangles": 348,
+      "vertices": 696,
+      "bytes": 38195
+    },
+    "texture_atlas.webp": {
+      "bytes": 283048,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1760741,
+  "anchor_nodes": [
+    "hotspot_tribowl_bridge_dive",
+    "hotspot_canal_promenade",
+    "hotspot_tribowl_interior_lobby",
+    "hotspot_water_taxi_dock",
+    "hotspot_skyline_view",
+    "night_light_spotlight_SE_3000K",
+    "night_light_spotlight_SW_3000K",
+    "night_light_spotlight_NE_3000K",
+    "night_light_spotlight_NW_3000K"
+  ]
+}

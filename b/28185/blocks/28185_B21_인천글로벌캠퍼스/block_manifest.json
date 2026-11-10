@@ -1,0 +1,304 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B21",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B21",
+  "pr_number": 482,
+  "pr_number_assigned": 482,
+  "block_number": 21,
+  "composite_id": "28185_01_21985_021",
+  "block_id": "28185_B21_인천글로벌캠퍼스",
+  "name": "인천글로벌캠퍼스 (IGC 복합캠퍼스 & 중앙지원센터 타워)",
+  "name_en": "Incheon Global Campus Complex & Support Center Tower",
+  "category": "CAT31_GLOBAL_CAMPUS",
+  "category_label": "글로벌캠퍼스/대학도시/학술연구지원센터",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 송도문화로 119 (송도동)",
+  "postal_code": "21985",
+  "floors": "지상 26층 (높이 116.5m 현대식 글래스 커튼월 타워 & 복합 포디움)",
+  "height_m": 116.5,
+  "architectural_style": "현대식 글래스 커튼월 지원타워 & 원형 잔디 선큰광장 & 글로벌 연합 캠퍼스 포디움",
+  "architect": "희림종합건축사사무소 & 대우건설",
+  "coordinates": [
+    126.6685,
+    37.382
+  ],
+  "orientation_deg": 0.0,
+  "heading": 0.0,
+  "heading_note": "송도문화로 메인 진입광장에서 IGC 지원센터 타워를 정면으로 조망하는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.15,
+  "lod_switch_distance": 250.0,
+  "spec_dimensions_m": {
+    "support_tower": {
+      "width_x_m": 18.0,
+      "depth_z_m": 20.0,
+      "height_m": 116.5
+    },
+    "sunken_lawn": {
+      "radius_m": 7.5,
+      "depth_m": 0.8
+    },
+    "academic_podium": {
+      "width_x_m": 24.0,
+      "depth_z_m": 20.0,
+      "height_m": 18.5
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "tower_curtain_wall": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "sunken_and_panels": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "campus_tiles": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "igc_blue_and_trees": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.02~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "support_towers": 1,
+    "auditorium_wings": 1,
+    "sunken_lawns": 1,
+    "global_flagpoles": 12,
+    "campus_trees": 16,
+    "smart_streetlights": 10
+  },
+  "sign": {
+    "characters": "인천글로벌캠퍼스 (INCHEON GLOBAL CAMPUS)",
+    "type": "캠퍼스 주진입부 화강석 독립 문주 위 IGC 블루/골드 입체 명판",
+    "board_size_m": [
+      4.2,
+      1.8
+    ],
+    "frame": "IGC 시그니처 블루 & 스테인리스 스틸 헤어라인 프레임"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_01_21985_021_01",
+      "label": "IGC 지원센터 본관 26층 116.5m 커튼월 타워 & 헬리패드",
+      "mesh_nodes": [
+        "28185_01_21985_021_01__support_tower"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21985_021_02",
+      "label": "원형 잔디 선큰광장 & 스탠드 테라스·다목적 강당동",
+      "mesh_nodes": [
+        "28185_01_21985_021_02__sunken_lawn_and_auditorium"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21985_021_03",
+      "label": "글로벌 12개 연합기 국기광장 & 셔틀버스 환승쉘터",
+      "mesh_nodes": [
+        "28185_01_21985_021_03__flagpoles_and_shuttle"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21985_021_04",
+      "label": "캠퍼스 가로수길 조경수목 & 스마트 가로등·문주 명판",
+      "mesh_nodes": [
+        "28185_01_21985_021_04__trees_and_monument"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 4000,
+    "phase_link": "일몰 후 15분 점등 / 24:00 소등 (글로벌 대학도시 연동)",
+    "spots": [
+      {
+        "id": "night_light_tower_crown",
+        "offset_m": [
+          14.0,
+          115.0,
+          -8.0
+        ],
+        "aim": "지원센터 타워 옥상 조명 및 항공장애등"
+      },
+      {
+        "id": "night_light_sunken_edge",
+        "offset_m": [
+          -9.0,
+          0.8,
+          12.0
+        ],
+        "aim": "원형 선큰 잔디광장 라인 경관조명"
+      },
+      {
+        "id": "night_light_flagpole_uplight",
+        "offset_m": [
+          -10.0,
+          0.5,
+          0.5
+        ],
+        "aim": "국기광장 하부 투광등"
+      },
+      {
+        "id": "night_light_monument_spot",
+        "offset_m": [
+          -21.5,
+          2.5,
+          -0.7
+        ],
+        "aim": "캠퍼스 문주 명판 조명"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_support_center_lobby",
+      "label": "지원센터 1층 글로벌 로비",
+      "offset_m": [
+        14.0,
+        0.15,
+        -8.0
+      ]
+    },
+    {
+      "id": "hotspot_sunken_lawn_plaza",
+      "label": "원형 잔디 선큰광장",
+      "offset_m": [
+        -9.0,
+        0.8,
+        12.0
+      ]
+    },
+    {
+      "id": "hotspot_global_flag_parade",
+      "label": "글로벌 국기광장",
+      "offset_m": [
+        -10.0,
+        0.15,
+        0.5
+      ]
+    },
+    {
+      "id": "hotspot_campus_main_gate",
+      "label": "IGC 메인 게이트",
+      "offset_m": [
+        -21.5,
+        0.15,
+        -0.7
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_01_21985_021_01",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "인천글로벌캠퍼스(IGC) 공식 사이트 캠퍼스 마스터플랜 및 지원시설 안내",
+      "url": "https://www.igc.or.kr/",
+      "note": "IGC 지원센터 본관 타워 및 복합 교육연구 시설 제원"
+    },
+    {
+      "title": "IFEZ 인천경제자유구역청 송도 첨단교육연구복합단지 안내",
+      "url": "https://www.ifez.go.kr/",
+      "note": "IGC 외국대학 입주 현황 및 송도문화로 캠퍼스 부지 계획"
+    },
+    {
+      "title": "희림종합건축사사무소 인천글로벌캠퍼스 건립공사 설계 포트폴리오",
+      "url": "https://www.heerim.com/",
+      "note": "지원센터 타워 26층 커튼월 및 원형 선큰광장 실시설계 데이터"
+    }
+  ],
+  "reference_note": "희림건축 및 IGC운영재단 준공도면 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B21 Incheon Global Campus)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -28.6,
+      0.0,
+      -24.6
+    ],
+    "max": [
+      27.95,
+      116.5,
+      24.6
+    ],
+    "size": [
+      56.55,
+      116.5,
+      49.2
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 10040,
+      "bytes": 960781
+    },
+    "model_lod2.gltf": {
+      "triangles": 396,
+      "bytes": 41212
+    },
+    "texture_atlas.webp": {
+      "bytes": 143128,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1148121,
+  "anchor_nodes": [
+    "hotspot_support_center_lobby",
+    "hotspot_sunken_lawn_plaza",
+    "hotspot_global_flag_parade",
+    "hotspot_campus_main_gate",
+    "night_light_tower_crown",
+    "night_light_sunken_edge",
+    "night_light_flagpole_uplight",
+    "night_light_monument_spot"
+  ]
+}

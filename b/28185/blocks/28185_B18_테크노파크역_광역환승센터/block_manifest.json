@@ -1,0 +1,303 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B18",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B18",
+  "pr_number": 479,
+  "pr_number_assigned": 479,
+  "block_number": 18,
+  "composite_id": "28185_02_21984_018",
+  "block_id": "28185_B18_테크노파크역_광역환승센터",
+  "name": "테크노파크역 광역환승센터 & 지하연계몰",
+  "name_en": "Technopark Station Transit Center & Underground Mall",
+  "category": "CAT11_TRANSIT_METRO_HUB",
+  "category_label": "광역환승센터/도시철도역사/지하상업몰",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 송도국제대로 180 (송도동)",
+  "postal_code": "21984",
+  "floors": "지하 3층 ~ 지상 1층 (유선형 메트로 캐노피 & BRT 환승대)",
+  "height_m": 12.55,
+  "architectural_style": "유선형 유리·철골 메트로 캐노피 & 3베이 BRT 스마트 쉘터 & 선큰 환승광장",
+  "architect": "인천교통공사 & 인천경제자유구역청(IFEZ)",
+  "coordinates": [
+    126.6622,
+    37.3828
+  ],
+  "orientation_deg": 0.0,
+  "heading": 0.0,
+  "heading_note": "송도국제대로에서 테크노파크역 캐노피와 환승센터를 정면으로 조망하는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.15,
+  "lod_switch_distance": 220.0,
+  "spec_dimensions_m": {
+    "station_canopy": {
+      "width_x_m": 32.0,
+      "depth_z_m": 18.0,
+      "height_m": 12.5
+    },
+    "transit_island": {
+      "length_x_m": 48.0,
+      "width_z_m": 6.0
+    },
+    "songdo_boulevard": {
+      "lanes": 8,
+      "width_z_m": 14.0
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "canopy_glass_and_truss": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "asphalt_roadway": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "sunken_plaza": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "metro_signage_and_bus_bay": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.02~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "station_canopies": 1,
+    "bus_shelters": 3,
+    "v_columns": 8,
+    "safety_bollards": 24,
+    "smart_streetlights": 10,
+    "urban_trees": 10
+  },
+  "sign": {
+    "characters": "테크노파크역 (TECHNOPARK STATION - INCHEON LINE 1)",
+    "type": "환승센터 진입부 화강석 기단 위 오렌지 LED 역명판",
+    "board_size_m": [
+      3.6,
+      1.8
+    ],
+    "frame": "인천 1호선 오렌지 & 실버 메탈 프레임"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_02_21984_018_01",
+      "label": "송도국제대로 8차선 아스팔트 차도 & 3베이 BRT 버스 환승센터",
+      "mesh_nodes": [
+        "28185_02_21984_018_01__boulevard_and_bus_bays"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_02_21984_018_02",
+      "label": "테크노파크역 유선형 유리·철골 메가 캐노피 & V자 구조기둥",
+      "mesh_nodes": [
+        "28185_02_21984_018_02__metro_canopy_and_columns"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_02_21984_018_03",
+      "label": "선큰 환승광장 에스컬레이터 보이드 & 지하연계몰 보행통로",
+      "mesh_nodes": [
+        "28185_02_21984_018_03__sunken_concourse_void"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_02_21984_018_04",
+      "label": "스마트 버스정보안내단말기(BIT) & 가로수 녹지 플랜터",
+      "mesh_nodes": [
+        "28185_02_21984_018_04__bit_screens_and_greenery"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3500,
+    "phase_link": "일몰 후 15분 점등 / 익일 01:00 소등 (막차 연계 가동)",
+    "spots": [
+      {
+        "id": "night_light_canopy_soffit",
+        "offset_m": [
+          0.0,
+          11.5,
+          -9.0
+        ],
+        "aim": "역사 캐노피 하부 매립형 다운라이트"
+      },
+      {
+        "id": "night_light_station_sign",
+        "offset_m": [
+          0.0,
+          8.5,
+          -1.8
+        ],
+        "aim": "인천 1호선 오렌지 역명판 조명"
+      },
+      {
+        "id": "night_light_bus_shelter",
+        "offset_m": [
+          0.0,
+          3.2,
+          5.0
+        ],
+        "aim": "버스 쉘터 탑승구 조명"
+      },
+      {
+        "id": "night_light_boulevard_pole",
+        "offset_m": [
+          0.0,
+          5.8,
+          12.0
+        ],
+        "aim": "대로변 가로등 조명"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_metro_turnstile",
+      "label": "테크노파크역 메인 개찰구",
+      "offset_m": [
+        0.0,
+        0.15,
+        -9.0
+      ]
+    },
+    {
+      "id": "hotspot_brt_bus_bay",
+      "label": "BRT 광역버스 승차대",
+      "offset_m": [
+        0.0,
+        0.45,
+        5.0
+      ]
+    },
+    {
+      "id": "hotspot_sunken_escalator",
+      "label": "지하쇼핑몰 직결 에스컬레이터",
+      "offset_m": [
+        0.0,
+        0.15,
+        -4.0
+      ]
+    },
+    {
+      "id": "hotspot_transit_monument",
+      "label": "환승센터 기념비",
+      "offset_m": [
+        -22.0,
+        0.15,
+        -15.0
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_02_21984_018_01",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "인천교통공사 테크노파크역사 시설 및 환승 안내",
+      "url": "https://www.ictr.or.kr/",
+      "note": "인천도시철도 1호선 테크노파크역 광역환승센터 시설 제원"
+    },
+    {
+      "title": "IFEZ 인천경제자유구역청 송도 스마트 모빌리티 환승인프라",
+      "url": "https://www.ifez.go.kr/",
+      "note": "송도국제대로 스마트 버스 쉘터 및 지하보도 연계망 규격"
+    },
+    {
+      "title": "연수구청 교통행정과 대중교통 환승체계 종합계획",
+      "url": "https://www.yeonsu.go.kr/",
+      "note": "테크노파크역 광역버스 및 지하철 입체 환승 동선"
+    }
+  ],
+  "reference_note": "인천교통공사 테크노파크역사 도면 및 IFEZ 교통망 규격 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B18 Technopark Transit Center)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -28.0,
+      0.0,
+      -24.0
+    ],
+    "max": [
+      28.0,
+      12.55,
+      24.0
+    ],
+    "size": [
+      56.0,
+      12.55,
+      48.0
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 10216,
+      "bytes": 971108
+    },
+    "model_lod2.gltf": {
+      "triangles": 768,
+      "bytes": 67625
+    },
+    "texture_atlas.webp": {
+      "bytes": 177072,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1218805,
+  "anchor_nodes": [
+    "hotspot_metro_turnstile",
+    "hotspot_brt_bus_bay",
+    "hotspot_sunken_escalator",
+    "hotspot_transit_monument",
+    "night_light_canopy_soffit",
+    "night_light_station_sign",
+    "night_light_bus_shelter",
+    "night_light_boulevard_pole"
+  ]
+}

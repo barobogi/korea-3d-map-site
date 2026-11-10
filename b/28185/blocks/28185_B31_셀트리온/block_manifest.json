@@ -1,0 +1,304 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B31",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B31",
+  "pr_number": 492,
+  "pr_number_assigned": 492,
+  "block_number": 31,
+  "composite_id": "28185_01_22014_031",
+  "block_id": "28185_B31_셀트리온",
+  "name": "셀트리온 송도 제1·2·3공장 및 글로벌생명공학연구센터",
+  "name_en": "Celltrion Songdo Plant 1-3 & Global R&D Center",
+  "category": "CAT32_BIO_HEALTHCARE",
+  "category_label": "바이오시밀러/생명공학R&D/첨단바이오의약클러스터",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 아카데미로 23 (송도동)",
+  "postal_code": "22014",
+  "floors": "지상 8층 (높이 40.5m 글로벌 생명공학 R&D 타워 및 제1~3공장)",
+  "height_m": 40.5,
+  "architectural_style": "초록빛 글래스 커튼월 및 셀트리온 에메랄드 그린 루프 바이오 R&D 캠퍼스",
+  "architect": "희림종합건축사사무소 & 셀트리온 엔지니어링",
+  "coordinates": [
+    126.6348,
+    37.3785
+  ],
+  "orientation_deg": 0.0,
+  "heading": 0.0,
+  "heading_note": "아카데미로 주출입구에서 셀트리온 글로벌 R&D 센터를 정면으로 조망하는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.15,
+  "lod_switch_distance": 240.0,
+  "spec_dimensions_m": {
+    "rnd_tower": {
+      "width_x_m": 24.0,
+      "depth_z_m": 24.0,
+      "height_m": 40.5
+    },
+    "production_plant": {
+      "width_x_m": 24.0,
+      "depth_z_m": 24.0,
+      "height_m": 24.5
+    },
+    "fountain_plaza": {
+      "diameter_m": 10.0,
+      "height_m": 2.8
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "rnd_curtain_wall": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "cleanroom_and_fountain": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "granite_promenade": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "celltrion_green_and_trees": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.02~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "rnd_towers": 1,
+    "production_plants": 1,
+    "fountain_plazas": 1,
+    "solar_fins": 18,
+    "campus_trees": 16,
+    "smart_streetlights": 10
+  },
+  "sign": {
+    "characters": "CELLTRION (셀트리온 글로벌생명공학연구센터)",
+    "type": "캠퍼스 주출입구 화강석 문주 위 셀트리온 에메랄드그린/골드 입체 명판",
+    "board_size_m": [
+      4.0,
+      1.8
+    ],
+    "frame": "셀트리온 그린 & 스테인리스 스틸 헤어라인 프레임"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_01_22014_031_01",
+      "label": "셀트리온 지상 8층 40.5m 글로벌 R&D 센터 본관 타워",
+      "mesh_nodes": [
+        "28185_01_22014_031_01__rnd_tower"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_22014_031_02",
+      "label": "바이오의약품 배양·정제 제1~3공장 클린룸 생산동 & 스카이브릿지",
+      "mesh_nodes": [
+        "28185_01_22014_031_02__production_plant"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_22014_031_03",
+      "label": "중앙 원형 분수광장 & 직경 10m 수경 테라피 가든",
+      "mesh_nodes": [
+        "28185_01_22014_031_03__fountain_plaza"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_22014_031_04",
+      "label": "캠퍼스 산책로 & 조경수목·가로등·문주 입체 명판",
+      "mesh_nodes": [
+        "28185_01_22014_031_04__promenade_and_monument"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 4200,
+    "phase_link": "일몰 후 15분 점등 / 24:00 소등 (바이오 클러스터 연동)",
+    "spots": [
+      {
+        "id": "night_light_green_crown",
+        "offset_m": [
+          12.0,
+          40.5,
+          -8.0
+        ],
+        "aim": "R&D 타워 옥상 에메랄드그린 스카이라운지 경관조명"
+      },
+      {
+        "id": "night_light_fountain_glow",
+        "offset_m": [
+          0.0,
+          1.2,
+          14.0
+        ],
+        "aim": "원형 분수대 수중 LED 투광등"
+      },
+      {
+        "id": "night_light_skybridge",
+        "offset_m": [
+          -1.0,
+          16.0,
+          -8.0
+        ],
+        "aim": "연결 브릿지 투명 조명"
+      },
+      {
+        "id": "night_light_gate_monument",
+        "offset_m": [
+          -15.5,
+          2.5,
+          2.6
+        ],
+        "aim": "셀트리온 주출입구 명판 조명"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_rnd_tower_lobby",
+      "label": "글로벌 R&D 센터 로비",
+      "offset_m": [
+        12.0,
+        0.15,
+        4.0
+      ]
+    },
+    {
+      "id": "hotspot_production_plant_entrance",
+      "label": "바이오의약 생산공장 게이트",
+      "offset_m": [
+        -14.0,
+        0.15,
+        4.0
+      ]
+    },
+    {
+      "id": "hotspot_fountain_plaza_center",
+      "label": "중앙 분수 테라피 광장",
+      "offset_m": [
+        0.0,
+        0.85,
+        14.0
+      ]
+    },
+    {
+      "id": "hotspot_celltrion_main_gate",
+      "label": "셀트리온 정문 표지석",
+      "offset_m": [
+        -15.5,
+        0.15,
+        2.6
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_01_22014_031_01",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "셀트리온 공식 사이트 송도 글로벌 생명공학 R&D 센터 및 플랜트 소개",
+      "url": "https://www.celltrion.com/",
+      "note": "송도 제1·2·3공장 및 생명공학 R&D센터 건축 제원 및 클린룸 스펙"
+    },
+    {
+      "title": "IFEZ 인천경제자유구역청 송도 바이오산업 인프라 현황",
+      "url": "https://www.ifez.go.kr/",
+      "note": "아카데미로 23 셀트리온 연구제조시설 인허가 정보"
+    },
+    {
+      "title": "희림종합건축사사무소 셀트리온 글로벌 생명공학연구센터 설계 포트폴리오",
+      "url": "https://www.heerim.com/",
+      "note": "글로벌 R&D 타워 커튼월 및 생산시설 실시설계 데이터"
+    }
+  ],
+  "reference_note": "희림건축 및 셀트리온 엔지니어링 준공도면 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B31 Celltrion)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -28.0,
+      0.0,
+      -24.6
+    ],
+    "max": [
+      27.95,
+      40.5,
+      24.6
+    ],
+    "size": [
+      55.95,
+      40.5,
+      49.2
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 11140,
+      "bytes": 1077029
+    },
+    "model_lod2.gltf": {
+      "triangles": 476,
+      "bytes": 44888
+    },
+    "texture_atlas.webp": {
+      "bytes": 152658,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1277575,
+  "anchor_nodes": [
+    "hotspot_rnd_tower_lobby",
+    "hotspot_production_plant_entrance",
+    "hotspot_fountain_plaza_center",
+    "hotspot_celltrion_main_gate",
+    "night_light_green_crown",
+    "night_light_fountain_glow",
+    "night_light_skybridge",
+    "night_light_gate_monument"
+  ]
+}

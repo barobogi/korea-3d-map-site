@@ -1,0 +1,332 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B08",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B08",
+  "pr_number": 469,
+  "pr_number_assigned": 469,
+  "block_number": 8,
+  "composite_id": "28185_01_21998_008",
+  "block_id": "28185_B08_송도_센트럴타운_코오롱더프라우",
+  "name": "송도 센트럴타운 코오롱더프라우",
+  "name_en": "Songdo Central Town Kolon The Prau",
+  "category": "CAT51_RESIDENTIAL_COMMERCIAL_COMPLEX",
+  "category_label": "주상복합/오피스텔벨트",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 컨벤시아대로42번길 20 (송도동 15-10)",
+  "postal_code": "21998",
+  "floors": "지상 20층",
+  "height_m": 72.0,
+  "architectural_style": "현대식 고급 주상복합 3개 타워 & 유러피언 스트리트몰 포디움 (Modern High-rise Residential Complex & European Street Mall Podium)",
+  "architect": "코오롱글로벌 & 종합건축사사무소",
+  "coordinates": [
+    126.6508,
+    37.3915
+  ],
+  "orientation_deg": 0.0,
+  "heading": 0.0,
+  "heading_note": "컨벤시아대로 및 중앙 오픈 선큰광장 남측 진입부를 정면으로 바라보는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.35,
+  "lod_switch_distance": 220.0,
+  "spec_dimensions_m": {
+    "tower_101": {
+      "width_x_m": 15.0,
+      "depth_z_m": 14.0,
+      "height_m": 72.0
+    },
+    "tower_102": {
+      "width_x_m": 15.0,
+      "depth_z_m": 14.0,
+      "height_m": 72.0
+    },
+    "tower_103": {
+      "width_x_m": 16.0,
+      "depth_z_m": 13.0,
+      "height_m": 68.0
+    },
+    "retail_podium": {
+      "width_x_m": 52.0,
+      "depth_z_m": 38.0,
+      "height_m": 7.5
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "granite_plaza_base": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "sandstone_residential_tower": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "charcoal_spandrel_glass": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "storefront_brass_sign": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.04~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "residential_towers": 3,
+    "facade_fin_louvers": 24,
+    "storefront_portals": 24,
+    "plaza_pavers": 416,
+    "landscaping_trees": 8
+  },
+  "sign": {
+    "characters": "송도 코오롱더프라우 (KOLON THE PRAU)",
+    "type": "광장 입구 화강석 좌대 위 황동/브론즈 입체 명판",
+    "board_size_m": [
+      6.2,
+      1.4
+    ],
+    "frame": "차콜 다크메탈 바탕 + 골드 테두리"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_01_21998_008_01",
+      "label": "중앙 오픈 선큰광장 및 보행자 전용 테라스 보행로",
+      "mesh_nodes": [
+        "28185_01_21998_008_01__plaza_promenade_base"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21998_008_02",
+      "label": "코오롱더프라우 101동·102동·103동 주거·오피스텔 타워 본관",
+      "mesh_nodes": [
+        "28185_01_21998_008_02__residential_towers"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21998_008_03",
+      "label": "층별 수평 스팬드럴 밴드·수직 루버 핀·옥상 크라운 파라펫",
+      "mesh_nodes": [
+        "28185_01_21998_008_03__spandrels_louvers"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21998_008_04",
+      "label": "1~2층 유럽풍 스트리트몰 상가 아케이드·캐노피·황동 명판",
+      "mesh_nodes": [
+        "28185_01_21998_008_04__commercial_podium"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3000,
+    "phase_link": "일몰 후 30분 점등 / 23:00 소등",
+    "spots": [
+      {
+        "id": "night_light_spotlight_SE_3000K",
+        "offset_m": [
+          24.0,
+          1.0,
+          22.0
+        ],
+        "aim": "102동 남동 타워 파사드 및 상가 투사"
+      },
+      {
+        "id": "night_light_spotlight_SW_3000K",
+        "offset_m": [
+          -24.0,
+          1.0,
+          22.0
+        ],
+        "aim": "101동 남서 타워 파사드 및 상가 투사"
+      },
+      {
+        "id": "night_light_spotlight_NE_3000K",
+        "offset_m": [
+          24.0,
+          1.0,
+          -22.0
+        ],
+        "aim": "103동 북동 타워 파사드 투사"
+      },
+      {
+        "id": "night_light_spotlight_NW_3000K",
+        "offset_m": [
+          -24.0,
+          1.0,
+          -22.0
+        ],
+        "aim": "103동 북서 타워 파사드 투사"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_prau_central_plaza_entrance",
+      "label": "더프라우 중앙 광장 보행자 입구",
+      "offset_m": [
+        0.0,
+        1.7,
+        16.0
+      ]
+    },
+    {
+      "id": "hotspot_tower_101_residential_lobby",
+      "label": "101동 주거동 전용 로비",
+      "offset_m": [
+        -16.0,
+        1.7,
+        8.0
+      ]
+    },
+    {
+      "id": "hotspot_tower_102_residential_lobby",
+      "label": "102동 주거동 전용 로비",
+      "offset_m": [
+        16.0,
+        1.7,
+        8.0
+      ]
+    },
+    {
+      "id": "hotspot_tower_103_smart_officetel",
+      "label": "103동 스마트 오피스텔 로비",
+      "offset_m": [
+        0.0,
+        1.7,
+        -10.0
+      ]
+    },
+    {
+      "id": "hotspot_street_mall_terrace_promenade",
+      "label": "스트리트몰 테라스 산책로",
+      "offset_m": [
+        0.0,
+        1.7,
+        2.0
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_01_21998_008_02",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "코오롱글로벌 — 송도 코오롱더프라우 주상복합단지",
+      "url": "https://www.kolon.com/",
+      "note": "송도 1공구 코오롱더프라우 설계 및 준공 실측"
+    },
+    {
+      "title": "인천경제자유구역청 (IFEZ) — 송도 1공구 국제업무·주거단지",
+      "url": "https://www.ifez.go.kr/",
+      "note": "송도국제도시 코오롱더프라우 건축 인허가 제원"
+    },
+    {
+      "title": "연수구청 건축행정 포털 — 코오롱더프라우 1~3단지",
+      "url": "https://www.yeonsu.go.kr/",
+      "note": "연수구 송도동 15-10번지 건축물대장 층수/높이"
+    }
+  ],
+  "reference_note": "코오롱글로벌 및 IFEZ 공식 건축물대장 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B08 Kolon The Prau)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -29.0,
+      0.0,
+      -23.0
+    ],
+    "max": [
+      29.0,
+      76.5,
+      23.0
+    ],
+    "size": [
+      58.0,
+      76.5,
+      46.0
+    ],
+    "core_min": [
+      -26.0,
+      0.0,
+      -20.0
+    ],
+    "core_max": [
+      26.0,
+      72.0,
+      20.0
+    ],
+    "note": "min/max는 LOD3 실측 바운딩박스, core는 3개 타워 중심 범위다."
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 10124,
+      "vertices": 20248,
+      "bytes": 950802
+    },
+    "model_lod2.gltf": {
+      "triangles": 300,
+      "vertices": 600,
+      "bytes": 33749
+    },
+    "texture_atlas.webp": {
+      "bytes": 163176,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1147727,
+  "anchor_nodes": [
+    "hotspot_prau_central_plaza_entrance",
+    "hotspot_tower_101_residential_lobby",
+    "hotspot_tower_102_residential_lobby",
+    "hotspot_tower_103_smart_officetel",
+    "hotspot_street_mall_terrace_promenade",
+    "night_light_spotlight_SE_3000K",
+    "night_light_spotlight_SW_3000K",
+    "night_light_spotlight_NE_3000K",
+    "night_light_spotlight_NW_3000K"
+  ]
+}

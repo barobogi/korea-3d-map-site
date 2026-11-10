@@ -1,0 +1,304 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B13",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B13",
+  "pr_number": 474,
+  "pr_number_assigned": 474,
+  "block_number": 13,
+  "composite_id": "28185_02_21987_013",
+  "block_id": "28185_B13_송도_달빛축제공원",
+  "name": "송도 달빛축제공원 (펜타포트 락페스티벌 메인스테이지)",
+  "name_en": "Songdo Moonlight Festival Park (Pentaport Rock Festival Main Stage)",
+  "category": "CAT42_PUBLIC_PARK_FESTIVAL",
+  "category_label": "대형문화공원/야외음악당/축제광장",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 센트럴로 350 (송도동)",
+  "postal_code": "21987",
+  "floors": "지상 1층 (야외 대형 공연장 & 트러스 돔 루프)",
+  "height_m": 19.5,
+  "architectural_style": "대형 야외 축제 무대 & 트러스 아치 루프 & 드넓은 원형 잔디 축제광장",
+  "architect": "인천경제자유구역청(IFEZ) & 인천시설공단",
+  "coordinates": [
+    126.6345,
+    37.4042
+  ],
+  "orientation_deg": 0.0,
+  "heading": 0.0,
+  "heading_note": "달빛축제공원 잔디마당 남측에서 북측 메인 스테이지를 정면으로 조망하는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.15,
+  "lod_switch_distance": 250.0,
+  "spec_dimensions_m": {
+    "main_stage": {
+      "width_x_m": 36.0,
+      "depth_z_m": 18.0,
+      "height_m": 19.5
+    },
+    "festival_lawn": {
+      "width_x_m": 56.0,
+      "depth_z_m": 48.0
+    },
+    "sound_towers": {
+      "count": 4,
+      "height_m": 14.5
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "stage_truss": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "led_screen_graphics": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "festival_lawn": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "audio_gear_and_deck": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.02~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "main_stages": 1,
+    "audio_delay_towers": 4,
+    "led_display_screens": 3,
+    "foh_control_tents": 1,
+    "audience_tents": 8,
+    "smart_streetlights": 16,
+    "landscape_trees": 16
+  },
+  "sign": {
+    "characters": "송도 달빛축제공원 (SONGDO MOONLIGHT FESTIVAL PARK)",
+    "type": "공원 주진입로 화강석 기단 위 황동 입체 조형물",
+    "board_size_m": [
+      4.0,
+      2.0
+    ],
+    "frame": "브러시드 다크 메탈 프레임"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_02_21987_013_01",
+      "label": "달빛축제공원 드넓은 잔디 축제광장 & 피크닉 텐트 존",
+      "mesh_nodes": [
+        "28185_02_21987_013_01__festival_lawn_and_tents"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_02_21987_013_02",
+      "label": "펜타포트 락페스티벌 메인 야외무대 & 트러스 아치형 캐노피",
+      "mesh_nodes": [
+        "28185_02_21987_013_02__pentaport_main_stage"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_02_21987_013_03",
+      "label": "초대형 3련 콘서트 LED 스크린 & FOH 음향믹싱 콘솔",
+      "mesh_nodes": [
+        "28185_02_21987_013_03__led_screens_and_foh"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_02_21987_013_04",
+      "label": "음향·조명 4대 딜레이 메가타워 & 공원 수목 산책로망",
+      "mesh_nodes": [
+        "28185_02_21987_013_04__audio_towers_and_trees"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 4000,
+    "phase_link": "일몰 후 15분 점등 / 24:00 소등 (공연시 풀컬러 RGB 서치라이트 가동)",
+    "spots": [
+      {
+        "id": "night_light_stage_truss",
+        "offset_m": [
+          0.0,
+          18.0,
+          6.0
+        ],
+        "aim": "메인 무대 상부 서치라이트"
+      },
+      {
+        "id": "night_light_led_wall",
+        "offset_m": [
+          0.0,
+          8.0,
+          20.0
+        ],
+        "aim": "센터 LED 전광판 발광"
+      },
+      {
+        "id": "night_light_tower_SW",
+        "offset_m": [
+          -12.0,
+          14.0,
+          -6.0
+        ],
+        "aim": "남서측 음향타워 투광등"
+      },
+      {
+        "id": "night_light_tower_SE",
+        "offset_m": [
+          12.0,
+          14.0,
+          -6.0
+        ],
+        "aim": "남동측 음향타워 투광등"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_stage_center",
+      "label": "펜타포트 메인스테이지 센터",
+      "offset_m": [
+        0.0,
+        2.2,
+        10.0
+      ]
+    },
+    {
+      "id": "hotspot_foh_booth",
+      "label": "FOH 메인 음향/조명 부스",
+      "offset_m": [
+        0.0,
+        1.5,
+        -7.0
+      ]
+    },
+    {
+      "id": "hotspot_standing_zone",
+      "label": "무대 앞 스탠딩 축제존",
+      "offset_m": [
+        0.0,
+        0.15,
+        0.0
+      ]
+    },
+    {
+      "id": "hotspot_picnic_lawn",
+      "label": "잔디 피크닉 힐링존",
+      "offset_m": [
+        0.0,
+        0.15,
+        -18.0
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_02_21987_013_01",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "인천 펜타포트 락페스티벌 공식 사이트 무대 및 축제 제원",
+      "url": "https://pentaport.co.kr/",
+      "note": "메인스테이지 규격 및 관람 수용 인원 인프라"
+    },
+    {
+      "title": "인천시설공단 송도공원사업단 달빛축제공원 시설안내",
+      "url": "https://www.insiseol.or.kr/",
+      "note": "달빛축제공원 야외공연장 및 잔디광장 부지 제원"
+    },
+    {
+      "title": "연수구청 문화관광 송도 달빛축제공원 안내",
+      "url": "https://www.yeonsu.go.kr/",
+      "note": "센트럴로 350 일원 대형 문화공원 시설 안내"
+    }
+  ],
+  "reference_note": "인천시설공단 및 펜타포트 공식 무대 배치도 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B13 Moonlight Festival Park)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -28.0,
+      0.0,
+      -24.0
+    ],
+    "max": [
+      27.95,
+      19.5,
+      23.95
+    ],
+    "size": [
+      55.95,
+      19.5,
+      47.95
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 10528,
+      "bytes": 992483
+    },
+    "model_lod2.gltf": {
+      "triangles": 504,
+      "bytes": 53187
+    },
+    "texture_atlas.webp": {
+      "bytes": 151208,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1199878,
+  "anchor_nodes": [
+    "hotspot_stage_center",
+    "hotspot_foh_booth",
+    "hotspot_standing_zone",
+    "hotspot_picnic_lawn",
+    "night_light_stage_truss",
+    "night_light_led_wall",
+    "night_light_tower_SW",
+    "night_light_tower_SE"
+  ]
+}

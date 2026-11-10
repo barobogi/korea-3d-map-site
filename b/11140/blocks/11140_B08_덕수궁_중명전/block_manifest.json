@@ -1,0 +1,403 @@
+{
+  "schema_version": "2.1_junggu_spec117_B08",
+  "spec_ref": "TASK_REQUEST_20261108_JUNGGU_LEGO_50BLOCKS.md §1~§3 / 117호 블록 장착 규약 v1",
+  "task_slot_id": "11140-B08",
+  "pr_number": 316,
+  "pr_number_assigned": 314,
+  "block_number": 8,
+  "composite_id": "11140_02_04519_007",
+  "block_id": "11140_B08_덕수궁_중명전",
+  "name": "덕수궁 중명전",
+  "name_en": "Jungmyeongjeon Hall of Deoksugung Palace, Seoul",
+  "category": "CAT08_IMPERIAL_MODERN_HERITAGE",
+  "category_label": "대한제국유적/사적",
+  "district": "서울특별시 중구",
+  "road_address": "서울특별시 중구 정동 5-1 (덕수궁 내 중명전)",
+  "postal_code": "04518",
+  "heritage": {
+    "designation": "사적",
+    "number": 124,
+    "name": "덕수궁 (사적 제124호, 중명전 포함)",
+    "designated_on_note": "덕수궁은 사적 제124호(1963년 지정)이며, 중명전은 그 사적 범위 안의 개별 구성요소로 다룬다. 세부 지정 원문은 국가유산청 고시 대조 대상.",
+    "event_note": "1905년 을사늑약 체결 장소로 기록된 근대사 유적",
+    "manager": "국가유산청 궁능유적본부 덕수궁관리소"
+  },
+  "coordinates": [
+    126.9718,
+    37.5672
+  ],
+  "orientation_deg": 180.0,
+  "heading": 180.0,
+  "heading_note": "중앙 현관 포치가 남측(정동 방향)을 향하는 것으로 잡은 연출값이다. 실제 축은 덕수궁 동북편 배치선에 따라 수 도(度) 어긋날 수 있으며, 정밀실측 대조 전까지는 연출 기준값이다.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "마당 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.9,
+  "lod_switch_distance": 200.0,
+  "spec_dimensions_m": {
+    "body": {
+      "width_x": 22.0,
+      "depth_z": 11.0,
+      "floor1_h": 4.3,
+      "floor2_h": 4.6,
+      "cornice_y": 9.8,
+      "eave_y": 10.2,
+      "ridge_y": 12.4,
+      "note": "2층 붉은 벽돌 몸체. 층 구분 회벽 띠 + 코스 몰딩 + 코니스."
+    },
+    "porch": {
+      "width_x": 3.6,
+      "depth_z": 2.4,
+      "pediment": "삼각 페디먼트",
+      "stair_steps": 4,
+      "stair_width_m": 3.2
+    },
+    "roof": {
+      "type": "저경사 슬레이트 우진각지붕",
+      "courses": 13,
+      "cols": 30,
+      "chimneys": 2
+    },
+    "openings": {
+      "arch_front_per_floor": 6,
+      "arch_side_per_floor": 8,
+      "arch_rear": 6,
+      "entrance_doors": 2
+    },
+    "total_height_with_ornament_m": 13.2,
+    "dimension_note": "중명전의 정밀실측 도면 공개 범위가 좁아, 층고·처마·지붕 치수는 이전 검증 근대 벽돌 건축 블록(벧엘예배당)의 비례와 발주서 제원을 기준으로 한 연출 기준값이다. 실측 대조 시 갱신 대상."
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q86",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "granite_plinth": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "red_brick_masonry": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "slate_roof": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "sign_plaque": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ],
+        "sub_plaque": [
+          0.02,
+          0.02,
+          0.96,
+          0.44
+        ],
+        "sub_entrance_door": [
+          0.02,
+          0.5,
+          0.44,
+          0.46
+        ],
+        "sub_gold_frame": [
+          0.5,
+          0.5,
+          0.46,
+          0.22
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 내부 0.04~0.48 창을 주기 반복하며, 표지·출입문은 부분영역 정확 UV(1:1)로 문자 왜곡이 없다."
+  },
+  "detail_counts": {
+    "plinth_ashlar_courses": 1,
+    "plinth_sangmyeon_panseok": 126,
+    "stairs_steps_total": 4,
+    "somaldol": 2,
+    "brick_lister_bricks": 392,
+    "corner_quoin_bricks": 36,
+    "arch_windows_front": 12,
+    "arch_windows_side": 16,
+    "arch_windows_rear": 6,
+    "entrance_doors": 2,
+    "porch_columns": 2,
+    "pediment": 1,
+    "slate_roof_courses": 13,
+    "slate_roof_tiles": 780,
+    "chimneys": 2,
+    "trees": 4,
+    "sign_characters": 3,
+    "sign_emboss_cells": 151
+  },
+  "sign": {
+    "characters": "重明殿",
+    "type": "가로형 3자",
+    "board_size_m": [
+      1.8,
+      0.6
+    ],
+    "frame": "황금 이중 테두리 + 옻칠 바탕 + 3D 양각"
+  },
+  "hierarchical_components": [
+    {
+      "id": "11140_02_04519_007_01",
+      "label": "화강암 기단·상면 판석 126매·정면 4단 계단·소맷돌",
+      "mesh_nodes": [
+        "11140_02_04519_007_01__granite_plinth_stone"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_007_02",
+      "label": "2층 붉은 벽돌 몸체·층 구분 띠·코니스·현관 포치·굴뚝",
+      "mesh_nodes": [
+        "11140_02_04519_007_02__red_brick_two_storey_body"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_007_03",
+      "label": "슬레이트 우진각지붕·용마루·굴뚝 씌움",
+      "mesh_nodes": [
+        "11140_02_04519_007_03__slate_hip_roof",
+        "11140_02_04519_007_03__ridge_chimney_cap"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_007_04",
+      "label": "중명전 현판 重明殿(가로 3자)·황금 테두리·3D 양각",
+      "mesh_nodes": [
+        "11140_02_04519_007_04__sign_board",
+        "11140_02_04519_007_04__sign_gold_frame",
+        "11140_02_04519_007_04__sign_yanggak_emboss"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_007_05",
+      "label": "아치창 34개소·출입문 2짝",
+      "mesh_nodes": [
+        "11140_02_04519_007_05__arch_window_sash",
+        "11140_02_04519_007_05__entrance_door_panels"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_007_06",
+      "label": "마당 포장·경계석·수목 4그루·울타리",
+      "mesh_nodes": [
+        "11140_02_04519_007_06__courtyard_paving",
+        "11140_02_04519_007_06__courtyard_trees"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3000,
+    "phase_link": "일몰 후 30분 점등 / 23:00 소등",
+    "spots": [
+      {
+        "id": "night_light_spotlight_SE_3000K",
+        "offset_m": [
+          18.0,
+          1.0,
+          20.0
+        ],
+        "aim": "정면 남동 파사드 상향"
+      },
+      {
+        "id": "night_light_spotlight_SW_3000K",
+        "offset_m": [
+          -18.0,
+          1.0,
+          20.0
+        ],
+        "aim": "정면 남서 파사드 상향"
+      },
+      {
+        "id": "night_light_spotlight_NE_3000K",
+        "offset_m": [
+          18.0,
+          1.0,
+          -10.0
+        ],
+        "aim": "배면 북동면 조사"
+      },
+      {
+        "id": "night_light_spotlight_NW_3000K",
+        "offset_m": [
+          -18.0,
+          1.0,
+          -10.0
+        ],
+        "aim": "배면 북서면 조사"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_porch_pediment_entrance",
+      "label": "현관 포치·페디먼트·계단 진입",
+      "offset_m": [
+        0.0,
+        1.6,
+        13.0
+      ]
+    },
+    {
+      "id": "hotspot_sign_jungmyeongjeon",
+      "label": "현판 重明殿 양각 근접",
+      "offset_m": [
+        0.0,
+        4.2,
+        9.0
+      ]
+    },
+    {
+      "id": "hotspot_arch_windows_first_floor",
+      "label": "1층 아치창 열람",
+      "offset_m": [
+        0.0,
+        3.0,
+        9.0
+      ]
+    },
+    {
+      "id": "hotspot_cornice_brick_corner",
+      "label": "코니스·코너 퀸 근접",
+      "offset_m": [
+        8.0,
+        8.6,
+        8.6
+      ]
+    },
+    {
+      "id": "hotspot_ridge_chimney_overlook",
+      "label": "용마루·굴뚝 위 덕수궁 동북편 조망",
+      "offset_m": [
+        0.0,
+        13.2,
+        0.0
+      ]
+    }
+  ],
+  "key_expansion_rule": "11140_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 11140_02_04519_007_02",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "국가유산포털 — 사적 「덕수궁」 지정정보",
+      "url": "https://www.heritage.go.kr/",
+      "note": "국가유산청 지정·관리 정보 원문 포털(사적 제124호)"
+    },
+    {
+      "title": "궁능유적본부 — 덕수궁 중명전 안내",
+      "url": "https://royal.khs.go.kr/",
+      "note": "중명전 배치·연혁·관람 안내"
+    },
+    {
+      "title": "한국민족문화대백과 — 덕수궁 중명전",
+      "url": "https://encykorea.aks.ac.kr/",
+      "note": "2층 벽돌 건물, 을사늑약 체결 장소"
+    },
+    {
+      "title": "서울특별시 문화유산 — 중구 정동 일대",
+      "url": "https://www.seoul.go.kr/",
+      "note": "소재지·도로명주소 대조"
+    }
+  ],
+  "reference_note": "위 4건은 포털 루트 주소이며, 검수 시 각 포털에서 「덕수궁 중명전」 항목으로 진입해 치수·연혁을 재확인한다. 웹 검색 없이 발주서 제원표와 이전 검증 데이터로 작성된 블록이므로, 상세 주소는 포털 검색 경로를 기준으로 안내한다.",
+  "generation": {
+    "generator": "pimang junggu jungmyeongjeon parametric builder (workspace-side)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "생성 스크립트·임시파일은 저장소에 포함되지 않는다. PR에는 위 4종 에셋만 반영."
+  },
+  "bbox_local_m": {
+    "min": [
+      -23.0,
+      0.0,
+      -11.0
+    ],
+    "max": [
+      23.0,
+      12.66,
+      23.0
+    ],
+    "size": [
+      46.0,
+      12.66,
+      34.0
+    ],
+    "core_min": [
+      -11.9,
+      0.0,
+      -6.4
+    ],
+    "core_max": [
+      11.9,
+      13.2,
+      14.0
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 13550,
+      "vertices": 16150,
+      "bytes": 917462
+    },
+    "model_lod2.gltf": {
+      "triangles": 594,
+      "vertices": 612,
+      "bytes": 41668
+    },
+    "texture_atlas.webp": {
+      "bytes": 108536,
+      "size_px": 1024,
+      "format": "webp_lossy_q86"
+    }
+  },
+  "package_total_bytes": 1067666,
+  "anchor_nodes": [
+    "night_light_spotlight_SE_3000K",
+    "night_light_spotlight_SW_3000K",
+    "night_light_spotlight_NE_3000K",
+    "night_light_spotlight_NW_3000K",
+    "hotspot_porch_pediment_entrance",
+    "hotspot_sign_jungmyeongjeon",
+    "hotspot_arch_windows_first_floor",
+    "hotspot_cornice_brick_corner",
+    "hotspot_ridge_chimney_overlook"
+  ]
+}

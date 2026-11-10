@@ -1,0 +1,299 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B46",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B46",
+  "pr_number": 507,
+  "pr_number_assigned": 507,
+  "block_number": 46,
+  "composite_id": "28185_01_21948_046",
+  "block_id": "28185_B46_능허대",
+  "name": "능허대공원 (백제 근초고왕 대중국 해상교통 출발지 역사터)",
+  "name_en": "Neungheodae Historic Park",
+  "category": "CAT21_HISTORIC_SITE",
+  "category_label": "역사기념물/백제사신선출발포구/인천광역시기념물제8호",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 옥련동 502 (능허대로)",
+  "postal_code": "21948",
+  "floors": "단층 (높이 12.5m 암벽 위 능허정 및 백제 전통 사신선)",
+  "height_m": 12.5,
+  "architectural_style": "백제 해상교통로 사적지 바위절벽 위 전통 팔작지붕 정자 및 수변공원",
+  "architect": "인천광역시 연수구청 문화관광과 & 전통조경보수단",
+  "coordinates": [
+    126.6525,
+    37.4278
+  ],
+  "orientation_deg": 0.0,
+  "heading": 0.0,
+  "heading_note": "능허대공원 연못 수변데크에서 능허정과 사신선을 정면으로 조망하는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.15,
+  "lod_switch_distance": 220.0,
+  "spec_dimensions_m": {
+    "cliff_and_pavilion": {
+      "width_x_m": 24.0,
+      "depth_z_m": 18.0,
+      "height_m": 12.5
+    },
+    "diplomatic_ship": {
+      "width_x_m": 10.0,
+      "depth_z_m": 8.0,
+      "height_m": 6.2
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "cliff_rock": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "ship_and_lawn": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "pond_water": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "monument_and_trees": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.02~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "cliff_pavilions": 1,
+    "diplomatic_ships": 1,
+    "cliff_steps": 8,
+    "campus_trees": 16,
+    "smart_streetlights": 10
+  },
+  "sign": {
+    "characters": "능허대지 (凌虛臺址) - 인천광역시 기념물 제8호",
+    "type": "공원 주진입로 화강석 문화유산 기념비석 및 황동 입체 명판",
+    "board_size_m": [
+      3.6,
+      1.8
+    ],
+    "frame": "화강석 & 황동 헤어라인 프레임"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_01_21948_046_01",
+      "label": "능허대 바위절벽 및 상부 능허정(凌虛亭) 전통 누각",
+      "mesh_nodes": [
+        "28185_01_21948_046_01__cliff_and_pavilion"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21948_046_02",
+      "label": "백제 근초고왕 대중국 해상교통 사신선(遣唐使船) 모형",
+      "mesh_nodes": [
+        "28185_01_21948_046_02__diplomatic_ship"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21948_046_03",
+      "label": "능허대 역사인공호수 수면 & 수변 목재 보행데크",
+      "mesh_nodes": [
+        "28185_01_21948_046_03__pond_and_boardwalk"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21948_046_04",
+      "label": "수변 버드나무·소나무숲 & 가로등·문화유산 기념비",
+      "mesh_nodes": [
+        "28185_01_21948_046_04__garden_and_monument"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3200,
+    "phase_link": "일몰 후 15분 점등 / 23:00 소등 (역사기념물 경관 연동)",
+    "spots": [
+      {
+        "id": "night_light_neungheojeong",
+        "offset_m": [
+          12.0,
+          12.5,
+          -11.0
+        ],
+        "aim": "능허정 기와 처마선 상향 투광등"
+      },
+      {
+        "id": "night_light_ship_display",
+        "offset_m": [
+          -8.0,
+          3.5,
+          1.0
+        ],
+        "aim": "백제 사신선 모형 조명"
+      },
+      {
+        "id": "night_light_boardwalk",
+        "offset_m": [
+          -6.0,
+          0.4,
+          19.5
+        ],
+        "aim": "수변 산책로 스텝라이트"
+      },
+      {
+        "id": "night_light_gate_monument",
+        "offset_m": [
+          -15.5,
+          2.5,
+          3.1
+        ],
+        "aim": "문화유산 기념비 조명"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_neungheojeong",
+      "label": "능허정 누각 전망대",
+      "offset_m": [
+        12.0,
+        5.5,
+        -11.0
+      ]
+    },
+    {
+      "id": "hotspot_baekje_ship",
+      "label": "백제 사신선 전시장",
+      "offset_m": [
+        -8.0,
+        0.2,
+        1.0
+      ]
+    },
+    {
+      "id": "hotspot_waterfront_boardwalk",
+      "label": "능허대 연못 수변데크",
+      "offset_m": [
+        -6.0,
+        0.2,
+        19.5
+      ]
+    },
+    {
+      "id": "hotspot_historic_monument",
+      "label": "능허대지 기념비석",
+      "offset_m": [
+        -15.5,
+        0.15,
+        3.1
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_01_21948_046_01",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "국가유산청 국가문화유산포털 능허대지(凌虛臺址) 안내",
+      "url": "https://www.heritage.go.kr/",
+      "note": "인천광역시 기념물 제8호 능허대 역사 기록 및 백제 사신선 사적"
+    },
+    {
+      "title": "인천광역시 연수구청 문화관광 능허대공원 소개",
+      "url": "https://www.yeonsu.go.kr/",
+      "note": "옥련동 502번지 능허대공원 및 능허정 제원"
+    },
+    {
+      "title": "인천역사문화연구소 능허대 사신길 복원 학술연구서",
+      "url": "https://www.incheon.go.kr/",
+      "note": "백제 사신선 실측 고증 및 능허대 조경 실측도면"
+    }
+  ],
+  "reference_note": "국가유산청 문화유산 지정기록 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B46 Neungheodae)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -28.0,
+      0.0,
+      -24.6
+    ],
+    "max": [
+      27.95,
+      12.5,
+      24.6
+    ],
+    "size": [
+      55.95,
+      12.5,
+      49.2
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 10824,
+      "bytes": 1049784
+    },
+    "model_lod2.gltf": {
+      "triangles": 388,
+      "bytes": 40747
+    },
+    "texture_atlas.webp": {
+      "bytes": 173736,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1267267,
+  "anchor_nodes": [
+    "hotspot_neungheojeong",
+    "hotspot_baekje_ship",
+    "hotspot_waterfront_boardwalk",
+    "hotspot_historic_monument",
+    "night_light_neungheojeong",
+    "night_light_ship_display",
+    "night_light_boardwalk",
+    "night_light_gate_monument"
+  ]
+}

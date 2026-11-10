@@ -1,0 +1,318 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B09",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B09",
+  "pr_number": 470,
+  "pr_number_assigned": 470,
+  "block_number": 9,
+  "composite_id": "28185_01_21998_009",
+  "block_id": "28185_B09_인천타워대로_복합업무지구_스카이라인",
+  "name": "송도 인천타워대로 복합업무지구 스카이라인",
+  "name_en": "Songdo Incheon Tower-daero Business District Skyline",
+  "category": "CAT52_COMMERCIAL_BUSINESS_DISTRICT",
+  "category_label": "복합업무지구/도시스카이라인",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 인천타워대로 일원 (송도동)",
+  "postal_code": "21998",
+  "floors": "지상 35층 (주타워), 지상 22층 (보조타워)",
+  "height_m": 84.65,
+  "architectural_style": "초고층 커튼월 오피스 타워군 & 대중교통 환승축 (High-rise Curtain Wall Office Towers & Transit Corridor)",
+  "architect": "간삼건축 & IFEZ 도시개발사업단",
+  "coordinates": [
+    126.6385,
+    37.3872
+  ],
+  "orientation_deg": 0.0,
+  "heading": 0.0,
+  "heading_note": "인천타워대로 8차선 주간선도로 및 지하철 캐노피 축을 정면으로 바라보는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.35,
+  "lod_switch_distance": 220.0,
+  "spec_dimensions_m": {
+    "main_tower": {
+      "width_x_m": 22.0,
+      "depth_z_m": 16.0,
+      "height_m": 78.0
+    },
+    "west_tower": {
+      "width_x_m": 16.0,
+      "depth_z_m": 14.0,
+      "height_m": 48.0
+    },
+    "metro_canopy": {
+      "width_x_m": 11.0,
+      "depth_z_m": 6.0,
+      "height_m": 4.2
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "asphalt_sidewalk_base": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "curtainwall_glass": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "metro_steel_canopy": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "landscaping_brass_plaque": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.02~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "office_towers": 2,
+    "metro_entrance_canopies": 1,
+    "brt_smart_shelters": 1,
+    "smart_streetlights": 16,
+    "landscaping_trees": 14,
+    "safety_bollards": 24
+  },
+  "sign": {
+    "characters": "인천타워대로 복합업무지구 (INCHEON TOWER-DAERO BIZ DISTRICT)",
+    "type": "광장 입구 화강석 좌대 위 황동/브론즈 입체 명판",
+    "board_size_m": [
+      3.2,
+      1.2
+    ],
+    "frame": "차콜 다크메탈 바탕 + 골드 테두리"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_01_21998_009_01",
+      "label": "인천타워대로 8차선 아스팔트 차도·중앙분리대·보행광장",
+      "mesh_nodes": [
+        "28185_01_21998_009_01__ground_and_road"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21998_009_02",
+      "label": "인천타워대로 35층 메인 커튼월 업무타워 & 헬리패드",
+      "mesh_nodes": [
+        "28185_01_21998_009_02__curtainwall_tower"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21998_009_03",
+      "label": "서측 22층 보조 업무타워 & 지상 연결 포디움 로비",
+      "mesh_nodes": [
+        "28185_01_21998_009_03__podium_and_canopy"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21998_009_04",
+      "label": "인천대입구역 지하철 출입구 캐노피·BRT 쉘터·가로시설물",
+      "mesh_nodes": [
+        "28185_01_21998_009_04__metro_entrance_props"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 4000,
+    "phase_link": "일몰 후 20분 점등 / 24:00 소등",
+    "spots": [
+      {
+        "id": "night_light_spotlight_main_tower_SE",
+        "offset_m": [
+          22.0,
+          1.0,
+          22.0
+        ],
+        "aim": "메인 오피스타워 커튼월 파사드 투사"
+      },
+      {
+        "id": "night_light_spotlight_west_tower_SW",
+        "offset_m": [
+          -22.0,
+          1.0,
+          22.0
+        ],
+        "aim": "서측 보조타워 파사드 투사"
+      },
+      {
+        "id": "night_light_spotlight_metro_NW",
+        "offset_m": [
+          -14.0,
+          1.0,
+          -18.0
+        ],
+        "aim": "지하철역 출입구 캐노피 투사"
+      },
+      {
+        "id": "night_light_spotlight_brt_NE",
+        "offset_m": [
+          12.0,
+          1.0,
+          -14.0
+        ],
+        "aim": "BRT 스마트 쉘터 투사"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_metro_entrance",
+      "label": "인천대입구역 4번 출입구",
+      "offset_m": [
+        -14.0,
+        1.7,
+        -16.0
+      ]
+    },
+    {
+      "id": "hotspot_brt_station",
+      "label": "인천타워대로 BRT 환승정류소",
+      "offset_m": [
+        12.0,
+        1.7,
+        -11.8
+      ]
+    },
+    {
+      "id": "hotspot_main_tower_lobby",
+      "label": "메인 비즈니스타워 그랜드로비",
+      "offset_m": [
+        12.0,
+        1.7,
+        7.0
+      ]
+    },
+    {
+      "id": "hotspot_west_tower_lobby",
+      "label": "서측 오피스타워 로비",
+      "offset_m": [
+        -15.0,
+        1.7,
+        9.0
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_01_21998_009_02",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "IFEZ 인천경제자유구역청 송도국제도시 비즈니스 인프라 현황",
+      "url": "https://www.ifez.go.kr/",
+      "note": "인천타워대로 업무복합단지 건축 인허가 및 가로망 제원"
+    },
+    {
+      "title": "인천교통공사 인천도시철도 1호선 인천대입구역 역사 제원",
+      "url": "https://www.ictr.or.kr/",
+      "note": "인천대입구역 출입구 캐노피 및 환승 인프라 표준 규격"
+    },
+    {
+      "title": "연수구청 송도국제도시 도로망 및 대중교통 인프라 종합계획",
+      "url": "https://www.yeonsu.go.kr/",
+      "note": "인천타워대로 8차선 대로 및 자전거도로·스마트폴 제원"
+    }
+  ],
+  "reference_note": "IFEZ 및 인천교통공사 공식 도면 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B09 Incheon Tower-daero)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -28.0,
+      0.0,
+      -22.0
+    ],
+    "max": [
+      28.0,
+      83.525,
+      23.355
+    ],
+    "size": [
+      56.0,
+      83.525,
+      45.355
+    ],
+    "core_min": [
+      -22.0,
+      0.0,
+      -18.0
+    ],
+    "core_max": [
+      22.0,
+      78.0,
+      18.0
+    ],
+    "note": "min/max는 LOD3 실측 바운딩박스, core는 주요 타워 중심 범위다."
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 10724,
+      "vertices": 16554,
+      "bytes": 882246
+    },
+    "model_lod2.gltf": {
+      "triangles": 348,
+      "vertices": 696,
+      "bytes": 39572
+    },
+    "texture_atlas.webp": {
+      "bytes": 11624,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 933442,
+  "anchor_nodes": [
+    "hotspot_metro_entrance",
+    "hotspot_brt_station",
+    "hotspot_main_tower_lobby",
+    "hotspot_west_tower_lobby",
+    "night_light_spotlight_main_tower_SE",
+    "night_light_spotlight_west_tower_SW",
+    "night_light_spotlight_metro_NW",
+    "night_light_spotlight_brt_NE"
+  ]
+}

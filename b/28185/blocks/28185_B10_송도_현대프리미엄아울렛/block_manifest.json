@@ -1,0 +1,317 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B10",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B10",
+  "pr_number": 471,
+  "pr_number_assigned": 471,
+  "block_number": 10,
+  "composite_id": "28185_02_21984_010",
+  "block_id": "28185_B10_송도_현대프리미엄아울렛",
+  "name": "송도 현대프리미엄아울렛 (송현아 중앙선큰광장)",
+  "name_en": "Songdo Hyundai Premium Outlets (Songhyuna Central Sunken Square)",
+  "category": "CAT51_SHOPPING_MALL_COMPLEX",
+  "category_label": "대형복합쇼핑몰/아울렛",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 송도국제대로 123 (송도동)",
+  "postal_code": "21984",
+  "floors": "지하 3층 ~ 지상 3층",
+  "height_m": 18.95,
+  "architectural_style": "오픈에어 유럽풍 스트리트몰 & 중앙 선큰 분수광장 (Open-air European Street Mall & Sunken Plaza)",
+  "architect": "현대백화점그룹 & 정림건축",
+  "coordinates": [
+    126.6575,
+    37.3812
+  ],
+  "orientation_deg": 0.0,
+  "heading": 0.0,
+  "heading_note": "테크노파크역 직결 남측 진입광장 및 중앙 썬큰 분수를 정면으로 조망하는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.3,
+  "lod_switch_distance": 200.0,
+  "spec_dimensions_m": {
+    "mall_wings": {
+      "width_x_m": 44.0,
+      "depth_z_m": 35.0,
+      "height_m": 18.95
+    },
+    "sunken_plaza": {
+      "radius_m": 11.0,
+      "depth_m": 0.3
+    },
+    "skybridge": {
+      "length_m": 24.0,
+      "width_m": 3.0,
+      "height_m": 3.2
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "granite_paver": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "mall_facade": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "storefront_glass": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "roof_deck_and_brass": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.02~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "boutique_storefronts": 22,
+    "patio_parasol_tables": 12,
+    "greenery_planters": 16,
+    "smart_streetlights": 16,
+    "safety_bollards": 24,
+    "water_fountain_tiers": 2
+  },
+  "sign": {
+    "characters": "현대프리미엄아울렛 송도점 (HYUNDAI PREMIUM OUTLETS SONGDO)",
+    "type": "남측 정문 화강석 기단 위 황동 입체 명판",
+    "board_size_m": [
+      3.2,
+      1.2
+    ],
+    "frame": "샴페인 골드 메탈 프레임 + 브론즈 베이스"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_02_21984_010_01",
+      "label": "송도 현대프리미엄아울렛 기저 슬래브 & 중앙 선큰 분수광장",
+      "mesh_nodes": [
+        "28185_02_21984_010_01__plinth_and_sunken_plaza"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_02_21984_010_02",
+      "label": "3층 규모 U자형 아울렛 몰 본관 & 부티크 쇼윈도 회랑",
+      "mesh_nodes": [
+        "28185_02_21984_010_02__mall_wings_and_arcades"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_02_21984_010_03",
+      "label": "동·서관 공중 연결 브릿지 & 옥상 스카이가든 전망데크",
+      "mesh_nodes": [
+        "28185_02_21984_010_03__skybridge_and_rooftop"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_02_21984_010_04",
+      "label": "테크노파크역 직결 캐노피 & 파라솔·조경 플랜터 가로시설물",
+      "mesh_nodes": [
+        "28185_02_21984_010_04__metro_link_and_patio_props"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3200,
+    "phase_link": "일몰 후 15분 점등 / 23:00 소등",
+    "spots": [
+      {
+        "id": "night_light_fountain_central",
+        "offset_m": [
+          0.0,
+          0.8,
+          -2.0
+        ],
+        "aim": "선큰 분수 수중 투사등"
+      },
+      {
+        "id": "night_light_facade_north",
+        "offset_m": [
+          0.0,
+          1.0,
+          11.0
+        ],
+        "aim": "북측 파사드 상향 간접조명"
+      },
+      {
+        "id": "night_light_bridge_south",
+        "offset_m": [
+          0.0,
+          9.0,
+          -14.0
+        ],
+        "aim": "스카이브릿지 하부 보행조명"
+      },
+      {
+        "id": "night_light_metro_link",
+        "offset_m": [
+          -18.0,
+          1.0,
+          -17.5
+        ],
+        "aim": "테크노파크역 직결 캐노피 조명"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_sunken_fountain",
+      "label": "송현아 중앙 선큰 분수대",
+      "offset_m": [
+        0.0,
+        0.4,
+        -2.0
+      ]
+    },
+    {
+      "id": "hotspot_technopark_metro",
+      "label": "테크노파크역 2번 출구 직결통로",
+      "offset_m": [
+        -18.0,
+        1.7,
+        -17.5
+      ]
+    },
+    {
+      "id": "hotspot_skybridge_crossing",
+      "label": "2층 공중 스카이브릿지",
+      "offset_m": [
+        0.0,
+        11.5,
+        -14.0
+      ]
+    },
+    {
+      "id": "hotspot_rooftop_garden",
+      "label": "3층 옥상 하늘정원",
+      "offset_m": [
+        0.0,
+        19.5,
+        15.5
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_02_21984_010_02",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "현대백화점그룹 현대프리미엄아울렛 송도점 공식 지점 안내",
+      "url": "https://www.ehyundai.com/",
+      "note": "지하 3층~지상 3층 층별 안내도 및 선큰광장 건축 제원"
+    },
+    {
+      "title": "IFEZ 인천경제자유구역청 송도 첨단산업클러스터 상업시설 인허가",
+      "url": "https://www.ifez.go.kr/",
+      "note": "송도국제대로 123 일원 유통상업시설 대지 및 건축물 제원"
+    },
+    {
+      "title": "연수구청 송도 테크노파크역세권 대중교통 연계 종합현황",
+      "url": "https://www.yeonsu.go.kr/",
+      "note": "인천 1호선 테크노파크역 지하 직결 및 광역 환승 인프라 규격"
+    }
+  ],
+  "reference_note": "현대백화점그룹 및 IFEZ 공식 도면 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B10 Hyundai Outlets)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -25.97,
+      0.0,
+      -20.97
+    ],
+    "max": [
+      25.97,
+      19.7,
+      20.97
+    ],
+    "size": [
+      51.94,
+      19.7,
+      41.94
+    ],
+    "core_min": [
+      -22.0,
+      0.0,
+      -18.0
+    ],
+    "core_max": [
+      22.0,
+      18.95,
+      18.0
+    ],
+    "note": "min/max는 LOD3 실측 바운딩박스, core는 아울렛 매스 중심 범위다."
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 10800,
+      "vertices": 22372,
+      "bytes": 1129793
+    },
+    "model_lod2.gltf": {
+      "triangles": 324,
+      "vertices": 692,
+      "bytes": 37138
+    },
+    "texture_atlas.webp": {
+      "bytes": 27192,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1194123,
+  "anchor_nodes": [
+    "hotspot_sunken_fountain",
+    "hotspot_technopark_metro",
+    "hotspot_skybridge_crossing",
+    "hotspot_rooftop_garden",
+    "night_light_fountain_central",
+    "night_light_facade_north",
+    "night_light_bridge_south",
+    "night_light_metro_link"
+  ]
+}

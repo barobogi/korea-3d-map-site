@@ -1,0 +1,306 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B12",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B12",
+  "pr_number": 473,
+  "pr_number_assigned": 473,
+  "block_number": 12,
+  "composite_id": "28185_02_21984_012",
+  "block_id": "28185_B12_송도_홈플러스_&_오네스타",
+  "name": "송도 홈플러스 & 오네스타 복합쇼핑몰 (Homeplus Songdo & Onestar Complex)",
+  "name_en": "Homeplus Songdo & Onestar Mixed-use Complex",
+  "category": "CAT51_SHOPPING_MALL_COMPLEX",
+  "category_label": "대형할인점/주상복합/입체상업몰",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 송도국제대로 165 및 157 (송도동)",
+  "postal_code": "21984",
+  "floors": "홈플러스 지하 2층~지상 3층 / 오네스타 지하 4층~지상 25층",
+  "height_m": 92.2,
+  "architectural_style": "대형 할인마트 & 초고층 주상복합 오피스텔 & 공중 보행데크 연결몰",
+  "architect": "희림종합건축 & 포스코이앤씨",
+  "coordinates": [
+    126.6578,
+    37.382
+  ],
+  "orientation_deg": 0.0,
+  "heading": 0.0,
+  "heading_note": "테크노파크역 방면 복합 쇼핑 보행광장을 정면으로 조망하는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.15,
+  "lod_switch_distance": 220.0,
+  "spec_dimensions_m": {
+    "homeplus_store": {
+      "width_x_m": 22.0,
+      "depth_z_m": 38.0,
+      "height_m": 21.5
+    },
+    "onestar_tower": {
+      "width_x_m": 18.0,
+      "depth_z_m": 26.0,
+      "height_m": 92.2
+    },
+    "skybridge": {
+      "span_x_m": 6.0,
+      "width_z_m": 8.0,
+      "height_m": 11.5
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "homeplus_retail": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "onestar_tower": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "granite_plaza": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "skybridge_and_details": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.02~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "retail_wings": 2,
+    "skybridge_links": 1,
+    "outdoor_cafe_tables": 8,
+    "landscaped_planters": 16,
+    "smart_streetlights": 16,
+    "safety_bollards": 32,
+    "metro_concourse_canopies": 1
+  },
+  "sign": {
+    "characters": "홈플러스 송도점 & 오네스타 (HOMEPLUS & ONESTAR)",
+    "type": "송도국제대로변 화강석 기단 위 브론즈/LED 입체 간판",
+    "board_size_m": [
+      3.0,
+      1.5
+    ],
+    "frame": "레드 & 실버 알루미늄 프레임"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_02_21984_012_01",
+      "label": "송도국제대로 보행광장 & 테크노파크역 지하철 연계 선큰 캐노피",
+      "mesh_nodes": [
+        "28185_02_21984_012_01__plaza_and_metro_entrance"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_02_21984_012_02",
+      "label": "홈플러스 송도점 3개 층 대형마트 매스 & 레드 브랜드 패시아",
+      "mesh_nodes": [
+        "28185_02_21984_012_02__homeplus_store_volume"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_02_21984_012_03",
+      "label": "오네스타 25층 주상복합 타워 & 외벽 수직 알루미늄 루버 핀",
+      "mesh_nodes": [
+        "28185_02_21984_012_03__onestar_tower_and_louvers"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_02_21984_012_04",
+      "label": "홈플러스-오네스타 연결 공중 스카이브릿지 & 노천 카페 테라스",
+      "mesh_nodes": [
+        "28185_02_21984_012_04__skybridge_and_amenities"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3200,
+    "phase_link": "일몰 후 15분 점등 / 24:00 소등",
+    "spots": [
+      {
+        "id": "night_light_homeplus_fascia",
+        "offset_m": [
+          -13.0,
+          19.0,
+          0.0
+        ],
+        "aim": "홈플러스 레드 간판 조명"
+      },
+      {
+        "id": "night_light_onestar_crown",
+        "offset_m": [
+          14.0,
+          91.0,
+          0.0
+        ],
+        "aim": "오네스타 타워 크라운 경관조명"
+      },
+      {
+        "id": "night_light_skybridge_deck",
+        "offset_m": [
+          1.0,
+          10.0,
+          2.0
+        ],
+        "aim": "공중 스카이브릿지 하부 보행조명"
+      },
+      {
+        "id": "night_light_metro_canopy",
+        "offset_m": [
+          0.0,
+          3.5,
+          -18.5
+        ],
+        "aim": "테크노파크역 출입구 조명"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_homeplus_entrance",
+      "label": "홈플러스 1층 주출입구",
+      "offset_m": [
+        -24.0,
+        0.15,
+        0.0
+      ]
+    },
+    {
+      "id": "hotspot_onestar_lobby",
+      "label": "오네스타 비즈니스 로비",
+      "offset_m": [
+        14.0,
+        0.15,
+        0.0
+      ]
+    },
+    {
+      "id": "hotspot_skybridge_walkway",
+      "label": "2층 연결 공중 스카이브릿지",
+      "offset_m": [
+        1.0,
+        9.5,
+        2.0
+      ]
+    },
+    {
+      "id": "hotspot_technopark_metro",
+      "label": "테크노파크역 직결 통로",
+      "offset_m": [
+        0.0,
+        0.15,
+        -18.5
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_02_21984_012_01",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "IFEZ 송도국제도시 상업유통시설 인허가 제원",
+      "url": "https://www.ifez.go.kr/",
+      "note": "송도국제대로 165 일원 복합쇼핑시설 건축 제원"
+    },
+    {
+      "title": "연수구청 문화관광 상업인프라 현황",
+      "url": "https://www.yeonsu.go.kr/",
+      "note": "테크노파크역 역세권 상업 벨트 개발 계획"
+    },
+    {
+      "title": "홈플러스 송도점 공식 지점안내 및 시설 정보",
+      "url": "https://corporate.homeplus.co.kr/",
+      "note": "지하 2층~지상 3층 매장 규모 및 부대시설"
+    }
+  ],
+  "reference_note": "포스코이앤씨 및 IFEZ 공식 도면 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B12 Homeplus Onestar)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -28.0,
+      0.0,
+      -24.0
+    ],
+    "max": [
+      27.950000000000003,
+      92.2,
+      23.949999999999992
+    ],
+    "size": [
+      55.95,
+      92.2,
+      47.94999999999999
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 10616,
+      "bytes": 965923
+    },
+    "model_lod2.gltf": {
+      "triangles": 444,
+      "bytes": 47098
+    },
+    "texture_atlas.webp": {
+      "bytes": 118708,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1134729,
+  "anchor_nodes": [
+    "hotspot_homeplus_entrance",
+    "hotspot_onestar_lobby",
+    "hotspot_skybridge_walkway",
+    "hotspot_technopark_metro",
+    "night_light_homeplus_fascia",
+    "night_light_onestar_crown",
+    "night_light_skybridge_deck",
+    "night_light_metro_canopy"
+  ]
+}

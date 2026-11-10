@@ -1,0 +1,304 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B17",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B17",
+  "pr_number": 478,
+  "pr_number_assigned": 478,
+  "block_number": 17,
+  "composite_id": "28185_01_21998_017",
+  "block_id": "28185_B17_센트럴파크_유엔광장_조각공원",
+  "name": "송도 센트럴파크 유엔(UN)광장 & 지구촌조각공원",
+  "name_en": "Songdo Central Park UN Plaza & Global Sculpture Park",
+  "category": "CAT42_PUBLIC_PARK_PLAZA",
+  "category_label": "국제공공광장/야외조각공원/수변기념공간",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 컨벤시아대로 160 센트럴파크 서측 (송도동)",
+  "postal_code": "21998",
+  "floors": "지상 1층 (원형 분수광장 & 9.5m 게양대 열주 & 야외조각원)",
+  "height_m": 9.5,
+  "architectural_style": "원형 화강석 2단 분수광장 & 반원형 유엔 국기 게양대 열주 & 현대 조형물 군집",
+  "architect": "인천경제자유구역청(IFEZ) & 유신엔지니어링",
+  "coordinates": [
+    126.6385,
+    37.3922
+  ],
+  "orientation_deg": 0.0,
+  "heading": 0.0,
+  "heading_note": "센트럴파크 산책로에서 유엔 분수광장과 조각공원을 정면으로 조망하는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.15,
+  "lod_switch_distance": 220.0,
+  "spec_dimensions_m": {
+    "circular_fountain": {
+      "diameter_m": 20.0,
+      "height_m": 4.8
+    },
+    "flagpole_colonnade": {
+      "radius_m": 14.0,
+      "count": 18,
+      "height_m": 9.5
+    },
+    "sculpture_field": {
+      "width_x_m": 56.0,
+      "depth_z_m": 48.0
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "un_blue_and_metal": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "fountain_and_canal": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "granite_plaza": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "sculptures_and_pines": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.02~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "fountain_pools": 1,
+    "un_flagpoles": 18,
+    "outdoor_sculptures": 4,
+    "curved_benches": 8,
+    "canal_safety_railings": 1,
+    "smart_streetlights": 12,
+    "scots_pines": 16
+  },
+  "sign": {
+    "characters": "송도 센트럴파크 유엔(UN)광장 & 지구촌조각공원",
+    "type": "광장 입구 화강석 비석 위 브론즈/골드 입체 명판",
+    "board_size_m": [
+      4.0,
+      2.0
+    ],
+    "frame": "UN 블루 & 실버 스테인리스 프레임"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_01_21998_017_01",
+      "label": "센트럴파크 화강석 보행광장 & 해수수로 수변 안전난간",
+      "mesh_nodes": [
+        "28185_01_21998_017_01__plaza_and_canal_railing"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21998_017_02",
+      "label": "UN광장 2단 원형 분수대 & 중앙 하이라이트 분수 노즐",
+      "mesh_nodes": [
+        "28185_01_21998_017_02__circular_fountain_pools"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21998_017_03",
+      "label": "유엔 회원국 18기 반원형 국기 게양대 열주 & GCF 기념비",
+      "mesh_nodes": [
+        "28185_01_21998_017_03__flagpoles_colonnade"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21998_017_04",
+      "label": "지구촌 조각공원 4대 현대 조형물 & 소나무 산책로",
+      "mesh_nodes": [
+        "28185_01_21998_017_04__sculptures_and_pines"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3200,
+    "phase_link": "일몰 후 15분 점등 / 24:00 소등 (분수대 수중 RGB 조명 연동)",
+    "spots": [
+      {
+        "id": "night_light_fountain_rgb",
+        "offset_m": [
+          0.0,
+          1.5,
+          -2.0
+        ],
+        "aim": "원형 분수대 수중 LED 투광등"
+      },
+      {
+        "id": "night_light_flagpole_uplight",
+        "offset_m": [
+          0.0,
+          8.0,
+          -16.0
+        ],
+        "aim": "국기 게양대 상향 서치라이트"
+      },
+      {
+        "id": "night_light_sculpture_spot",
+        "offset_m": [
+          -18.0,
+          3.5,
+          4.0
+        ],
+        "aim": "조형물 핀스팟등"
+      },
+      {
+        "id": "night_light_canal_railing",
+        "offset_m": [
+          0.0,
+          1.2,
+          13.0
+        ],
+        "aim": "수변 난간 스텝등"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_fountain_center",
+      "label": "UN광장 중앙 분수대",
+      "offset_m": [
+        0.0,
+        1.6,
+        -2.0
+      ]
+    },
+    {
+      "id": "hotspot_flagpole_plaza",
+      "label": "유엔 깃발 열주대",
+      "offset_m": [
+        0.0,
+        0.6,
+        -14.0
+      ]
+    },
+    {
+      "id": "hotspot_sculpture_loop",
+      "label": "인피니티 루프 조형물",
+      "offset_m": [
+        -18.0,
+        0.8,
+        4.0
+      ]
+    },
+    {
+      "id": "hotspot_memorial_plaque",
+      "label": "UN·GCF 기념 명판",
+      "offset_m": [
+        0.0,
+        0.15,
+        -21.0
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_01_21998_017_01",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "IFEZ 송도 센트럴파크 유엔광장 및 조각공원 안내",
+      "url": "https://www.ifez.go.kr/",
+      "note": "센트럴파크 서측 친수문화광장 및 공공예술작품 배치 현황"
+    },
+    {
+      "title": "연수구청 문화관광 송도 센트럴파크 공공예술 투어",
+      "url": "https://www.yeonsu.go.kr/",
+      "note": "유엔광장 및 지구촌조각공원 12대 현대 조각품 안내"
+    },
+    {
+      "title": "인천시설공단 송도공원사업단 시설물 관리 규격",
+      "url": "https://www.insiseol.or.kr/",
+      "note": "센트럴파크 분수대 및 수변 안전시설물 제원"
+    }
+  ],
+  "reference_note": "IFEZ 센트럴파크 유엔광장 실시설계 도면 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B17 UN Plaza Sculpture Park)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -28.0,
+      0.0,
+      -24.0
+    ],
+    "max": [
+      27.95,
+      9.5,
+      24.0
+    ],
+    "size": [
+      55.95,
+      9.5,
+      48.0
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 11136,
+      "bytes": 1023026
+    },
+    "model_lod2.gltf": {
+      "triangles": 788,
+      "bytes": 67273
+    },
+    "texture_atlas.webp": {
+      "bytes": 126426,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1219725,
+  "anchor_nodes": [
+    "hotspot_fountain_center",
+    "hotspot_flagpole_plaza",
+    "hotspot_sculpture_loop",
+    "hotspot_memorial_plaque",
+    "night_light_fountain_rgb",
+    "night_light_flagpole_uplight",
+    "night_light_sculpture_spot",
+    "night_light_canal_railing"
+  ]
+}

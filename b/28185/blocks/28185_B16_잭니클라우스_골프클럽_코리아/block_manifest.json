@@ -1,0 +1,303 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B16",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B16",
+  "pr_number": 477,
+  "pr_number_assigned": 477,
+  "block_number": 16,
+  "composite_id": "28185_02_21987_016",
+  "block_id": "28185_B16_잭니클라우스_골프클럽_코리아",
+  "name": "잭니클라우스 골프클럽 코리아 클럽하우스 & 코스",
+  "name_en": "Jack Nicklaus Golf Club Korea Clubhouse & Championship Course",
+  "category": "CAT52_GOLF_SPORTS_RESORT",
+  "category_label": "국제골프클럽/클럽하우스/스포츠시설",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 아카데미로 209 (송도동)",
+  "postal_code": "21987",
+  "floors": "지하 1층 ~ 지상 2층 (유기적 아연 곡면 쉘 루프)",
+  "height_m": 16.5,
+  "architectural_style": "메흐라드 하디기 설계 유기적 티타늄 아연판 쉘 지붕 & 글래스 파빌리온",
+  "architect": "메흐라드 하디기 (Mehrdad Hadighi) & 삼우종합건축",
+  "coordinates": [
+    126.6342,
+    37.3888
+  ],
+  "orientation_deg": 0.0,
+  "heading": 0.0,
+  "heading_note": "18번 홀 그린에서 클럽하우스와 서해 페어웨이를 조망하는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.15,
+  "lod_switch_distance": 220.0,
+  "spec_dimensions_m": {
+    "clubhouse": {
+      "width_x_m": 44.0,
+      "depth_z_m": 24.0,
+      "height_m": 16.5
+    },
+    "championship_green": {
+      "width_x_m": 56.0,
+      "depth_z_m": 48.0
+    },
+    "water_hazard": {
+      "width_x_m": 20.0,
+      "depth_z_m": 16.0
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "zinc_roof": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "fairway_and_water": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "bunker_and_glass": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "cart_path_and_pines": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.02~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "clubhouse_wings": 1,
+    "putting_greens": 1,
+    "sand_bunkers": 1,
+    "golf_carts": 4,
+    "scots_pines": 16,
+    "exterior_lights": 10
+  },
+  "sign": {
+    "characters": "잭니클라우스 골프클럽 코리아 (JACK NICKLAUS GOLF CLUB KOREA)",
+    "type": "클럽하우스 정문 화강석 비석 위 프레지던츠컵 기념 황동 명판",
+    "board_size_m": [
+      3.5,
+      1.8
+    ],
+    "frame": "브리티시 그린 & 골드 프레임"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_02_21987_016_01",
+      "label": "잭니클라우스 골프클럽 18홀 챔피언십 그린 & 벙커·워터해저드",
+      "mesh_nodes": [
+        "28185_02_21987_016_01__course_green_and_bunker"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_02_21987_016_02",
+      "label": "메흐라드 하디기 설계 유기적 티타늄 아연판 지붕 쉘 클럽하우스",
+      "mesh_nodes": [
+        "28185_02_21987_016_02__organic_clubhouse_building"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_02_21987_016_03",
+      "label": "코스 파노라마 글래스 라운지 & 포치(Porte-cochere) 캐노피",
+      "mesh_nodes": [
+        "28185_02_21987_016_03__glass_lounge_and_canopy"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_02_21987_016_04",
+      "label": "골프 카트 스테이징 도로망 & 곰솔 소나무 조경림",
+      "mesh_nodes": [
+        "28185_02_21987_016_04__cart_path_and_pines"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3200,
+    "phase_link": "일몰 후 15분 점등 / 23:00 소등 (프라이빗 멤버스 클럽 특화)",
+    "spots": [
+      {
+        "id": "night_light_zinc_roof_uplight",
+        "offset_m": [
+          0.0,
+          15.0,
+          -8.0
+        ],
+        "aim": "아연판 곡면 지붕 상향 투광등"
+      },
+      {
+        "id": "night_light_porte_cochere",
+        "offset_m": [
+          -23.0,
+          5.5,
+          -8.0
+        ],
+        "aim": "현관 드롭오프 캐노피 조명"
+      },
+      {
+        "id": "night_light_putting_green",
+        "offset_m": [
+          2.0,
+          3.0,
+          14.0
+        ],
+        "aim": "그린 연습장 핀스팟등"
+      },
+      {
+        "id": "night_light_entrance_sign",
+        "offset_m": [
+          -25.0,
+          2.0,
+          -14.0
+        ],
+        "aim": "기념비 명판 조명"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_clubhouse_lounge",
+      "label": "클럽하우스 파노라마 라운지",
+      "offset_m": [
+        0.0,
+        7.5,
+        0.0
+      ]
+    },
+    {
+      "id": "hotspot_18th_green",
+      "label": "18번 홀 그린 및 핀",
+      "offset_m": [
+        2.0,
+        0.3,
+        14.0
+      ]
+    },
+    {
+      "id": "hotspot_porte_cochere",
+      "label": "VIP 드롭오프 현관",
+      "offset_m": [
+        -23.0,
+        0.15,
+        -8.0
+      ]
+    },
+    {
+      "id": "hotspot_commemorative_plaque",
+      "label": "프레지던츠컵 기념비",
+      "offset_m": [
+        -25.0,
+        0.15,
+        -14.0
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_02_21987_016_01",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "잭니클라우스 골프클럽 코리아 공식 사이트 코스 및 클럽하우스 제원",
+      "url": "https://www.jacknicklausgolfclubkorea.com/",
+      "note": "PGA 투어 규격 18홀 챔피언십 코스 및 클럽하우스 건축 제원"
+    },
+    {
+      "title": "IFEZ 인천경제자유구역청 송도 스포츠레저 관광 인프라",
+      "url": "https://www.ifez.go.kr/",
+      "note": "송도 국제업무단지 잭니클라우스 골프클럽 인허가 제원"
+    },
+    {
+      "title": "대한골프협회(KGA) 공인 코스 레이팅 및 프레지던츠컵 경기장 안내",
+      "url": "https://www.kgagolf.or.kr/",
+      "note": "2015 아시아 최초 프레지던츠컵 대회 공식 개최 코스"
+    }
+  ],
+  "reference_note": "잭니클라우스 골프클럽 코리아 및 삼우건축 공식 도면 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B16 Jack Nicklaus Golf Club)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -28.0,
+      0.0,
+      -24.0
+    ],
+    "max": [
+      27.95,
+      16.5,
+      23.95
+    ],
+    "size": [
+      55.95,
+      16.5,
+      47.95
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 10220,
+      "bytes": 976975
+    },
+    "model_lod2.gltf": {
+      "triangles": 456,
+      "bytes": 46272
+    },
+    "texture_atlas.webp": {
+      "bytes": 152686,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1178933,
+  "anchor_nodes": [
+    "hotspot_clubhouse_lounge",
+    "hotspot_18th_green",
+    "hotspot_porte_cochere",
+    "hotspot_commemorative_plaque",
+    "night_light_zinc_roof_uplight",
+    "night_light_porte_cochere",
+    "night_light_putting_green",
+    "night_light_entrance_sign"
+  ]
+}

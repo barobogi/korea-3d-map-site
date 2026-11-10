@@ -1,0 +1,376 @@
+{
+  "schema_version": "2.1_songpa_spec117_B09",
+  "spec_ref": "TASK_REQUEST_PIMANG_SEOUL_SONGPA_50BLOCKS.md §1~§4 (Issue #411) / 117호 블록 장착 규약 v1",
+  "task_slot_id": "11710-B09",
+  "pr_number": 420,
+  "pr_number_assigned": 419,
+  "block_number": 9,
+  "composite_id": "11710_01_05502_008",
+  "block_id": "11710_B09_galleria_palace_lottecastle_gold",
+  "name": "잠실 갤러리아팰리스 & 롯데캐슬골드 트윈타워",
+  "name_en": "galleria-palace-lottecastle-gold",
+  "category": "CAT09_RESIDENTIAL_TWIN",
+  "category_label": "주거/트윈타워",
+  "district": "서울특별시 송파구",
+  "road_address": "서울특별시 송파구 올림픽로 212 (잠실동)",
+  "address_note": "도로명주소·우편번호는 공개 자료 기준이며, 검수 시 도로명주소 안내에서 재확인한다.",
+  "postal_code": "05502",
+  "heritage": {
+    "designation": "해당 없음",
+    "name": "갤러리아팰리스·롯데캐슬골드",
+    "note": "잠실역 북측에 나란히 선 고층 주상복합 트윈타워군.",
+    "manager": "갤러리아팰리스 / 롯데건설"
+  },
+  "coordinates": [
+    127.1057,
+    37.5165
+  ],
+  "orientation_deg": 180.0,
+  "heading": 180.0,
+  "heading_note": "정면축을 기준으로 한 연출값이며, 정밀실측 대조 전까지는 연출 기준값으로 취급한다.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 1.0,
+  "lod_switch_distance": 200.0,
+  "spec_dimensions_m": {
+    "palace_tower": {
+      "width_x": 30.0,
+      "depth_z": 26.0,
+      "height_y": 118.0,
+      "floors": 30,
+      "note": "갤러리아팰리스(연출 기준값)"
+    },
+    "lotte_castle_gold": {
+      "width_x": 26.0,
+      "height_y": 104.0
+    },
+    "podium": {
+      "width_x": 20.0,
+      "height_y": 12.0
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q86",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "granite_stone": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "wall_masonry": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "roof_tile": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "sign_plaque": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ],
+        "sub_plaque": [
+          0.02,
+          0.02,
+          0.96,
+          0.44
+        ],
+        "sub_door_hongchil": [
+          0.02,
+          0.5,
+          0.44,
+          0.46
+        ],
+        "sub_gold_frame": [
+          0.5,
+          0.5,
+          0.46,
+          0.22
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 내부 0.04~0.48 창을 주기 반복하며, 간판·문은 부분영역 정확 UV(1:1)이다."
+  },
+  "detail_counts": {
+    "massing_units": 3,
+    "towers": 2,
+    "households": 560
+  },
+  "sign": {
+    "characters": "갤러리아팰리스",
+    "type": "가로형 7자",
+    "board_size_m": [
+      8.0,
+      2.4
+    ],
+    "frame": "이중 금속 테두리 + 옻칠 바탕 + 3D 양각"
+  },
+  "hierarchical_components": [
+    {
+      "id": "11710_01_05502_008_01",
+      "label": "기단·지면 판석·포장",
+      "mesh_nodes": [
+        "11710_01_05502_008_01__plinth_ground_base"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11710_01_05502_008_02",
+      "label": "본체 매스·창렬·파사드",
+      "mesh_nodes": [
+        "11710_01_05502_008_02__mass_body_facade"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11710_01_05502_008_03",
+      "label": "지붕·데크·옥상 구조",
+      "mesh_nodes": [
+        "11710_01_05502_008_03__roof_deck_structure",
+        "11710_01_05502_008_03__roof_metal_ornament"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11710_01_05502_008_04",
+      "label": "표지 3D 양각·금테",
+      "mesh_nodes": [
+        "11710_01_05502_008_04__sign_board",
+        "11710_01_05502_008_04__sign_gold_frame",
+        "11710_01_05502_008_04__sign_yanggak_emboss"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11710_01_05502_008_05",
+      "label": "창호·출입문·철물",
+      "mesh_nodes": [
+        "11710_01_05502_008_05__window_sash_glass",
+        "11710_01_05502_008_05__door_hardware_iron"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11710_01_05502_008_06",
+      "label": "조경·가로시설",
+      "mesh_nodes": [
+        "11710_01_05502_008_06__landscape_greenery"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3000,
+    "phase_link": "일몰 후 30분 점등 / 23:00 소등",
+    "spots": [
+      {
+        "id": "night_light_spotlight_SE_3000K",
+        "offset_m": [
+          30.0,
+          0.9,
+          31.0
+        ],
+        "aim": "남동 파사드 상향"
+      },
+      {
+        "id": "night_light_spotlight_SW_3000K",
+        "offset_m": [
+          -30.0,
+          0.9,
+          31.0
+        ],
+        "aim": "남서 파사드 상향"
+      },
+      {
+        "id": "night_light_spotlight_NE_3000K",
+        "offset_m": [
+          30.0,
+          0.9,
+          -31.0
+        ],
+        "aim": "배면 북동 조사"
+      },
+      {
+        "id": "night_light_spotlight_NW_3000K",
+        "offset_m": [
+          -30.0,
+          0.9,
+          -31.0
+        ],
+        "aim": "배면 북서 조사"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_main_entrance_dive",
+      "label": "갤러리아팰리스 정면 진입",
+      "offset_m": [
+        0.0,
+        1.7,
+        28.0
+      ]
+    },
+    {
+      "id": "hotspot_sign_closeup",
+      "label": "표지 GALLERIA 양각 근접",
+      "offset_m": [
+        0.0,
+        83.3,
+        19.599999999999998
+      ]
+    },
+    {
+      "id": "hotspot_facade_upview",
+      "label": "파사드 올려보기",
+      "offset_m": [
+        0.0,
+        65.5,
+        21.0
+      ]
+    },
+    {
+      "id": "hotspot_roof_overlook",
+      "label": "상부·옥상 조망",
+      "offset_m": [
+        0.0,
+        119.6,
+        0.0
+      ]
+    },
+    {
+      "id": "hotspot_side_passage",
+      "label": "측면 통로",
+      "offset_m": [
+        8.0,
+        1.7,
+        0.0
+      ]
+    }
+  ],
+  "key_expansion_rule": "11710_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 11710_01_05502_008_03",
+  "lod_budget": {
+    "lod3_triangles": [
+      11000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "서울특별시 송파구 — 공식 포털(구정·명소 안내)",
+      "url": "https://www.songpa.go.kr/",
+      "note": "시설 소재지·운영 정보 대조"
+    },
+    {
+      "title": "서울특별시 — 도로명주소·도시계획 안내",
+      "url": "https://www.seoul.go.kr/",
+      "note": "도로명주소·지구단위계획 대조"
+    },
+    {
+      "title": "국가유산포털 — 지정문화재 원문 포털",
+      "url": "https://www.heritage.go.kr/",
+      "note": "국가유산청 지정·관리 정보 원문"
+    },
+    {
+      "title": "한국민족문화대백과 — 서울 송파 지역 유적",
+      "url": "https://encykorea.aks.ac.kr/",
+      "note": "역사·형식 대조"
+    },
+    {
+      "title": "한국관광공사 — 송파권 관광·문화 자원",
+      "url": "https://kto.visitkorea.or.kr/",
+      "note": "운영·이용 정보 대조"
+    }
+  ],
+  "reference_note": "포털 루트 주소이며, 검수 시 각 포털에서 해당 항목으로 진입해 치수·지정정보를 재확인한다.",
+  "generation": {
+    "generator": "pimang songpa galleria-palace-lottecastle-gold parametric builder (workspace-side)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "생성 스크립트·임시파일은 저장소에 포함되지 않는다. PR에는 위 4종 에셋만 반영."
+  },
+  "bbox_local_m": {
+    "min": [
+      -59.975,
+      0.0,
+      -46.575
+    ],
+    "max": [
+      59.975,
+      120.8,
+      49.375
+    ],
+    "size": [
+      119.95,
+      120.8,
+      95.95
+    ],
+    "core_min": [
+      -59.975,
+      0.0,
+      -46.575
+    ],
+    "core_max": [
+      59.975,
+      120.8,
+      49.375
+    ],
+    "note": "min/max는 LOD3 실측 바운딩박스, core는 본체 범위다."
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 11852,
+      "vertices": 16684,
+      "bytes": 912290
+    },
+    "model_lod2.gltf": {
+      "triangles": 434,
+      "vertices": 676,
+      "bytes": 42840
+    },
+    "texture_atlas.webp": {
+      "bytes": 106230,
+      "size_px": 1024,
+      "format": "webp_lossy_q86"
+    }
+  },
+  "package_total_bytes": 1061360,
+  "anchor_nodes": [
+    "night_light_spotlight_SE_3000K",
+    "night_light_spotlight_SW_3000K",
+    "night_light_spotlight_NE_3000K",
+    "night_light_spotlight_NW_3000K",
+    "hotspot_main_entrance_dive",
+    "hotspot_sign_closeup",
+    "hotspot_facade_upview",
+    "hotspot_roof_overlook",
+    "hotspot_side_passage"
+  ]
+}

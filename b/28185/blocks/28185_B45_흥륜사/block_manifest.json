@@ -1,0 +1,300 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B45",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B45",
+  "pr_number": 506,
+  "pr_number_assigned": 506,
+  "block_number": 45,
+  "composite_id": "28185_01_21948_045",
+  "block_id": "28185_B45_흥륜사",
+  "name": "청량산 흥륜사 대웅전 & 정토원 청동대불 미륵존불",
+  "name_en": "Heungryunsa Temple & Maitreya Buddha",
+  "category": "CAT21_BUDDHIST_HERITAGE",
+  "category_label": "전통사찰/천년고찰/청동대불미륵존불",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 청량로70번길 40-17 (옥련동)",
+  "postal_code": "21948",
+  "floors": "단층 (높이 15.0m 청동미륵대불 및 높이 12.5m 대웅보전)",
+  "height_m": 15.0,
+  "architectural_style": "고려 나옹화상 창건 고려·조선 전통 사찰 목조 팔작지붕 및 청동대불",
+  "architect": "나옹선사(창건) 및 전통건축보수단 & 대불조각연구원",
+  "coordinates": [
+    126.6575,
+    37.4248
+  ],
+  "orientation_deg": 0.0,
+  "heading": 0.0,
+  "heading_note": "청량산 진입로에서 흥륜사 대웅보전과 청동대불을 조망하는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.15,
+  "lod_switch_distance": 220.0,
+  "spec_dimensions_m": {
+    "bronze_buddha": {
+      "width_x_m": 12.0,
+      "depth_z_m": 12.0,
+      "height_m": 15.0
+    },
+    "daewoongjeon": {
+      "width_x_m": 26.0,
+      "depth_z_m": 22.0,
+      "height_m": 12.5
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "roof_giwa": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "dancheong_and_lawn": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "granite_steps": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "bronze_buddha_and_trees": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.02~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "main_halls": 1,
+    "great_buddhas": 1,
+    "bell_pavilions": 1,
+    "steps_series": 8,
+    "campus_trees": 16,
+    "temple_lanterns": 8
+  },
+  "sign": {
+    "characters": "청량산 흥륜사 (淸凉山 興輪寺)",
+    "type": "사찰 일주문 앞 화강석 사적비 및 황동 입체 명판",
+    "board_size_m": [
+      3.6,
+      1.8
+    ],
+    "frame": "화강석 & 황동 헤어라인 프레임"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_01_21948_045_01",
+      "label": "정토원 동양 최대 청동 아미타대불 / 미륵존불 15.0m",
+      "mesh_nodes": [
+        "28185_01_21948_045_01__bronze_buddha"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21948_045_02",
+      "label": "흥륜사 대웅보전 팔작지붕 전통 목조 금당",
+      "mesh_nodes": [
+        "28185_01_21948_045_02__daewoongjeon"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21948_045_03",
+      "label": "흥륜사 범종각 및 108 석조 참회 계단",
+      "mesh_nodes": [
+        "28185_01_21948_045_03__bell_and_steps"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21948_045_04",
+      "label": "청량산 솔숲 & 석등·사찰 등롱·일주문 명판",
+      "mesh_nodes": [
+        "28185_01_21948_045_04__garden_and_monument"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3000,
+    "phase_link": "일몰 후 15분 점등 / 23:00 소등 (사찰 경관조명 연동)",
+    "spots": [
+      {
+        "id": "night_light_buddha_halo",
+        "offset_m": [
+          14.0,
+          15.0,
+          -8.0
+        ],
+        "aim": "청동대불 광배 및 상반신 황금빛 투광등"
+      },
+      {
+        "id": "night_light_daewoongjeon",
+        "offset_m": [
+          -13.0,
+          6.5,
+          -1.0
+        ],
+        "aim": "대웅보전 기와 처마선 상향 조명"
+      },
+      {
+        "id": "night_light_stone_steps",
+        "offset_m": [
+          0.0,
+          1.5,
+          12.0
+        ],
+        "aim": "108 계단길 은은한 유도등"
+      },
+      {
+        "id": "night_light_gate_monument",
+        "offset_m": [
+          -15.5,
+          2.5,
+          3.1
+        ],
+        "aim": "일주문 사적비 조명"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_buddha_plaza",
+      "label": "청동대불 미륵존불 앞 참배단",
+      "offset_m": [
+        14.0,
+        0.15,
+        -1.0
+      ]
+    },
+    {
+      "id": "hotspot_daewoongjeon_lobby",
+      "label": "흥륜사 대웅보전",
+      "offset_m": [
+        -13.0,
+        1.2,
+        -11.0
+      ]
+    },
+    {
+      "id": "hotspot_108_steps",
+      "label": "108 계단길",
+      "offset_m": [
+        0.0,
+        0.15,
+        12.0
+      ]
+    },
+    {
+      "id": "hotspot_temple_main_gate",
+      "label": "흥륜사 일주문",
+      "offset_m": [
+        -15.5,
+        0.15,
+        3.1
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_01_21948_045_01",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "청량산 흥륜사 공식 사이트 사찰 소개 및 역사",
+      "url": "http://www.heungryunsa.com/",
+      "note": "청량로70번길 40-17 흥륜사 창건 연혁, 청동대불 및 전각 제원"
+    },
+    {
+      "title": "인천광역시 연수구청 문화관광 전통사찰 안내",
+      "url": "https://www.yeonsu.go.kr/",
+      "note": "청량산 흥륜사 전통사찰 등록 및 문화재 현황"
+    },
+    {
+      "title": "대한불교조계종 사찰문화연구원 흥륜사 실측조사 보고서",
+      "url": "http://www.buddhism.or.kr/",
+      "note": "대웅보전 및 미륵존불 불상 실측도면 데이터"
+    }
+  ],
+  "reference_note": "흥륜사 실측도면 및 불상 제원 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B45 Heungryunsa)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -28.0,
+      0.0,
+      -24.6
+    ],
+    "max": [
+      27.95,
+      15.0,
+      24.6
+    ],
+    "size": [
+      55.95,
+      15.0,
+      49.2
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 10776,
+      "bytes": 1040816
+    },
+    "model_lod2.gltf": {
+      "triangles": 456,
+      "bytes": 44215
+    },
+    "texture_atlas.webp": {
+      "bytes": 163186,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1251217,
+  "anchor_nodes": [
+    "hotspot_buddha_plaza",
+    "hotspot_daewoongjeon_lobby",
+    "hotspot_108_steps",
+    "hotspot_temple_main_gate",
+    "night_light_buddha_halo",
+    "night_light_daewoongjeon",
+    "night_light_stone_steps",
+    "night_light_gate_monument"
+  ]
+}

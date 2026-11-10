@@ -1,0 +1,300 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B43",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B43",
+  "pr_number": 504,
+  "pr_number_assigned": 504,
+  "block_number": 43,
+  "composite_id": "28185_01_21948_043",
+  "block_id": "28185_B43_인천상륙작전기념관",
+  "name": "청량산 인천상륙작전기념관 & 자유수호탑 조형물",
+  "name_en": "Incheon Landing Operation Memorial Hall & Freedom Tower",
+  "category": "CAT22_MEMORIAL_PARK",
+  "category_label": "호국기념관/자유수호탑/김수근건축작품",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 청량로 138 (옥련동)",
+  "postal_code": "21948",
+  "floors": "지상 2층 (높이 25.0m 자유수호탑 및 노출 콘크리트 성채형 기념관 본관)",
+  "height_m": 25.0,
+  "architectural_style": "김수근 건축가 설계의 기념비적 노출 콘크리트 성채 양식 및 오벨리스크 탑",
+  "architect": "김수근 (공간건축연구소) & 대림산업",
+  "coordinates": [
+    126.6612,
+    37.4208
+  ],
+  "orientation_deg": 0.0,
+  "heading": 0.0,
+  "heading_note": "청량로 주진입로에서 자유수호탑과 기념관 중앙 계단을 정면으로 조망하는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.15,
+  "lod_switch_distance": 220.0,
+  "spec_dimensions_m": {
+    "freedom_tower": {
+      "width_x_m": 8.0,
+      "depth_z_m": 8.0,
+      "height_m": 25.0
+    },
+    "memorial_hall": {
+      "width_x_m": 48.0,
+      "depth_z_m": 24.0,
+      "height_m": 16.5
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "concrete_wall": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "military_and_lawn": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "stepped_granite": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "freedom_tower_and_trees": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.02~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "memorial_towers": 1,
+    "fortress_wings": 2,
+    "grand_steps": 8,
+    "outdoor_exhibits": 2,
+    "campus_trees": 16,
+    "smart_streetlights": 10
+  },
+  "sign": {
+    "characters": "인천상륙작전기념관 (INCHEON LANDING OPERATION MEMORIAL HALL)",
+    "type": "기념관 정문 화강석 문주 위 황동 입체 명판",
+    "board_size_m": [
+      4.0,
+      1.8
+    ],
+    "frame": "화강석 & 황동 헤어라인 프레임"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_01_21948_043_01",
+      "label": "자유수호탑 25.0m 상징 오벨리스크 주탑",
+      "mesh_nodes": [
+        "28185_01_21948_043_01__freedom_tower"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21948_043_02",
+      "label": "김수근 건축 성채형 노출 콘크리트 기념관 테라스 본관",
+      "mesh_nodes": [
+        "28185_01_21948_043_02__memorial_hall"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21948_043_03",
+      "label": "상륙작전 전승 야외무기전시장 및 LVT 수륙양용장갑차 전시대",
+      "mesh_nodes": [
+        "28185_01_21948_043_03__exhibits"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21948_043_04",
+      "label": "청량산 중앙 대계단 & 조경수목·가로등·기념관 명판",
+      "mesh_nodes": [
+        "28185_01_21948_043_04__steps_and_monument"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 4500,
+    "phase_link": "일몰 후 15분 점등 / 24:00 소등 (호국기념관 조명 연동)",
+    "spots": [
+      {
+        "id": "night_light_freedom_tower",
+        "offset_m": [
+          0.0,
+          25.0,
+          -15.0
+        ],
+        "aim": "자유수호탑 정상부 상향 투광등"
+      },
+      {
+        "id": "night_light_grand_steps",
+        "offset_m": [
+          0.0,
+          2.5,
+          -4.0
+        ],
+        "aim": "중앙 대계단 축선 경관조명"
+      },
+      {
+        "id": "night_light_exhibit_plaza",
+        "offset_m": [
+          0.0,
+          1.2,
+          14.0
+        ],
+        "aim": "야외전시장 무기 전시대 조명"
+      },
+      {
+        "id": "night_light_gate_monument",
+        "offset_m": [
+          -15.5,
+          2.5,
+          3.1
+        ],
+        "aim": "기념관 문주 명판 조명"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_freedom_tower_base",
+      "label": "자유수호탑 헌화대",
+      "offset_m": [
+        0.0,
+        2.5,
+        -15.0
+      ]
+    },
+    {
+      "id": "hotspot_memorial_hall_lobby",
+      "label": "기념관 제1·2전시관 로비",
+      "offset_m": [
+        12.0,
+        0.15,
+        -8.0
+      ]
+    },
+    {
+      "id": "hotspot_lvt_exhibit",
+      "label": "LVT 수륙양용장갑차 전시장",
+      "offset_m": [
+        -12.0,
+        1.2,
+        13.0
+      ]
+    },
+    {
+      "id": "hotspot_memorial_main_gate",
+      "label": "인천상륙작전기념관 정문",
+      "offset_m": [
+        -15.5,
+        0.15,
+        3.1
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_01_21948_043_01",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "인천상륙작전기념관 공식 사이트 기념관 시설안내",
+      "url": "https://www.landing915.com/",
+      "note": "청량로 138 기념관 제원, 자유수호탑 및 야외전시장 데이터"
+    },
+    {
+      "title": "인천광역시 공식 문화관광 호국기념관 안내",
+      "url": "https://www.incheon.go.kr/",
+      "note": "청량산 옥련동 인천상륙작전기념관 인허가 및 공원 정보"
+    },
+    {
+      "title": "공간건축연구소 김수근 건축 아카이브 인천상륙작전기념관",
+      "url": "https://www.spacea.com/",
+      "note": "김수근 건축가의 성채형 노출 콘크리트 실시설계 데이터"
+    }
+  ],
+  "reference_note": "공간건축연구소 준공도면 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B43 Incheon Landing Memorial)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -28.0,
+      0.0,
+      -24.6
+    ],
+    "max": [
+      27.95,
+      25.0,
+      24.6
+    ],
+    "size": [
+      55.95,
+      25.0,
+      49.2
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 10832,
+      "bytes": 1050261
+    },
+    "model_lod2.gltf": {
+      "triangles": 372,
+      "bytes": 39812
+    },
+    "texture_atlas.webp": {
+      "bytes": 171958,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1265031,
+  "anchor_nodes": [
+    "hotspot_freedom_tower_base",
+    "hotspot_memorial_hall_lobby",
+    "hotspot_lvt_exhibit",
+    "hotspot_memorial_main_gate",
+    "night_light_freedom_tower",
+    "night_light_grand_steps",
+    "night_light_exhibit_plaza",
+    "night_light_gate_monument"
+  ]
+}

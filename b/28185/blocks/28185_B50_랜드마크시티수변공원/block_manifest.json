@@ -1,0 +1,299 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B50",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B50",
+  "pr_number": 511,
+  "pr_number_assigned": 511,
+  "block_number": 50,
+  "composite_id": "28185_01_22015_050",
+  "block_id": "28185_B50_랜드마크시티수변공원",
+  "name": "송도 랜드마크시티 8공구 해안수변공원 갈대숲 산책로",
+  "name_en": "Songdo Landmark City Coastal Reed Wetland Park & Sunset Observation Deck",
+  "category": "CAT12_WATERFRONT_PARK",
+  "category_label": "해안생태공원/갈대습지산책로/선셋전망타워/50호완결작",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 송도동 313 (랜드마크로)",
+  "postal_code": "22015",
+  "floors": "지상 3층 (높이 16.5m 나선형 선셋 전망타워 및 갈대습지 보행데크)",
+  "height_m": 16.5,
+  "architectural_style": "화이트 스틸 나선형 선셋 전망타워 및 서해 갯벌 생태 갈대숲 보행로",
+  "architect": "인천경제자유구역청(IFEZ) & 대우건설",
+  "coordinates": [
+    126.6212,
+    37.4085
+  ],
+  "orientation_deg": 0.0,
+  "heading": 0.0,
+  "heading_note": "갈대숲 목재 보행데크에서 선셋 전망타워와 서해 낙조를 조망하는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.15,
+  "lod_switch_distance": 220.0,
+  "spec_dimensions_m": {
+    "vista_tower": {
+      "width_x_m": 14.0,
+      "depth_z_m": 14.0,
+      "height_m": 16.5
+    },
+    "reed_wetland": {
+      "width_x_m": 26.0,
+      "depth_z_m": 22.0,
+      "height_m": 1.8
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "curtain_wall": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "reeds_and_lawn": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "sea_water": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "sunset_and_trees": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.02~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "vista_towers": 1,
+    "boardwalk_series": 2,
+    "reed_clusters": 16,
+    "campus_trees": 16,
+    "smart_streetlights": 10
+  },
+  "sign": {
+    "characters": "LANDMARK CITY WATERFRONT (송도 랜드마크시티 수변공원)",
+    "type": "공원 주진입로 화강석 문주 위 선셋 골드/화이트 입체 명판",
+    "board_size_m": [
+      4.0,
+      1.8
+    ],
+    "frame": "내후성 강재 & 스테인리스 스틸 헤어라인 프레임"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_01_22015_050_01",
+      "label": "송도 8공구 16.5m 나선형 선셋 스파이럴 전망타워",
+      "mesh_nodes": [
+        "28185_01_22015_050_01__vista_tower"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_22015_050_02",
+      "label": "서해 갯벌 52m 친환경 목재 갈대숲 생태 보행데크",
+      "mesh_nodes": [
+        "28185_01_22015_050_02__wetland_boardwalk"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_22015_050_03",
+      "label": "해안 수변공원 호안 및 서해 바다 낙조 수면",
+      "mesh_nodes": [
+        "28185_01_22015_050_03__waterfront_basin"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_22015_050_04",
+      "label": "해안 곰솔 조경림 & 갈대 군락·가로등·공원 명판",
+      "mesh_nodes": [
+        "28185_01_22015_050_04__reeds_and_monument"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3200,
+    "phase_link": "일몰 후 15분 점등 / 24:00 소등 (해안생태공원 연동)",
+    "spots": [
+      {
+        "id": "night_light_vista_crown",
+        "offset_m": [
+          13.0,
+          16.5,
+          -9.0
+        ],
+        "aim": "전망타워 최정상 골드 루프 간접조명"
+      },
+      {
+        "id": "night_light_spiral_shaft",
+        "offset_m": [
+          13.0,
+          8.5,
+          -9.0
+        ],
+        "aim": "전망타워 나선형 보이드 상향 투광등"
+      },
+      {
+        "id": "night_light_boardwalk_steps",
+        "offset_m": [
+          -10.0,
+          0.55,
+          -4.0
+        ],
+        "aim": "목재 보행데크 스텝라이트"
+      },
+      {
+        "id": "night_light_gate_monument",
+        "offset_m": [
+          -15.5,
+          2.5,
+          3.1
+        ],
+        "aim": "공원 문주 명판 조명"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_vista_tower_deck",
+      "label": "선셋 전망대 루프탑",
+      "offset_m": [
+        13.0,
+        13.5,
+        -9.0
+      ]
+    },
+    {
+      "id": "hotspot_reed_boardwalk",
+      "label": "갈대숲 생태탐방로",
+      "offset_m": [
+        -10.0,
+        0.55,
+        -4.0
+      ]
+    },
+    {
+      "id": "hotspot_waterfront_seawall",
+      "label": "서해 일몰 조망대",
+      "offset_m": [
+        0.0,
+        0.2,
+        16.0
+      ]
+    },
+    {
+      "id": "hotspot_park_main_gate",
+      "label": "랜드마크시티 수변공원 정문",
+      "offset_m": [
+        -15.5,
+        0.15,
+        3.1
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_01_22015_050_01",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "IFEZ 인천경제자유구역청 송도 8공구 랜드마크시티 수변공원 계획",
+      "url": "https://www.ifez.go.kr/",
+      "note": "송도동 313번지 해안수변공원 1단계 및 전망타워 준공 제원"
+    },
+    {
+      "title": "인천광역시 공식 문화관광 서해낙조 명소 안내",
+      "url": "https://www.incheon.go.kr/",
+      "note": "송도 랜드마크시티 갈대습지 및 인천대교 선셋 뷰포인트"
+    },
+    {
+      "title": "대우건설 송도 랜드마크시티 수변공원 시공 보고서",
+      "url": "https://www.daewooenc.com/",
+      "note": "나선형 선셋 전망타워 및 친환경 목재 보행데크 실시설계 데이터"
+    }
+  ],
+  "reference_note": "IFEZ 및 대우건설 준공도면 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B50 Songdo Landmark City Waterfront Park)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다. 50대 전수 완주 달성!"
+  },
+  "bbox_local_m": {
+    "min": [
+      -28.0,
+      0.0,
+      -24.6
+    ],
+    "max": [
+      28.0,
+      16.5,
+      24.0
+    ],
+    "size": [
+      56.0,
+      16.5,
+      48.6
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 11028,
+      "bytes": 1056130
+    },
+    "model_lod2.gltf": {
+      "triangles": 444,
+      "bytes": 42990
+    },
+    "texture_atlas.webp": {
+      "bytes": 85036,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1187156,
+  "anchor_nodes": [
+    "hotspot_vista_tower_deck",
+    "hotspot_reed_boardwalk",
+    "hotspot_waterfront_seawall",
+    "hotspot_park_main_gate",
+    "night_light_vista_crown",
+    "night_light_spiral_shaft",
+    "night_light_boardwalk_steps",
+    "night_light_gate_monument"
+  ]
+}

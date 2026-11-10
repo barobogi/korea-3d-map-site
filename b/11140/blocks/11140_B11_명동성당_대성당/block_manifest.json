@@ -1,0 +1,423 @@
+{
+  "schema_version": "2.1_junggu_spec117_B11",
+  "spec_ref": "TASK_REQUEST_20261108_JUNGGU_LEGO_50BLOCKS.md §1~§3 / 117호 블록 장착 규약 v1",
+  "task_slot_id": "11140-B11",
+  "pr_number": 319,
+  "pr_number_assigned": 317,
+  "block_number": 11,
+  "composite_id": "11140_02_04519_010",
+  "block_id": "11140_B11_명동성당_대성당",
+  "name": "명동성당 대성당",
+  "name_en": "Myeongdong Cathedral (Seoul Archdiocese), Seoul",
+  "category": "CAT13_RELIGIOUS_GOTHIC_CATHEDRAL",
+  "category_label": "종교유적/고딕성당",
+  "district": "서울특별시 중구",
+  "road_address": "서울특별시 중구 명동길 74 (명동 3-1)",
+  "postal_code": "04536",
+  "heritage": {
+    "designation": "사적",
+    "number": 258,
+    "name": "서울 명동성당 (사적 제258호로 통용)",
+    "designated_on_note": "지정 연도는 국가유산청 고시 원문 대조 전까지 확정하지 않는다. 지정번호(258)는 통용 표기이며 원문 대조를 요청한다.",
+    "history_note": "1898년 허브(Herve) 신부 설계로 봉헌된 한국 최초의 벽돌 고딕 성당",
+    "manager": "서울대교구 명동성당 / 국가유산청"
+  },
+  "coordinates": [
+    126.9872,
+    37.5632
+  ],
+  "orientation_deg": 180.0,
+  "heading": 180.0,
+  "heading_note": "정면 쌍첨탑과 장미창이 남측(명동길 방향)을 향하는 것으로 잡은 연출값이다. 실제 축은 명동길 선형에 따라 수 도(度) 어긋날 수 있으며, 정밀실측 대조 전까지는 연출 기준값이다.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "성당 마당 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.9,
+  "lod_switch_distance": 240.0,
+  "spec_dimensions_m": {
+    "nave": {
+      "width_x": 46.0,
+      "depth_z": 18.0,
+      "plinth_y": 0.9,
+      "wall_top_y": 10.5,
+      "ridge_y": 17.0,
+      "type": "라틴 십자형 3량식 본당",
+      "note": "회색 벽돌 고딕 리바이벌. 정면·배면 박공벽 10단 계단식 조적."
+    },
+    "twin_towers": {
+      "tower_size_m": [
+        6.0,
+        6.0
+      ],
+      "body_top_y": 16.8,
+      "spire_top_y": 25.4,
+      "spire": "8각 콘형 스파이어 + 십자 2기",
+      "corner_pinnacles": 8,
+      "note": "정면 쌍첨탑. 배면 중앙 첨두부 포함."
+    },
+    "windows": {
+      "pointed_side": 8,
+      "pointed_clerestory": 8,
+      "rose_windows": 3,
+      "rose_radius_m": 2.6
+    },
+    "buttresses": {
+      "count": 12,
+      "steps": 3,
+      "depth_m": 1.2
+    },
+    "roof": {
+      "type": "슬레이트 박공지붕",
+      "courses": 15,
+      "cols": 34
+    },
+    "entrance": {
+      "doors": 3,
+      "leaves": 6,
+      "stair_steps": 4,
+      "stair_width_m": 7.2
+    },
+    "total_height_with_ornament_m": 26.45,
+    "dimension_note": "성당 실측 도면의 공개 범위가 좁아 층고·첨탑·지붕 치수는 이전 검증 고딕 블록 (벧엘예배당)의 비례와 발주서 제원을 기준으로 한 연출 기준값이다."
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q86",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "granite_plinth": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "gray_brick_masonry": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "slate_roof": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "sign_plaque": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ],
+        "sub_plaque": [
+          0.02,
+          0.02,
+          0.96,
+          0.44
+        ],
+        "sub_entrance_door": [
+          0.02,
+          0.5,
+          0.44,
+          0.46
+        ],
+        "sub_gold_frame": [
+          0.5,
+          0.5,
+          0.46,
+          0.22
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 내부 0.04~0.48 창을 주기 반복하며, 표지·출입문은 부분영역 정확 UV(1:1)로 문자 왜곡이 없다."
+  },
+  "detail_counts": {
+    "plinth_ashlar_courses": 1,
+    "plinth_sangmyeon_panseok": 72,
+    "stairs_steps_total": 4,
+    "somaldol": 2,
+    "brick_lister_bricks": 224,
+    "brick_gable_bricks": 128,
+    "pointed_side_windows": 8,
+    "pointed_clerestory_windows": 8,
+    "rose_windows": 3,
+    "rose_window_radius_m": 2.6,
+    "entrance_doors": 3,
+    "entrance_leaves": 6,
+    "buttresses": 12,
+    "buttress_steps": 3,
+    "slate_roof_courses": 15,
+    "slate_roof_tiles": 2040,
+    "ridge_cap_tiles": 46,
+    "towers": 2,
+    "corner_pinnacles": 8,
+    "crosses": 2,
+    "trees": 4,
+    "benches": 14,
+    "sign_characters": 3,
+    "sign_emboss_cells": 95
+  },
+  "sign": {
+    "characters": "明洞聖堂",
+    "type": "가로형 3자",
+    "board_size_m": [
+      2.2,
+      0.66
+    ],
+    "frame": "황금 이중 테두리 + 옻칠 바탕 + 3D 양각"
+  },
+  "hierarchical_components": [
+    {
+      "id": "11140_02_04519_010_01",
+      "label": "화강암 기단·상면 판석 240매·정면 4단 계단·소맷돌",
+      "mesh_nodes": [
+        "11140_02_04519_010_01__granite_plinth_courtyard"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_010_02",
+      "label": "회색 벽돌 고딕 본당·박공벽·코스 몰딩·부벽 12개소",
+      "mesh_nodes": [
+        "11140_02_04519_010_02__gray_brick_gothic_nave"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_010_03",
+      "label": "슬레이트 박공지붕·용마루·정면 쌍첨탑·스파이어·십자 2기",
+      "mesh_nodes": [
+        "11140_02_04519_010_03__slate_gable_roof",
+        "11140_02_04519_010_03__twin_spire_cross_pinnacle"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_010_04",
+      "label": "명동성당 표지 明洞聖堂(가로 3자)·황금 테두리·3D 양각",
+      "mesh_nodes": [
+        "11140_02_04519_010_04__sign_board",
+        "11140_02_04519_010_04__sign_gold_frame",
+        "11140_02_04519_010_04__sign_yanggak_emboss"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_010_05",
+      "label": "첨두 아치 창 16개소·장미창 3개소·출입문 3조 6짝",
+      "mesh_nodes": [
+        "11140_02_04519_010_05__pointed_arch_rose_stained_glass",
+        "11140_02_04519_010_05__entrance_door_panels"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_010_06",
+      "label": "성당 마당 포장·수목 4그루·울타리·벤치 14기",
+      "mesh_nodes": [
+        "11140_02_04519_010_06__courtyard_paving",
+        "11140_02_04519_010_06__courtyard_trees",
+        "11140_02_04519_010_06__courtyard_benches"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3000,
+    "phase_link": "일몰 후 30분 점등 / 23:00 소등",
+    "spots": [
+      {
+        "id": "night_light_spotlight_SE_3000K",
+        "offset_m": [
+          26.0,
+          1.0,
+          30.0
+        ],
+        "aim": "정면 남동 파사드 상향"
+      },
+      {
+        "id": "night_light_spotlight_SW_3000K",
+        "offset_m": [
+          -26.0,
+          1.0,
+          30.0
+        ],
+        "aim": "정면 남서 파사드 상향"
+      },
+      {
+        "id": "night_light_spotlight_NE_3000K",
+        "offset_m": [
+          26.0,
+          1.0,
+          -26.0
+        ],
+        "aim": "배면 북동면 조사"
+      },
+      {
+        "id": "night_light_spotlight_NW_3000K",
+        "offset_m": [
+          -26.0,
+          1.0,
+          -26.0
+        ],
+        "aim": "배면 북서면 조사"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_front_entrance_dive",
+      "label": "정면 3조 출입문·4단 계단 진입",
+      "offset_m": [
+        0.0,
+        1.6,
+        20.0
+      ]
+    },
+    {
+      "id": "hotspot_rose_window_upview",
+      "label": "정면 장미창 올려보기",
+      "offset_m": [
+        0.0,
+        4.5,
+        16.0
+      ]
+    },
+    {
+      "id": "hotspot_sign_myeongdong",
+      "label": "표지 明洞聖堂 양각 근접",
+      "offset_m": [
+        0.0,
+        3.6,
+        -12.0
+      ]
+    },
+    {
+      "id": "hotspot_twin_spire_lookup",
+      "label": "쌍첨탑·스파이어 올려보기",
+      "offset_m": [
+        -19.0,
+        9.0,
+        12.0
+      ]
+    },
+    {
+      "id": "hotspot_nave_clerestory",
+      "label": "클리어스토리 첨두 창 열람",
+      "offset_m": [
+        0.0,
+        6.5,
+        12.0
+      ]
+    }
+  ],
+  "key_expansion_rule": "11140_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 11140_02_04519_010_03",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "국가유산포털 — 사적 「서울 명동성당」 지정정보",
+      "url": "https://www.heritage.go.kr/",
+      "note": "국가유산청 지정·관리 정보 원문 포털(사적 제258호 통용 표기)"
+    },
+    {
+      "title": "서울대교구 명동성당 공식 안내",
+      "url": "https://www.mdsd.or.kr/",
+      "note": "대성당 연혁(1898년 봉헌)·미사 안내"
+    },
+    {
+      "title": "한국민족문화대백과 — 명동성당",
+      "url": "https://encykorea.aks.ac.kr/",
+      "note": "허브 신부 설계, 한국 최초 벽돌 고딕 성당"
+    },
+    {
+      "title": "서울특별시 문화유산 — 중구 명동길 74",
+      "url": "https://www.seoul.go.kr/",
+      "note": "소재지·도로명주소 대조"
+    }
+  ],
+  "reference_note": "위 4건은 포털 루트 주소이며, 검수 시 각 포털에서 「명동성당」 항목으로 진입해 지정번호·치수를 재확인한다. 웹 검색 없이 발주서 제원표와 이전 검증 데이터로 작성된 블록이므로, 상세 주소는 포털 검색 경로를 기준으로 안내한다.",
+  "generation": {
+    "generator": "pimang junggu myeongdong-cathedral parametric builder (workspace-side)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "생성 스크립트·임시파일은 저장소에 포함되지 않는다. PR에는 위 4종 에셋만 반영."
+  },
+  "bbox_local_m": {
+    "min": [
+      -40.0,
+      0.0,
+      -26.0
+    ],
+    "max": [
+      40.0,
+      26.445,
+      34.0
+    ],
+    "size": [
+      80.0,
+      26.445,
+      60.0
+    ],
+    "core_min": [
+      -40.0,
+      0.0,
+      -26.0
+    ],
+    "core_max": [
+      40.0,
+      26.6,
+      34.0
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 11702,
+      "vertices": 14886,
+      "bytes": 834815
+    },
+    "model_lod2.gltf": {
+      "triangles": 354,
+      "vertices": 438,
+      "bytes": 30410
+    },
+    "texture_atlas.webp": {
+      "bytes": 108036,
+      "size_px": 1024,
+      "format": "webp_lossy_q86"
+    }
+  },
+  "package_total_bytes": 973261,
+  "anchor_nodes": [
+    "night_light_spotlight_SE_3000K",
+    "night_light_spotlight_SW_3000K",
+    "night_light_spotlight_NE_3000K",
+    "night_light_spotlight_NW_3000K",
+    "hotspot_front_entrance_dive",
+    "hotspot_rose_window_upview",
+    "hotspot_sign_myeongdong",
+    "hotspot_twin_spire_lookup",
+    "hotspot_nave_clerestory"
+  ]
+}

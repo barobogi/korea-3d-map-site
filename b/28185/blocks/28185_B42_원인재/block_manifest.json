@@ -1,0 +1,300 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B42",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B42",
+  "pr_number": 503,
+  "pr_number_assigned": 503,
+  "block_number": 42,
+  "composite_id": "28185_01_21929_042",
+  "block_id": "28185_B42_원인재",
+  "name": "원인재 역사문화공원 (인천이씨 발상지 조선전통고택)",
+  "name_en": "Woninjae Historic Cultural Park",
+  "category": "CAT21_HISTORIC_HERITAGE",
+  "category_label": "역사문화유산/조선전통재실/인천광역시문화유산자료",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 원인재로 80 (연수동)",
+  "postal_code": "21929",
+  "floors": "단층 (높이 8.5m 조선 전통 팔작지붕 기와 본채 승모제 및 솟을대문 동락정)",
+  "height_m": 8.5,
+  "architectural_style": "조선 중기 전통 목조 와가(기와지붕) 팔작지붕 재실 및 사당 고택",
+  "architect": "인천이씨 문중 및 문화재청 전통건축보수단",
+  "coordinates": [
+    126.6872,
+    37.4118
+  ],
+  "orientation_deg": 0.0,
+  "heading": 0.0,
+  "heading_note": "원인재 솟을대문 정면에서 승모제 본채를 조망하는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.15,
+  "lod_switch_distance": 220.0,
+  "spec_dimensions_m": {
+    "seungmoje_hall": {
+      "width_x_m": 28.0,
+      "depth_z_m": 14.0,
+      "height_m": 8.5
+    },
+    "gate_dongnakjeong": {
+      "width_x_m": 12.0,
+      "depth_z_m": 5.0,
+      "height_m": 6.2
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "roof_giwa": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "timber_and_paper": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "courtyard_path": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "woninjae_stone_and_trees": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.02~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "main_halls": 1,
+    "gate_pavilions": 1,
+    "timber_pillars": 12,
+    "stone_lanterns": 4,
+    "pine_trees": 16,
+    "garden_lights": 8
+  },
+  "sign": {
+    "characters": "원인재 (源仁齋) - 인천광역시 문화유산자료 제5호",
+    "type": "솟을대문 정문 앞 화강석 문화유산 해설 표석 및 황동 입체 명판",
+    "board_size_m": [
+      3.2,
+      1.6
+    ],
+    "frame": "목조 고재 & 황동 헤어라인 프레임"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_01_21929_042_01",
+      "label": "원인재 본채 승모제(承慕齋) 팔작지붕 전통 목조 기와 대청",
+      "mesh_nodes": [
+        "28185_01_21929_042_01__seungmoje_hall"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21929_042_02",
+      "label": "솟을대문 동락정(同樂亭) 및 삼문 입구",
+      "mesh_nodes": [
+        "28185_01_21929_042_02__gate_dongnakjeong"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21929_042_03",
+      "label": "전통 토기와 담장 및 배흘림 목조 기둥 열주",
+      "mesh_nodes": [
+        "28185_01_21929_042_03__walls_and_pillars"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21929_042_04",
+      "label": "전통 정원 소나무숲 & 석등·문화유산 표석",
+      "mesh_nodes": [
+        "28185_01_21929_042_04__garden_and_monument"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3000,
+    "phase_link": "일몰 후 15분 점등 / 23:00 소등 (전통문화유산 고택 연동)",
+    "spots": [
+      {
+        "id": "night_light_seungmoje_eaves",
+        "offset_m": [
+          0.0,
+          4.5,
+          -3.5
+        ],
+        "aim": "본채 승모제 기와 처마선 상향 투광등"
+      },
+      {
+        "id": "night_light_gate_lantern",
+        "offset_m": [
+          0.0,
+          3.8,
+          14.0
+        ],
+        "aim": "솟을대문 전통 등롱 조명"
+      },
+      {
+        "id": "night_light_stone_lanterns",
+        "offset_m": [
+          0.0,
+          1.8,
+          5.0
+        ],
+        "aim": "마당 전통 석등 은은한 조명"
+      },
+      {
+        "id": "night_light_heritage_plaque",
+        "offset_m": [
+          -8.5,
+          2.2,
+          16.7
+        ],
+        "aim": "문화유산 안내판 조명"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_seungmoje_main",
+      "label": "원인재 승모제 대청마루",
+      "offset_m": [
+        0.0,
+        0.85,
+        -11.0
+      ]
+    },
+    {
+      "id": "hotspot_gate_entrance",
+      "label": "솟을대문 정문 입구",
+      "offset_m": [
+        0.0,
+        0.15,
+        16.5
+      ]
+    },
+    {
+      "id": "hotspot_courtyard_garden",
+      "label": "원인재 전통 안마당",
+      "offset_m": [
+        0.0,
+        0.15,
+        2.0
+      ]
+    },
+    {
+      "id": "hotspot_heritage_monument",
+      "label": "원인재 문화유산 표석",
+      "offset_m": [
+        -8.5,
+        0.15,
+        16.7
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_01_21929_042_01",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "국가유산청 국가문화유산포털 원인재(源仁齋) 안내",
+      "url": "https://www.heritage.go.kr/",
+      "note": "인천광역시 문화유산자료 제5호 원인재 건축 제원 및 역사 기록"
+    },
+    {
+      "title": "인천광역시 연수구청 문화관광 문화유산 원인재 소개",
+      "url": "https://www.yeonsu.go.kr/",
+      "note": "연수동 584번지 원인재 재실 고택 및 공원 현황"
+    },
+    {
+      "title": "인천이씨 대종회 공식 사이트 중시조 묘역 원인재",
+      "url": "https://www.incheonlee.org/",
+      "note": "승모제 및 동락정 중건 실측도면 데이터"
+    }
+  ],
+  "reference_note": "국가유산청 문화유산자료 실측도면 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B42 Woninjae)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -28.0,
+      0.0,
+      -24.8
+    ],
+    "max": [
+      27.95,
+      8.5,
+      23.95
+    ],
+    "size": [
+      55.95,
+      8.5,
+      48.75
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 10896,
+      "bytes": 1044798
+    },
+    "model_lod2.gltf": {
+      "triangles": 384,
+      "bytes": 41028
+    },
+    "texture_atlas.webp": {
+      "bytes": 171936,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1260762,
+  "anchor_nodes": [
+    "hotspot_seungmoje_main",
+    "hotspot_gate_entrance",
+    "hotspot_courtyard_garden",
+    "hotspot_heritage_monument",
+    "night_light_seungmoje_eaves",
+    "night_light_gate_lantern",
+    "night_light_stone_lanterns",
+    "night_light_heritage_plaque"
+  ]
+}

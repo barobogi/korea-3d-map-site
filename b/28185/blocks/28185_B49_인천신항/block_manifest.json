@@ -1,0 +1,300 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B49",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B49",
+  "pr_number": 510,
+  "pr_number_assigned": 510,
+  "block_number": 49,
+  "composite_id": "28185_01_22013_049",
+  "block_id": "28185_B49_인천신항",
+  "name": "인천신항 컨테이너터미널 크레인타워 & 물류복합단지",
+  "name_en": "Incheon New Port Container Terminal & Gantry Crane Towers",
+  "category": "CAT33_PORT_LOGISTICS",
+  "category_label": "스마트항만/컨테이너터미널/갠트리크레인타워",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 인천신항대로 822 (송도동)",
+  "postal_code": "22013",
+  "floors": "지상 5층 관제탑 및 최고 높이 48.0m 갠트리 크레인 타워",
+  "height_m": 48.0,
+  "architectural_style": "초대형 슈퍼 포스트 파나막스 갠트리 크레인 트러스 구조 및 스마트 항만 관제청사",
+  "architect": "인천항만공사(IPA) & 한진/선광 컨테이너터미널 & 현대삼호중공업",
+  "coordinates": [
+    126.6385,
+    37.3385
+  ],
+  "orientation_deg": 0.0,
+  "heading": 0.0,
+  "heading_note": "인천신항 안벽 부두에서 갠트리 크레인 트윈 타워와 컨테이너 야드를 조망하는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.15,
+  "lod_switch_distance": 220.0,
+  "spec_dimensions_m": {
+    "quay_crane_towers": {
+      "width_x_m": 38.0,
+      "depth_z_m": 22.0,
+      "height_m": 48.0
+    },
+    "control_tower": {
+      "width_x_m": 10.0,
+      "depth_z_m": 14.0,
+      "height_m": 24.5
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "crane_steel": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "containers": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "quay_asphalt": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "safety_and_highmast": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.02~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "gantry_crane_towers": 2,
+    "container_stack_blocks": 2,
+    "port_control_towers": 1,
+    "highmast_lights": 3,
+    "mooring_bollards": 8,
+    "smart_streetlights": 8
+  },
+  "sign": {
+    "characters": "INCHEON NEW PORT (인천신항 컨테이너터미널)",
+    "type": "터미널 게이트웨이 스틸 문주 위 해양블루/오렌지 입체 명판",
+    "board_size_m": [
+      4.5,
+      1.8
+    ],
+    "frame": "내후성 해양도장 강재 & 스테인리스 스틸 헤어라인 프레임"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_01_22013_049_01",
+      "label": "인천신항 48.0m 슈퍼 포스트 파나막스 갠트리 크레인 트윈 타워",
+      "mesh_nodes": [
+        "28185_01_22013_049_01__quay_cranes"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_22013_049_02",
+      "label": "스마트 컨테이너 야드(CY) 4단 컬러 적재 블록군",
+      "mesh_nodes": [
+        "28185_01_22013_049_02__container_stacks"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_22013_049_03",
+      "label": "인천신항 5층 24.5m 항만종합관제탑 청사",
+      "mesh_nodes": [
+        "28185_01_22013_049_03__control_tower"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_22013_049_04",
+      "label": "안벽 부두 계류 볼라드 & 하이마스트 조명탑·서해 수면",
+      "mesh_nodes": [
+        "28185_01_22013_049_04__quay_and_bollards"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 5000,
+    "phase_link": "일몰 후 15분 점등 / 상시 야간 항만 조명 (24시간 스마트항만 가동)",
+    "spots": [
+      {
+        "id": "night_light_crane_boom_aviation",
+        "offset_m": [
+          0.0,
+          48.0,
+          14.0
+        ],
+        "aim": "갠트리 크레인 최정상 항공장애등 적색 점멸"
+      },
+      {
+        "id": "night_light_quay_floodlight",
+        "offset_m": [
+          0.0,
+          32.0,
+          10.0
+        ],
+        "aim": "크레인 하부 안벽 작업구역 고휘도 투광등"
+      },
+      {
+        "id": "night_light_highmasts",
+        "offset_m": [
+          -2.0,
+          26.0,
+          1.0
+        ],
+        "aim": "컨테이너 야드 하이마스트 조명"
+      },
+      {
+        "id": "night_light_gate_monument",
+        "offset_m": [
+          20.5,
+          2.5,
+          -1.8
+        ],
+        "aim": "인천신항 명판 조명"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_quay_crane_deck",
+      "label": "갠트리 크레인 안벽 작업선",
+      "offset_m": [
+        0.0,
+        0.15,
+        16.0
+      ]
+    },
+    {
+      "id": "hotspot_container_yard",
+      "label": "스마트 컨테이너 야드",
+      "offset_m": [
+        -10.0,
+        0.15,
+        -11.0
+      ]
+    },
+    {
+      "id": "hotspot_control_tower_ops",
+      "label": "신항 관제센터 로비",
+      "offset_m": [
+        21.0,
+        0.15,
+        -11.0
+      ]
+    },
+    {
+      "id": "hotspot_port_main_gate",
+      "label": "인천신항 화물 게이트",
+      "offset_m": [
+        20.5,
+        0.15,
+        -1.8
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_01_22013_049_01",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "인천항만공사(IPA) 공식 사이트 인천신항 부두 인프라",
+      "url": "https://www.icpa.or.kr/",
+      "note": "인천신항대로 822 한진·선광 컨테이너터미널 선석 및 갠트리크레인 제원"
+    },
+    {
+      "title": "해양수산부 스마트항만 물류인프라 개발계획",
+      "url": "https://www.mof.go.kr/",
+      "note": "인천신항 자동화 컨테이너터미널 및 크레인 규격"
+    },
+    {
+      "title": "현대삼호중공업 컨테이너 크레인 납품 포트폴리오",
+      "url": "https://www.hshi.co.kr/",
+      "note": "슈퍼 포스트 파나막스 갠트리 크레인 실시설계 데이터"
+    }
+  ],
+  "reference_note": "인천항만공사 및 현대삼호중공업 크레인 도면 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B49 Incheon New Port)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -28.0,
+      0.0,
+      -24.0
+    ],
+    "max": [
+      28.0,
+      48.0,
+      24.0
+    ],
+    "size": [
+      56.0,
+      48.0,
+      48.0
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 10064,
+      "bytes": 1006234
+    },
+    "model_lod2.gltf": {
+      "triangles": 492,
+      "bytes": 51953
+    },
+    "texture_atlas.webp": {
+      "bytes": 88962,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1150149,
+  "anchor_nodes": [
+    "hotspot_quay_crane_deck",
+    "hotspot_container_yard",
+    "hotspot_control_tower_ops",
+    "hotspot_port_main_gate",
+    "night_light_crane_boom_aviation",
+    "night_light_quay_floodlight",
+    "night_light_highmasts",
+    "night_light_gate_monument"
+  ]
+}

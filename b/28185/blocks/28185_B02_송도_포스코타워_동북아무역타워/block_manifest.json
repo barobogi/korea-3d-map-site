@@ -1,0 +1,338 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B02",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / 117호 블록 장착 규약 v1",
+  "task_slot_id": "28185-B02",
+  "pr_number": 410,
+  "pr_number_assigned": 410,
+  "block_number": 2,
+  "composite_id": "28185_01_21998_002",
+  "block_id": "28185_B02_송도_포스코타워_동북아무역타워",
+  "name": "송도 포스코타워 (동북아무역타워)",
+  "name_en": "Posco Tower Songdo (NEATT)",
+  "category": "CAT51_MODERN_FUTURE_ARCHITECTURE",
+  "category_label": "초고층/국제업무타워",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 컨벤시아대로 165 (송도동 6-10)",
+  "postal_code": "21998",
+  "floors": "지하 3층 / 지상 68층",
+  "height_m": 305.0,
+  "architectural_style": "나선형 트위스트 테이퍼링 초고층 유리 커튼월 (Twisted Tapering Glass Curtain Wall Skyscraper)",
+  "heritage": {
+    "designation": "송도국제업무단지 제1호 랜드마크 스카이라인",
+    "name": "포스코타워-송도 (구 동북아무역타워, NEATT)",
+    "note": "지상 68층, 높이 305m의 인천 최고층 랜드마크. KPF 설계의 유려한 나선형 곡면 테이퍼링 타워.",
+    "manager": "포스코이앤씨 / 오크우드 프리미어"
+  },
+  "coordinates": [
+    126.6486,
+    37.3892
+  ],
+  "orientation_deg": 180.0,
+  "heading": 180.0,
+  "heading_note": "컨벤시아대로 정면 드롭오프 진입로 축을 기준으로 한 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.35,
+  "lod_switch_distance": 250.0,
+  "spec_dimensions_m": {
+    "tower_core": {
+      "base_width_m": 24.0,
+      "top_width_m": 10.1,
+      "height_m": 65.85
+    },
+    "hotel_arcade_podium": {
+      "width_x_m": 28.0,
+      "depth_z_m": 14.0,
+      "height_m": 12.0
+    },
+    "entrance_canopy": {
+      "width_x_m": 20.0,
+      "depth_z_m": 12.0,
+      "height_m": 5.2
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "granite_plaza": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "tower_curtain_wall": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "podium_and_steel": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "canopy_and_sign": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.04~0.48 창을 반복하며 안내석 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "tower_tiers": 34,
+    "podium_buildings": 2,
+    "canopy_structures": 1,
+    "pine_trees": 12,
+    "streetlights": 8,
+    "water_fountains": 1
+  },
+  "sign": {
+    "characters": "POSCO TOWER - SONGDO",
+    "type": "가로형 입체 황동 명판",
+    "board_size_m": [
+      4.6,
+      1.6
+    ],
+    "frame": "흑경 좌대 + 골드 양각 레터링"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_01_21998_002_01",
+      "label": "포스코타워 기단·광장 포장·드롭오프 도로",
+      "mesh_nodes": [
+        "28185_01_21998_002_01__plaza_ground_base"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21998_002_02",
+      "label": "68층 305m 나선형 테이퍼링 유리 커튼월 타워 본관",
+      "mesh_nodes": [
+        "28185_01_21998_002_02__curtain_wall_tower"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21998_002_03",
+      "label": "오크우드 프리미어 호텔 로비 및 리테일 쇼핑 포디움",
+      "mesh_nodes": [
+        "28185_01_21998_002_03__podium_hotel_arcade"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21998_002_04",
+      "label": "엔트런스 골드 캐노피·첨탑 피너클·광장 분수·수목",
+      "mesh_nodes": [
+        "28185_01_21998_002_04__canopy_spire_amenities"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3000,
+    "phase_link": "일몰 후 30분 점등 / 23:00 소등",
+    "spots": [
+      {
+        "id": "night_light_spotlight_SE_3000K",
+        "offset_m": [
+          22.0,
+          1.0,
+          22.0
+        ],
+        "aim": "타워 남동 파사드 상향 투사"
+      },
+      {
+        "id": "night_light_spotlight_SW_3000K",
+        "offset_m": [
+          -22.0,
+          1.0,
+          22.0
+        ],
+        "aim": "타워 남서 파사드 상향 투사"
+      },
+      {
+        "id": "night_light_spotlight_NE_3000K",
+        "offset_m": [
+          22.0,
+          1.0,
+          -22.0
+        ],
+        "aim": "포디움 및 북동 파사드 투사"
+      },
+      {
+        "id": "night_light_spotlight_NW_3000K",
+        "offset_m": [
+          -22.0,
+          1.0,
+          -22.0
+        ],
+        "aim": "북서 배면 스카이라인 투사"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_tower_plaza_entrance",
+      "label": "포스코타워 전면 광장 진입로",
+      "offset_m": [
+        0.0,
+        1.7,
+        24.0
+      ]
+    },
+    {
+      "id": "hotspot_observatory_65F",
+      "label": "65층 파노라마 전망대 뷰",
+      "offset_m": [
+        0.0,
+        58.5,
+        0.0
+      ]
+    },
+    {
+      "id": "hotspot_podium_shopping_arcade",
+      "label": "포디움 상업 아케이드",
+      "offset_m": [
+        18.0,
+        1.7,
+        -10.0
+      ]
+    },
+    {
+      "id": "hotspot_hotel_dropoff_canopy",
+      "label": "오크우드 호텔 드롭오프 현관",
+      "offset_m": [
+        -16.0,
+        1.7,
+        8.0
+      ]
+    },
+    {
+      "id": "hotspot_centralpark_skyline_view",
+      "label": "센트럴파크 연계 스카이라인 조망",
+      "offset_m": [
+        0.0,
+        1.7,
+        -24.0
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_01_21998_002_02",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "인천광역시 연수구청 — 송도국제도시 주요 건축 랜드마크",
+      "url": "https://www.yeonsu.go.kr/",
+      "note": "연수구 공식 포털 포스코타워 제원 대조"
+    },
+    {
+      "title": "포스코이앤씨 — 포스코타워-송도 공식 실적 및 제원",
+      "url": "https://www.poscoenc.com/",
+      "note": "지상 68층, 높이 305m 초고층 구조 제원 공식 데이터"
+    },
+    {
+      "title": "오크우드 프리미어 인천 — 시설 안내",
+      "url": "https://www.oakwoodpremier.co.kr/",
+      "note": "포스코타워 호텔 및 전망대 공식 제원 대조"
+    },
+    {
+      "title": "한국민족문화대백과 — 동북아무역타워",
+      "url": "https://encykorea.aks.ac.kr/",
+      "note": "송도국제도시 초고층 건축사 고증"
+    }
+  ],
+  "reference_note": "공식 건축물대장 및 시공사 포스코이앤씨 공공 포털 기준 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B02 Posco Tower Songdo)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -35.0,
+      0.0,
+      -27.0
+    ],
+    "max": [
+      35.0,
+      65.85,
+      27.0
+    ],
+    "size": [
+      70.0,
+      65.85,
+      54.0
+    ],
+    "core_min": [
+      -12.0,
+      0.0,
+      -12.0
+    ],
+    "core_max": [
+      12.0,
+      65.85,
+      12.0
+    ],
+    "note": "min/max는 LOD3 실측 바운딩박스, core는 초고층 타워 본체 범위다."
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 13020,
+      "vertices": 26040,
+      "bytes": 1221022
+    },
+    "model_lod2.gltf": {
+      "triangles": 396,
+      "vertices": 792,
+      "bytes": 42676
+    },
+    "texture_atlas.webp": {
+      "bytes": 281738,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1545436,
+  "anchor_nodes": [
+    "hotspot_tower_plaza_entrance",
+    "hotspot_observatory_65F",
+    "hotspot_podium_shopping_arcade",
+    "hotspot_hotel_dropoff_canopy",
+    "hotspot_centralpark_skyline_view",
+    "night_light_spotlight_SE_3000K",
+    "night_light_spotlight_SW_3000K",
+    "night_light_spotlight_NE_3000K",
+    "night_light_spotlight_NW_3000K"
+  ]
+}

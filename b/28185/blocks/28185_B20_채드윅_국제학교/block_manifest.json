@@ -1,0 +1,304 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B20",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B20",
+  "pr_number": 481,
+  "pr_number_assigned": 481,
+  "block_number": 20,
+  "composite_id": "28185_01_21998_020",
+  "block_id": "28185_B20_채드윅_국제학교",
+  "name": "채드윅 국제학교 캠퍼스 본관 & 아트홀",
+  "name_en": "Chadwick International School Campus & Arts Center",
+  "category": "CAT31_GLOBAL_CAMPUS",
+  "category_label": "국제학교/교육연구시설/공연예술센터",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 아트센터대로97번길 45 (송도동)",
+  "postal_code": "21998",
+  "floors": "지하 1층 ~ 지상 4층 (LEED Gold 친환경 국제캠퍼스)",
+  "height_m": 22.5,
+  "architectural_style": "친환경 테라코타 루버 학술본관 & 700석 티타늄 아연판 곡면 지붕 공연예술센터",
+  "architect": "KPF & 범건축 & 포스코이앤씨",
+  "coordinates": [
+    126.6492,
+    37.3972
+  ],
+  "orientation_deg": 0.0,
+  "heading": 0.0,
+  "heading_note": "국제학교 주진입로에서 본관과 공연예술센터를 정면으로 조망하는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.15,
+  "lod_switch_distance": 220.0,
+  "spec_dimensions_m": {
+    "academic_hall": {
+      "width_x_m": 28.0,
+      "depth_z_m": 22.0,
+      "height_m": 18.5
+    },
+    "arts_center": {
+      "width_x_m": 18.0,
+      "depth_z_m": 22.0,
+      "height_m": 22.5
+    },
+    "soccer_pitch": {
+      "width_x_m": 48.0,
+      "depth_z_m": 12.0
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "terracotta_facade": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "soccer_and_zinc": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "granite_walkways": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "navy_branding_and_trees": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.02~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "academic_wings": 1,
+    "theater_auditoriums": 1,
+    "connecting_bridges": 1,
+    "soccer_goals": 2,
+    "campus_trees": 16,
+    "smart_streetlights": 10
+  },
+  "sign": {
+    "characters": "채드윅 국제학교 (CHADWICK INTERNATIONAL)",
+    "type": "캠퍼스 주출입구 화강석 문주 위 네이비/골드 황동 명판",
+    "board_size_m": [
+      3.6,
+      1.8
+    ],
+    "frame": "채드윅 네이비 & 브론즈 메탈 프레임"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_01_21998_020_01",
+      "label": "채드윅 국제규격 잔디 축구장 & 우레탄 육상트랙·골대",
+      "mesh_nodes": [
+        "28185_01_21998_020_01__pitch_and_track"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21998_020_02",
+      "label": "4층 학술본관 매스 & 친환경 테라코타 루버 일사조절 파사드",
+      "mesh_nodes": [
+        "28185_01_21998_020_02__academic_hall_and_louvers"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21998_020_03",
+      "label": "700석 규모 다목적 공연예술센터 & 티타늄 아연판 곡면 루프",
+      "mesh_nodes": [
+        "28185_01_21998_020_03__arts_center_zinc_roof"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21998_020_04",
+      "label": "스쿨버스 회차로 & 조경수목·학교 상징 문주 게이트",
+      "mesh_nodes": [
+        "28185_01_21998_020_04__bus_loop_and_gate"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3500,
+    "phase_link": "일몰 후 15분 점등 / 23:00 소등 (캠퍼스 안전보안 연동)",
+    "spots": [
+      {
+        "id": "night_light_arts_center_roof",
+        "offset_m": [
+          15.0,
+          22.0,
+          -7.0
+        ],
+        "aim": "아트홀 곡면 지붕 상향 투광등"
+      },
+      {
+        "id": "night_light_atrium_canopy",
+        "offset_m": [
+          -7.0,
+          5.5,
+          3.5
+        ],
+        "aim": "본관 로비 캐노피 다운라이트"
+      },
+      {
+        "id": "night_light_pitch_floodlight",
+        "offset_m": [
+          0.0,
+          12.0,
+          14.0
+        ],
+        "aim": "체육장 야간 투광등"
+      },
+      {
+        "id": "night_light_gate_monument",
+        "offset_m": [
+          -15.5,
+          2.5,
+          4.8
+        ],
+        "aim": "정문 명판 조명"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_academic_atrium",
+      "label": "학술본관 중앙 아뜨리움",
+      "offset_m": [
+        -7.0,
+        0.15,
+        3.0
+      ]
+    },
+    {
+      "id": "hotspot_arts_center_lobby",
+      "label": "공연예술센터 메인 로비",
+      "offset_m": [
+        15.0,
+        0.15,
+        -7.0
+      ]
+    },
+    {
+      "id": "hotspot_soccer_center_circle",
+      "label": "국제규격 축구장 센터서클",
+      "offset_m": [
+        0.0,
+        0.28,
+        14.0
+      ]
+    },
+    {
+      "id": "hotspot_campus_main_gate",
+      "label": "채드윅 정문 게이트",
+      "offset_m": [
+        -15.5,
+        0.15,
+        4.8
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_01_21998_020_01",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "채드윅 국제학교 공식 사이트 캠퍼스 시설 및 친환경 건축 안내",
+      "url": "https://www.chadwickinternational.org/",
+      "note": "LEED Gold 인증 본관 및 메인 아트홀 시설 규격"
+    },
+    {
+      "title": "IFEZ 인천경제자유구역청 송도 외국교육기관 설립 현황",
+      "url": "https://www.ifez.go.kr/",
+      "note": "채드윅 송도국제학교 건축 인허가 및 캠퍼스 마스터플랜"
+    },
+    {
+      "title": "연수구청 교육지원과 송도 글로벌 교육타운 인프라",
+      "url": "https://www.yeonsu.go.kr/",
+      "note": "아트센터대로 일원 교육 및 체육 문화복합시설 안내"
+    }
+  ],
+  "reference_note": "KPF 및 포스코이앤씨 채드윅 캠퍼스 준공도면 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B20 Chadwick International)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -28.0,
+      0.0,
+      -24.0
+    ],
+    "max": [
+      27.95,
+      22.5,
+      23.95
+    ],
+    "size": [
+      55.95,
+      22.5,
+      47.95
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 10092,
+      "bytes": 969462
+    },
+    "model_lod2.gltf": {
+      "triangles": 396,
+      "bytes": 42236
+    },
+    "texture_atlas.webp": {
+      "bytes": 110714,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1125412,
+  "anchor_nodes": [
+    "hotspot_academic_atrium",
+    "hotspot_arts_center_lobby",
+    "hotspot_soccer_center_circle",
+    "hotspot_campus_main_gate",
+    "night_light_arts_center_roof",
+    "night_light_atrium_canopy",
+    "night_light_pitch_floodlight",
+    "night_light_gate_monument"
+  ]
+}

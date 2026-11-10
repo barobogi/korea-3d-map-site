@@ -1,0 +1,300 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B41",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B41",
+  "pr_number": 502,
+  "pr_number_assigned": 502,
+  "block_number": 41,
+  "composite_id": "28185_01_21929_041",
+  "block_id": "28185_B41_연수구청",
+  "name": "연수구청 본청사 & 연수구의회 복합행정타운",
+  "name_en": "Yeonsu-gu Office & District Council Complex",
+  "category": "CAT31_PUBLIC_ADMIN",
+  "category_label": "공공행정/지방자치청사/구민복합행정타운",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 원인재로 115 (동춘동)",
+  "postal_code": "21929",
+  "floors": "지하 1층~지상 7층 (높이 32.5m 연수구청 본청사 및 연수구의회동)",
+  "height_m": 32.5,
+  "architectural_style": "화강석 기둥 열주 및 연수 네이비/그린 액센트 모던 공공행정청사",
+  "architect": "희림종합건축사사무소 & 대우건설",
+  "coordinates": [
+    126.6782,
+    37.4095
+  ],
+  "orientation_deg": 0.0,
+  "heading": 0.0,
+  "heading_note": "원인재로 주진입로에서 연수구청 본청사 정면을 조망하는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.15,
+  "lod_switch_distance": 220.0,
+  "spec_dimensions_m": {
+    "main_hall": {
+      "width_x_m": 24.0,
+      "depth_z_m": 22.0,
+      "height_m": 32.5
+    },
+    "council_wing": {
+      "width_x_m": 22.0,
+      "depth_z_m": 22.0,
+      "height_m": 15.5
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "curtain_wall": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "panels_and_lawn": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "promenade_tiles": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "yeonsu_brand_and_trees": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.02~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "main_halls": 1,
+    "council_wings": 1,
+    "colonnade_pillars": 12,
+    "flagpoles": 4,
+    "campus_trees": 16,
+    "smart_streetlights": 10
+  },
+  "sign": {
+    "characters": "연수구청 / 연수구의회 (YEONSU-GU OFFICE)",
+    "type": "청사 정문 화강석 문주 위 연수 네이비/골드 입체 명판",
+    "board_size_m": [
+      4.0,
+      1.8
+    ],
+    "frame": "연수 네이비 & 스테인리스 스틸 헤어라인 프레임"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_01_21929_041_01",
+      "label": "연수구청 지상 7층 32.5m 본청사 & 네이비 루프 파라펫",
+      "mesh_nodes": [
+        "28185_01_21929_041_01__main_hall"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21929_041_02",
+      "label": "연수구의회 지상 3층 의사당 윙 & 상공 연결 브릿지",
+      "mesh_nodes": [
+        "28185_01_21929_041_02__council_wing"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21929_041_03",
+      "label": "청사 전면 화강석 기둥 열주 및 국기게양대 테라스",
+      "mesh_nodes": [
+        "28185_01_21929_041_03__colonnade"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21929_041_04",
+      "label": "한마음 구민광장 & 조경수목·가로등·청사 문주 명판",
+      "mesh_nodes": [
+        "28185_01_21929_041_04__plaza_and_monument"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 4000,
+    "phase_link": "일몰 후 15분 점등 / 24:00 소등 (공공행정청사 연동)",
+    "spots": [
+      {
+        "id": "night_light_navy_crown",
+        "offset_m": [
+          12.0,
+          32.5,
+          -9.0
+        ],
+        "aim": "본청사 옥상 네이비 파라펫 라인 경관조명"
+      },
+      {
+        "id": "night_light_colonnade",
+        "offset_m": [
+          12.0,
+          6.0,
+          2.5
+        ],
+        "aim": "전면 기둥 열주 상향 투광등"
+      },
+      {
+        "id": "night_light_plaza_lights",
+        "offset_m": [
+          0.0,
+          0.5,
+          14.0
+        ],
+        "aim": "한마음 구민광장 가로등 조명"
+      },
+      {
+        "id": "night_light_gate_monument",
+        "offset_m": [
+          -15.5,
+          2.5,
+          3.1
+        ],
+        "aim": "청사 문주 명판 조명"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_main_hall_lobby",
+      "label": "연수구청 종합민원실 로비",
+      "offset_m": [
+        12.0,
+        0.15,
+        2.0
+      ]
+    },
+    {
+      "id": "hotspot_council_wing_entrance",
+      "label": "연수구의회 방청석 입구",
+      "offset_m": [
+        -15.0,
+        0.15,
+        2.0
+      ]
+    },
+    {
+      "id": "hotspot_hanmaum_plaza",
+      "label": "한마음 구민광장",
+      "offset_m": [
+        0.0,
+        0.35,
+        14.0
+      ]
+    },
+    {
+      "id": "hotspot_yeonsu_main_gate",
+      "label": "연수구청 정문 표지석",
+      "offset_m": [
+        -15.5,
+        0.15,
+        3.1
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_01_21929_041_01",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "연수구청 공식 사이트 구청 안내 및 청사 안내도",
+      "url": "https://www.yeonsu.go.kr/",
+      "note": "원인재로 115 본청사 및 의회동 건축 제원"
+    },
+    {
+      "title": "인천광역시 공식 포털 군·구 행정 인프라 현황",
+      "url": "https://www.incheon.go.kr/",
+      "note": "연수구 복합행정타운 인허가 및 공공시설 정보"
+    },
+    {
+      "title": "희림종합건축사사무소 연수구청 청사 설계 포트폴리오",
+      "url": "https://www.heerim.com/",
+      "note": "연수구청 본관 및 의회동 실시설계 데이터"
+    }
+  ],
+  "reference_note": "희림건축 및 대우건설 준공도면 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B41 Yeonsu-gu Office)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -28.0,
+      0.0,
+      -24.6
+    ],
+    "max": [
+      27.95,
+      32.5,
+      24.6
+    ],
+    "size": [
+      55.95,
+      32.5,
+      49.2
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 11160,
+      "bytes": 1069495
+    },
+    "model_lod2.gltf": {
+      "triangles": 360,
+      "bytes": 38590
+    },
+    "texture_atlas.webp": {
+      "bytes": 122574,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1233659,
+  "anchor_nodes": [
+    "hotspot_main_hall_lobby",
+    "hotspot_council_wing_entrance",
+    "hotspot_hanmaum_plaza",
+    "hotspot_yeonsu_main_gate",
+    "night_light_navy_crown",
+    "night_light_colonnade",
+    "night_light_plaza_lights",
+    "night_light_gate_monument"
+  ]
+}

@@ -1,0 +1,418 @@
+{
+  "schema_version": "2.1_junggu_spec117_B09",
+  "spec_ref": "TASK_REQUEST_20261108_JUNGGU_LEGO_50BLOCKS.md §1~§3 / 117호 블록 장착 규약 v1",
+  "task_slot_id": "11140-B09",
+  "pr_number": 317,
+  "pr_number_assigned": 315,
+  "block_number": 9,
+  "composite_id": "11140_02_04519_008",
+  "block_id": "11140_B09_서울시립미술관_서소문본관",
+  "name": "서울시립미술관 서소문본관",
+  "name_en": "Seoul Museum of Art (SeMA), Seosomun Main Building",
+  "category": "CAT10_CULTURE_MODERN_MUSEUM",
+  "category_label": "문화예술/근대건축",
+  "district": "서울특별시 중구",
+  "road_address": "서울특별시 중구 덕수궁길 61 (서소문동 37)",
+  "postal_code": "04515",
+  "heritage": {
+    "designation": "등록문화재 아님 / 현대 공공문화시설",
+    "note": "1928년 건립된 구 대법원 청사를 2002년 미술관으로 개조한 건물로, 구 청사 부분은 근대 공공건축의 원형을 유지한다. 개별 지정번호는 국가유산청 고시 원문 대조 전까지 확정하지 않는다.",
+    "manager": "서울특별시 서울시립미술관"
+  },
+  "coordinates": [
+    126.9734,
+    37.5641
+  ],
+  "orientation_deg": 180.0,
+  "heading": 180.0,
+  "heading_note": "중앙 포르티코와 광계단이 남측(시청 방향)을 향하는 것으로 잡은 연출값이다. 실제 축은 덕수궁길 도로선형에 따라 수 도(度) 어긋날 수 있으며, 정밀실측 대조 전까지는 연출 기준값이다.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "광장 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 1.2,
+  "lod_switch_distance": 220.0,
+  "spec_dimensions_m": {
+    "main_block": {
+      "width_x": 36.0,
+      "depth_z": 18.0,
+      "plinth_y": 1.2,
+      "floor1_h": 3.6,
+      "floor2_h": 3.8,
+      "floor3_h": 3.6,
+      "cornice_y": 12.6,
+      "parapet_y": 13.4
+    },
+    "portico": {
+      "width_x": 12.0,
+      "depth_z": 3.0,
+      "columns": 6,
+      "column_r_m": 0.36,
+      "pediment": "삼각 페디먼트",
+      "stair_steps": 6,
+      "stair_width_m": 14.0
+    },
+    "glass_annex": {
+      "width_x": 14.0,
+      "depth_z": 10.0,
+      "height_y": 11.2,
+      "bay_x": 10,
+      "levels": 5,
+      "note": "유리 커튼월 증축부(동측 부속동)."
+    },
+    "openings": {
+      "front_per_floor": 8,
+      "side_per_floor": 6,
+      "arch_entrance": 1,
+      "doors": 2
+    },
+    "roof": {
+      "type": "평지붕 자갈·아스팔트 데크",
+      "deck_cols": 26,
+      "deck_rows": 14,
+      "equipment_units": 2
+    },
+    "total_height_with_ornament_m": 13.4,
+    "dimension_note": "개조 과정에서 내부 구조와 증축부가 변경되어 도면 공개 범위가 좁다. 기단·층고·코니스 치수는 이전 검증 근대 관청 건축 블록의 비례와 발주서 제원을 기준으로 한 연출 기준값이다."
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q86",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "granite_facade": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "glass_curtainwall": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "roof_deck": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "sign_plaque": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ],
+        "sub_plaque": [
+          0.02,
+          0.02,
+          0.96,
+          0.44
+        ],
+        "sub_entrance_door": [
+          0.02,
+          0.5,
+          0.44,
+          0.46
+        ],
+        "sub_gold_frame": [
+          0.5,
+          0.5,
+          0.46,
+          0.22
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 내부 0.04~0.48 창을 주기 반복하며, 표지·출입문은 부분영역 정확 UV(1:1)로 문자 왜곡이 없다."
+  },
+  "detail_counts": {
+    "plinth_ashlar_courses": 1,
+    "plinth_sangmyeon_panseok": 180,
+    "grand_stair_steps": 6,
+    "somaldol": 2,
+    "facade_lister_blocks": 198,
+    "portico_columns": 6,
+    "pediment": 1,
+    "windows_front": 24,
+    "windows_side": 18,
+    "arch_entrance": 1,
+    "entrance_doors": 2,
+    "glass_bays": 10,
+    "glass_levels": 5,
+    "glass_mullions": 40,
+    "glass_panels": 200,
+    "glass_fins": 24,
+    "glass_louvers": 6,
+    "roof_deck_tiles": 576,
+    "roof_equipment_units": 2,
+    "parapet_balusters": 58,
+    "trees": 4,
+    "bollards": 12,
+    "sign_characters": 7,
+    "sign_emboss_cells": 291
+  },
+  "sign": {
+    "characters": "서울시립미술관",
+    "type": "가로형 7자",
+    "board_size_m": [
+      3.4,
+      0.66
+    ],
+    "frame": "황금 이중 테두리 + 옻칠 바탕 + 3D 양각"
+  },
+  "hierarchical_components": [
+    {
+      "id": "11140_02_04519_008_01",
+      "label": "화강암 기단·상면 판석 180매·중앙 광계단 6단·소맷돌",
+      "mesh_nodes": [
+        "11140_02_04519_008_01__granite_plinth_grand_stair"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_008_02",
+      "label": "신고전주의 석조 본관·포르티코 6주·페디먼트·유리 커튼월 증축부",
+      "mesh_nodes": [
+        "11140_02_04519_008_02__stone_courthouse_body_portico",
+        "11140_02_04519_008_02__glass_curtainwall_annex"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_008_03",
+      "label": "평지붕 자갈 데크·옥상 설비 2기·파라펫 철제 난간",
+      "mesh_nodes": [
+        "11140_02_04519_008_03__roof_deck",
+        "11140_02_04519_008_03__roofplant_units_2",
+        "11140_02_04519_008_03__parapet_iron_railing"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_008_04",
+      "label": "미술관 표지 서울시립미술관(가로 7자)·황금 테두리·3D 양각",
+      "mesh_nodes": [
+        "11140_02_04519_008_04__sign_board",
+        "11140_02_04519_008_04__sign_gold_frame",
+        "11140_02_04519_008_04__sign_yanggak_emboss"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_008_05",
+      "label": "3개 층 창렬 42개소·중앙 아치·출입문 2짝",
+      "mesh_nodes": [
+        "11140_02_04519_008_05__window_steel_sash",
+        "11140_02_04519_008_05__entrance_door_panels"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_008_06",
+      "label": "광장 포장·경계석·수목 4그루·울타리·볼라드 12기",
+      "mesh_nodes": [
+        "11140_02_04519_008_06__plaza_paving",
+        "11140_02_04519_008_06__plaza_trees_hedge"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3000,
+    "phase_link": "일몰 후 30분 점등 / 23:00 소등",
+    "spots": [
+      {
+        "id": "night_light_spotlight_SE_3000K",
+        "offset_m": [
+          28.0,
+          0.9,
+          26.0
+        ],
+        "aim": "정면 남동 파사드 상향"
+      },
+      {
+        "id": "night_light_spotlight_SW_3000K",
+        "offset_m": [
+          -28.0,
+          0.9,
+          26.0
+        ],
+        "aim": "정면 남서 파사드 상향"
+      },
+      {
+        "id": "night_light_spotlight_NE_3000K",
+        "offset_m": [
+          28.0,
+          0.9,
+          -20.0
+        ],
+        "aim": "배면 북동면 조사"
+      },
+      {
+        "id": "night_light_spotlight_NW_3000K",
+        "offset_m": [
+          -28.0,
+          0.9,
+          -20.0
+        ],
+        "aim": "배면 북서면 조사"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_grand_stair_portico_dive",
+      "label": "중앙 광계단 6단·포르티코 진입",
+      "offset_m": [
+        0.0,
+        1.8,
+        20.0
+      ]
+    },
+    {
+      "id": "hotspot_sign_museum_closeup",
+      "label": "표지 서울시립미술관 양각 근접",
+      "offset_m": [
+        0.0,
+        4.9,
+        12.6
+      ]
+    },
+    {
+      "id": "hotspot_portico_columns",
+      "label": "포르티코 원기둥 6주 하부",
+      "offset_m": [
+        0.0,
+        3.0,
+        13.4
+      ]
+    },
+    {
+      "id": "hotspot_glass_annex_atrium",
+      "label": "유리 커튼월 증축부 아트리움",
+      "offset_m": [
+        25.0,
+        6.0,
+        12.0
+      ]
+    },
+    {
+      "id": "hotspot_roof_deck_skyline",
+      "label": "옥상 데크에서 시청 방면 조망",
+      "offset_m": [
+        0.0,
+        13.8,
+        0.0
+      ]
+    }
+  ],
+  "key_expansion_rule": "11140_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 11140_02_04519_008_02",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "서울시립미술관 공식 누리집 — 서소문본관 안내",
+      "url": "https://sema.seoul.go.kr/",
+      "note": "서소문본관 연혁(1928년 구 대법원 청사)·관람 안내"
+    },
+    {
+      "title": "서울특별시 문화유산 — 중구 덕수궁길 61",
+      "url": "https://www.seoul.go.kr/",
+      "note": "소재지·도로명주소 대조"
+    },
+    {
+      "title": "국가유산포털 — 근대 공공건축 자료",
+      "url": "https://www.heritage.go.kr/",
+      "note": "1920~30년대 관청 건축 형식 대조"
+    },
+    {
+      "title": "한국민족문화대백과 — 서울시립미술관",
+      "url": "https://encykorea.aks.ac.kr/",
+      "note": "구 대법원 청사의 미술관 개조 경위"
+    }
+  ],
+  "reference_note": "위 4건은 포털 루트 주소이며, 검수 시 각 포털에서 「서울시립미술관 서소문본관」 항목으로 진입해 연혁·치수를 재확인한다. 웹 검색 없이 발주서 제원표와 이전 검증 데이터로 작성된 블록이므로, 상세 주소는 포털 검색 경로를 기준으로 안내한다.",
+  "generation": {
+    "generator": "pimang junggu sema-seosomun parametric builder (workspace-side)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "생성 스크립트·임시파일은 저장소에 포함되지 않는다. PR에는 위 4종 에셋만 반영."
+  },
+  "bbox_local_m": {
+    "min": [
+      -38.0,
+      0.0,
+      -18.0
+    ],
+    "max": [
+      38.0,
+      14.52,
+      30.0
+    ],
+    "size": [
+      76.0,
+      14.52,
+      48.0
+    ],
+    "core_min": [
+      -38.0,
+      0.0,
+      -18.0
+    ],
+    "core_max": [
+      38.0,
+      14.6,
+      30.0
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 15282,
+      "vertices": 20096,
+      "bytes": 1115132
+    },
+    "model_lod2.gltf": {
+      "triangles": 426,
+      "vertices": 612,
+      "bytes": 39784
+    },
+    "texture_atlas.webp": {
+      "bytes": 104544,
+      "size_px": 1024,
+      "format": "webp_lossy_q86"
+    }
+  },
+  "package_total_bytes": 1259460,
+  "anchor_nodes": [
+    "night_light_spotlight_SE_3000K",
+    "night_light_spotlight_SW_3000K",
+    "night_light_spotlight_NE_3000K",
+    "night_light_spotlight_NW_3000K",
+    "hotspot_grand_stair_portico_dive",
+    "hotspot_sign_museum_closeup",
+    "hotspot_portico_columns",
+    "hotspot_glass_annex_atrium",
+    "hotspot_roof_deck_skyline"
+  ]
+}

@@ -1,0 +1,371 @@
+{
+  "schema_version": "2.1_junggu_spec117_B14",
+  "spec_ref": "TASK_REQUEST_20261108_JUNGGU_LEGO_50BLOCKS.md §1~§3 / 117호 블록 장착 규약 v1",
+  "task_slot_id": "11140-B14",
+  "pr_number": 321,
+  "pr_number_assigned": 321,
+  "block_number": 14,
+  "composite_id": "11140_02_04528_013",
+  "block_id": "11140_B14_남대문시장_칼국수·갈치골목",
+  "name": "남대문시장 칼국수·갈치골목",
+  "name_en": "남대문시장 칼국수·갈치골목",
+  "category": "CAT16_TRADITIONAL_MARKET_ARCADE",
+  "category_label": "전통시장/아케이드",
+  "district": "서울특별시 중구",
+  "road_address": "서울특별시 중구 남대문시장4길 21 (남창동)",
+  "postal_code": "04528",
+  "heritage": {
+    "designation": "해당 없음 (전통시장)",
+    "note": "조선 후기부터 형성된 남대문시장의 칼국수·갈치골목 구간. 개별 지정문화재 아님.",
+    "manager": "서울특별시 중구 / 남대문시장 상인회"
+  },
+  "coordinates": [
+    126.9798,
+    37.5613
+  ],
+  "orientation_deg": 180.0,
+  "heading": 180.0,
+  "heading_note": "정면축을 기준으로 한 연출값이며, 정밀실측 대조 전까지는 연출 기준값으로 취급한다.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.8,
+  "lod_switch_distance": 200.0,
+  "spec_dimensions_m": {
+    "arcade": {
+      "length_x": 84.0,
+      "depth_z": 14.0,
+      "wall_top_y": 6.4,
+      "ridge_y": 8.8,
+      "bays": 14,
+      "note": "아케이드형 시장 통로 + 박공지붕"
+    },
+    "stalls": {
+      "rows": 2,
+      "counter_h_m": 1.05
+    },
+    "openings": {
+      "front_bays": 14
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q86",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "granite_stone": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "wall_masonry": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "roof_tile": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "sign_plaque": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ],
+        "sub_plaque": [
+          0.02,
+          0.02,
+          0.96,
+          0.44
+        ],
+        "sub_door_hongchil": [
+          0.02,
+          0.5,
+          0.44,
+          0.46
+        ],
+        "sub_gold_frame": [
+          0.5,
+          0.5,
+          0.46,
+          0.22
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 내부 0.04~0.48 창을 주기 반복하며, 간판·문은 부분영역 정확 UV(1:1)이다."
+  },
+  "detail_counts": {
+    "massing_units": 1,
+    "arcade_bays": 14,
+    "stall_rows": 2,
+    "bollards": 12,
+    "lamps": 5
+  },
+  "sign": {
+    "characters": "南大門市場",
+    "type": "가로형 5자",
+    "board_size_m": [
+      8.0,
+      2.2
+    ],
+    "frame": "황금 이중 테두리 + 옻칠 바탕 + 3D 양각"
+  },
+  "hierarchical_components": [
+    {
+      "id": "11140_02_04528_013_01",
+      "label": "화강암 기단·지면 판석·포장",
+      "mesh_nodes": [
+        "11140_02_04528_013_01__plinth_ground_base"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04528_013_02",
+      "label": "본체 매스·창렬·파사드",
+      "mesh_nodes": [
+        "11140_02_04528_013_02__mass_body_facade"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04528_013_03",
+      "label": "지붕·데크·옥상 구조물",
+      "mesh_nodes": [
+        "11140_02_04528_013_03__roof_deck_structure",
+        "11140_02_04528_013_03__roof_metal_ornament"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04528_013_04",
+      "label": "표지 南大門市場 3D 양각·금테",
+      "mesh_nodes": [
+        "11140_02_04528_013_04__sign_board",
+        "11140_02_04528_013_04__sign_gold_frame",
+        "11140_02_04528_013_04__sign_yanggak_emboss"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04528_013_05",
+      "label": "창호·출입문·철물",
+      "mesh_nodes": [
+        "11140_02_04528_013_05__window_sash_glass",
+        "11140_02_04528_013_05__door_hardware_iron"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04528_013_06",
+      "label": "조경·가로시설",
+      "mesh_nodes": [
+        "11140_02_04528_013_06__landscape_greenery"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3000,
+    "phase_link": "일몰 후 30분 점등 / 23:00 소등",
+    "spots": [
+      {
+        "id": "night_light_spotlight_SE_3000K",
+        "offset_m": [
+          42.0,
+          0.9,
+          20.0
+        ],
+        "aim": "시장 남동 파사드 상향"
+      },
+      {
+        "id": "night_light_spotlight_SW_3000K",
+        "offset_m": [
+          -42.0,
+          0.9,
+          20.0
+        ],
+        "aim": "시장 남서 파사드 상향"
+      },
+      {
+        "id": "night_light_spotlight_NE_3000K",
+        "offset_m": [
+          42.0,
+          0.9,
+          -12.0
+        ],
+        "aim": "배면 북동면 조사"
+      },
+      {
+        "id": "night_light_spotlight_NW_3000K",
+        "offset_m": [
+          -42.0,
+          0.9,
+          -12.0
+        ],
+        "aim": "배면 북서면 조사"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_arcade_entry_dive",
+      "label": "시장 아케이드 진입(칼국수골목)",
+      "offset_m": [
+        0.0,
+        1.7,
+        16.0
+      ]
+    },
+    {
+      "id": "hotspot_sign_namdaemun_market",
+      "label": "표지 南大門市場 양각 근접",
+      "offset_m": [
+        0.0,
+        6.6,
+        10.0
+      ]
+    },
+    {
+      "id": "hotspot_stall_street",
+      "label": "좌판 통로 보행",
+      "offset_m": [
+        0.0,
+        1.6,
+        8.0
+      ]
+    },
+    {
+      "id": "hotspot_galchi_alley",
+      "label": "갈치골목 측면 통로",
+      "offset_m": [
+        30.0,
+        1.7,
+        8.0
+      ]
+    },
+    {
+      "id": "hotspot_roof_ridge_overlook",
+      "label": "용마루 위 시장 조망",
+      "offset_m": [
+        0.0,
+        8.8,
+        0.0
+      ]
+    }
+  ],
+  "key_expansion_rule": "11140_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 11140_02_04528_013_03",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "국가유산포털 — 중구 소재 지정문화재 원문 포털",
+      "url": "https://www.heritage.go.kr/",
+      "note": "국가유산청 지정·관리 정보 원문"
+    },
+    {
+      "title": "서울특별시 중구 — 주요 명소 안내",
+      "url": "https://junggu.seoul.go.kr/",
+      "note": "구간·시설 소재지 대조"
+    },
+    {
+      "title": "한국민족문화대백과 — 서울 중구 주요 유적",
+      "url": "https://encykorea.aks.ac.kr/",
+      "note": "역사·형식 대조"
+    },
+    {
+      "title": "서울특별시 — 도로명주소 안내",
+      "url": "https://www.seoul.go.kr/",
+      "note": "도로명주소 대조"
+    }
+  ],
+  "reference_note": "포털 루트 주소이며, 검수 시 각 포털에서 해당 항목으로 진입해 치수·지정정보를 재확인한다.",
+  "generation": {
+    "generator": "pimang junggu namdaemun-market parametric builder (workspace-side)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "생성 스크립트·임시파일은 저장소에 포함되지 않는다. PR에는 위 4종 에셋만 반영."
+  },
+  "bbox_local_m": {
+    "min": [
+      -47.975,
+      0.0,
+      -8.975
+    ],
+    "max": [
+      47.975,
+      9.05,
+      24.975
+    ],
+    "size": [
+      95.95,
+      9.05,
+      33.95
+    ],
+    "core_min": [
+      -47.975,
+      0.0,
+      -8.975
+    ],
+    "core_max": [
+      47.975,
+      9.05,
+      24.975
+    ],
+    "note": "min/max는 LOD3 실측 바운딩박스, core는 본체 범위다."
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 14058,
+      "vertices": 17938,
+      "bytes": 1001088
+    },
+    "model_lod2.gltf": {
+      "triangles": 702,
+      "vertices": 934,
+      "bytes": 57388
+    },
+    "texture_atlas.webp": {
+      "bytes": 105168,
+      "size_px": 1024,
+      "format": "webp_lossy_q86"
+    }
+  },
+  "package_total_bytes": 1163644,
+  "anchor_nodes": [
+    "night_light_spotlight_SE_3000K",
+    "night_light_spotlight_SW_3000K",
+    "night_light_spotlight_NE_3000K",
+    "night_light_spotlight_NW_3000K",
+    "hotspot_arcade_entry_dive",
+    "hotspot_sign_namdaemun_market",
+    "hotspot_stall_street",
+    "hotspot_galchi_alley",
+    "hotspot_roof_ridge_overlook"
+  ]
+}

@@ -1,0 +1,411 @@
+{
+  "schema_version": "2.1_junggu_spec117_B05",
+  "spec_ref": "TASK_REQUEST_20261108_JUNGGU_LEGO_50BLOCKS.md §1~§3 / 117호 블록 장착 규약 v1",
+  "task_slot_id": "11140-B05",
+  "pr_number": 313,
+  "pr_number_assigned": 311,
+  "block_number": 5,
+  "composite_id": "11140_02_04519_004",
+  "block_id": "11140_B05_덕수궁_정관헌",
+  "name": "덕수궁 정관헌",
+  "name_en": "Jeonggwanheon Pavilion of Deoksugung Palace, Seoul",
+  "category": "CAT06_PALACE_ECLECTIC_PAVILION",
+  "category_label": "궁궐/동서절충누각",
+  "district": "서울특별시 중구",
+  "road_address": "서울특별시 중구 세종대로 99 (정동 5-1, 덕수궁 내)",
+  "postal_code": "04519",
+  "heritage": {
+    "designation": "사적",
+    "number": 124,
+    "name": "덕수궁 (사적 제124호, 개별 구성요소 포함)",
+    "designated_on_note": "지정 연도는 국가유산청 고시 원문 대조 전까지 확정하지 않는다.",
+    "manager": "국가유산청 궁능유적본부 덕수궁관리소",
+    "number_note": "덕수궁은 사적 제124호(1963년 지정)이며, 해당 건물·구간은 그 사적 범위 안의 개별 구성요소로 다룬다. 세부 지정 원문은 국가유산청 고시 대조 대상."
+  },
+  "coordinates": [
+    126.9754,
+    37.5667
+  ],
+  "orientation_deg": 180.0,
+  "heading": 180.0,
+  "heading_note": "정남향(정관헌 정원→열주 테라스 진입축)을 기준으로 한 연출값이다. 실제 축은 덕수궁 후원 지형과 배치선에 따라 수 도(度) 범위에서 어긋날 수 있으며, 정밀실측 조사보고서 대조 전까지는 연출 기준값으로 취급한다.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "정원 마사토·판석 바닥면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.55,
+  "lod_switch_distance": 160.0,
+  "spec_dimensions_m": {
+    "plinth": {
+      "width_x": 16.0,
+      "depth_z": 10.0,
+      "height_y": 0.55,
+      "note": "화강암 장대석 기단. 정면 계단 3단 + 좌우 소맷돌, 상면 판석 40매."
+    },
+    "terrace": {
+      "columns": 6,
+      "column_r_m": 0.21,
+      "column_h_m": 3.55,
+      "order": "로마식 토스카나 오더",
+      "depth_z_m": 1.55,
+      "note": "정면 열주 6주 + 엔타블라처 + 철제 난간 25기."
+    },
+    "body": {
+      "width_x": 11.0,
+      "depth_z": 7.0,
+      "floor_y": 0.73,
+      "column_top_y": 4.1,
+      "eave_y": 5.2,
+      "brick_courses": 7,
+      "note": "벽돌 조적 벽체 + 목조 창방·평방 + 모서리 기둥 4본."
+    },
+    "roof": {
+      "type": "겹처마 팔작지붕",
+      "eave_y": 5.2,
+      "ridge_y": 7.8,
+      "ridge_len": 4.6,
+      "eave_hw": 7.6,
+      "eave_hd": 5.2,
+      "note": "서까래(원형)+부연(방형) 겹처마. 처마는 벽체선에서 2.1m 내밀기."
+    },
+    "total_height_to_ridge_m": 7.8,
+    "total_height_with_ornament_m": 8.28,
+    "dimension_note": "정관헌은 국가유산청 정밀실측 조사보고서의 치수 공개 범위가 좁아, 본 블록의 기단·벽체·처마 치수는 이전 검증 블록의 궁궐 누각 계통 비례와 발주서 제원을 기준으로 한 연출 기준값이다. 실측 대조 시 갱신 대상."
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q86",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "granite_plinth": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "brick_timber": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "giwa_roof": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "hyunpan_plaque": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ],
+        "sub_plaque": [
+          0.02,
+          0.02,
+          0.96,
+          0.44
+        ],
+        "sub_panmun_hongchil": [
+          0.02,
+          0.5,
+          0.44,
+          0.46
+        ],
+        "sub_gold_frame": [
+          0.5,
+          0.5,
+          0.46,
+          0.22
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 내부 0.04~0.48 창을 주기 반복하며, 현판·판문·금테는 부분영역 정확 UV(1:1)로 문자·못 배열의 왜곡이 없다."
+  },
+  "detail_counts": {
+    "plinth_ashlar_courses": 1,
+    "plinth_sangmyeon_panseok": 40,
+    "stairs_front_flights": 1,
+    "stairs_steps_total": 3,
+    "somaldol": 2,
+    "romanesque_columns": 6,
+    "brick_lister_courses": 7,
+    "corner_timber_posts": 4,
+    "windows_front": 4,
+    "windows_side": 6,
+    "windows_rear": 3,
+    "doors_panels": 2,
+    "rafters_serving_eave": 78,
+    "corner_japsang": 12,
+    "corner_punggyeong": 4,
+    "terrace_balusters": 25,
+    "trees": 4,
+    "hyunpan_characters": 3,
+    "hyunpan_emboss_cells": 182
+  },
+  "hyunpan": {
+    "characters": "靜觀軒",
+    "type": "가로형 3자",
+    "board_size_m": [
+      1.86,
+      0.66
+    ],
+    "frame": "황금 이중 테두리 + 옻칠 바탕 + 3D 양각"
+  },
+  "hierarchical_components": [
+    {
+      "id": "11140_02_04519_004_01",
+      "label": "화강암 기단·정면 3단 계단·소맷돌·열주 테라스",
+      "mesh_nodes": [
+        "11140_02_04519_004_01__granite_plinth_terrace"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_004_02",
+      "label": "벽돌 조적 벽체·창방·평방·모서리 기둥",
+      "mesh_nodes": [
+        "11140_02_04519_004_02__brick_body_timber_frame"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_004_03",
+      "label": "겹처마 팔작지붕·용마루·잡상·로마식 열주 6주·난간",
+      "mesh_nodes": [
+        "11140_02_04519_004_03__paljak_roof_giwa",
+        "11140_02_04519_004_03__seokkarae_buyeon_eave",
+        "11140_02_04519_004_03__yongmaru_japsang_punggyeong",
+        "11140_02_04519_004_03__roman_colonnade_6columns",
+        "11140_02_04519_004_03__terrace_iron_balustrade"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_004_04",
+      "label": "정관헌 현판 靜觀軒(가로 3자)·황금 테두리·3D 양각",
+      "mesh_nodes": [
+        "11140_02_04519_004_04__hyeonpan_board",
+        "11140_02_04519_004_04__hyeonpan_gold_frame",
+        "11140_02_04519_004_04__hyeonpan_yanggak_emboss"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_004_05",
+      "label": "목조 창호 13개소·판문 2짝",
+      "mesh_nodes": [
+        "11140_02_04519_004_05__window_wood_sash",
+        "11140_02_04519_004_05__door_panel_lacquer"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_004_06",
+      "label": "정원 판석·수목 4그루·울타리",
+      "mesh_nodes": [
+        "11140_02_04519_004_06__garden_paving",
+        "11140_02_04519_004_06__garden_trees_hedge"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3000,
+    "phase_link": "일몰 후 30분 점등 / 23:00 소등",
+    "spots": [
+      {
+        "id": "night_light_spotlight_SE_3000K",
+        "offset_m": [
+          13.0,
+          0.7,
+          12.0
+        ],
+        "aim": "열주 테라스 남동 상향"
+      },
+      {
+        "id": "night_light_spotlight_SW_3000K",
+        "offset_m": [
+          -13.0,
+          0.7,
+          12.0
+        ],
+        "aim": "열주 테라스 남서 상향"
+      },
+      {
+        "id": "night_light_spotlight_NE_3000K",
+        "offset_m": [
+          13.0,
+          0.7,
+          -12.0
+        ],
+        "aim": "후원 북동면 조사"
+      },
+      {
+        "id": "night_light_spotlight_NW_3000K",
+        "offset_m": [
+          -13.0,
+          0.7,
+          -12.0
+        ],
+        "aim": "후원 북서면 조사"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_colonnade_terrace_dive",
+      "label": "열주 6주 테라스 진입",
+      "offset_m": [
+        0.0,
+        1.4,
+        8.6
+      ]
+    },
+    {
+      "id": "hotspot_panmun_entrance",
+      "label": "중앙 판문 진입",
+      "offset_m": [
+        0.0,
+        1.6,
+        4.6
+      ]
+    },
+    {
+      "id": "hotspot_hyeonpan_jeonggwanheon",
+      "label": "현판 靜觀軒 양각 근접",
+      "offset_m": [
+        0.0,
+        3.6,
+        4.4
+      ]
+    },
+    {
+      "id": "hotspot_eave_underside",
+      "label": "겹처마 하부 올려보기",
+      "offset_m": [
+        0.0,
+        4.9,
+        4.0
+      ]
+    },
+    {
+      "id": "hotspot_ridge_garden_overlook",
+      "label": "용마루 위 후원 조망",
+      "offset_m": [
+        0.0,
+        8.4,
+        0.0
+      ]
+    }
+  ],
+  "key_expansion_rule": "11140_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 11140_02_04519_004_03",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "국가유산포털 — 사적 「덕수궁」 지정정보",
+      "url": "https://www.heritage.go.kr/",
+      "note": "국가유산청 지정·관리 정보 원문 포털"
+    },
+    {
+      "title": "궁능유적본부 — 덕수궁 정관헌 안내",
+      "url": "https://royal.khs.go.kr/",
+      "note": "정관헌 배치·연혁·관람 안내"
+    },
+    {
+      "title": "한국민족문화대백과 — 덕수궁 정관헌",
+      "url": "https://encykorea.aks.ac.kr/",
+      "note": "단층 연회용 누각, 로마식 열주와 팔작지붕의 동서절충 형식"
+    },
+    {
+      "title": "서울특별시 문화유산 — 중구 세종대로 99 일대",
+      "url": "https://www.seoul.go.kr/",
+      "note": "소재지·도로명주소 대조"
+    }
+  ],
+  "reference_note": "위 4건은 포털 루트 주소이며, 검수 시 각 포털에서 「덕수궁 정관헌」 항목으로 진입해 치수·지정일을 재확인한다. 웹 검색 없이 발주서 제원표와 이전 검증 데이터로 작성된 블록이므로, 상세 주소는 포털 검색 경로를 기준으로 안내한다.",
+  "generation": {
+    "generator": "pimang junggu jeonggwanheon parametric builder (workspace-side)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "생성 스크립트·임시파일은 저장소에 포함되지 않는다. PR에는 위 4종 에셋만 반영."
+  },
+  "bbox_local_m": {
+    "min": [
+      -17.0,
+      0.0,
+      -12.0
+    ],
+    "max": [
+      17.0,
+      8.185,
+      12.0
+    ],
+    "size": [
+      34.0,
+      8.185,
+      24.0
+    ],
+    "core_min": [
+      -8.0,
+      0.0,
+      -5.0
+    ],
+    "core_max": [
+      8.0,
+      8.28,
+      6.9
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 11498,
+      "vertices": 12237,
+      "bytes": 720287
+    },
+    "model_lod2.gltf": {
+      "triangles": 402,
+      "vertices": 376,
+      "bytes": 28543
+    },
+    "texture_atlas.webp": {
+      "bytes": 109362,
+      "size_px": 1024,
+      "format": "webp_lossy_q86"
+    }
+  },
+  "package_total_bytes": 858192,
+  "anchor_nodes": [
+    "night_light_spotlight_SE_3000K",
+    "night_light_spotlight_SW_3000K",
+    "night_light_spotlight_NE_3000K",
+    "night_light_spotlight_NW_3000K",
+    "hotspot_colonnade_terrace_dive",
+    "hotspot_panmun_entrance",
+    "hotspot_hyeonpan_jeonggwanheon",
+    "hotspot_eave_underside",
+    "hotspot_ridge_garden_overlook"
+  ]
+}

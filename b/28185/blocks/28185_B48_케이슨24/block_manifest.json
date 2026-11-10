@@ -1,0 +1,298 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B48",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B48",
+  "pr_number": 509,
+  "pr_number_assigned": 509,
+  "block_number": 48,
+  "composite_id": "28185_01_22014_048",
+  "block_id": "28185_B48_케이슨24",
+  "name": "솔찬공원 케이슨24 (서해 낙조 선셋 전망대 & 복합문화공간)",
+  "name_en": "Solchan Park Caisson 24 Sunset Observatory",
+  "category": "CAT12_WATERFRONT_CULTURE",
+  "category_label": "복합문화공간/선셋전망대/서해낙조명소",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 컨벤시아대로391번길 20 (송도동)",
+  "postal_code": "22014",
+  "floors": "지상 2층 (높이 12.5m 케이슨24 복합문화공간 및 루프탑 선셋스카이데크)",
+  "height_m": 12.5,
+  "architectural_style": "노출 콘크리트 및 전면 통유리 해안 복합문화공간과 해안 산책로",
+  "architect": "건축사사무소에스에이 & 대우건설",
+  "coordinates": [
+    126.6342,
+    37.3625
+  ],
+  "orientation_deg": 0.0,
+  "heading": 0.0,
+  "heading_note": "솔찬공원 해안 산책로에서 케이슨24와 서해 낙조를 조망하는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.15,
+  "lod_switch_distance": 220.0,
+  "spec_dimensions_m": {
+    "cultural_hall": {
+      "width_x_m": 32.0,
+      "depth_z_m": 16.0,
+      "height_m": 12.5
+    },
+    "boardwalk": {
+      "width_x_m": 52.0,
+      "depth_z_m": 4.0,
+      "height_m": 0.45
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "curtain_wall": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "boardwalk_and_lawn": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "sea_water": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "sunset_and_trees": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.02~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "cultural_buildings": 1,
+    "parasols": 8,
+    "campus_trees": 16,
+    "smart_streetlights": 10
+  },
+  "sign": {
+    "characters": "CAISSON 24 (케이슨24 복합문화공간)",
+    "type": "문화센터 정문 화강석 문주 위 선셋 오렌지/골드 입체 명판",
+    "board_size_m": [
+      3.8,
+      1.8
+    ],
+    "frame": "노출 콘크리트 & 스테인리스 스틸 헤어라인 프레임"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_01_22014_048_01",
+      "label": "케이슨24 지상 2층 12.5m 노출 콘크리트 복합문화본관",
+      "mesh_nodes": [
+        "28185_01_22014_048_01__cultural_hall"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_22014_048_02",
+      "label": "2층 루프탑 서해 낙조 파노라마 선셋 스카이데크",
+      "mesh_nodes": [
+        "28185_01_22014_048_02__sunset_skydeck"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_22014_048_03",
+      "label": "솔찬공원 해안 호안 석축 및 서해 수면·목재 보행데크",
+      "mesh_nodes": [
+        "28185_01_22014_048_03__seawall_and_boardwalk"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_22014_048_04",
+      "label": "해안 카페 파라솔 테라스 & 조경수목·가로등·케이슨24 명판",
+      "mesh_nodes": [
+        "28185_01_22014_048_04__parasols_and_monument"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3000,
+    "phase_link": "일몰 후 15분 점등 / 24:00 소등 (해안공원 경관 연동)",
+    "spots": [
+      {
+        "id": "night_light_skydeck_orange",
+        "offset_m": [
+          0.0,
+          12.5,
+          -10.0
+        ],
+        "aim": "루프탑 스카이데크 선셋 오렌지 간접조명"
+      },
+      {
+        "id": "night_light_boardwalk",
+        "offset_m": [
+          0.0,
+          0.45,
+          8.0
+        ],
+        "aim": "해안 보행데크 스텝라이트"
+      },
+      {
+        "id": "night_light_seawall",
+        "offset_m": [
+          0.0,
+          0.85,
+          12.0
+        ],
+        "aim": "호안 석축 투광등"
+      },
+      {
+        "id": "night_light_gate_monument",
+        "offset_m": [
+          -15.5,
+          2.5,
+          3.1
+        ],
+        "aim": "케이슨24 문주 명판 조명"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_skydeck_observatory",
+      "label": "루프탑 선셋 전망대",
+      "offset_m": [
+        0.0,
+        9.5,
+        -10.0
+      ]
+    },
+    {
+      "id": "hotspot_caisson_lobby",
+      "label": "케이슨24 갤러리카페 로비",
+      "offset_m": [
+        0.0,
+        0.15,
+        -2.0
+      ]
+    },
+    {
+      "id": "hotspot_coastal_boardwalk",
+      "label": "솔찬공원 해안산책로",
+      "offset_m": [
+        0.0,
+        0.45,
+        8.0
+      ]
+    },
+    {
+      "id": "hotspot_caisson24_main_gate",
+      "label": "케이슨24 입구",
+      "offset_m": [
+        -15.5,
+        0.15,
+        3.1
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_01_22014_048_01",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "솔찬공원 케이슨24 공식 소개 및 시설안내",
+      "url": "http://www.caisson24.com/",
+      "note": "컨벤시아대로391번길 20 케이슨24 복합문화공간 건축 제원"
+    },
+    {
+      "title": "IFEZ 인천경제자유구역청 송도 솔찬공원 해안산책로 안내",
+      "url": "https://www.ifez.go.kr/",
+      "note": "송도 바이오단지 남측 솔찬공원 및 호안시설 인허가 정보"
+    },
+    {
+      "title": "건축사사무소에스에이 케이슨24 설계 포트폴리오",
+      "url": "https://www.sa-arch.com/",
+      "note": "케이슨24 복합문화공간 실시설계 데이터"
+    }
+  ],
+  "reference_note": "건축사사무소에스에이 준공도면 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B48 Caisson24)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -28.0,
+      0.0,
+      -24.6
+    ],
+    "max": [
+      28.0,
+      12.5,
+      24.0
+    ],
+    "size": [
+      56.0,
+      12.5,
+      48.6
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 11008,
+      "bytes": 1055463
+    },
+    "model_lod2.gltf": {
+      "triangles": 360,
+      "bytes": 38567
+    },
+    "texture_atlas.webp": {
+      "bytes": 54376,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1151406,
+  "anchor_nodes": [
+    "hotspot_skydeck_observatory",
+    "hotspot_caisson_lobby",
+    "hotspot_coastal_boardwalk",
+    "hotspot_caisson24_main_gate",
+    "night_light_skydeck_orange",
+    "night_light_boardwalk",
+    "night_light_seawall",
+    "night_light_gate_monument"
+  ]
+}

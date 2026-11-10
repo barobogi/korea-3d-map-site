@@ -1,0 +1,329 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B06",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B06",
+  "pr_number": 467,
+  "pr_number_assigned": 467,
+  "block_number": 6,
+  "composite_id": "28185_01_21998_006",
+  "block_id": "28185_B06_센트럴파크_한옥마을_경원재",
+  "name": "센트럴파크 한옥마을 & 경원재 앰배서더",
+  "name_en": "Central Park Hanok Village & Gyeongwonjae Ambassador",
+  "category": "CAT53_TRADITIONAL_HERITAGE_HOTEL",
+  "category_label": "전통문화/한옥호텔",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 테크노파크로 200 (송도동 24-9)",
+  "postal_code": "21998",
+  "floors": "지상 2층",
+  "height_m": 12.0,
+  "architectural_style": "조선 전통 목조 가구식 팔작 기와지붕 한옥 (Traditional Korean Wooden Hanok Palace Hotel)",
+  "architect": "중요무형문화재 제74호 대목장 신응수 고증 & 앰배서더 호텔 그룹",
+  "coordinates": [
+    126.6385,
+    37.3912
+  ],
+  "orientation_deg": 180.0,
+  "heading": 180.0,
+  "heading_note": "센트럴파크 해수수로 및 남측 솟을대문 정면 조망축 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.35,
+  "lod_switch_distance": 200.0,
+  "spec_dimensions_m": {
+    "gyeongwonru_pavilion": {
+      "width_x_m": 24.0,
+      "depth_z_m": 14.0,
+      "height_m": 12.0
+    },
+    "hanok_suites_wings": {
+      "west_wing_m": [
+        18.0,
+        9.0,
+        5.8
+      ],
+      "east_wing_m": [
+        18.0,
+        9.0,
+        5.8
+      ]
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "granite_courtyard": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "hanok_pine_wood": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "traditional_giwa_roof": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "dancheong_and_sign": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.04~0.48 창을 타일링하며 중앙 현판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "pavilion_columns": 48,
+    "rafters_eaves": 48,
+    "balustrades": 36,
+    "courtyard_tiles": 432,
+    "silk_lanterns": 12
+  },
+  "sign": {
+    "characters": "慶 源 樓 (경원재 앰배서더 호텔)",
+    "type": "화강석 좌대 위 황동/한자 입체 명판",
+    "board_size_m": [
+      5.8,
+      1.4
+    ],
+    "frame": "흑단목 바탕 + 황금 테두리"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_01_21998_006_01",
+      "label": "경원재 화강석 안마당 기단 및 꽃담장",
+      "mesh_nodes": [
+        "28185_01_21998_006_01__hanok_courtyard"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21998_006_02",
+      "label": "2층 누각 경원루 배흘림 소나무 목조 가구 및 계자난간",
+      "mesh_nodes": [
+        "28185_01_21998_006_02__pine_columns_beams"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21998_006_03",
+      "label": "겹처마 팔작 기와지붕 및 동·서 객실채 전통 지붕",
+      "mesh_nodes": [
+        "28185_01_21998_006_03__paljak_giwa_roof"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21998_006_04",
+      "label": "전통 솟을대문·단청·청사초롱·경원루 현판",
+      "mesh_nodes": [
+        "28185_01_21998_006_04__dancheong_gate_sign"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3000,
+    "phase_link": "일몰 후 30분 점등 / 23:00 소등",
+    "spots": [
+      {
+        "id": "night_light_spotlight_SE_3000K",
+        "offset_m": [
+          20.0,
+          1.0,
+          20.0
+        ],
+        "aim": "경원루 남동 처마 및 솟을대문 투사"
+      },
+      {
+        "id": "night_light_spotlight_SW_3000K",
+        "offset_m": [
+          -20.0,
+          1.0,
+          20.0
+        ],
+        "aim": "경원루 남서 처마 및 서측 객실 투사"
+      },
+      {
+        "id": "night_light_spotlight_NE_3000K",
+        "offset_m": [
+          20.0,
+          1.0,
+          -20.0
+        ],
+        "aim": "동측 객실 안마당 투사"
+      },
+      {
+        "id": "night_light_spotlight_NW_3000K",
+        "offset_m": [
+          -20.0,
+          1.0,
+          -20.0
+        ],
+        "aim": "서측 객실 및 뒷마당 투사"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_gyeongwonru_grand_pavilion",
+      "label": "경원루 2층 대연회장 누각",
+      "offset_m": [
+        0.0,
+        1.7,
+        14.0
+      ]
+    },
+    {
+      "id": "hotspot_gyeongwonjae_main_lobby_court",
+      "label": "경원재 메인 로비 안마당",
+      "offset_m": [
+        0.0,
+        1.7,
+        -4.0
+      ]
+    },
+    {
+      "id": "hotspot_hanok_suite_courtyard",
+      "label": "전통 한옥 스위트 독채 정원",
+      "offset_m": [
+        -12.0,
+        1.7,
+        -6.0
+      ]
+    },
+    {
+      "id": "hotspot_traditional_gate_entrance",
+      "label": "한옥마을 솟을대문 정문",
+      "offset_m": [
+        0.0,
+        1.7,
+        22.0
+      ]
+    },
+    {
+      "id": "hotspot_centralpark_hanok_trail",
+      "label": "센트럴파크 산책로 연결로",
+      "offset_m": [
+        16.0,
+        1.7,
+        6.0
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_01_21998_006_03",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "경원재 앰배서더 인천 공식 포털 — 호텔 소개 및 건축 개요",
+      "url": "https://www.ambatel.com/gyeongwonjae/",
+      "note": "대한민국 5성급 한옥 호텔 시설 및 경원루 제원"
+    },
+    {
+      "title": "인천경제자유구역청 (IFEZ) — 송도 한옥마을 및 경원재",
+      "url": "https://www.ifez.go.kr/",
+      "note": "센트럴파크 내 전통 한옥 복합단지 고증"
+    },
+    {
+      "title": "한국관광공사 대한민국 구석구석 — 송도 경원재 앰배서더",
+      "url": "https://korean.visitkorea.or.kr/",
+      "note": "신응수 대목장 참여 목조건축 양식 고증"
+    }
+  ],
+  "reference_note": "경원재 앰배서더 공식 및 한국관광공사 기준 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B06 Gyeongwonjae)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -29.0,
+      0.0,
+      -23.0
+    ],
+    "max": [
+      29.0,
+      12.5,
+      23.0
+    ],
+    "size": [
+      58.0,
+      12.5,
+      46.0
+    ],
+    "core_min": [
+      -24.0,
+      0.0,
+      -18.0
+    ],
+    "core_max": [
+      24.0,
+      12.5,
+      18.0
+    ],
+    "note": "min/max는 LOD3 실측 바운딩박스, core는 한옥 본체 범위다."
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 11376,
+      "vertices": 22752,
+      "bytes": 1067609
+    },
+    "model_lod2.gltf": {
+      "triangles": 360,
+      "vertices": 720,
+      "bytes": 39360
+    },
+    "texture_atlas.webp": {
+      "bytes": 185288,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1292257,
+  "anchor_nodes": [
+    "hotspot_gyeongwonru_grand_pavilion",
+    "hotspot_gyeongwonjae_main_lobby_court",
+    "hotspot_hanok_suite_courtyard",
+    "hotspot_traditional_gate_entrance",
+    "hotspot_centralpark_hanok_trail",
+    "night_light_spotlight_SE_3000K",
+    "night_light_spotlight_SW_3000K",
+    "night_light_spotlight_NE_3000K",
+    "night_light_spotlight_NW_3000K"
+  ]
+}

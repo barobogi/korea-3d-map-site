@@ -1,0 +1,313 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B11",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B11",
+  "pr_number": 472,
+  "pr_number_assigned": 472,
+  "block_number": 11,
+  "composite_id": "28185_02_21984_011",
+  "block_id": "28185_B11_송도_트리플스트리트",
+  "name": "송도 트리플스트리트 (A~D동 복합 스트리트몰 & 언더그라운드 브릿지)",
+  "name_en": "Songdo Triple Street (Building A-D Complex Street Mall & Bridges)",
+  "category": "CAT51_SHOPPING_MALL_COMPLEX",
+  "category_label": "복합스트리트몰/문화쇼핑거리",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 송도과학로16번길 33-1~4 (송도동)",
+  "postal_code": "21984",
+  "floors": "지하 3층 ~ 지상 4층",
+  "height_m": 23.65,
+  "architectural_style": "선형 보행 스트리트몰 & 공중 스카이브릿지 (Linear Pedestrian Street Mall & Aerial Skybridges)",
+  "architect": "간삼건축 & 에스디프런티어",
+  "coordinates": [
+    126.6608,
+    37.3802
+  ],
+  "orientation_deg": 0.0,
+  "heading": 0.0,
+  "heading_note": "A동~D동 중앙 보행전용 스트리트 축을 정면으로 조망하는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.3,
+  "lod_switch_distance": 220.0,
+  "spec_dimensions_m": {
+    "linear_street_mall": {
+      "width_x_m": 52.0,
+      "depth_z_m": 32.0,
+      "height_m": 23.65
+    },
+    "skybridges": {
+      "count": 3,
+      "clearance_height_m": 8.6
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "walking_street_paver": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "building_facade": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "storefront_glass": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "rooftop_park_and_sign": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.02~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "building_blocks": 4,
+    "connecting_skybridges": 3,
+    "patio_dining_tables": 16,
+    "greenery_planters": 16,
+    "smart_streetlights": 20,
+    "safety_bollards": 24,
+    "rooftop_sports_arenas": 1
+  },
+  "sign": {
+    "characters": "송도 트리플스트리트 (TRIPLE STREET SONGDO)",
+    "type": "보행자 전용도로 입구 화강석 좌대 위 황동/브론즈 입체 명판",
+    "board_size_m": [
+      3.2,
+      1.4
+    ],
+    "frame": "블랙 메탈 바탕 + 오렌지 골드 레터링"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_02_21984_011_01",
+      "label": "트리플스트리트 550m 중앙 보행전용도로 & 테라코타 포장블록",
+      "mesh_nodes": [
+        "28185_02_21984_011_01__walking_street_plinth"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_02_21984_011_02",
+      "label": "A·B·C·D동 4개 쇼핑·문화복합동 본관 & 부티크 스트리트 파사드",
+      "mesh_nodes": [
+        "28185_02_21984_011_02__building_blocks_A_to_D"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_02_21984_011_03",
+      "label": "동간 입체 연결 3련 공중 스카이브릿지 & 옥상 썬셋파크 풋살장",
+      "mesh_nodes": [
+        "28185_02_21984_011_03__skybridges_and_rooftop_park"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_02_21984_011_04",
+      "label": "오버헤드 일루미네이션 링 조명 & 노천 카페 테라스·가로수 플랜터",
+      "mesh_nodes": [
+        "28185_02_21984_011_04__street_lighting_and_patio_props"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3000,
+    "phase_link": "일몰 후 15분 점등 / 24:00 소등",
+    "spots": [
+      {
+        "id": "night_light_festoon_rings_W",
+        "offset_m": [
+          -14.0,
+          8.5,
+          0.0
+        ],
+        "aim": "서측 상공 오버헤드 일루미네이션"
+      },
+      {
+        "id": "night_light_festoon_rings_E",
+        "offset_m": [
+          14.0,
+          8.5,
+          0.0
+        ],
+        "aim": "동측 상공 오버헤드 일루미네이션"
+      },
+      {
+        "id": "night_light_skybridge_AC",
+        "offset_m": [
+          -15.0,
+          10.0,
+          0.0
+        ],
+        "aim": "A-C동 스카이브릿지 하부 보행조명"
+      },
+      {
+        "id": "night_light_skybridge_BD",
+        "offset_m": [
+          15.0,
+          10.0,
+          0.0
+        ],
+        "aim": "B-D동 스카이브릿지 하부 보행조명"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_walking_street_center",
+      "label": "트리플스트리트 중앙 분수광장",
+      "offset_m": [
+        0.0,
+        0.3,
+        0.0
+      ]
+    },
+    {
+      "id": "hotspot_skybridge_crossing_AC",
+      "label": "A-C동 공중 스카이브릿지",
+      "offset_m": [
+        -15.0,
+        10.5,
+        0.0
+      ]
+    },
+    {
+      "id": "hotspot_rooftop_futsal",
+      "label": "B동 옥상 썬셋 풋살장",
+      "offset_m": [
+        15.0,
+        23.0,
+        11.0
+      ]
+    },
+    {
+      "id": "hotspot_west_entrance_plaza",
+      "label": "송현아 연계 서측 진입광장",
+      "offset_m": [
+        -25.0,
+        1.7,
+        0.0
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_02_21984_011_02",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "송도 트리플스트리트 공식 사이트 건축 및 시설 안내",
+      "url": "https://www.triplestreet.co.kr/",
+      "note": "A~D동 복합 스트리트몰 층별 안내 및 옥상공원 제원"
+    },
+    {
+      "title": "IFEZ 인천경제자유구역청 송도 첨단산업클러스터 상업시설 현황",
+      "url": "https://www.ifez.go.kr/",
+      "note": "송도과학로16번길 33 일원 복합쇼핑스트리트 건축 인허가 제원"
+    },
+    {
+      "title": "연수구청 송도 테크노파크 상업유통 벨트 종합계획",
+      "url": "https://www.yeonsu.go.kr/",
+      "note": "트리플스트리트 보행전용도로 및 지하철 연계 가로망 규격"
+    }
+  ],
+  "reference_note": "에스디프런티어 및 IFEZ 공식 도면 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B11 Triple Street)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -27.97,
+      0.0,
+      -18.97
+    ],
+    "max": [
+      27.97,
+      23.65,
+      18.97
+    ],
+    "size": [
+      55.94,
+      23.65,
+      37.94
+    ],
+    "core_min": [
+      -24.0,
+      0.0,
+      -16.0
+    ],
+    "core_max": [
+      24.0,
+      23.65,
+      16.0
+    ],
+    "note": "min/max는 LOD3 실측 바운딩박스, core는 A~D동 매스 중심 범위다."
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 10392,
+      "vertices": 21432,
+      "bytes": 1083142
+    },
+    "model_lod2.gltf": {
+      "triangles": 420,
+      "vertices": 840,
+      "bytes": 44974
+    },
+    "texture_atlas.webp": {
+      "bytes": 35116,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1163232,
+  "anchor_nodes": [
+    "hotspot_walking_street_center",
+    "hotspot_skybridge_crossing_AC",
+    "hotspot_rooftop_futsal",
+    "hotspot_west_entrance_plaza",
+    "night_light_festoon_rings_W",
+    "night_light_festoon_rings_E",
+    "night_light_skybridge_AC",
+    "night_light_skybridge_BD"
+  ]
+}

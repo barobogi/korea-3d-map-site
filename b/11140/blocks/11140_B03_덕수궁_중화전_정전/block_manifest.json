@@ -1,0 +1,470 @@
+{
+  "schema_version": "2.1_junggu_spec117_B03",
+  "spec_ref": "TASK_REQUEST_20261108_JUNGGU_LEGO_50BLOCKS.md §1~§3 / 117호 블록 장착 규약 v1",
+  "task_slot_id": "11140-B03",
+  "pr_number": 311,
+  "pr_number_assigned": 309,
+  "block_number": 3,
+  "composite_id": "11140_02_04519_002",
+  "block_id": "11140_B03_덕수궁_중화전_정전",
+  "name": "덕수궁 중화전 (정전)",
+  "name_en": "Junghwajeon Hall (Main Throne Hall) of Deoksugung Palace, Seoul",
+  "category": "CAT03_PALACE_THRONE_HALL",
+  "category_label": "궁궐/정전",
+  "district": "서울특별시 중구",
+  "road_address": "서울특별시 중구 세종대로 99 (정동 5-1, 덕수궁 내)",
+  "postal_code": "04519",
+  "heritage": {
+    "designation": "보물",
+    "number": 819,
+    "name": "서울 덕수궁 중화전",
+    "designated_on": "1980",
+    "designated_on_note": "지정 연도만 기재한다. 월·일은 국가유산청 고시 원문 대조 전까지 확정하지 않는다.",
+    "manager": "국가유산청 궁능유적본부 덕수궁관리소"
+  },
+  "coordinates": [
+    126.9749,
+    37.5661
+  ],
+  "orientation_deg": 180.0,
+  "heading": 180.0,
+  "heading_note": "정남향(중화문→중화전 궁축)을 기준으로 한 연출값이다. 실제 중화전의 축은 덕수궁 전역 배치선에 따라 수 도(度) 범위에서 미세하게 어긋날 수 있으며, 정밀실측 조사보고서 좌표 대조 전까지는 연출 기준값으로 취급한다.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "포석 광장 바닥면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 2.55,
+  "lod_switch_distance": 220.0,
+  "spec_dimensions_m": {
+    "wolldae_lower": {
+      "width_x": 36.0,
+      "depth_z": 24.0,
+      "height_y": 1.35,
+      "note": "하층 월대. 장대석 1켜 둘레 요철 + 후면 계단 1개소."
+    },
+    "wolldae_upper": {
+      "width_x": 30.0,
+      "depth_z": 19.2,
+      "height_y": 1.2,
+      "note": "상층 월대. 장대석 1켜 둘레 요철 + 상면 판석 2.5m 모듈 96매."
+    },
+    "stairs": {
+      "front_count": 3,
+      "center_width": 5.2,
+      "side_width": 2.6,
+      "steps_per_level": 3,
+      "tread": 0.42,
+      "rear_count": 1,
+      "rear_width": 3.4,
+      "wanggye_daedo": {
+        "width": 2.4,
+        "note": "중앙 왕계 위 답도(봉황 조각 판석 연출)"
+      },
+      "note": "이중 월대라 전면 계단이 하·상 2연단으로 구성된다."
+    },
+    "hall_body": {
+      "front_bays": 5,
+      "side_bays": 4,
+      "uhgan_width": 6.4,
+      "hyeopgan_width": 4.4,
+      "cheanggan_width": 3.6,
+      "front_width": 22.4,
+      "side_depth": 15.6,
+      "column_count": 30,
+      "column_diameter": 0.6,
+      "floor_maru_y": 2.91,
+      "column_top_y": 6.81,
+      "note": "정면 6주 × 측면 5주 = 30주 원기둥."
+    },
+    "roof": {
+      "type": "팔작지붕 (단층, 겹처마)",
+      "eave_y": 8.45,
+      "ridge_y": 12.1,
+      "ridge_len": 8.2,
+      "eave_hw": 12.8,
+      "eave_hd": 9.4,
+      "note": "서까래(원형)+부연(방형) 겹처마. 처마는 기둥선에서 1.6m 내밀기."
+    },
+    "total_height_to_ridge_m": 12.1,
+    "total_height_with_ornament_m": 13.49,
+    "proportion_note": "이중 월대 2.55m + 정전(마루 2.91 → 기둥머리 6.81 → 처마 8.45) + 지붕 3.65m = 용마루 12.10m."
+  },
+  "bbox_local_m": {
+    "min": [
+      -22.0,
+      0.0,
+      -14.0
+    ],
+    "max": [
+      22.0,
+      13.49,
+      14.0
+    ],
+    "size": [
+      44.0,
+      13.49,
+      28.0
+    ],
+    "core_min": [
+      -15.0,
+      0.0,
+      -9.6
+    ],
+    "core_max": [
+      15.0,
+      13.49,
+      11.0
+    ],
+    "note": "min/max는 패키지 전체(LOD3) 실측 바운딩박스이며 x·z 확장분은 포석 광장(44.0×28.0m)·좌우 회랑이다. core_min/core_max는 건축 본체(이중 월대+정전+지붕) 범위이며 core_max.z에는 전면 계단·왕계 답도 돌출부(최대 +2.0m)를 포함."
+  },
+  "roof_structure": {
+    "tiers": 1,
+    "type": "팔작지붕 (합각·마미지 세우지 않는 단층 팔작, 겹처마)",
+    "paljak_hip_roof": {
+      "node": "11140_02_04519_002_03__paljak_roof_giwa",
+      "eave_hw_m": 12.8,
+      "eave_hd_m": 9.4,
+      "eave_y_m": 8.45,
+      "ridge_y_m": 12.1,
+      "ridge_len_m": 8.2,
+      "corner_lift_m": 1.15,
+      "type": "팔작(hips+gables) 겹처마"
+    },
+    "double_eave": {
+      "rafters_node": "11140_02_04519_002_03__seokkarae_buyeon_double_eave",
+      "note": "서까래(원형, 지름 0.16~0.19m) + 부연(방형) 2단 겹처마. 처마 단면 fascia 별도."
+    },
+    "ridge": {
+      "node": "11140_02_04519_002_03__yongmaru_japsang_punggyeong",
+      "note": "용마루 + 치미 2기 + 추녀마루 4곳 잡상 4기씩(총 16기) + 처마 끝 풍경 4기."
+    },
+    "gongpo": {
+      "type": "다포",
+      "outer": "외이출목이공포작",
+      "inner": "내출목",
+      "sets": 56,
+      "node": "11140_02_04519_002_03__dapo_gongpo_56sets",
+      "composition": "기둥 위 30 + 주간포 18 + 내출목 8 = 56세트"
+    },
+    "eave_curve_formula": "h(t) = 0.30t + 0.70t^2.7 (t: 처마 0 → 용마루 1)",
+    "normal_policy": "지붕면 법선은 전면 상향(+Y). 코너 리프트로 앙곡·안허리곡을 구현."
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q86",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "granite_wolldae": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "dancheong_timber": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "roof_tile_giwa": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "hyunpan_plaque": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ],
+        "sub_plaque": [
+          0.02,
+          0.02,
+          0.96,
+          0.44
+        ],
+        "sub_panmun_hongchil": [
+          0.02,
+          0.5,
+          0.44,
+          0.46
+        ],
+        "sub_gold_frame": [
+          0.5,
+          0.5,
+          0.46,
+          0.22
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 내부 0.04~0.48 창을 주기 반복하며, 현판·판문·금테는 부분영역 정확 UV(1:1)로 문자·못 배열의 왜곡이 없다."
+  },
+  "detail_counts": {
+    "wolldae_lower_ashlar": 1,
+    "wolldae_upper_ashlar": 1,
+    "wolldae_sangmyeon_panseok": 96,
+    "stairs_front_flights": 3,
+    "stairs_rear_flights": 1,
+    "stairs_steps_total": 18,
+    "wanggye_daedo_stone": 1,
+    "cheek_stone_somaldol": 4,
+    "columns_round": 30,
+    "column_annular_ring": "원기둥 지름 0.60m",
+    "bracket_sets_total": 56,
+    "bracket_sets_breakdown": {
+      "column_head": 30,
+      "between_bay": 18,
+      "inner_ceiling": 8
+    },
+    "rafters_serving_double_eave": 84,
+    "roof_tiers": 1,
+    "ridge_len_m": 8.2,
+    "chimi": 2,
+    "corner_japsang": 16,
+    "corner_punggyeong": 4,
+    "hyunpan_characters": 3,
+    "hyunpan_emboss_cells": 152,
+    "panmun_sets": 3,
+    "panmun_leaves": 6,
+    "sinu_hardware_per_leaf": 3,
+    "hoerang_walls": 2
+  },
+  "hyunpan": {
+    "characters": "中和殿",
+    "type": "가로형 3자",
+    "board_size_m": [
+      2.6,
+      0.88
+    ],
+    "frame": "황금 이중 테두리 + 옻칠 바탕 + 3D 양각"
+  },
+  "hierarchical_components": [
+    {
+      "id": "11140_02_04519_002_01",
+      "label": "이중 화강암 월대·전면 왕계/신계·답도·소맷돌",
+      "mesh_nodes": [
+        "11140_02_04519_002_01__wolldae_granite_platform"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_002_02",
+      "label": "정전 목조(30주 원기둥·창방·평방·판벽·우물마루)",
+      "mesh_nodes": [
+        "11140_02_04519_002_02__jeongjeon_timber_frame"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_002_03",
+      "label": "다포 공포 56세트·겹처마·팔작지붕·용마루·치미·잡상",
+      "mesh_nodes": [
+        "11140_02_04519_002_03__dapo_gongpo_56sets",
+        "11140_02_04519_002_03__paljak_roof_giwa",
+        "11140_02_04519_002_03__seokkarae_buyeon_double_eave",
+        "11140_02_04519_002_03__yongmaru_japsang_punggyeong"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_002_04",
+      "label": "중화전 현판 中和殿(가로 3자)·황금 테두리·3D 양각",
+      "mesh_nodes": [
+        "11140_02_04519_002_04__hyeonpan_board",
+        "11140_02_04519_002_04__hyeonpan_gold_frame",
+        "11140_02_04519_002_04__hyeonpan_yanggak_emboss"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_002_05",
+      "label": "붉은 칠 판문 3조 6짝·신우 철물",
+      "mesh_nodes": [
+        "11140_02_04519_002_05__panmun_red_lacquer_3sets",
+        "11140_02_04519_002_05__sinu_iron_hardware"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_002_06",
+      "label": "포석 광장·좌우 회랑(담장)",
+      "mesh_nodes": [
+        "11140_02_04519_002_06__boseok_plaza_paving",
+        "11140_02_04519_002_06__hoerang_stone_wall",
+        "11140_02_04519_002_06__hoerang_tile_cap"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3000,
+    "phase_link": "일몰 후 30분 점등 / 23:00 소등",
+    "spots": [
+      {
+        "id": "night_light_spotlight_SE_3000K",
+        "offset_m": [
+          15.5,
+          0.8,
+          12.6
+        ],
+        "aim": "월대 남동 모서리 상향"
+      },
+      {
+        "id": "night_light_spotlight_SW_3000K",
+        "offset_m": [
+          -15.5,
+          0.8,
+          12.6
+        ],
+        "aim": "월대 남서 모서리 상향"
+      },
+      {
+        "id": "night_light_spotlight_NE_3000K",
+        "offset_m": [
+          15.5,
+          0.8,
+          -12.6
+        ],
+        "aim": "회랑 북동면 조사"
+      },
+      {
+        "id": "night_light_spotlight_NW_3000K",
+        "offset_m": [
+          -15.5,
+          0.8,
+          -12.6
+        ],
+        "aim": "회랑 북서면 조사"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_wanggye_center_stair_dive",
+      "label": "중앙 왕계·답도 진입 (이중 월대 2.55m 상승)",
+      "offset_m": [
+        0.0,
+        1.6,
+        12.4
+      ]
+    },
+    {
+      "id": "hotspot_panmun_red_door",
+      "label": "어문 붉은 칠 판문·신우 철물 근접",
+      "offset_m": [
+        0.0,
+        3.4,
+        6.4
+      ]
+    },
+    {
+      "id": "hotspot_hyeonpan_junghwajeon_closeup",
+      "label": "현판 中和殿 양각 근접 뷰",
+      "offset_m": [
+        0.0,
+        6.1,
+        6.8
+      ]
+    },
+    {
+      "id": "hotspot_gongpo_underside",
+      "label": "다포 공포 하부(외이출목) 올려보기",
+      "offset_m": [
+        0.0,
+        7.8,
+        5.4
+      ]
+    },
+    {
+      "id": "hotspot_ridge_chimi_observatory",
+      "label": "용마루·치미 위 덕수궁 전역 조망",
+      "offset_m": [
+        0.0,
+        12.9,
+        0.0
+      ]
+    }
+  ],
+  "anchor_nodes": [
+    "night_light_spotlight_SE_3000K",
+    "night_light_spotlight_SW_3000K",
+    "night_light_spotlight_NE_3000K",
+    "night_light_spotlight_NW_3000K",
+    "hotspot_wanggye_center_stair_dive",
+    "hotspot_panmun_red_door",
+    "hotspot_hyeonpan_junghwajeon_closeup",
+    "hotspot_gongpo_underside",
+    "hotspot_ridge_chimi_observatory"
+  ],
+  "key_expansion_rule": "11140_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 11140_02_04519_002_03",
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 15974,
+      "vertices": 17410,
+      "bytes": 1012814
+    },
+    "model_lod2.gltf": {
+      "triangles": 374,
+      "vertices": 364,
+      "bytes": 28497
+    },
+    "texture_atlas.webp": {
+      "bytes": 105844,
+      "size_px": 1024,
+      "format": "webp_lossy_q86"
+    }
+  },
+  "package_total_bytes": 1147155,
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "국가유산포털 — 보물 「서울 덕수궁 중화전」 지정정보",
+      "url": "https://www.heritage.go.kr/",
+      "note": "국가유산청 지정·관리 정보 원문 포털"
+    },
+    {
+      "title": "궁능유적본부 — 덕수궁 중화전·중화문 안내",
+      "url": "https://royal.khs.go.kr/",
+      "note": "덕수궁 정전 중화전 배치·연혁 안내"
+    },
+    {
+      "title": "한국민족문화대백과 — 덕수궁 중화전",
+      "url": "https://encykorea.aks.ac.kr/",
+      "note": "정면 5칸·측면 4칸, 팔작지붕, 다포계 공포 형식"
+    },
+    {
+      "title": "서울특별시 문화유산 — 중구 세종대로 99 일대",
+      "url": "https://www.seoul.go.kr/",
+      "note": "소재지·도로명주소 대조"
+    }
+  ],
+  "reference_note": "위 4건은 포털 루트 주소이며, 검수 시 각 포털에서 「덕수궁 중화전」 항목으로 진입해 치수·지정일을 재확인한다. 웹 검색 없이 발주서 제원표와 이전 검증 데이터로 작성된 블록이므로, 상세 주소는 포털 검색 경로를 기준으로 안내한다.",
+  "generation": {
+    "generator": "pimang junggu junghwajeon parametric builder (workspace-side)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "생성 스크립트·임시파일은 저장소에 포함되지 않는다. PR에는 위 4종 에셋만 반영."
+  }
+}

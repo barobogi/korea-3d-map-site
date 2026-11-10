@@ -1,0 +1,303 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B23",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B23",
+  "pr_number": 484,
+  "pr_number_assigned": 484,
+  "block_number": 23,
+  "composite_id": "28185_01_22012_023",
+  "block_id": "28185_B23_인천대학교_송도캠퍼스",
+  "name": "인천대학교 송도캠퍼스 (교시탑 & 학산도서관)",
+  "name_en": "Incheon National University Songdo Campus (Campus Tower & Haksan Library)",
+  "category": "CAT31_GLOBAL_CAMPUS",
+  "category_label": "국립대학캠퍼스/상징교시탑/학술도서관",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 아카데미로 119 (송도동)",
+  "postal_code": "22012",
+  "floors": "지상 5층 (높이 33.5m 오벨리스크 상징 교시탑 & 원형 로툰다 학산도서관)",
+  "height_m": 33.5,
+  "architectural_style": "화강석 피라미디온 상징 교시탑 & 원형 글래스 로툰다 돔 학술도서관",
+  "architect": "희림종합건축사사무소 & 대우건설 컨소시엄",
+  "coordinates": [
+    126.6345,
+    37.3755
+  ],
+  "orientation_deg": 0.0,
+  "heading": 0.0,
+  "heading_note": "아카데미로 캠퍼스 정문 축선에서 교시탑과 학산도서관을 정면으로 조망하는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.15,
+  "lod_switch_distance": 220.0,
+  "spec_dimensions_m": {
+    "campus_tower": {
+      "width_x_m": 4.0,
+      "depth_z_m": 4.0,
+      "height_m": 33.5
+    },
+    "haksan_library": {
+      "width_x_m": 20.0,
+      "depth_z_m": 22.0,
+      "height_m": 28.5
+    },
+    "fountain_basin": {
+      "radius_m": 5.5,
+      "depth_m": 0.4
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "rotunda_and_glass": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "obelisk_and_water": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "promenade_tiles": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "inu_blue_and_trees": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.02~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "campus_obelisks": 1,
+    "library_rotundas": 1,
+    "fountain_basins": 1,
+    "campus_trees": 16,
+    "smart_streetlights": 10
+  },
+  "sign": {
+    "characters": "국립인천대학교 (INCHEON NATIONAL UNIVERSITY)",
+    "type": "캠퍼스 주출입구 화강석 독립 문주 위 INU 블루/골드 입체 명판",
+    "board_size_m": [
+      4.0,
+      1.8
+    ],
+    "frame": "INU 시그니처 딥블루 & 브론즈 메탈 프레임"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_01_22012_023_01",
+      "label": "인천대학교 33.5m 랜드마크 교시탑 & 원형 분수대 수조",
+      "mesh_nodes": [
+        "28185_01_22012_023_01__obelisk_and_fountain"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_22012_023_02",
+      "label": "학산도서관 중앙 28.5m 원형 글래스 로툰다 아트리움 돔",
+      "mesh_nodes": [
+        "28185_01_22012_023_02__rotunda_dome"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_22012_023_03",
+      "label": "도서관 본관 5층 매스 & 인접 강의연구동 연결 회랑",
+      "mesh_nodes": [
+        "28185_01_22012_023_03__academic_wings"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_22012_023_04",
+      "label": "중앙광장 산책로 & 조경수목·가로등·캠퍼스 문주 명판",
+      "mesh_nodes": [
+        "28185_01_22012_023_04__promenade_and_monument"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 4000,
+    "phase_link": "일몰 후 15분 점등 / 24:00 소등 (국립대 캠퍼스 연동)",
+    "spots": [
+      {
+        "id": "night_light_obelisk_uplight",
+        "offset_m": [
+          -11.0,
+          33.0,
+          13.0
+        ],
+        "aim": "교시탑 상단 피라미디온 상향 투광등"
+      },
+      {
+        "id": "night_light_rotunda_glow",
+        "offset_m": [
+          14.0,
+          27.0,
+          -9.0
+        ],
+        "aim": "학산도서관 로툰다 돔 내부 발광 연출"
+      },
+      {
+        "id": "night_light_fountain_spot",
+        "offset_m": [
+          -11.0,
+          0.7,
+          13.0
+        ],
+        "aim": "원형 분수대 수중 조명"
+      },
+      {
+        "id": "night_light_gate_monument",
+        "offset_m": [
+          -15.5,
+          2.5,
+          3.3
+        ],
+        "aim": "캠퍼스 문주 명판 조명"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_obelisk_plaza",
+      "label": "교시탑 기념광장",
+      "offset_m": [
+        -11.0,
+        0.75,
+        13.0
+      ]
+    },
+    {
+      "id": "hotspot_haksan_library_lobby",
+      "label": "학산도서관 로툰다 로비",
+      "offset_m": [
+        14.0,
+        0.15,
+        -9.0
+      ]
+    },
+    {
+      "id": "hotspot_central_fountain",
+      "label": "중앙 분수대",
+      "offset_m": [
+        -11.0,
+        0.35,
+        13.0
+      ]
+    },
+    {
+      "id": "hotspot_campus_main_gate",
+      "label": "인천대 송도캠퍼스 정문",
+      "offset_m": [
+        -15.5,
+        0.15,
+        3.3
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_01_22012_023_01",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "국립인천대학교 공식 사이트 송도캠퍼스 시설 및 도서관 안내",
+      "url": "https://www.inu.ac.kr/",
+      "note": "교시탑 상징 조형탑 및 학산도서관 건축 제원"
+    },
+    {
+      "title": "IFEZ 인천경제자유구역청 송도 첨단지식기반서비스단지 대학 부지 현황",
+      "url": "https://www.ifez.go.kr/",
+      "note": "인천대학교 송도 신캠퍼스 건립 인허가 및 토지이용계획"
+    },
+    {
+      "title": "희림종합건축사사무소 국립인천대학교 송도 신캠퍼스 건립공사 설계 포트폴리오",
+      "url": "https://www.heerim.com/",
+      "note": "교시탑 및 학산도서관 원형 로툰다 아트리움 실시설계 데이터"
+    }
+  ],
+  "reference_note": "희림건축 및 인천대 시설관리과 준공도면 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B23 INU Songdo Campus)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -28.0,
+      0.0,
+      -24.6
+    ],
+    "max": [
+      27.95,
+      33.5,
+      24.6
+    ],
+    "size": [
+      55.95,
+      33.5,
+      49.2
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 10172,
+      "bytes": 972103
+    },
+    "model_lod2.gltf": {
+      "triangles": 420,
+      "bytes": 42614
+    },
+    "texture_atlas.webp": {
+      "bytes": 130432,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1148149,
+  "anchor_nodes": [
+    "hotspot_obelisk_plaza",
+    "hotspot_haksan_library_lobby",
+    "hotspot_central_fountain",
+    "hotspot_campus_main_gate",
+    "night_light_obelisk_uplight",
+    "night_light_rotunda_glow",
+    "night_light_fountain_spot",
+    "night_light_gate_monument"
+  ]
+}

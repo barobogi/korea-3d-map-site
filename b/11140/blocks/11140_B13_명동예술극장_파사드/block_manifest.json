@@ -1,0 +1,403 @@
+{
+  "schema_version": "2.1_junggu_spec117_B13",
+  "spec_ref": "TASK_REQUEST_20261108_JUNGGU_LEGO_50BLOCKS.md §1~§3 / 117호 블록 장착 규약 v1",
+  "task_slot_id": "11140-B13",
+  "pr_number": 321,
+  "pr_number_assigned": 319,
+  "block_number": 13,
+  "composite_id": "11140_02_04519_012",
+  "block_id": "11140_B13_명동예술극장_파사드",
+  "name": "명동예술극장 파사드",
+  "name_en": "Myeongdong Theater Facade, Seoul",
+  "category": "CAT15_CULTURE_MODERN_THEATER",
+  "category_label": "문화공연/근대극장",
+  "district": "서울특별시 중구",
+  "road_address": "서울특별시 중구 명동길 41 (명동 2가 56-1)",
+  "postal_code": "04536",
+  "heritage": {
+    "designation": "등록문화재 (근대 극장 건축)",
+    "name": "명동예술극장 (구 명동극장)",
+    "number_note": "등록문화재 지정번호는 국가유산청 고시 원문 대조 전까지 확정하지 않아 본 매니페스트에 번호를 기재하지 않는다.",
+    "history_note": "1930년대 건립된 근대 극장을 2009년 복원·재개관한 공연장",
+    "manager": "국립극장 / 국가유산청"
+  },
+  "coordinates": [
+    126.9848,
+    37.5636
+  ],
+  "orientation_deg": 180.0,
+  "heading": 180.0,
+  "heading_note": "정면 마퀴와 옥상 간판이 남측(명동길)을 향하는 것으로 잡은 연출값이다. 실제 파사드 축은 명동길 선형에 따라 수 도(度) 어긋날 수 있으며, 정밀 대조 전까지는 연출 기준값이다.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "전면 포장 마당(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.6,
+  "lod_switch_distance": 180.0,
+  "spec_dimensions_m": {
+    "facade": {
+      "width_x": 26.0,
+      "depth_z": 8.0,
+      "floors": 3,
+      "floor_h": 4.2,
+      "height_y": 13.2,
+      "bay_count": 9,
+      "note": "근대 상업 건축 수직 리듬(세로 핀 10본)·3층 창렬."
+    },
+    "marquee": {
+      "width_x": 10.0,
+      "depth_z": 2.2,
+      "height_y": 4.21,
+      "ticket_booths": 2,
+      "stair_steps": 3,
+      "stair_width_m": 10.0
+    },
+    "rooftop_sign": {
+      "characters": "明洞藝術劇場",
+      "frame_height_m": 4.2,
+      "panel_m": [
+        17.16,
+        3.2
+      ]
+    },
+    "openings": {
+      "front_per_floor": 9,
+      "doors": 3,
+      "leaves": 6
+    },
+    "total_height_with_ornament_m": 17.4,
+    "dimension_note": "명동예술극장 정밀 도면 공개 범위가 좁아 층고·마퀴·간판탑 치수는 이전 검증 근대 극장·상업 건축 블록의 비례와 발주서 제원을 기준으로 한 연출 기준값이다."
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q86",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "granite_plinth": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "theater_facade_brick": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "roof_deck": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "sign_plaque": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ],
+        "sub_plaque": [
+          0.02,
+          0.02,
+          0.96,
+          0.44
+        ],
+        "sub_entrance_door": [
+          0.02,
+          0.5,
+          0.44,
+          0.46
+        ],
+        "sub_gold_frame": [
+          0.5,
+          0.5,
+          0.46,
+          0.22
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 내부 0.04~0.48 창을 주기 반복하며, 간판·출입문은 부분영역 정확 UV(1:1)로 문자 왜곡이 없다."
+  },
+  "detail_counts": {
+    "plinth_ashlar_courses": 1,
+    "plinth_sangmyeon_panseok": 216,
+    "stairs_steps_total": 3,
+    "somaldol": 2,
+    "facade_floors": 3,
+    "window_front_total": 27,
+    "facade_fins": 10,
+    "facade_lister_bricks": 306,
+    "marquee": 1,
+    "ticket_booths": 2,
+    "entrance_doors": 3,
+    "entrance_leaves": 6,
+    "roof_deck_tiles": 640,
+    "rooftop_sign_panels": 1,
+    "roof_sign_chars": 6,
+    "sign_emboss_cells": 92,
+    "trees": 2,
+    "bollards": 10,
+    "marquee_lights": 6
+  },
+  "sign": {
+    "characters": "明洞藝術劇場",
+    "type": "옥상 간판 6자",
+    "board_size_m": [
+      17.16,
+      3.2
+    ],
+    "frame": "황금 이중 테두리 + 옻칠 바탕 + 3D 양각"
+  },
+  "hierarchical_components": [
+    {
+      "id": "11140_02_04519_012_01",
+      "label": "화강암 기단·상면 판석 96매·정면 3단 계단·소맷돌",
+      "mesh_nodes": [
+        "11140_02_04519_012_01__granite_plinth_forecourt"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_012_02",
+      "label": "근대 극장 파사드·3층 창렬·세로 핀 10본·마퀴·매표소",
+      "mesh_nodes": [
+        "11140_02_04519_012_02__theater_facade_body_fins"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_012_03",
+      "label": "옥상 데크 144매·파라펫",
+      "mesh_nodes": [
+        "11140_02_04519_012_03__roof_deck_parapet"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_012_04",
+      "label": "옥상 간판 明洞藝術劇場(6자)·황금 테두리·3D 양각",
+      "mesh_nodes": [
+        "11140_02_04519_012_04__rooftop_sign_board",
+        "11140_02_04519_012_04__rooftop_sign_gold_frame",
+        "11140_02_04519_012_04__rooftop_sign_yanggak_emboss"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_012_05",
+      "label": "출입문 3조 6짝·마퀴 하부 조명 6기",
+      "mesh_nodes": [
+        "11140_02_04519_012_05__entrance_door_panels",
+        "11140_02_04519_012_05__marquee_steel_lighting"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_012_06",
+      "label": "전면 마당 포장·경계석·수목 2그루·볼라드 10기",
+      "mesh_nodes": [
+        "11140_02_04519_012_06__forecourt_paving",
+        "11140_02_04519_012_06__forecourt_trees"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3000,
+    "phase_link": "일몰 후 30분 점등 / 23:00 소등",
+    "spots": [
+      {
+        "id": "night_light_spotlight_SE_3000K",
+        "offset_m": [
+          20.0,
+          0.8,
+          20.0
+        ],
+        "aim": "남동 파사드 상향"
+      },
+      {
+        "id": "night_light_spotlight_SW_3000K",
+        "offset_m": [
+          -20.0,
+          0.8,
+          20.0
+        ],
+        "aim": "남서 파사드 상향"
+      },
+      {
+        "id": "night_light_spotlight_NE_3000K",
+        "offset_m": [
+          20.0,
+          0.8,
+          -14.0
+        ],
+        "aim": "배면 북동면 조사"
+      },
+      {
+        "id": "night_light_spotlight_NW_3000K",
+        "offset_m": [
+          -20.0,
+          0.8,
+          -14.0
+        ],
+        "aim": "배면 북서면 조사"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_marquee_entrance_dive",
+      "label": "마퀴 아래 출입구 진입",
+      "offset_m": [
+        0.0,
+        1.7,
+        10.0
+      ]
+    },
+    {
+      "id": "hotspot_rooftop_sign_closeup",
+      "label": "옥상 간판 明洞藝術劇場 양각 근접",
+      "offset_m": [
+        0.0,
+        13.5,
+        6.0
+      ]
+    },
+    {
+      "id": "hotspot_facade_fins_upview",
+      "label": "세로 핀 파사드 올려보기",
+      "offset_m": [
+        0.0,
+        6.0,
+        6.0
+      ]
+    },
+    {
+      "id": "hotspot_ticket_booth",
+      "label": "매표소 2개소 근접",
+      "offset_m": [
+        6.4,
+        1.2,
+        8.0
+      ]
+    },
+    {
+      "id": "hotspot_roof_deck_overlook",
+      "label": "옥상 데크에서 명동길 조망",
+      "offset_m": [
+        0.0,
+        13.6,
+        0.0
+      ]
+    }
+  ],
+  "key_expansion_rule": "11140_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 11140_02_04519_012_02",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "국가유산포털 — 명동예술극장(구 명동극장) 등록문화재 정보",
+      "url": "https://www.heritage.go.kr/",
+      "note": "국가유산청 등록문화재 원문 포털(지정번호는 원문 대조 대상)"
+    },
+    {
+      "title": "명동예술극장 공식 안내",
+      "url": "https://www.mdtheater.or.kr/",
+      "note": "복원·재개관 연혁과 공연 안내"
+    },
+    {
+      "title": "한국민족문화대백과 — 명동예술극장",
+      "url": "https://encykorea.aks.ac.kr/",
+      "note": "1930년대 근대 극장 건축과 파사드 형식"
+    },
+    {
+      "title": "서울특별시 문화유산 — 중구 명동길 41",
+      "url": "https://www.seoul.go.kr/",
+      "note": "소재지·도로명주소 대조"
+    }
+  ],
+  "reference_note": "위 4건은 포털 루트 주소이며, 검수 시 각 포털에서 「명동예술극장」 항목으로 진입해 지정정보·치수를 재확인한다. 웹 검색 없이 발주서 제원표와 이전 검증 데이터로 작성된 블록이므로, 상세 주소는 포털 검색 경로를 기준으로 안내한다.",
+  "generation": {
+    "generator": "pimang junggu myeongdong-theater parametric builder (workspace-side)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "생성 스크립트·임시파일은 저장소에 포함되지 않는다. PR에는 위 4종 에셋만 반영."
+  },
+  "bbox_local_m": {
+    "min": [
+      -24.0,
+      0.0,
+      -9.0
+    ],
+    "max": [
+      24.0,
+      17.4,
+      21.0
+    ],
+    "size": [
+      48.0,
+      17.4,
+      30.0
+    ],
+    "core_min": [
+      -24.0,
+      0.0,
+      -9.0
+    ],
+    "core_max": [
+      24.0,
+      17.4,
+      21.0
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 11298,
+      "vertices": 15592,
+      "bytes": 856886
+    },
+    "model_lod2.gltf": {
+      "triangles": 450,
+      "vertices": 644,
+      "bytes": 40800
+    },
+    "texture_atlas.webp": {
+      "bytes": 106782,
+      "size_px": 1024,
+      "format": "webp_lossy_q86"
+    }
+  },
+  "package_total_bytes": 1004468,
+  "anchor_nodes": [
+    "night_light_spotlight_SE_3000K",
+    "night_light_spotlight_SW_3000K",
+    "night_light_spotlight_NE_3000K",
+    "night_light_spotlight_NW_3000K",
+    "hotspot_marquee_entrance_dive",
+    "hotspot_rooftop_sign_closeup",
+    "hotspot_facade_fins_upview",
+    "hotspot_ticket_booth",
+    "hotspot_roof_deck_overlook"
+  ]
+}

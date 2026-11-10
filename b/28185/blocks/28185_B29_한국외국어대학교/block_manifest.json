@@ -1,0 +1,299 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B29",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B29",
+  "pr_number": 490,
+  "pr_number_assigned": 490,
+  "block_number": 29,
+  "composite_id": "28185_01_22014_029",
+  "block_id": "28185_B29_한국외국어대학교",
+  "name": "한국외국어대학교 송도캠퍼스 (통번역&국제비즈니스센터)",
+  "name_en": "Hankuk University of Foreign Studies Songdo Campus (Interpretation & Business Center)",
+  "category": "CAT31_GLOBAL_CAMPUS",
+  "category_label": "대학캠퍼스/국제통번역비즈니스/글로벌학술센터",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 송도동 197-1 일원 (한국외대 송도부지)",
+  "postal_code": "22014",
+  "floors": "지상 6층 (높이 28.5m 현대식 글래스 커튼월 통번역&국제비즈니스센터)",
+  "height_m": 28.5,
+  "architectural_style": "HUFS 네이비 및 올리브그린 액센트 모던 글래스 커튼월 국제학술센터",
+  "architect": "삼우종합건축사사무소 & 현대건설",
+  "coordinates": [
+    126.6322,
+    37.3695
+  ],
+  "orientation_deg": 0.0,
+  "heading": 0.0,
+  "heading_note": "캠퍼스 주진입로에서 통번역&국제비즈니스센터 본관을 정면으로 조망하는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.15,
+  "lod_switch_distance": 220.0,
+  "spec_dimensions_m": {
+    "business_hall": {
+      "width_x_m": 22.0,
+      "depth_z_m": 22.0,
+      "height_m": 28.5
+    },
+    "conference_wing": {
+      "width_x_m": 24.0,
+      "depth_z_m": 18.0,
+      "height_m": 16.5
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "curtain_wall": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "panels_and_lawn": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "promenade_tiles": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "hufs_brand_and_trees": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.02~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "business_centers": 1,
+    "conference_wings": 1,
+    "solar_fins": 36,
+    "campus_trees": 16,
+    "smart_streetlights": 10
+  },
+  "sign": {
+    "characters": "한국외국어대학교 송도캠퍼스 (HUFS)",
+    "type": "캠퍼스 주출입구 화강석 문주 위 HUFS 네이비/골드 입체 명판",
+    "board_size_m": [
+      4.0,
+      1.8
+    ],
+    "frame": "HUFS 시그니처 딥네이비 & 스테인리스 스틸 헤어라인 프레임"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_01_22014_029_01",
+      "label": "한국외대 6층 통번역&국제비즈니스센터 본관 & 네이비 루프",
+      "mesh_nodes": [
+        "28185_01_22014_029_01__business_hall"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_22014_029_02",
+      "label": "다국어 동시통역 콘퍼런스홀 윙 & 캐노피 아뜨리움",
+      "mesh_nodes": [
+        "28185_01_22014_029_02__conference_wing"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_22014_029_03",
+      "label": "외벽 일사조절 수직 루버 핀 & 유리 커튼월 입면",
+      "mesh_nodes": [
+        "28185_01_22014_029_03__louvers"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_22014_029_04",
+      "label": "캠퍼스 중앙광장 & 조경수목·가로등·캠퍼스 문주 명판",
+      "mesh_nodes": [
+        "28185_01_22014_029_04__plaza_and_monument"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 4000,
+    "phase_link": "일몰 후 15분 점등 / 24:00 소등 (국제학술센터 연동)",
+    "spots": [
+      {
+        "id": "night_light_navy_crown",
+        "offset_m": [
+          13.0,
+          28.5,
+          -9.0
+        ],
+        "aim": "본관 옥상 네이비 파라펫 라인 경관조명"
+      },
+      {
+        "id": "night_light_entrance_canopy",
+        "offset_m": [
+          2.0,
+          4.0,
+          2.0
+        ],
+        "aim": "주출입구 캐노피 다운라이트"
+      },
+      {
+        "id": "night_light_quad_lights",
+        "offset_m": [
+          -12.0,
+          0.5,
+          13.0
+        ],
+        "aim": "중앙광장 가로등 조명"
+      },
+      {
+        "id": "night_light_gate_monument",
+        "offset_m": [
+          -15.5,
+          2.5,
+          3.3
+        ],
+        "aim": "캠퍼스 문주 명판 조명"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_business_hall_lobby",
+      "label": "외대 비즈니스센터 로비",
+      "offset_m": [
+        13.0,
+        0.15,
+        0.0
+      ]
+    },
+    {
+      "id": "hotspot_conference_hall_entrance",
+      "label": "동시통역 콘퍼런스홀 입구",
+      "offset_m": [
+        -14.0,
+        0.15,
+        -11.0
+      ]
+    },
+    {
+      "id": "hotspot_campus_quad_plaza",
+      "label": "캠퍼스 중앙광장",
+      "offset_m": [
+        -12.0,
+        0.35,
+        13.0
+      ]
+    },
+    {
+      "id": "hotspot_campus_main_gate",
+      "label": "한국외대 송도캠퍼스 정문",
+      "offset_m": [
+        -15.5,
+        0.15,
+        3.3
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_01_22014_029_01",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "한국외국어대학교 공식 사이트 송도캠퍼스 마스터플랜 안내",
+      "url": "https://www.hufs.ac.kr/",
+      "note": "송도 국제비즈니스센터 및 데이터AI캠퍼스 건축 제원"
+    },
+    {
+      "title": "IFEZ 인천경제자유구역청 송도 첨단산업클러스터 대학 인프라 현황",
+      "url": "https://www.ifez.go.kr/",
+      "note": "송도동 첨단산단 내 한국외대 부지 및 인허가 정보"
+    },
+    {
+      "title": "삼우종합건축사사무소 한국외국어대학교 송도캠퍼스 설계 포트폴리오",
+      "url": "https://www.samoo.com/",
+      "note": "통번역&국제비즈니스센터 실시설계 데이터"
+    }
+  ],
+  "reference_note": "삼우건축 및 한국외대 기획조정처 준공도면 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B29 HUFS Songdo Campus)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -28.0,
+      0.0,
+      -24.6
+    ],
+    "max": [
+      27.95,
+      28.5,
+      24.6
+    ],
+    "size": [
+      55.95,
+      28.5,
+      49.2
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 10124,
+      "bytes": 971338
+    },
+    "model_lod2.gltf": {
+      "triangles": 348,
+      "bytes": 37369
+    },
+    "texture_atlas.webp": {
+      "bytes": 123026,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1134733,
+  "anchor_nodes": [
+    "hotspot_business_hall_lobby",
+    "hotspot_conference_hall_entrance",
+    "hotspot_campus_quad_plaza",
+    "hotspot_campus_main_gate",
+    "night_light_navy_crown",
+    "night_light_entrance_canopy",
+    "night_light_quad_lights",
+    "night_light_gate_monument"
+  ]
+}

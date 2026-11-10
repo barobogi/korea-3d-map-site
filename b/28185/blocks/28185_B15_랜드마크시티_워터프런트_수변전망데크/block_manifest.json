@@ -1,0 +1,303 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B15",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B15",
+  "pr_number": 476,
+  "pr_number_assigned": 476,
+  "block_number": 15,
+  "composite_id": "28185_02_21987_015",
+  "block_id": "28185_B15_랜드마크시티_워터프런트_수변전망데크",
+  "name": "랜드마크시티 1공구 워터프런트 수변전망데크 & 인공해변",
+  "name_en": "Landmark City Zone 1 Waterfront Observation Deck & Beach",
+  "category": "CAT41_WATERFRONT_BEACH",
+  "category_label": "수변전망데크/인공해변/친수여가공간",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 랜드마크로 일원 (송도동)",
+  "postal_code": "21987",
+  "floors": "지상 2층 (계단식 원형 전망스탠드 & 캔틸레버 스카이데크)",
+  "height_m": 8.2,
+  "architectural_style": "원형 계단식 친수 전망스탠드 & 캔틸레버 선셋 스카이데크 & 인공 백사장",
+  "architect": "인천경제자유구역청(IFEZ) & 유신엔지니어링",
+  "coordinates": [
+    126.6288,
+    37.4152
+  ],
+  "orientation_deg": 0.0,
+  "heading": 0.0,
+  "heading_note": "랜드마크시티 산책로에서 원형 전망데크와 서해 바다를 정면으로 조망하는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.15,
+  "lod_switch_distance": 220.0,
+  "spec_dimensions_m": {
+    "circular_plinth": {
+      "diameter_m": 24.0,
+      "height_m": 5.4
+    },
+    "cantilever_skydeck": {
+      "length_z_m": 12.0,
+      "width_x_m": 8.0,
+      "elevation_y_m": 4.2
+    },
+    "artificial_beach": {
+      "width_x_m": 26.0,
+      "depth_z_m": 18.0
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "deck_structure": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "sunset_sea_water": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "sand_beach_and_deck": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "railing_and_greenery": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.02~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "observation_plinths": 1,
+    "cantilever_skydecks": 1,
+    "beach_loungers": 6,
+    "smart_streetlights": 10,
+    "windbreak_pines": 12,
+    "tensile_canopies": 1
+  },
+  "sign": {
+    "characters": "랜드마크시티 워터프런트 수변전망데크 (LANDMARK CITY WATERFRONT)",
+    "type": "수변 진입로 화강석 기단 위 황동 입체 명판",
+    "board_size_m": [
+      3.6,
+      1.8
+    ],
+    "frame": "스테인리스 헤어라인 프레임"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_02_21987_015_01",
+      "label": "랜드마크시티 해안 보행데크 & 천연 백사장 인공해변",
+      "mesh_nodes": [
+        "28185_02_21987_015_01__beach_and_boardwalk"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_02_21987_015_02",
+      "label": "3단 계단식 원형 친수 전망스탠드 & 막구조 그늘막 캐노피",
+      "mesh_nodes": [
+        "28185_02_21987_015_02__circular_observation_stand"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_02_21987_015_03",
+      "label": "서해 바다 수면 돌출 12m 캔틸레버 선셋 스카이데크",
+      "mesh_nodes": [
+        "28185_02_21987_015_03__cantilever_skydeck"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_02_21987_015_04",
+      "label": "선셋 비치 파라솔 라운저 & 해안 방풍 소나무 산책로",
+      "mesh_nodes": [
+        "28185_02_21987_015_04__loungers_and_pines"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3000,
+    "phase_link": "일몰 후 15분 점등 / 24:00 소등 (낙조 감상 골든아워 특화)",
+    "spots": [
+      {
+        "id": "night_light_skydeck_cantilever",
+        "offset_m": [
+          10.0,
+          5.0,
+          16.0
+        ],
+        "aim": "스카이데크 돌출부 하부 간접조명"
+      },
+      {
+        "id": "night_light_canopy_mast",
+        "offset_m": [
+          10.0,
+          8.0,
+          4.0
+        ],
+        "aim": "원형 전망대 막구조 투광등"
+      },
+      {
+        "id": "night_light_beach_steps",
+        "offset_m": [
+          -10.0,
+          1.0,
+          10.0
+        ],
+        "aim": "인공해변 계단 스텝등"
+      },
+      {
+        "id": "night_light_promenade",
+        "offset_m": [
+          0.0,
+          5.5,
+          -15.0
+        ],
+        "aim": "수변 산책로 스마트가로등"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_skydeck_apex",
+      "label": "선셋 스카이데크 돌출 전망점",
+      "offset_m": [
+        10.0,
+        4.2,
+        21.0
+      ]
+    },
+    {
+      "id": "hotspot_circular_lounge",
+      "label": "원형 전망대 2층 라운지",
+      "offset_m": [
+        10.0,
+        5.4,
+        4.0
+      ]
+    },
+    {
+      "id": "hotspot_beach_lounger",
+      "label": "인공해변 비치 라운저",
+      "offset_m": [
+        -15.0,
+        0.8,
+        12.0
+      ]
+    },
+    {
+      "id": "hotspot_waterfront_plaza",
+      "label": "수변 진입광장",
+      "offset_m": [
+        -24.0,
+        0.15,
+        -4.0
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_02_21987_015_01",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "IFEZ 송도 랜드마크시티 워터프런트 수변공간 마스터플랜",
+      "url": "https://www.ifez.go.kr/",
+      "note": "1공구 수변전망데크 및 인공해변 친수공원 설계 제원"
+    },
+    {
+      "title": "연수구청 송도 랜드마크시티 해안공원 안내",
+      "url": "https://www.yeonsu.go.kr/",
+      "note": "랜드마크로 해안 산책로 및 친수전망대 인프라"
+    },
+    {
+      "title": "인천시설공단 송도 해안 친수여가공간 관리 규정",
+      "url": "https://www.insiseol.or.kr/",
+      "note": "수변전망데크 및 안전시설물 관리 기준"
+    }
+  ],
+  "reference_note": "IFEZ 랜드마크시티 1공구 친수공원 도면 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B15 Landmark City Waterfront Deck)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -28.0,
+      0.0,
+      -24.0
+    ],
+    "max": [
+      27.95,
+      8.2,
+      24.0
+    ],
+    "size": [
+      55.95,
+      8.2,
+      48.0
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 10228,
+      "bytes": 970268
+    },
+    "model_lod2.gltf": {
+      "triangles": 692,
+      "bytes": 58567
+    },
+    "texture_atlas.webp": {
+      "bytes": 125284,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1157119,
+  "anchor_nodes": [
+    "hotspot_skydeck_apex",
+    "hotspot_circular_lounge",
+    "hotspot_beach_lounger",
+    "hotspot_waterfront_plaza",
+    "night_light_skydeck_cantilever",
+    "night_light_canopy_mast",
+    "night_light_beach_steps",
+    "night_light_promenade"
+  ]
+}

@@ -1,0 +1,387 @@
+{
+  "schema_version": "2.1_junggu_spec117_B06",
+  "spec_ref": "TASK_REQUEST_20261108_JUNGGU_LEGO_50BLOCKS.md §1~§3 / 117호 블록 장착 규약 v1",
+  "task_slot_id": "11140-B06",
+  "pr_number": 314,
+  "pr_number_assigned": 312,
+  "block_number": 6,
+  "composite_id": "11140_02_04519_005",
+  "block_id": "11140_B06_덕수궁_돌담길_정동길_입구",
+  "name": "덕수궁 돌담길 (정동길 입구)",
+  "name_en": "Deoksugung Stone-wall Road at Jeongdong-gil Entrance, Seoul",
+  "category": "CAT12_CULTURAL_STREET_STONEWALL",
+  "category_label": "문화거리/돌담길",
+  "district": "서울특별시 중구",
+  "road_address": "서울특별시 중구 정동길 일대 (덕수궁 남동측 담장)",
+  "postal_code": "04519",
+  "heritage": {
+    "designation": "사적",
+    "number": 124,
+    "name": "덕수궁 (사적 제124호, 개별 구성요소 포함)",
+    "designated_on_note": "지정 연도는 국가유산청 고시 원문 대조 전까지 확정하지 않는다.",
+    "manager": "국가유산청 궁능유적본부 덕수궁관리소",
+    "number_note": "덕수궁은 사적 제124호(1963년 지정)이며, 해당 건물·구간은 그 사적 범위 안의 개별 구성요소로 다룬다. 세부 지정 원문은 국가유산청 고시 대조 대상."
+  },
+  "coordinates": [
+    126.9758,
+    37.5652
+  ],
+  "orientation_deg": 90.0,
+  "heading": 90.0,
+  "heading_note": "담장 장축을 동서(x축)로 두고 인도를 남측(+Z)에 배치한 연출값이다. 실제 정동길 구간은 도로 선형에 따라 수 도(度) 휘어지며, 정밀실측 대조 전까지는 연출 기준값이다.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "인도 보도블록 바닥면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 1.0,
+  "lod_switch_distance": 180.0,
+  "spec_dimensions_m": {
+    "wall": {
+      "length_x": 96.0,
+      "thickness_z": 0.72,
+      "height_y": 2.4,
+      "stone_base_h": 1.0,
+      "plaster_h": 1.0,
+      "tile_cap_h": 0.4,
+      "ashlar_courses": 3,
+      "note": "화강암 장대석 3켜 기단 + 회벽 + 기와 갖. 하부 배수 구멍 8개소."
+    },
+    "sidewalk": {
+      "length_x": 96.0,
+      "width_z": 6.0,
+      "module_m": 1.2,
+      "note": "보도블록 1.2m 모듈 + 경계석 + 배수 측구."
+    },
+    "street_furniture": {
+      "ginkgo_trees": 8,
+      "tree_height_m": 9.0,
+      "street_lamps": 6,
+      "benches": 4,
+      "bollards": 12
+    },
+    "sign": {
+      "characters": "石墻路",
+      "size_m": [
+        1.9,
+        0.62
+      ],
+      "posts": 2
+    },
+    "total_height_with_ornament_m": 2.7
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q86",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "granite_ashlar": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "plaster_wall": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "giwa_wall_cap": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "sign_plaque": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ],
+        "sub_plaque": [
+          0.02,
+          0.02,
+          0.96,
+          0.44
+        ],
+        "sub_gold_frame": [
+          0.5,
+          0.5,
+          0.46,
+          0.22
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 내부 0.04~0.48 창을 주기 반복하며, 표지판은 부분영역 정확 UV(1:1)로 문자 왜곡이 없다."
+  },
+  "detail_counts": {
+    "ashlar_stones": 270,
+    "ashlar_courses": 3,
+    "wall_ends": 2,
+    "drain_holes": 8,
+    "plaster_relief_pieces": 64,
+    "roof_tiles_amkiwa": 696,
+    "sujiwa_ridges": 3,
+    "suryeon_end_tiles": 58,
+    "sidewalk_pavers": 180,
+    "curb_stones": 2,
+    "drainage_gutter": 1,
+    "ginkgo_trees": 8,
+    "street_lamps": 6,
+    "benches": 4,
+    "bollards": 12,
+    "sign_characters": 3,
+    "sign_emboss_cells": 138
+  },
+  "hierarchical_components": [
+    {
+      "id": "11140_02_04519_005_01",
+      "label": "화강암 장대석 기단 3켜·마구리·갓돌",
+      "mesh_nodes": [
+        "11140_02_04519_005_01__granite_ashlar_base_3courses"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_005_02",
+      "label": "회벽 담장 몸체·인방석·배수 구멍 8개소",
+      "mesh_nodes": [
+        "11140_02_04519_005_02__plaster_wall_body"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_005_03",
+      "label": "기와 갖(암키와 456매·수키와 3단·수막새)",
+      "mesh_nodes": [
+        "11140_02_04519_005_03__giwa_wall_cap_tile",
+        "11140_02_04519_005_03__giwa_cap_end_tiles"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_005_04",
+      "label": "표지 石墻路(가로 3자)·황금 테두리·3D 양각·기둥 2본",
+      "mesh_nodes": [
+        "11140_02_04519_005_04__street_sign_board",
+        "11140_02_04519_005_04__street_sign_gold_frame",
+        "11140_02_04519_005_04__street_sign_yanggak_emboss"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_005_05",
+      "label": "보도블록 400매·경계석·측구·볼라드 12기·가로등 6기·벤치 4기",
+      "mesh_nodes": [
+        "11140_02_04519_005_05__sidewalk_paving_brick",
+        "11140_02_04519_005_05__bollard_lamp_bench_iron"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_005_06",
+      "label": "은행나무 가로수 8본·담장 안쪽 수림대",
+      "mesh_nodes": [
+        "11140_02_04519_005_06__ginkgo_row_and_inner_grove"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3000,
+    "phase_link": "일몰 후 30분 점등 / 23:00 소등",
+    "spots": [
+      {
+        "id": "night_light_spotlight_SE_3000K",
+        "offset_m": [
+          50.0,
+          0.7,
+          12.0
+        ],
+        "aim": "담장 동측 면 상향"
+      },
+      {
+        "id": "night_light_spotlight_SW_3000K",
+        "offset_m": [
+          -50.0,
+          0.7,
+          12.0
+        ],
+        "aim": "담장 서측 면 상향"
+      },
+      {
+        "id": "night_light_spotlight_NE_3000K",
+        "offset_m": [
+          50.0,
+          0.7,
+          -10.0
+        ],
+        "aim": "수림대 북동면 조사"
+      },
+      {
+        "id": "night_light_spotlight_NW_3000K",
+        "offset_m": [
+          -50.0,
+          0.7,
+          -10.0
+        ],
+        "aim": "수림대 북서면 조사"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_stonewall_path_walk_start",
+      "label": "돌담길 보행 시작점 (정동길 입구)",
+      "offset_m": [
+        -44.0,
+        1.7,
+        9.4
+      ]
+    },
+    {
+      "id": "hotspot_ashlar_base_closeup",
+      "label": "장대석 3켜 줄눈 근접",
+      "offset_m": [
+        0.0,
+        1.0,
+        6.2
+      ]
+    },
+    {
+      "id": "hotspot_sign_closeup",
+      "label": "표지 石墻路 양각 근접",
+      "offset_m": [
+        -42.0,
+        2.1,
+        5.6
+      ]
+    },
+    {
+      "id": "hotspot_giwa_cap_roofline",
+      "label": "기와 갖 곡선 따라보기",
+      "offset_m": [
+        0.0,
+        2.6,
+        6.6
+      ]
+    },
+    {
+      "id": "hotspot_ginkgo_avenue_view",
+      "label": "은행나무 가로수길 조망",
+      "offset_m": [
+        0.0,
+        1.7,
+        12.2
+      ]
+    }
+  ],
+  "key_expansion_rule": "11140_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 11140_02_04519_005_02",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "국가유산포털 — 사적 「덕수궁」 지정정보",
+      "url": "https://www.heritage.go.kr/",
+      "note": "국가유산청 지정·관리 정보 원문 포털"
+    },
+    {
+      "title": "궁능유적본부 — 덕수궁 담장·정동길 안내",
+      "url": "https://royal.khs.go.kr/",
+      "note": "덕수궁 남동측 담장과 정동길 구간 안내"
+    },
+    {
+      "title": "한국민족문화대백과 — 덕수궁",
+      "url": "https://encykorea.aks.ac.kr/",
+      "note": "궁장(宮墻) 형식과 정동 일대 가로경관"
+    },
+    {
+      "title": "서울특별시 문화유산 — 중구 정동길 일대",
+      "url": "https://www.seoul.go.kr/",
+      "note": "소재지·도로명주소 대조"
+    }
+  ],
+  "reference_note": "위 4건은 포털 루트 주소이며, 검수 시 각 포털에서 「덕수궁 담장·정동길」 항목으로 진입해 구간·치수를 재확인한다. 웹 검색 없이 발주서 제원표와 이전 검증 데이터로 작성된 블록이므로, 상세 주소는 포털 검색 경로를 기준으로 안내한다.",
+  "generation": {
+    "generator": "pimang junggu deoksugung-stonewall parametric builder (workspace-side)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "생성 스크립트·임시파일은 저장소에 포함되지 않는다. PR에는 위 4종 에셋만 반영."
+  },
+  "bbox_local_m": {
+    "min": [
+      -48.6,
+      0.0,
+      -2.96
+    ],
+    "max": [
+      48.675,
+      9.0,
+      10.897
+    ],
+    "size": [
+      97.275,
+      9.0,
+      13.857
+    ],
+    "core_min": [
+      -48.6,
+      0.0,
+      -2.96
+    ],
+    "core_max": [
+      49.1,
+      9.0,
+      10.89
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 13946,
+      "vertices": 18994,
+      "bytes": 1044521
+    },
+    "model_lod2.gltf": {
+      "triangles": 674,
+      "vertices": 900,
+      "bytes": 56050
+    },
+    "texture_atlas.webp": {
+      "bytes": 108424,
+      "size_px": 1024,
+      "format": "webp_lossy_q86"
+    }
+  },
+  "package_total_bytes": 1208995,
+  "anchor_nodes": [
+    "night_light_spotlight_SE_3000K",
+    "night_light_spotlight_SW_3000K",
+    "night_light_spotlight_NE_3000K",
+    "night_light_spotlight_NW_3000K",
+    "hotspot_stonewall_path_walk_start",
+    "hotspot_ashlar_base_closeup",
+    "hotspot_sign_closeup",
+    "hotspot_giwa_cap_roofline",
+    "hotspot_ginkgo_avenue_view"
+  ]
+}

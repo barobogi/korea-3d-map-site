@@ -1,0 +1,299 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B26",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B26",
+  "pr_number": 487,
+  "pr_number_assigned": 487,
+  "block_number": 26,
+  "composite_id": "28185_01_21985_026",
+  "block_id": "28185_B26_겐트대학교_글로벌캠퍼스",
+  "name": "겐트대학교 글로벌캠퍼스 (벨기에 국립 겐트대 바이오 학술동)",
+  "name_en": "Ghent University Global Campus (GUGC Bio-Academic Building)",
+  "category": "CAT31_GLOBAL_CAMPUS",
+  "category_label": "글로벌캠퍼스/대학도시/바이오학술연구동",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 송도문화로 119 겐트대 글로벌캠퍼스 (송도동)",
+  "postal_code": "21985",
+  "floors": "지상 6층 (높이 28.5m 클린룸 바이오랩 파사드 & 파이토트론 온실 윙)",
+  "height_m": 28.5,
+  "architectural_style": "벨기에 국립대 유럽형 미니멀리즘 글래스 커튼월 & 첨단 바이오 파이토트론 연구동",
+  "architect": "희림종합건축사사무소 & 대우건설",
+  "coordinates": [
+    126.6695,
+    37.3818
+  ],
+  "orientation_deg": 0.0,
+  "heading": 0.0,
+  "heading_note": "송도문화로 IGC 단지 내 겐트대 정면에서 바이오 학술동을 정면으로 조망하는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.15,
+  "lod_switch_distance": 220.0,
+  "spec_dimensions_m": {
+    "bio_hall": {
+      "width_x_m": 22.0,
+      "depth_z_m": 22.0,
+      "height_m": 28.5
+    },
+    "greenhouse_wing": {
+      "width_x_m": 24.0,
+      "depth_z_m": 18.0,
+      "height_m": 12.5
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "curtain_wall": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "greenhouse_and_panels": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "promenade_tiles": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "ghent_blue_and_trees": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.02~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "bio_academic_wings": 1,
+    "greenhouse_annexes": 1,
+    "solar_fins": 36,
+    "campus_trees": 16,
+    "smart_streetlights": 10
+  },
+  "sign": {
+    "characters": "겐트대학교 글로벌캠퍼스 (GHENT UNIVERSITY GLOBAL CAMPUS)",
+    "type": "캠퍼스 주출입구 화강석 문주 위 겐트 로열블루/골드 입체 명판",
+    "board_size_m": [
+      4.2,
+      1.8
+    ],
+    "frame": "겐트 블루 & 스테인리스 스틸 헤어라인 프레임"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_01_21985_026_01",
+      "label": "겐트대 글로벌캠퍼스 6층 바이오생명공학 학술본관 매스",
+      "mesh_nodes": [
+        "28185_01_21985_026_01__bio_hall"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21985_026_02",
+      "label": "첨단 식물생명 파이토트론 온실 윙 & 친환경 연구 챔버",
+      "mesh_nodes": [
+        "28185_01_21985_026_02__greenhouse_wing"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21985_026_03",
+      "label": "외벽 일사조절 수직 루버 핀 & 옥상 겐트 블루 파라펫",
+      "mesh_nodes": [
+        "28185_01_21985_026_03__louvers_and_crown"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21985_026_04",
+      "label": "캠퍼스 중앙광장 & 조경수목·가로등·캠퍼스 문주 명판",
+      "mesh_nodes": [
+        "28185_01_21985_026_04__plaza_and_monument"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 4000,
+    "phase_link": "일몰 후 15분 점등 / 24:00 소등 (글로벌 연구단지 연동)",
+    "spots": [
+      {
+        "id": "night_light_greenhouse_glow",
+        "offset_m": [
+          -14.0,
+          12.0,
+          -11.0
+        ],
+        "aim": "파이토트론 온실 야간 내부 조명 연출"
+      },
+      {
+        "id": "night_light_facade_blue_crown",
+        "offset_m": [
+          13.0,
+          28.5,
+          -9.0
+        ],
+        "aim": "겐트 블루 루프 파라펫 경관조명"
+      },
+      {
+        "id": "night_light_promenade_lights",
+        "offset_m": [
+          -12.0,
+          0.5,
+          13.0
+        ],
+        "aim": "광장 가로등 조명"
+      },
+      {
+        "id": "night_light_gate_monument",
+        "offset_m": [
+          -15.5,
+          2.5,
+          3.3
+        ],
+        "aim": "캠퍼스 문주 명판 조명"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_bio_hall_lobby",
+      "label": "겐트대 바이오본관 로비",
+      "offset_m": [
+        13.0,
+        0.15,
+        0.0
+      ]
+    },
+    {
+      "id": "hotspot_phytotron_entrance",
+      "label": "파이토트론 온실 연구실",
+      "offset_m": [
+        -14.0,
+        0.15,
+        -11.0
+      ]
+    },
+    {
+      "id": "hotspot_campus_quad_plaza",
+      "label": "캠퍼스 중앙광장",
+      "offset_m": [
+        -12.0,
+        0.35,
+        13.0
+      ]
+    },
+    {
+      "id": "hotspot_campus_main_gate",
+      "label": "겐트대학교 정문",
+      "offset_m": [
+        -15.5,
+        0.15,
+        3.3
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_01_21985_026_01",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "겐트대학교 글로벌캠퍼스(GUGC) 공식 사이트 시설 및 바이오연구소 안내",
+      "url": "https://www.ghent.ac.kr/",
+      "note": "벨기에 국립 겐트대 송도 바이오 학술동 건축 제원"
+    },
+    {
+      "title": "인천글로벌캠퍼스(IGC) 재단 입주대학 시설 현황",
+      "url": "https://www.igc.or.kr/",
+      "note": "송도문화로 IGC 내 겐트대학교 부지 및 건물 배치도"
+    },
+    {
+      "title": "IFEZ 인천경제자유구역청 바이오 첨단연구클러스터 현황",
+      "url": "https://www.ifez.go.kr/",
+      "note": "송도 바이오캠퍼스 및 외국교육연구기관 인허가 정보"
+    }
+  ],
+  "reference_note": "희림건축 및 GUGC 시설운영팀 준공도면 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B26 Ghent University Global Campus)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -28.0,
+      0.0,
+      -24.6
+    ],
+    "max": [
+      27.95,
+      28.5,
+      24.6
+    ],
+    "size": [
+      55.95,
+      28.5,
+      49.2
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 10124,
+      "bytes": 971342
+    },
+    "model_lod2.gltf": {
+      "triangles": 348,
+      "bytes": 37373
+    },
+    "texture_atlas.webp": {
+      "bytes": 120110,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1131825,
+  "anchor_nodes": [
+    "hotspot_bio_hall_lobby",
+    "hotspot_phytotron_entrance",
+    "hotspot_campus_quad_plaza",
+    "hotspot_campus_main_gate",
+    "night_light_greenhouse_glow",
+    "night_light_facade_blue_crown",
+    "night_light_promenade_lights",
+    "night_light_gate_monument"
+  ]
+}

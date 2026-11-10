@@ -1,0 +1,305 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B30",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B30",
+  "pr_number": 491,
+  "pr_number_assigned": 491,
+  "block_number": 30,
+  "composite_id": "28185_01_21987_030",
+  "block_id": "28185_B30_삼성바이오로직스",
+  "name": "삼성바이오로직스 송도 제1~4공장 메가플랜트",
+  "name_en": "Samsung Biologics Songdo Mega Bio-Plant 1-4",
+  "category": "CAT32_BIO_HEALTHCARE",
+  "category_label": "바이오의약/글로벌CDMO/메가플랜트생산기지",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 송도바이오대로 300 (송도동)",
+  "postal_code": "21987",
+  "floors": "지상 6층 (높이 46.5m 세계 최대 바이오 메가플랜트 & 공조설비 타워)",
+  "height_m": 46.5,
+  "architectural_style": "은백색 초청정 샌드위치 패널 및 삼성 블루 시그니처 밴드 바이오 메가플랜트",
+  "architect": "삼성물산 건설부문 & 삼우종합건축사사무소",
+  "coordinates": [
+    126.6635,
+    37.3712
+  ],
+  "orientation_deg": 0.0,
+  "heading": 0.0,
+  "heading_note": "송도바이오대로 메인 게이트에서 삼성바이오로직스 메가플랜트를 정면으로 조망하는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.15,
+  "lod_switch_distance": 250.0,
+  "spec_dimensions_m": {
+    "mega_plant": {
+      "width_x_m": 34.0,
+      "depth_z_m": 34.0,
+      "height_m": 46.5
+    },
+    "clean_dock": {
+      "width_x_m": 16.0,
+      "depth_z_m": 30.0,
+      "height_m": 18.5
+    },
+    "security_gate": {
+      "width_x_m": 10.0,
+      "depth_z_m": 4.0,
+      "height_m": 4.5
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "cleanroom_facade": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "hvac_and_docks": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "heavy_duty_asphalt": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "samsung_blue_and_trees": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.02~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "mega_plants": 1,
+    "hvac_air_handling_units": 4,
+    "cooling_towers": 4,
+    "clean_docks": 3,
+    "campus_trees": 16,
+    "smart_streetlights": 10
+  },
+  "sign": {
+    "characters": "SAMSUNG BIOLOGICS (삼성바이오로직스)",
+    "type": "정문 보안게이트 독립 화강석 문주 위 삼성 블루/실버 입체 명판",
+    "board_size_m": [
+      4.2,
+      1.8
+    ],
+    "frame": "삼성 블루 & 스테인리스 스틸 헤어라인 프레임"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_01_21987_030_01",
+      "label": "삼성바이오로직스 단일 세계최대 46.5m 바이오 메가플랜트 매스",
+      "mesh_nodes": [
+        "28185_01_21987_030_01__mega_plant"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21987_030_02",
+      "label": "옥상 클린룸 공조 AHU 설비 & 냉각탑·삼성 블루 밴드",
+      "mesh_nodes": [
+        "28185_01_21987_030_02__hvac_and_blue_band"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21987_030_03",
+      "label": "초청정 바이오 의약품 전용 클린 도크 & 입출하 로딩베이",
+      "mesh_nodes": [
+        "28185_01_21987_030_03__clean_dock"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21987_030_04",
+      "label": "정문 보안통제소 게이트 & 조경수목·가로등·문주 명판",
+      "mesh_nodes": [
+        "28185_01_21987_030_04__gate_and_monument"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 4500,
+    "phase_link": "일몰 후 15분 점등 / 24:00 소등 (첨단 바이오 클러스터 연동)",
+    "spots": [
+      {
+        "id": "night_light_blue_band",
+        "offset_m": [
+          7.0,
+          30.0,
+          14.5
+        ],
+        "aim": "삼성 블루 시그니처 밴드 라인 경관조명"
+      },
+      {
+        "id": "night_light_rooftop_hvac",
+        "offset_m": [
+          -1.0,
+          45.0,
+          0.0
+        ],
+        "aim": "옥상 공조 설비 투광등 및 항공장애등"
+      },
+      {
+        "id": "night_light_dock_floodlights",
+        "offset_m": [
+          -26.0,
+          18.0,
+          0.0
+        ],
+        "aim": "물류 하역장 야간 작업등"
+      },
+      {
+        "id": "night_light_gate_monument",
+        "offset_m": [
+          0.7,
+          2.5,
+          18.8
+        ],
+        "aim": "정문 삼성바이오로직스 명판 조명"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_mega_plant_entrance",
+      "label": "메가플랜트 메인 로비",
+      "offset_m": [
+        7.0,
+        0.15,
+        14.0
+      ]
+    },
+    {
+      "id": "hotspot_clean_dock_bay",
+      "label": "바이오 물류 클린도크",
+      "offset_m": [
+        -26.0,
+        0.15,
+        0.0
+      ]
+    },
+    {
+      "id": "hotspot_security_control_gate",
+      "label": "보안관제 게이트",
+      "offset_m": [
+        -19.0,
+        0.15,
+        20.0
+      ]
+    },
+    {
+      "id": "hotspot_samsung_monument",
+      "label": "삼성바이오로직스 정문 표지석",
+      "offset_m": [
+        0.7,
+        0.15,
+        18.8
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_01_21987_030_01",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "삼성바이오로직스 공식 사이트 송도 메가플랜트 시설 및 생산능력 안내",
+      "url": "https://samsungbiologics.com/",
+      "note": "세계 최대 단일 바이오 플랜트 1~4공장 제원 및 클린룸 규격"
+    },
+    {
+      "title": "IFEZ 인천경제자유구역청 송도 바이오클러스터 기업 인프라 현황",
+      "url": "https://www.ifez.go.kr/",
+      "note": "송도바이오대로 300 일원 첨단 바이오 제조공장 인허가 정보"
+    },
+    {
+      "title": "삼우종합건축사사무소 삼성바이오로직스 송도 플랜트 설계 포트폴리오",
+      "url": "https://www.samoo.com/",
+      "note": "초청정 바이오 플랜트 및 외벽 샌드위치 패널 실시설계 데이터"
+    }
+  ],
+  "reference_note": "삼성물산 및 삼우건축 준공도면 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B30 Samsung Biologics)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -28.0,
+      0.0,
+      -24.0
+    ],
+    "max": [
+      27.95,
+      46.5,
+      24.6
+    ],
+    "size": [
+      55.95,
+      46.5,
+      48.6
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 11120,
+      "bytes": 1075347
+    },
+    "model_lod2.gltf": {
+      "triangles": 528,
+      "bytes": 51525
+    },
+    "texture_atlas.webp": {
+      "bytes": 151950,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1281822,
+  "anchor_nodes": [
+    "hotspot_mega_plant_entrance",
+    "hotspot_clean_dock_bay",
+    "hotspot_security_control_gate",
+    "hotspot_samsung_monument",
+    "night_light_blue_band",
+    "night_light_rooftop_hvac",
+    "night_light_dock_floodlights",
+    "night_light_gate_monument"
+  ]
+}

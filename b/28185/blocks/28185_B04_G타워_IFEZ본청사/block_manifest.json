@@ -1,0 +1,322 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B04",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B04",
+  "pr_number": 465,
+  "pr_number_assigned": 465,
+  "block_number": 4,
+  "composite_id": "28185_01_21998_004",
+  "block_id": "28185_B04_G타워_IFEZ본청사",
+  "name": "G타워 (IFEZ 본청사 & 전망대)",
+  "name_en": "G-Tower (IFEZ Headquarters & Observation Deck)",
+  "category": "CAT50_PUBLIC_LANDMARK_TOWER",
+  "category_label": "공공행정청사/전망타워",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 아트센터대로 175 (송도동 24-4)",
+  "postal_code": "21998",
+  "floors": "지하 2층 / 지상 33층",
+  "height_m": 150.0,
+  "architectural_style": "친환경 삼각 역동 프리즘 커튼월 타워 & 6개층 관통 공중정원 (Triangular Prismatic Curtain Wall with Sky Garden Atrium)",
+  "architect": "KPF & 삼우종합건축사사무소",
+  "coordinates": [
+    126.6341,
+    37.3957
+  ],
+  "orientation_deg": 180.0,
+  "heading": 180.0,
+  "heading_note": "아트센터대로 및 센트럴파크 서측 조망축을 정면으로 바라보는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.35,
+  "lod_switch_distance": 200.0,
+  "spec_dimensions_m": {
+    "tower_footprint": {
+      "width_x_m": 22.0,
+      "depth_z_m": 20.0,
+      "height_m": 150.0
+    },
+    "sky_garden_atrium": {
+      "floors": "22F~28F (6개 층)",
+      "void_height_m": 9.0,
+      "cantilever_m": 4.0
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "granite_plaza": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "silver_metallic_truss": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "sky_blue_curtain_wall": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "bronze_and_atrium_wood": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.04~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "tower_floors": 33,
+    "diagonal_bracing_fins": 64,
+    "canopy_columns": 4,
+    "sky_garden_decks": 2,
+    "plaza_bollards": 24
+  },
+  "sign": {
+    "characters": "G - T O W E R (인천경제자유구역청)",
+    "type": "화강석 좌대 위 황동/브론즈 입체 문자 명판",
+    "board_size_m": [
+      5.8,
+      1.4
+    ],
+    "frame": "딥 네이비 메탈릭 바탕 + 황금 테두리"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_01_21998_004_01",
+      "label": "G타워 광장 기단 및 센트럴파크 연결 보행로",
+      "mesh_nodes": [
+        "28185_01_21998_004_01__plaza_base"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21998_004_02",
+      "label": "실버 메탈릭 외골격 트러스 및 층간 수평 밴드",
+      "mesh_nodes": [
+        "28185_01_21998_004_02__mega_truss_fins"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21998_004_03",
+      "label": "33층 삼각 프리즘 유리 커튼월 타워 및 33층 전망대",
+      "mesh_nodes": [
+        "28185_01_21998_004_03__curtain_wall_tower"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21998_004_04",
+      "label": "중앙 6개층 캔틸레버 공중정원(스카이가든) 및 IFEZ 명판",
+      "mesh_nodes": [
+        "28185_01_21998_004_04__sky_garden_sign"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3000,
+    "phase_link": "일몰 후 30분 점등 / 23:00 소등",
+    "spots": [
+      {
+        "id": "night_light_spotlight_SE_3000K",
+        "offset_m": [
+          22.0,
+          1.0,
+          22.0
+        ],
+        "aim": "타워 남동 대각선 커튼월 투사"
+      },
+      {
+        "id": "night_light_spotlight_SW_3000K",
+        "offset_m": [
+          -22.0,
+          1.0,
+          22.0
+        ],
+        "aim": "타워 남서 캔틸레버 공중정원 투사"
+      },
+      {
+        "id": "night_light_spotlight_NE_3000K",
+        "offset_m": [
+          22.0,
+          1.0,
+          -22.0
+        ],
+        "aim": "타워 북동 외골격 트러스 투사"
+      },
+      {
+        "id": "night_light_spotlight_NW_3000K",
+        "offset_m": [
+          -22.0,
+          1.0,
+          -22.0
+        ],
+        "aim": "타워 북서 33층 전망대 크라운 투사"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_gtower_main_lobby_entrance",
+      "label": "G타워 1층 메인 로비",
+      "offset_m": [
+        0.0,
+        1.7,
+        18.0
+      ]
+    },
+    {
+      "id": "hotspot_sky_garden_atrium_25F",
+      "label": "25층 캔틸레버 스카이가든 아트리움",
+      "offset_m": [
+        4.0,
+        32.0,
+        0.0
+      ]
+    },
+    {
+      "id": "hotspot_observation_deck_33F",
+      "label": "33층 IFEZ 홍보전망관 360도 파노라마",
+      "offset_m": [
+        0.0,
+        48.5,
+        0.0
+      ]
+    },
+    {
+      "id": "hotspot_centralpark_waterfront_promenade",
+      "label": "센트럴파크 연결 수변보행로",
+      "offset_m": [
+        0.0,
+        1.7,
+        -20.0
+      ]
+    },
+    {
+      "id": "hotspot_ifez_monument_plaza",
+      "label": "G-Tower 조형물 광장",
+      "offset_m": [
+        -14.0,
+        1.7,
+        18.0
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_01_21998_004_03",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "인천경제자유구역청 (IFEZ) — G타워 소개 및 전망대 안내",
+      "url": "https://www.ifez.go.kr/",
+      "note": "청사 건축 개요 및 33층 전망대 공식 제원"
+    },
+    {
+      "title": "연수구청 포털 — 송도국제도시 주요 랜드마크",
+      "url": "https://www.yeonsu.go.kr/",
+      "note": "G-Tower 및 센트럴파크 서북단 권역 고증"
+    },
+    {
+      "title": "삼우종합건축사사무소 — G-Tower IFEZ 본청사 설계작품집",
+      "url": "https://www.samoo.com/",
+      "note": "삼각 프리즘 단면 및 스카이가든 보이드 구조 고증"
+    }
+  ],
+  "reference_note": "인천경제자유구역청 및 삼우설계 공식 기준 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B04 G-Tower)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -29.0,
+      0.0,
+      -23.0
+    ],
+    "max": [
+      29.0,
+      54.0,
+      23.0
+    ],
+    "size": [
+      58.0,
+      54.0,
+      46.0
+    ],
+    "core_min": [
+      -14.0,
+      0.0,
+      -14.0
+    ],
+    "core_max": [
+      14.0,
+      54.0,
+      14.0
+    ],
+    "note": "min/max는 LOD3 실측 바운딩박스, core는 타워 본체 범위다."
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 10838,
+      "vertices": 21676,
+      "bytes": 1017354
+    },
+    "model_lod2.gltf": {
+      "triangles": 336,
+      "vertices": 672,
+      "bytes": 37098
+    },
+    "texture_atlas.webp": {
+      "bytes": 205280,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1259732,
+  "anchor_nodes": [
+    "hotspot_gtower_main_lobby_entrance",
+    "hotspot_sky_garden_atrium_25F",
+    "hotspot_observation_deck_33F",
+    "hotspot_centralpark_waterfront_promenade",
+    "hotspot_ifez_monument_plaza",
+    "night_light_spotlight_SE_3000K",
+    "night_light_spotlight_SW_3000K",
+    "night_light_spotlight_NE_3000K",
+    "night_light_spotlight_NW_3000K"
+  ]
+}

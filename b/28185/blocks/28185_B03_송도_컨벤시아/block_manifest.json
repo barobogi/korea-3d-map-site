@@ -1,0 +1,323 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B03",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B03",
+  "pr_number": 464,
+  "pr_number_assigned": 464,
+  "block_number": 3,
+  "composite_id": "28185_01_21998_003",
+  "block_id": "28185_B03_송도_컨벤시아",
+  "name": "송도 컨벤시아",
+  "name_en": "Songdo Convensia",
+  "category": "CAT51_CONVENTION_EXHIBITION",
+  "category_label": "전시컨벤션/K-MICE",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 센트럴로 123 (송도동 6-1)",
+  "postal_code": "21998",
+  "floors": "지하 1층 / 지상 4층",
+  "height_m": 32.5,
+  "architectural_style": "태백산맥 능선 및 조개껍질 형상 4련 연속 접이식 곡면 쉘 (Folded Plate Wave Shell Roof Structure - KPF 설계)",
+  "architect": "KPF (Kohn Pedersen Fox Associates) & 범건축",
+  "coordinates": [
+    126.6533,
+    37.3888
+  ],
+  "orientation_deg": 180.0,
+  "heading": 180.0,
+  "heading_note": "센트럴로 및 컨벤시아교 방면 남측 주출입구를 정면으로 바라보는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.35,
+  "lod_switch_distance": 200.0,
+  "spec_dimensions_m": {
+    "main_hall": {
+      "length_x_m": 54.0,
+      "depth_z_m": 36.0,
+      "peak_height_m": 18.5
+    },
+    "wave_shells": {
+      "count": 4,
+      "width_per_shell_m": 13.5,
+      "total_roof_span_m": 54.0
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "granite_plaza": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "zinc_metallic_roof": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "glass_curtain_wall": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "bronze_and_stainless": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.04~0.48 창을 타일링하며 중앙 안내판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "wave_shells": 4,
+    "structural_rib_fins": 96,
+    "curtain_wall_mullions": 64,
+    "canopy_columns": 8,
+    "bollards": 24,
+    "flagpoles": 4
+  },
+  "sign": {
+    "characters": "송도컨벤시아 (SONGDO CONVENSIA)",
+    "type": "입구 화강석 좌대 위 황동/브론즈 입체 문자 명판",
+    "board_size_m": [
+      6.2,
+      1.4
+    ],
+    "frame": "다크 네이비 메탈릭 바탕 + 황금 테두리"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_01_21998_003_01",
+      "label": "송도 컨벤시아 야외 이벤트 광장 및 화강석 기단",
+      "mesh_nodes": [
+        "28185_01_21998_003_01__plaza_base"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21998_003_02",
+      "label": "KPF 설계 4련 파도형 접이식 알루미늄 곡면 쉘 루프",
+      "mesh_nodes": [
+        "28185_01_21998_003_02__folded_shell_roof"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21998_003_03",
+      "label": "제1·2전시장 통유리 커튼월 및 수직 멀리언 파사드",
+      "mesh_nodes": [
+        "28185_01_21998_003_03__curtain_wall"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21998_003_04",
+      "label": "스테인리스 드롭오프 캐노피·볼라드·국기게양대·명판",
+      "mesh_nodes": [
+        "28185_01_21998_003_04__canopy_signage"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3000,
+    "phase_link": "일몰 후 30분 점등 / 23:00 소등",
+    "spots": [
+      {
+        "id": "night_light_spotlight_SE_3000K",
+        "offset_m": [
+          26.0,
+          1.0,
+          24.0
+        ],
+        "aim": "쉘 루프 남동 곡면 및 캐노피 투사"
+      },
+      {
+        "id": "night_light_spotlight_SW_3000K",
+        "offset_m": [
+          -26.0,
+          1.0,
+          24.0
+        ],
+        "aim": "쉘 루프 남서 곡면 및 광장 투사"
+      },
+      {
+        "id": "night_light_spotlight_NE_3000K",
+        "offset_m": [
+          26.0,
+          1.0,
+          -24.0
+        ],
+        "aim": "북동 서비스 파사드 투사"
+      },
+      {
+        "id": "night_light_spotlight_NW_3000K",
+        "offset_m": [
+          -26.0,
+          1.0,
+          -24.0
+        ],
+        "aim": "북서 서비스 파사드 투사"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_convensia_main_entrance_lobby",
+      "label": "송도 컨벤시아 주출입구 로비",
+      "offset_m": [
+        0.0,
+        1.7,
+        22.0
+      ]
+    },
+    {
+      "id": "hotspot_grand_exhibition_hall_1",
+      "label": "제1전시장 그랜드볼룸",
+      "offset_m": [
+        -14.0,
+        3.5,
+        0.0
+      ]
+    },
+    {
+      "id": "hotspot_grand_exhibition_hall_2",
+      "label": "제2전시장 다목적홀",
+      "offset_m": [
+        14.0,
+        3.5,
+        0.0
+      ]
+    },
+    {
+      "id": "hotspot_curved_shell_roof_overlook",
+      "label": "4련 곡면 쉘 루프 조망 뷰",
+      "offset_m": [
+        0.0,
+        18.5,
+        0.0
+      ]
+    },
+    {
+      "id": "hotspot_kmice_dropoff_canopy",
+      "label": "K-MICE 드롭오프 승하차 구역",
+      "offset_m": [
+        0.0,
+        1.7,
+        24.5
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_01_21998_003_02",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "송도컨벤시아 공식 포털 — 시설 안내 및 건축 개요",
+      "url": "https://www.songdoconvensia.com/",
+      "note": "공식 전시장 제원 및 연혁 1:1 대조"
+    },
+    {
+      "title": "인천경제자유구역청 (IFEZ) — 송도컨벤시아 랜드마크",
+      "url": "https://www.ifez.go.kr/",
+      "note": "송도국제도시 K-MICE 허브 시설 정보"
+    },
+    {
+      "title": "인천관광공사 — K-MICE 송도컨벤시아 가이드",
+      "url": "https://www.ito.or.kr/",
+      "note": "전시면적, 건축양식, 곡면 쉘 구조 고증"
+    }
+  ],
+  "reference_note": "송도컨벤시아 공식 및 IFEZ 공공 포털 기준 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B03 Songdo Convensia)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -33.0,
+      0.0,
+      -25.0
+    ],
+    "max": [
+      33.0,
+      18.848,
+      26.0
+    ],
+    "size": [
+      66.0,
+      18.848,
+      51.0
+    ],
+    "core_min": [
+      -27.0,
+      0.0,
+      -18.0
+    ],
+    "core_max": [
+      27.0,
+      18.5,
+      18.0
+    ],
+    "note": "min/max는 LOD3 실측 바운딩박스, core는 전시장 본체 범위다."
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 11072,
+      "vertices": 22144,
+      "bytes": 1039177
+    },
+    "model_lod2.gltf": {
+      "triangles": 388,
+      "vertices": 776,
+      "bytes": 41909
+    },
+    "texture_atlas.webp": {
+      "bytes": 167826,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1248912,
+  "anchor_nodes": [
+    "hotspot_convensia_main_entrance_lobby",
+    "hotspot_grand_exhibition_hall_1",
+    "hotspot_grand_exhibition_hall_2",
+    "hotspot_curved_shell_roof_overlook",
+    "hotspot_kmice_dropoff_canopy",
+    "night_light_spotlight_SE_3000K",
+    "night_light_spotlight_SW_3000K",
+    "night_light_spotlight_NE_3000K",
+    "night_light_spotlight_NW_3000K"
+  ]
+}

@@ -1,0 +1,328 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B05",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B05",
+  "pr_number": 466,
+  "pr_number_assigned": 466,
+  "block_number": 5,
+  "composite_id": "28185_01_21989_005",
+  "block_id": "28185_B05_아트센터_인천",
+  "name": "아트센터 인천",
+  "name_en": "Art Center Incheon",
+  "category": "CAT52_CULTURE_PERFORMING_ARTS",
+  "category_label": "문화예술/콘서트홀",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 아트센터대로 222 (송도동 80-8)",
+  "postal_code": "21989",
+  "floors": "지하 2층 / 지상 7층",
+  "height_m": 35.0,
+  "architectural_style": "조약돌(Pebble) 형상 비정형 유선형 티타늄 쉘 & 수상 유리 포이어 (Curved Pebble Shell with Waterfront Glass Foyer)",
+  "architect": "프랑스 아르테 샤르팡티에 (Arte Charpentier) & 간삼건축",
+  "coordinates": [
+    126.6272,
+    37.3944
+  ],
+  "orientation_deg": 180.0,
+  "heading": 180.0,
+  "heading_note": "서해 바다 및 워터프런트 호수를 조망하는 남서향 파사드 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.35,
+  "lod_switch_distance": 200.0,
+  "spec_dimensions_m": {
+    "concert_hall": {
+      "seats": "1,757석 콘서트홀 및 7층 오페라하우스",
+      "width_x_m": 50.0,
+      "depth_z_m": 36.0,
+      "peak_height_m": 21.5
+    },
+    "twin_pebbles": {
+      "concert_wing_radius_m": [
+        16.0,
+        18.0
+      ],
+      "opera_wing_radius_m": [
+        14.0,
+        16.0
+      ]
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "granite_lakeside_plaza": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "titanium_pebble_roof": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "waterfront_curtain_wall": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "champagne_gold_and_brass": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.04~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "twin_pebble_roofs": 2,
+    "foyer_mullions": 72,
+    "canopy_columns": 4,
+    "waterfront_balusters": 24,
+    "lakeside_deck_tiles": 480
+  },
+  "sign": {
+    "characters": "아트센터 인천 (ART CENTER INCHEON)",
+    "type": "화강석 좌대 위 황동/브론즈 입체 문자 명판",
+    "board_size_m": [
+      6.2,
+      1.4
+    ],
+    "frame": "딥 네이비 메탈릭 바탕 + 샴페인 골드 테두리"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_01_21989_005_01",
+      "label": "아트센터 인천 호수변 수변광장 및 목재 데크",
+      "mesh_nodes": [
+        "28185_01_21989_005_01__lakeside_plaza"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21989_005_02",
+      "label": "아르테샤르팡티에 설계 트윈 조약돌(Pebble) 티타늄 아연판 루프",
+      "mesh_nodes": [
+        "28185_01_21989_005_02__titanium_pebble_roof"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21989_005_03",
+      "label": "7개 층 통유리 수상 포이어 및 음향 커튼월 파사드",
+      "mesh_nodes": [
+        "28185_01_21989_005_03__waterfront_foyer"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21989_005_04",
+      "label": "샴페인 골드 VIP 캐노피·수상 난간·아트센터 명판",
+      "mesh_nodes": [
+        "28185_01_21989_005_04__canopy_monument"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3000,
+    "phase_link": "일몰 후 30분 점등 / 23:00 소등",
+    "spots": [
+      {
+        "id": "night_light_spotlight_SE_3000K",
+        "offset_m": [
+          24.0,
+          1.0,
+          22.0
+        ],
+        "aim": "조약돌 루프 남동 곡면 및 캐노피 투사"
+      },
+      {
+        "id": "night_light_spotlight_SW_3000K",
+        "offset_m": [
+          -24.0,
+          1.0,
+          22.0
+        ],
+        "aim": "콘서트홀 서측 유리 포이어 투사"
+      },
+      {
+        "id": "night_light_spotlight_NE_3000K",
+        "offset_m": [
+          24.0,
+          1.0,
+          -22.0
+        ],
+        "aim": "오페라하우스 북동 곡면 투사"
+      },
+      {
+        "id": "night_light_spotlight_NW_3000K",
+        "offset_m": [
+          -24.0,
+          1.0,
+          -22.0
+        ],
+        "aim": "호수변 수상 데크 야간 조명 투사"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_artcenter_grand_foyer_entrance",
+      "label": "아트센터 인천 1층 메인 로비",
+      "offset_m": [
+        0.0,
+        1.7,
+        18.0
+      ]
+    },
+    {
+      "id": "hotspot_concert_hall_acoustic_auditorium",
+      "label": "1,757석 콘서트홀 빈야드식 관람석",
+      "offset_m": [
+        -8.0,
+        6.5,
+        0.0
+      ]
+    },
+    {
+      "id": "hotspot_opera_house_stage_atrium",
+      "label": "오페라하우스 다목적 무대",
+      "offset_m": [
+        8.0,
+        6.5,
+        0.0
+      ]
+    },
+    {
+      "id": "hotspot_waterfront_lakeside_promenade_deck",
+      "label": "호수변 수상 보행 데크",
+      "offset_m": [
+        0.0,
+        1.7,
+        -22.0
+      ]
+    },
+    {
+      "id": "hotspot_sculpture_plaza_view",
+      "label": "야외 조각공원 기념촬영 포인트",
+      "offset_m": [
+        -16.0,
+        1.7,
+        18.0
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_01_21989_005_02",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "아트센터인천 공식 포털 — 시설 안내 및 건축 개요",
+      "url": "https://www.aci.or.kr/",
+      "note": "콘서트홀 1,757석 및 건축 설계 제원 1:1 대조"
+    },
+    {
+      "title": "인천경제자유구역청 (IFEZ) — 아트센터인천 랜드마크",
+      "url": "https://www.ifez.go.kr/",
+      "note": "송도국제도시 워터프런트 복합문화시설 고증"
+    },
+    {
+      "title": "간삼건축종합건축사사무소 — 아트센터 인천 작품집",
+      "url": "https://www.gansam.com/",
+      "note": "조약돌(Pebble) 형상 비정형 티타늄 루프 구조 고증"
+    }
+  ],
+  "reference_note": "아트센터인천 공식 및 간삼건축 기준 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B05 Art Center Incheon)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -31.0,
+      0.0,
+      -24.0
+    ],
+    "max": [
+      31.0,
+      21.5,
+      24.0
+    ],
+    "size": [
+      62.0,
+      21.5,
+      48.0
+    ],
+    "core_min": [
+      -25.0,
+      0.0,
+      -18.0
+    ],
+    "core_max": [
+      25.0,
+      21.5,
+      18.0
+    ],
+    "note": "min/max는 LOD3 실측 바운딩박스, core는 콘서트홀 본체 범위다."
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 10020,
+      "vertices": 20040,
+      "bytes": 941039
+    },
+    "model_lod2.gltf": {
+      "triangles": 548,
+      "vertices": 1096,
+      "bytes": 56888
+    },
+    "texture_atlas.webp": {
+      "bytes": 168492,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1166419,
+  "anchor_nodes": [
+    "hotspot_artcenter_grand_foyer_entrance",
+    "hotspot_concert_hall_acoustic_auditorium",
+    "hotspot_opera_house_stage_atrium",
+    "hotspot_waterfront_lakeside_promenade_deck",
+    "hotspot_sculpture_plaza_view",
+    "night_light_spotlight_SE_3000K",
+    "night_light_spotlight_SW_3000K",
+    "night_light_spotlight_NE_3000K",
+    "night_light_spotlight_NW_3000K"
+  ]
+}

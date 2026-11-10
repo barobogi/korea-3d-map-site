@@ -1,0 +1,404 @@
+{
+  "schema_version": "2.1_junggu_spec117_B10",
+  "spec_ref": "TASK_REQUEST_20261108_JUNGGU_LEGO_50BLOCKS.md §1~§3 / 117호 블록 장착 규약 v1",
+  "task_slot_id": "11140-B10",
+  "pr_number": 318,
+  "pr_number_assigned": 316,
+  "block_number": 10,
+  "composite_id": "11140_02_04519_009",
+  "block_id": "11140_B10_배재학당_역사박물관",
+  "name": "배재학당 역사박물관",
+  "name_en": "Pai Chai Hak Dang (Appenzeller Hall) History Museum, Seoul",
+  "category": "CAT11_MODERN_EDUCATION_HERITAGE",
+  "category_label": "근대교육/사적",
+  "district": "서울특별시 중구",
+  "road_address": "서울특별시 중구 서소문로 11길 19 (정동 34-5)",
+  "postal_code": "04516",
+  "heritage": {
+    "designation": "사적",
+    "name": "배재학당 (동관·구 교사)",
+    "number_note": "국가유산청 지정번호(사적)는 고시 원문 대조 전까지 확정하지 않아 본 매니페스트에는 번호를 기재하지 않는다. 지정 명칭과 소재지로 대조한다.",
+    "history_note": "1885년 아펜젤러가 세운 한국 최초의 근대 사립학교",
+    "manager": "국가유산청 / 배재학당 역사박물관"
+  },
+  "coordinates": [
+    126.9721,
+    37.5638
+  ],
+  "orientation_deg": 180.0,
+  "heading": 180.0,
+  "heading_note": "3연 아치 아케이드 현관이 남측(서소문로 방향)을 향하는 것으로 잡은 연출값이다. 실제 축은 정동 일대 필지선에 따라 수 도(度) 어긋날 수 있으며, 정밀실측 대조 전까지는 연출 기준값이다.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "교정 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.8,
+  "lod_switch_distance": 200.0,
+  "spec_dimensions_m": {
+    "body": {
+      "width_x": 30.0,
+      "depth_z": 14.0,
+      "floor1_h": 4.2,
+      "floor2_h": 4.4,
+      "cornice_y": 9.4,
+      "eave_y": 9.6,
+      "ridge_y": 13.2,
+      "note": "2층 붉은 벽돌 몸체. 층 구분 띠 + 코스 몰딩 + 코니스."
+    },
+    "arcade": {
+      "width_x": 9.0,
+      "depth_z": 2.2,
+      "arches": 3,
+      "columns": 4,
+      "stair_steps": 4,
+      "stair_width_m": 9.0
+    },
+    "roof": {
+      "type": "저경사 슬레이트 우진각지붕",
+      "courses": 16,
+      "cols": 34,
+      "dormers": 2,
+      "chimneys": 2
+    },
+    "openings": {
+      "arch_front_per_floor": 8,
+      "arch_side_per_floor": 6,
+      "arcade_arches": 3,
+      "doors": 6
+    },
+    "total_height_with_ornament_m": 13.2,
+    "dimension_note": "배재학당 동관의 정밀실측 도면 공개 범위가 좁아 층고·처마·지붕 치수는 이전 검증 근대 벽돌 교육시설 블록의 비례와 발주서 제원을 기준으로 한 연출 기준값이다. 실측 대조 시 갱신 대상."
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q86",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "granite_plinth": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "red_brick_masonry": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "slate_roof": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "sign_plaque": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ],
+        "sub_plaque": [
+          0.02,
+          0.02,
+          0.96,
+          0.44
+        ],
+        "sub_entrance_door": [
+          0.02,
+          0.5,
+          0.44,
+          0.46
+        ],
+        "sub_gold_frame": [
+          0.5,
+          0.5,
+          0.46,
+          0.22
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 내부 0.04~0.48 창을 주기 반복하며, 표지·출입문은 부분영역 정확 UV(1:1)로 문자 왜곡이 없다."
+  },
+  "detail_counts": {
+    "plinth_ashlar_courses": 1,
+    "plinth_sangmyeon_panseok": 160,
+    "stairs_steps_total": 4,
+    "somaldol": 2,
+    "brick_lister_bricks": 468,
+    "corner_quoin_bricks": 40,
+    "arch_windows_front": 16,
+    "arch_windows_side": 12,
+    "arcade_arches": 3,
+    "arcade_columns": 4,
+    "entrance_doors": 6,
+    "slate_roof_courses": 16,
+    "slate_roof_tiles": 1088,
+    "dormers": 2,
+    "chimneys": 2,
+    "trees": 4,
+    "sign_characters": 3,
+    "sign_emboss_cells": 168
+  },
+  "sign": {
+    "characters": "培材學堂",
+    "type": "가로형 3자",
+    "board_size_m": [
+      2.1,
+      0.66
+    ],
+    "frame": "황금 이중 테두리 + 옻칠 바탕 + 3D 양각"
+  },
+  "hierarchical_components": [
+    {
+      "id": "11140_02_04519_009_01",
+      "label": "화강암 기단·상면 판석 160매·4단 계단·소맷돌",
+      "mesh_nodes": [
+        "11140_02_04519_009_01__granite_plinth_stone"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_009_02",
+      "label": "2층 붉은 벽돌 본체·코너 퀸·코니스·3연 아치 아케이드·굴뚝",
+      "mesh_nodes": [
+        "11140_02_04519_009_02__red_brick_two_storey_body"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_009_03",
+      "label": "슬레이트 우진각지붕·용마루·도머 2기·굴뚝 씌움",
+      "mesh_nodes": [
+        "11140_02_04519_009_03__slate_hip_roof",
+        "11140_02_04519_009_03__dormer_chimney"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_009_04",
+      "label": "배재학당 표지 培材學堂(가로 3자)·황금 테두리·3D 양각",
+      "mesh_nodes": [
+        "11140_02_04519_009_04__sign_board",
+        "11140_02_04519_009_04__sign_gold_frame",
+        "11140_02_04519_009_04__sign_yanggak_emboss"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_009_05",
+      "label": "아치창 28개소·아케이드 아치 3연·출입문 6짝",
+      "mesh_nodes": [
+        "11140_02_04519_009_05__arch_window_sash",
+        "11140_02_04519_009_05__entrance_door_panels"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04519_009_06",
+      "label": "교정 포장·경계석·수목 4그루·울타리",
+      "mesh_nodes": [
+        "11140_02_04519_009_06__schoolyard_paving",
+        "11140_02_04519_009_06__schoolyard_trees"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3000,
+    "phase_link": "일몰 후 30분 점등 / 23:00 소등",
+    "spots": [
+      {
+        "id": "night_light_spotlight_SE_3000K",
+        "offset_m": [
+          22.0,
+          0.9,
+          24.0
+        ],
+        "aim": "정면 남동 파사드 상향"
+      },
+      {
+        "id": "night_light_spotlight_SW_3000K",
+        "offset_m": [
+          -22.0,
+          0.9,
+          24.0
+        ],
+        "aim": "정면 남서 파사드 상향"
+      },
+      {
+        "id": "night_light_spotlight_NE_3000K",
+        "offset_m": [
+          22.0,
+          0.9,
+          -14.0
+        ],
+        "aim": "배면 북동면 조사"
+      },
+      {
+        "id": "night_light_spotlight_NW_3000K",
+        "offset_m": [
+          -22.0,
+          0.9,
+          -14.0
+        ],
+        "aim": "배면 북서면 조사"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_arcade_three_arches_dive",
+      "label": "3연 아치 아케이드 진입",
+      "offset_m": [
+        0.0,
+        1.6,
+        15.0
+      ]
+    },
+    {
+      "id": "hotspot_sign_paichai_hall",
+      "label": "표지 培材學堂 양각 근접",
+      "offset_m": [
+        0.0,
+        3.6,
+        10.4
+      ]
+    },
+    {
+      "id": "hotspot_arch_windows_first_floor",
+      "label": "1층 아치창 열람",
+      "offset_m": [
+        0.0,
+        2.6,
+        9.6
+      ]
+    },
+    {
+      "id": "hotspot_dormer_roof_upview",
+      "label": "지붕창(도머) 올려보기",
+      "offset_m": [
+        7.0,
+        6.0,
+        10.0
+      ]
+    },
+    {
+      "id": "hotspot_ridge_schoolyard_overlook",
+      "label": "용마루 위 교정 조망",
+      "offset_m": [
+        0.0,
+        13.6,
+        0.0
+      ]
+    }
+  ],
+  "key_expansion_rule": "11140_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 11140_02_04519_009_02",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "국가유산포털 — 배재학당(동관) 지정정보",
+      "url": "https://www.heritage.go.kr/",
+      "note": "국가유산청 지정·관리 정보 원문 포털(지정번호는 원문 대조 대상)"
+    },
+    {
+      "title": "배재학당 역사박물관 공식 안내",
+      "url": "https://www.paichai.or.kr/",
+      "note": "동관 연혁·전시 안내"
+    },
+    {
+      "title": "한국민족문화대백과 — 배재학당",
+      "url": "https://encykorea.aks.ac.kr/",
+      "note": "1885년 아펜젤러 설립, 한국 최초 근대 사립학교"
+    },
+    {
+      "title": "서울특별시 문화유산 — 중구 서소문로11길 일대",
+      "url": "https://www.seoul.go.kr/",
+      "note": "소재지·도로명주소 대조"
+    }
+  ],
+  "reference_note": "위 4건은 포털 루트 주소이며, 검수 시 각 포털에서 「배재학당」 항목으로 진입해 지정번호·치수를 재확인한다. 웹 검색 없이 발주서 제원표와 이전 검증 데이터로 작성된 블록이므로, 상세 주소는 포털 검색 경로를 기준으로 안내한다.",
+  "generation": {
+    "generator": "pimang junggu paichai-hall parametric builder (workspace-side)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "생성 스크립트·임시파일은 저장소에 포함되지 않는다. PR에는 위 4종 에셋만 반영."
+  },
+  "bbox_local_m": {
+    "min": [
+      -28.0,
+      0.0,
+      -12.0
+    ],
+    "max": [
+      28.0,
+      13.44,
+      28.0
+    ],
+    "size": [
+      56.0,
+      13.44,
+      40.0
+    ],
+    "core_min": [
+      -28.0,
+      0.0,
+      -8.0
+    ],
+    "core_max": [
+      28.0,
+      13.44,
+      28.0
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 13514,
+      "vertices": 16063,
+      "bytes": 913223
+    },
+    "model_lod2.gltf": {
+      "triangles": 514,
+      "vertices": 528,
+      "bytes": 36839
+    },
+    "texture_atlas.webp": {
+      "bytes": 107940,
+      "size_px": 1024,
+      "format": "webp_lossy_q86"
+    }
+  },
+  "package_total_bytes": 1058002,
+  "anchor_nodes": [
+    "night_light_spotlight_SE_3000K",
+    "night_light_spotlight_SW_3000K",
+    "night_light_spotlight_NE_3000K",
+    "night_light_spotlight_NW_3000K",
+    "hotspot_arcade_three_arches_dive",
+    "hotspot_sign_paichai_hall",
+    "hotspot_arch_windows_first_floor",
+    "hotspot_dormer_roof_upview",
+    "hotspot_ridge_schoolyard_overlook"
+  ]
+}

@@ -1,0 +1,304 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B25",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B25",
+  "pr_number": 486,
+  "pr_number_assigned": 486,
+  "block_number": 25,
+  "composite_id": "28185_01_21985_025",
+  "block_id": "28185_B25_유타대_조지메이슨대_캠퍼스",
+  "name": "유타대학교 아시아캠퍼스 & 조지메이슨대학교 한국캠퍼스",
+  "name_en": "University of Utah Asia Campus & George Mason University Korea",
+  "category": "CAT31_GLOBAL_CAMPUS",
+  "category_label": "글로벌캠퍼스/대학도시/복합학술동",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 송도문화로 119 IGC 복합학술동 (송도동)",
+  "postal_code": "21985",
+  "floors": "지상 8층 (높이 36.5m 현대식 트윈 학술윙 & 중앙 글래스 아뜨리움)",
+  "height_m": 36.5,
+  "architectural_style": "현대식 트윈 커튼월 학술윙 & 중앙 4개층 오픈 보이드 글래스 아뜨리움",
+  "architect": "희림종합건축사사무소 & 대우건설",
+  "coordinates": [
+    126.669,
+    37.3824
+  ],
+  "orientation_deg": 0.0,
+  "heading": 0.0,
+  "heading_note": "송도문화로 메인 중앙광장에서 유타대/조지메이슨대 트윈 학술동을 정면으로 조망하는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.15,
+  "lod_switch_distance": 220.0,
+  "spec_dimensions_m": {
+    "utah_wing": {
+      "width_x_m": 20.0,
+      "depth_z_m": 22.0,
+      "height_m": 36.5
+    },
+    "mason_wing": {
+      "width_x_m": 22.0,
+      "depth_z_m": 22.0,
+      "height_m": 36.5
+    },
+    "glass_atrium": {
+      "width_x_m": 8.0,
+      "depth_z_m": 18.0,
+      "height_m": 18.5
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "curtain_wall": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "panels_and_atrium": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "promenade_tiles": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "university_brand_and_trees": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.02~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "academic_wings": 2,
+    "central_atriums": 1,
+    "solar_fins": 20,
+    "campus_trees": 16,
+    "smart_streetlights": 10
+  },
+  "sign": {
+    "characters": "유타대학교 · 조지메이슨대학교 (UAC & GMUK)",
+    "type": "캠퍼스 주출입구 화강석 문주 위 양교 상징 크림슨/그린 입체 명판",
+    "board_size_m": [
+      4.0,
+      1.8
+    ],
+    "frame": "스테인리스 스틸 헤어라인 프레임"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_01_21985_025_01",
+      "label": "유타대학교 아시아캠퍼스(UAC) 8층 크림슨 액센트 학술윙",
+      "mesh_nodes": [
+        "28185_01_21985_025_01__utah_wing"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21985_025_02",
+      "label": "조지메이슨대 한국캠퍼스(GMUK) 8층 그린/골드 액센트 학술윙",
+      "mesh_nodes": [
+        "28185_01_21985_025_02__mason_wing"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21985_025_03",
+      "label": "중앙 4개층 관통 오픈 보이드 글래스 아뜨리움 & 콘코스",
+      "mesh_nodes": [
+        "28185_01_21985_025_03__atrium"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21985_025_04",
+      "label": "양교 상징 잔디광장 & 조경수목·가로등·캠퍼스 문주 명판",
+      "mesh_nodes": [
+        "28185_01_21985_025_04__plaza_and_monument"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 4000,
+    "phase_link": "일몰 후 15분 점등 / 24:00 소등 (글로벌 대학도시 연동)",
+    "spots": [
+      {
+        "id": "night_light_atrium_glow",
+        "offset_m": [
+          0.0,
+          18.0,
+          -9.0
+        ],
+        "aim": "중앙 글래스 아뜨리움 내부 발광 연출"
+      },
+      {
+        "id": "night_light_utah_roof",
+        "offset_m": [
+          14.0,
+          36.5,
+          -9.0
+        ],
+        "aim": "유타대 윙 옥상 조명"
+      },
+      {
+        "id": "night_light_mason_roof",
+        "offset_m": [
+          -15.0,
+          36.5,
+          -9.0
+        ],
+        "aim": "조지메이슨대 윙 옥상 조명"
+      },
+      {
+        "id": "night_light_gate_monument",
+        "offset_m": [
+          -15.5,
+          2.5,
+          3.3
+        ],
+        "aim": "캠퍼스 문주 명판 조명"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_central_atrium_lobby",
+      "label": "양교 통합 아뜨리움 로비",
+      "offset_m": [
+        0.0,
+        0.15,
+        -9.0
+      ]
+    },
+    {
+      "id": "hotspot_utah_asia_entrance",
+      "label": "유타대 아시아캠퍼스 출입구",
+      "offset_m": [
+        14.0,
+        0.15,
+        0.0
+      ]
+    },
+    {
+      "id": "hotspot_mason_korea_entrance",
+      "label": "조지메이슨대 한국캠퍼스 출입구",
+      "offset_m": [
+        -15.0,
+        0.15,
+        0.0
+      ]
+    },
+    {
+      "id": "hotspot_campus_main_gate",
+      "label": "IGC 복합학술동 게이트",
+      "offset_m": [
+        -15.5,
+        0.15,
+        3.3
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_01_21985_025_01",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "유타대학교 아시아캠퍼스(UAC) 공식 사이트 캠퍼스 시설 안내",
+      "url": "https://asiacampus.utah.edu/",
+      "note": "UAC 송도 캠퍼스 학술동 및 시설 제원"
+    },
+    {
+      "title": "조지메이슨대학교 한국캠퍼스(GMU Korea) 공식 시설 안내",
+      "url": "https://masonkorea.gmu.edu/",
+      "note": "GMUK 송도 IGC 복합학술동 시설 규격"
+    },
+    {
+      "title": "인천글로벌캠퍼스(IGC) 재단 복합학술연구동 마스터플랜",
+      "url": "https://www.igc.or.kr/",
+      "note": "송도문화로 119 IGC 복합학술연구동 실시설계 데이터"
+    }
+  ],
+  "reference_note": "희림건축 및 IGC운영재단 복합학술동 준공도면 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B25 Utah and Mason Campus)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -28.0,
+      0.0,
+      -24.6
+    ],
+    "max": [
+      27.95,
+      36.5,
+      24.6
+    ],
+    "size": [
+      55.95,
+      36.5,
+      49.2
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 10148,
+      "bytes": 973768
+    },
+    "model_lod2.gltf": {
+      "triangles": 372,
+      "bytes": 39799
+    },
+    "texture_atlas.webp": {
+      "bytes": 122130,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1138697,
+  "anchor_nodes": [
+    "hotspot_central_atrium_lobby",
+    "hotspot_utah_asia_entrance",
+    "hotspot_mason_korea_entrance",
+    "hotspot_campus_main_gate",
+    "night_light_atrium_glow",
+    "night_light_utah_roof",
+    "night_light_mason_roof",
+    "night_light_gate_monument"
+  ]
+}

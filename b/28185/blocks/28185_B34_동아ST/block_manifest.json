@@ -1,0 +1,299 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B34",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B34",
+  "pr_number": 495,
+  "pr_number_assigned": 495,
+  "block_number": 34,
+  "composite_id": "28185_01_21987_034",
+  "block_id": "28185_B34_동아ST",
+  "name": "동아ST 송도 바이오 R&D 캠퍼스 및 생산공장",
+  "name_en": "Dong-A ST Songdo Bio R&D Campus & Plant",
+  "category": "CAT32_BIO_HEALTHCARE",
+  "category_label": "바이오의약품연구/cGMP임상시료생산/글로벌R&D",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 지식기반로 45 (송도동)",
+  "postal_code": "21987",
+  "floors": "지상 5층 (높이 28.5m 현대식 글래스 커튼월 바이오 R&D 연구동 및 생산공장)",
+  "height_m": 28.5,
+  "architectural_style": "동아ST 로얄블루 액센트 모던 글래스 커튼월 바이오 R&D 캠퍼스",
+  "architect": "희림종합건축사사무소 & 동아건설",
+  "coordinates": [
+    126.6585,
+    37.3732
+  ],
+  "orientation_deg": 0.0,
+  "heading": 0.0,
+  "heading_note": "지식기반로 주진입로에서 동아ST 바이오 R&D 센터 본관을 정면으로 조망하는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.15,
+  "lod_switch_distance": 220.0,
+  "spec_dimensions_m": {
+    "rnd_hall": {
+      "width_x_m": 22.0,
+      "depth_z_m": 22.0,
+      "height_m": 28.5
+    },
+    "cgmp_wing": {
+      "width_x_m": 24.0,
+      "depth_z_m": 18.0,
+      "height_m": 18.5
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "curtain_wall": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "panels_and_lawn": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "promenade_tiles": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "donga_brand_and_trees": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.02~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "rnd_halls": 1,
+    "cgmp_wings": 1,
+    "solar_fins": 18,
+    "campus_trees": 16,
+    "smart_streetlights": 10
+  },
+  "sign": {
+    "characters": "Dong-A ST (동아ST 송도 바이오캠퍼스)",
+    "type": "캠퍼스 주출입구 화강석 문주 위 동아ST 로얄블루/골드 입체 명판",
+    "board_size_m": [
+      4.0,
+      1.8
+    ],
+    "frame": "동아ST 로얄블루 & 스테인리스 스틸 헤어라인 프레임"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_01_21987_034_01",
+      "label": "동아ST 5층 바이오 R&D 센터 본관 타워 & 로얄블루 루프",
+      "mesh_nodes": [
+        "28185_01_21987_034_01__rnd_hall"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21987_034_02",
+      "label": "cGMP 바이오의약품 임상시료 생산 플랜트 윙",
+      "mesh_nodes": [
+        "28185_01_21987_034_02__cgmp_wing"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21987_034_03",
+      "label": "외벽 일사조절 수직 루버 핀 & 유리 커튼월 입면",
+      "mesh_nodes": [
+        "28185_01_21987_034_03__louvers"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21987_034_04",
+      "label": "캠퍼스 잔디정원 & 조경수목·가로등·문주 명판",
+      "mesh_nodes": [
+        "28185_01_21987_034_04__garden_and_monument"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 4000,
+    "phase_link": "일몰 후 15분 점등 / 24:00 소등 (바이오 클러스터 연동)",
+    "spots": [
+      {
+        "id": "night_light_blue_crown",
+        "offset_m": [
+          13.0,
+          28.5,
+          -9.0
+        ],
+        "aim": "본관 옥상 로얄블루 파라펫 라인 경관조명"
+      },
+      {
+        "id": "night_light_entrance_canopy",
+        "offset_m": [
+          2.0,
+          4.0,
+          2.0
+        ],
+        "aim": "주출입구 캐노피 다운라이트"
+      },
+      {
+        "id": "night_light_quad_lights",
+        "offset_m": [
+          0.0,
+          0.5,
+          14.0
+        ],
+        "aim": "잔디정원 가로등 조명"
+      },
+      {
+        "id": "night_light_gate_monument",
+        "offset_m": [
+          -15.5,
+          2.5,
+          3.1
+        ],
+        "aim": "캠퍼스 문주 명판 조명"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_rnd_hall_lobby",
+      "label": "동아ST R&D 센터 로비",
+      "offset_m": [
+        13.0,
+        0.15,
+        2.0
+      ]
+    },
+    {
+      "id": "hotspot_cgmp_plant_entrance",
+      "label": "cGMP 생산동 게이트",
+      "offset_m": [
+        -14.0,
+        0.15,
+        -2.0
+      ]
+    },
+    {
+      "id": "hotspot_campus_garden_plaza",
+      "label": "캠퍼스 중앙 잔디정원",
+      "offset_m": [
+        0.0,
+        0.35,
+        14.0
+      ]
+    },
+    {
+      "id": "hotspot_donga_main_gate",
+      "label": "동아ST 송도캠퍼스 정문",
+      "offset_m": [
+        -15.5,
+        0.15,
+        3.1
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_01_21987_034_01",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "동아ST 공식 사이트 송도 바이오캠퍼스 연구시설 및 플랜트 소개",
+      "url": "https://www.donga-st.com/",
+      "note": "송도 지식기반로 바이오 R&D 센터 및 cGMP 공장 건축 제원"
+    },
+    {
+      "title": "IFEZ 인천경제자유구역청 송도 바이오클러스터 기업 인프라 현황",
+      "url": "https://www.ifez.go.kr/",
+      "note": "지식기반로 45 일원 첨단 바이오 연구제조시설 인허가 정보"
+    },
+    {
+      "title": "희림종합건축사사무소 동아ST 송도 바이오 연구소 설계 포트폴리오",
+      "url": "https://www.heerim.com/",
+      "note": "바이오 R&D 타워 및 cGMP 클린룸 시설 실시설계 데이터"
+    }
+  ],
+  "reference_note": "희림건축 및 동아건설 준공도면 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B34 Dong-A ST)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -28.0,
+      0.0,
+      -24.6
+    ],
+    "max": [
+      27.95,
+      28.5,
+      24.6
+    ],
+    "size": [
+      55.95,
+      28.5,
+      49.2
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 11012,
+      "bytes": 1069518
+    },
+    "model_lod2.gltf": {
+      "triangles": 348,
+      "bytes": 37373
+    },
+    "texture_atlas.webp": {
+      "bytes": 122860,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1232751,
+  "anchor_nodes": [
+    "hotspot_rnd_hall_lobby",
+    "hotspot_cgmp_plant_entrance",
+    "hotspot_campus_garden_plaza",
+    "hotspot_donga_main_gate",
+    "night_light_blue_crown",
+    "night_light_entrance_canopy",
+    "night_light_quad_lights",
+    "night_light_gate_monument"
+  ]
+}

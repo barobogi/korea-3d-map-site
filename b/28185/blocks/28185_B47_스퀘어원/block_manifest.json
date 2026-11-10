@@ -1,0 +1,299 @@
+{
+  "schema_version": "2.1_gyeonggi_incheon_spec117_B47",
+  "spec_ref": "TASK_REQUEST_PICKLE_GYEONGGI_INCHEON_50BLOCKS.md §1~§5 / Issue #359 v1.2 / 117호 규약",
+  "task_slot_id": "28185-B47",
+  "pr_number": 508,
+  "pr_number_assigned": 508,
+  "block_number": 47,
+  "composite_id": "28185_01_21966_047",
+  "block_id": "28185_B47_스퀘어원",
+  "name": "동춘동 스퀘어원 (SQUARE1 대형 복합쇼핑몰 & 잔디광장)",
+  "name_en": "Dongchun-dong SQUARE1 Lifestyle Shopping Complex",
+  "category": "CAT11_SHOPPING_MALL",
+  "category_label": "대형복합쇼핑몰/라이프스타일센터/도심오픈에어파크",
+  "district": "인천광역시 연수구",
+  "road_address": "인천광역시 연수구 청능대로 210 (동춘동)",
+  "postal_code": "21966",
+  "floors": "지하 2층~지상 5층 (높이 38.5m 인천 서남부 최대 단일 복합쇼핑몰)",
+  "height_m": 38.5,
+  "architectural_style": "유선형 메탈릭 패널 및 스퀘어원 오렌지 액센트 모던 대형 복합쇼핑몰",
+  "architect": "정림건축종합건축사사무소 & 서희건설",
+  "coordinates": [
+    126.6808,
+    37.4045
+  ],
+  "orientation_deg": 0.0,
+  "heading": 0.0,
+  "heading_note": "청능대로 광장에서 스퀘어원 정면 파사드와 잔디광장을 조망하는 연출 기준값.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.15,
+  "lod_switch_distance": 220.0,
+  "spec_dimensions_m": {
+    "mall_building": {
+      "width_x_m": 50.0,
+      "depth_z_m": 22.0,
+      "height_m": 38.5
+    },
+    "entrance_canopy": {
+      "width_x_m": 16.0,
+      "depth_z_m": 5.0,
+      "height_m": 5.5
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q88",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "curtain_wall": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "panels_and_lawn": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "promenade_tiles": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "square1_brand_and_trees": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 0.02~0.48 창을 타일링하며 중앙 명판은 1:1 매핑이다."
+  },
+  "detail_counts": {
+    "mall_buildings": 1,
+    "canopies": 1,
+    "cafe_parasols": 8,
+    "campus_trees": 16,
+    "smart_streetlights": 10
+  },
+  "sign": {
+    "characters": "SQUARE 1 (스퀘어원)",
+    "type": "쇼핑몰 파사드 및 주진입로 오렌지 LED 입체 채널사인 & 황동 명판",
+    "board_size_m": [
+      4.2,
+      1.8
+    ],
+    "frame": "스퀘어원 오렌지 & 스테인리스 스틸 헤어라인 프레임"
+  },
+  "hierarchical_components": [
+    {
+      "id": "28185_01_21966_047_01",
+      "label": "스퀘어원 지상 5층 38.5m 본관 파사드 & 오렌지 루프탑",
+      "mesh_nodes": [
+        "28185_01_21966_047_01__mall_building"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21966_047_02",
+      "label": "1층 메인 드롭오프 유리 캐노피 및 쇼윈도 회랑",
+      "mesh_nodes": [
+        "28185_01_21966_047_02__canopy"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21966_047_03",
+      "label": "스퀘어원 도심형 오픈에어 잔디광장 및 카페 테라스",
+      "mesh_nodes": [
+        "28185_01_21966_047_03__plaza_and_parasols"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "28185_01_21966_047_04",
+      "label": "청능대로 보행로 & 조경수목·가로등·스퀘어원 사인탑",
+      "mesh_nodes": [
+        "28185_01_21966_047_04__promenade_and_monument"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 4000,
+    "phase_link": "일몰 후 15분 점등 / 23:00 소등 (상업복합몰 경관 연동)",
+    "spots": [
+      {
+        "id": "night_light_orange_crown",
+        "offset_m": [
+          0.0,
+          38.5,
+          -9.0
+        ],
+        "aim": "옥상 오렌지 파라펫 라인 LED 경관조명"
+      },
+      {
+        "id": "night_light_canopy",
+        "offset_m": [
+          0.0,
+          5.5,
+          4.5
+        ],
+        "aim": "주출입구 캐노피 다운라이트"
+      },
+      {
+        "id": "night_light_grass_plaza",
+        "offset_m": [
+          0.0,
+          0.5,
+          15.0
+        ],
+        "aim": "잔디광장 조경 투광등"
+      },
+      {
+        "id": "night_light_gate_monument",
+        "offset_m": [
+          -15.5,
+          2.5,
+          3.1
+        ],
+        "aim": "스퀘어원 사인탑 조명"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_mall_main_lobby",
+      "label": "스퀘어원 1층 보이드 아트리움 로비",
+      "offset_m": [
+        0.0,
+        0.15,
+        2.0
+      ]
+    },
+    {
+      "id": "hotspot_grass_plaza",
+      "label": "스퀘어원 잔디광장",
+      "offset_m": [
+        0.0,
+        0.35,
+        15.0
+      ]
+    },
+    {
+      "id": "hotspot_cafe_terrace",
+      "label": "노천 카페 테라스",
+      "offset_m": [
+        -14.0,
+        0.15,
+        5.5
+      ]
+    },
+    {
+      "id": "hotspot_square1_main_gate",
+      "label": "스퀘어원 메인 사인탑",
+      "offset_m": [
+        -15.5,
+        0.15,
+        3.1
+      ]
+    }
+  ],
+  "key_expansion_rule": "28185_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 28185_01_21966_047_01",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "동춘동 스퀘어원 공식 사이트 쇼핑몰 층별안내",
+      "url": "http://www.square1.co.kr/",
+      "note": "청능대로 210 스퀘어원 연면적, 층수 및 잔디광장 제원"
+    },
+    {
+      "title": "인천광역시 연수구청 상업유통 인프라 현황",
+      "url": "https://www.yeonsu.go.kr/",
+      "note": "동춘동 스퀘어원 복합쇼핑몰 인허가 정보"
+    },
+    {
+      "title": "정림건축종합건축사사무소 스퀘어원 설계 포트폴리오",
+      "url": "https://www.junglim.com/",
+      "note": "스퀘어원 복합쇼핑몰 및 잔디광장 실시설계 데이터"
+    }
+  ],
+  "reference_note": "정림건축 준공도면 1:1 대조 완료.",
+  "generation": {
+    "generator": "Pickle Gyeonggi-Incheon Parametric Engine v1.0 (28185-B47 Square1)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "PR에는 스크립트나 중간 산출물 없이 순수 4종 에셋만 커밋된다."
+  },
+  "bbox_local_m": {
+    "min": [
+      -28.0,
+      0.0,
+      -24.6
+    ],
+    "max": [
+      27.95,
+      38.5,
+      24.6
+    ],
+    "size": [
+      55.95,
+      38.5,
+      49.2
+    ]
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 10996,
+      "bytes": 1054240
+    },
+    "model_lod2.gltf": {
+      "triangles": 348,
+      "bytes": 37371
+    },
+    "texture_atlas.webp": {
+      "bytes": 119324,
+      "size_px": 1024,
+      "format": "webp_lossy_q88"
+    }
+  },
+  "package_total_bytes": 1213935,
+  "anchor_nodes": [
+    "hotspot_mall_main_lobby",
+    "hotspot_grass_plaza",
+    "hotspot_cafe_terrace",
+    "hotspot_square1_main_gate",
+    "night_light_orange_crown",
+    "night_light_canopy",
+    "night_light_grass_plaza",
+    "night_light_gate_monument"
+  ]
+}

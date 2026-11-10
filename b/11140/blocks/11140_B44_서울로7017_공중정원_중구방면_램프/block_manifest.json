@@ -1,0 +1,369 @@
+{
+  "schema_version": "2.1_junggu_spec117_B44",
+  "spec_ref": "TASK_REQUEST_20261108_JUNGGU_LEGO_50BLOCKS.md §1~§3 / 117호 블록 장착 규약 v1",
+  "task_slot_id": "11140-B44",
+  "pr_number": 351,
+  "pr_number_assigned": 351,
+  "block_number": 44,
+  "composite_id": "11140_02_04536_043",
+  "block_id": "11140_B44_서울로7017_공중정원_(중구방면_램프)",
+  "name": "서울로7017 공중정원 (중구방면 램프)",
+  "name_en": "서울로7017 공중정원 (중구방면 램프)",
+  "category": "CAT46_ELEVATED_SKY_GARDEN",
+  "category_label": "도시재생/공중보행로",
+  "district": "서울특별시 중구",
+  "road_address": "서울특별시 중구 서울로 일대 (봉래동2가)",
+  "postal_code": "04536",
+  "heritage": {
+    "designation": "해당 없음",
+    "name": "서울로7017",
+    "note": "2017년 개장한 고가도로 재생 공중정원. 983m 보행로와 원형 식재 645개.",
+    "manager": "서울특별시"
+  },
+  "coordinates": [
+    126.9732,
+    37.5574
+  ],
+  "orientation_deg": 180.0,
+  "heading": 180.0,
+  "heading_note": "정면축을 기준으로 한 연출값이며, 정밀실측 대조 전까지는 연출 기준값으로 취급한다.",
+  "ground": {
+    "mode": "snap_to_terrain",
+    "origin_y_m": 0.0,
+    "note": "지면 포장면(최저점)이 y=0.00m. 절대 해발고도(ASL) 값은 파일 내 존재하지 않는다."
+  },
+  "base_plinth_height_m": 0.0,
+  "lod_switch_distance": 200.0,
+  "spec_dimensions_m": {
+    "sky_deck": {
+      "length_x": 120.0,
+      "width_z": 8.0,
+      "deck_y": 16.0,
+      "planters": 645,
+      "note": "고가 보행로 + 원형 식재"
+    },
+    "parapet": {
+      "length_x": 120.0,
+      "height_y": 1.2
+    },
+    "ramp_column": {
+      "r_m": 5.0,
+      "height_y": 16.0
+    }
+  },
+  "texture": {
+    "file": "texture_atlas.webp",
+    "size_px": 1024,
+    "format": "WebP lossy Q86",
+    "uv_origin": "glTF 규약(v=0 = 이미지 상단)",
+    "quadrants_px": {
+      "granite_stone": {
+        "x": 0,
+        "y": 0,
+        "uv_origin": [
+          0.0,
+          0.0
+        ]
+      },
+      "wall_masonry": {
+        "x": 512,
+        "y": 0,
+        "uv_origin": [
+          0.5,
+          0.0
+        ]
+      },
+      "roof_tile": {
+        "x": 0,
+        "y": 512,
+        "uv_origin": [
+          0.0,
+          0.5
+        ]
+      },
+      "sign_plaque": {
+        "x": 512,
+        "y": 512,
+        "uv_origin": [
+          0.5,
+          0.5
+        ],
+        "sub_plaque": [
+          0.02,
+          0.02,
+          0.96,
+          0.44
+        ],
+        "sub_door_hongchil": [
+          0.02,
+          0.5,
+          0.44,
+          0.46
+        ],
+        "sub_gold_frame": [
+          0.5,
+          0.5,
+          0.46,
+          0.22
+        ]
+      }
+    },
+    "sampling_window_uv": 0.44,
+    "pattern_period_note": "타일링 재질은 사분면 내부 0.04~0.48 창을 주기 반복하며, 간판·문은 부분영역 정확 UV(1:1)이다."
+  },
+  "detail_counts": {
+    "massing_units": 3,
+    "planters": 645,
+    "deck_span_m": 120
+  },
+  "sign": {
+    "characters": "서울路7017",
+    "type": "가로형 7자",
+    "board_size_m": [
+      7.6,
+      1.9
+    ],
+    "frame": "황금 이중 테두리 + 옻칠 바탕 + 3D 양각"
+  },
+  "hierarchical_components": [
+    {
+      "id": "11140_02_04536_043_01",
+      "label": "기단·지면 판석·포장",
+      "mesh_nodes": [
+        "11140_02_04536_043_01__plinth_ground_base"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04536_043_02",
+      "label": "본체 매스·창렬·파사드",
+      "mesh_nodes": [
+        "11140_02_04536_043_02__mass_body_facade"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04536_043_03",
+      "label": "지붕·데크·옥상 구조",
+      "mesh_nodes": [
+        "11140_02_04536_043_03__roof_deck_structure"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04536_043_04",
+      "label": "표지 3D 양각·금테",
+      "mesh_nodes": [
+        "11140_02_04536_043_04__sign_board",
+        "11140_02_04536_043_04__sign_gold_frame",
+        "11140_02_04536_043_04__sign_yanggak_emboss"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04536_043_05",
+      "label": "창호·출입문·철물",
+      "mesh_nodes": [
+        "11140_02_04536_043_05__window_sash_glass",
+        "11140_02_04536_043_05__door_hardware_iron"
+      ],
+      "toggleable": true
+    },
+    {
+      "id": "11140_02_04536_043_06",
+      "label": "조경·가로시설",
+      "mesh_nodes": [
+        "11140_02_04536_043_06__landscape_greenery"
+      ],
+      "toggleable": true
+    }
+  ],
+  "night_lighting_anchors": {
+    "color_temp_k": 3000,
+    "phase_link": "일몰 후 30분 점등 / 23:00 소등",
+    "spots": [
+      {
+        "id": "night_light_spotlight_SE_3000K",
+        "offset_m": [
+          75.0,
+          0.9,
+          22.0
+        ],
+        "aim": "남동 파사드 상향"
+      },
+      {
+        "id": "night_light_spotlight_SW_3000K",
+        "offset_m": [
+          -75.0,
+          0.9,
+          22.0
+        ],
+        "aim": "남서 파사드 상향"
+      },
+      {
+        "id": "night_light_spotlight_NE_3000K",
+        "offset_m": [
+          75.0,
+          0.9,
+          -22.0
+        ],
+        "aim": "배면 북동 조사"
+      },
+      {
+        "id": "night_light_spotlight_NW_3000K",
+        "offset_m": [
+          -75.0,
+          0.9,
+          -22.0
+        ],
+        "aim": "배면 북서 조사"
+      }
+    ]
+  },
+  "interaction_hotspots": [
+    {
+      "id": "hotspot_deck_dive",
+      "label": "공중정원 데크 진입",
+      "offset_m": [
+        -40.0,
+        17.7,
+        0.0
+      ]
+    },
+    {
+      "id": "hotspot_sign_seoullo",
+      "label": "표지 서울路7017 양각",
+      "offset_m": [
+        0.0,
+        18.4,
+        8.0
+      ]
+    },
+    {
+      "id": "hotspot_planter_row",
+      "label": "원형 식재 열",
+      "offset_m": [
+        0.0,
+        17.7,
+        2.0
+      ]
+    },
+    {
+      "id": "hotspot_parapet_view",
+      "label": "난간 너머 도심 조망",
+      "offset_m": [
+        20.0,
+        18.0,
+        4.0
+      ]
+    },
+    {
+      "id": "hotspot_ramp_column",
+      "label": "램프 기둥",
+      "offset_m": [
+        -56.0,
+        8.0,
+        6.0
+      ]
+    }
+  ],
+  "key_expansion_rule": "11140_{구역순번}_{우편번호}_{개체순번}[_{하위모듈}] — 예: 11140_02_04536_043_03",
+  "lod_budget": {
+    "lod3_triangles": [
+      10000,
+      16000
+    ],
+    "lod2_triangles": [
+      300,
+      800
+    ],
+    "package_max_bytes": 2097152,
+    "texture_max_bytes": 400000
+  },
+  "references": [
+    {
+      "title": "국가유산포털 — 지정문화재 원문 포털",
+      "url": "https://www.heritage.go.kr/",
+      "note": "국가유산청 지정·관리 정보 원문"
+    },
+    {
+      "title": "서울특별시 중구 — 주요 명소 안내",
+      "url": "https://junggu.seoul.go.kr/",
+      "note": "구간·시설 소재지 대조"
+    },
+    {
+      "title": "한국민족문화대백과 — 서울 중구 유적",
+      "url": "https://encykorea.aks.ac.kr/",
+      "note": "역사·형식 대조"
+    },
+    {
+      "title": "서울특별시 — 도로명주소 안내",
+      "url": "https://www.seoul.go.kr/",
+      "note": "도로명주소 대조"
+    }
+  ],
+  "reference_note": "포털 루트 주소이며, 검수 시 각 포털에서 해당 항목으로 진입해 치수·지정정보를 재확인한다.",
+  "generation": {
+    "generator": "pimang junggu seoullo-7017 parametric builder (workspace-side)",
+    "date": "2026-11-08",
+    "execution_code_in_package": false,
+    "note": "생성 스크립트·임시파일은 저장소에 포함되지 않는다. PR에는 위 4종 에셋만 반영."
+  },
+  "bbox_local_m": {
+    "min": [
+      -75.0,
+      0.0,
+      -21.5
+    ],
+    "max": [
+      71.3,
+      19.6,
+      19.975
+    ],
+    "size": [
+      146.3,
+      19.6,
+      41.475
+    ],
+    "core_min": [
+      -75.0,
+      0.0,
+      -21.5
+    ],
+    "core_max": [
+      71.3,
+      19.6,
+      19.975
+    ],
+    "note": "min/max는 LOD3 실측 바운딩박스, core는 본체 범위다."
+  },
+  "files": {
+    "model_lod3.gltf": {
+      "triangles": 14842,
+      "vertices": 21130,
+      "bytes": 1149029
+    },
+    "model_lod2.gltf": {
+      "triangles": 500,
+      "vertices": 584,
+      "bytes": 39147
+    },
+    "texture_atlas.webp": {
+      "bytes": 105370,
+      "size_px": 1024,
+      "format": "webp_lossy_q86"
+    }
+  },
+  "package_total_bytes": 1293546,
+  "anchor_nodes": [
+    "night_light_spotlight_SE_3000K",
+    "night_light_spotlight_SW_3000K",
+    "night_light_spotlight_NE_3000K",
+    "night_light_spotlight_NW_3000K",
+    "hotspot_deck_dive",
+    "hotspot_sign_seoullo",
+    "hotspot_planter_row",
+    "hotspot_parapet_view",
+    "hotspot_ramp_column"
+  ]
+}
