@@ -56,10 +56,24 @@
   #sidebar.collapsed {
     transform: translateX(calc(-100% + 24px));
   }
-  #sidebar.collapsed #collapse-btn {
-    position: absolute; right: 0; top: 0; bottom: 0; width: 24px; padding: 0;
-    border-radius: 0 16px 16px 0; background: rgba(2,132,199,0.4);
-    display: flex; align-items: center; justify-content: center; writing-mode: vertical-lr;
+  #sidebar.collapsed .sidebar-header {
+    height: 100%;
+    padding: 0;
+    border: none;
+    background: transparent;
+  }
+  #sidebar.collapsed .sidebar-title {
+    display: none;
+  }
+  #collapse-btn {
+    position: fixed; left: 0; top: 130px; width: 24px; height: 110px; z-index: 9999;
+    background: rgba(2, 132, 199, 0.90); color: #fff; border: 1px solid rgba(56, 189, 248, 0.6);
+    border-radius: 0 12px 12px 0; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    writing-mode: vertical-lr; font-size: 11px; font-weight: 800; box-shadow: 2px 0 12px rgba(0,0,0,0.4);
+    transition: left 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  body:not(.ui-collapsed) #collapse-btn {
+    left: 240px;
   }
   .sidebar-header {
     padding:16px 20px; background:rgba(30,41,59,0.7); border-bottom:1px solid rgba(148,163,184,0.1);
@@ -755,10 +769,10 @@
   <button class="main-tab-btn" data-tab="roadmap" onclick="switchTab('roadmap',this)"><span>코스</span> 로드맵</button>
   <button class="main-tab-btn" data-tab="drone" onclick="switchTab('drone',this)"><span>360</span> 드론</button>
 </div>
+<button id="collapse-btn" class="collapse-btn" onclick="togglePanel()" title="패널 접기/펼치기">▶ 펼치기</button>
 <div id="sidebar" class="collapsed">
   <div class="sidebar-header">
     <div class="sidebar-title"><span id="sidebar-category-name">기본정보</span><span class="sidebar-count" id="sidebar-poi-count">…</span></div>
-    <button id="collapse-btn" class="collapse-btn" onclick="togglePanel()" title="패널 접기/펼치기">▶ 펼치기</button>
   </div>
   <div class="panel-body" id="panel-body">block.json 로딩 중…</div>
   <div class="panel-footer" id="panel-footer">데이터: block.json · three.js 로컬 번들 · 외부요청 0</div>
