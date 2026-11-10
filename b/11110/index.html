@@ -2407,6 +2407,30 @@ function updateIntroInfo(){
     text-overflow: ellipsis;
   }
 
+  /* [H-UX-08 / 뼈대 B / M2] PC/H 화면 차폐율 10% 이하(0%) 달성: 고정 UI를 좌측 사이드 구역으로 수납하여 중앙 시선 축 100% 개방 */
+  @media (min-width: 641px) {
+    #commercial-top-ui {
+      left: 16px !important;
+      right: auto !important;
+      width: 280px !important;
+    }
+    #commercial-bottom-ui {
+      left: 16px !important;
+      right: auto !important;
+      width: 280px !important;
+      margin: 0 !important;
+    }
+    #lego-block-bar {
+      left: 16px !important;
+      transform: none !important;
+      max-width: 280px !important;
+    }
+    #spatial-toast {
+      left: 16px !important;
+      transform: none !important;
+    }
+  }
+
   
   #quick-mode-dock {
     display: grid;
