@@ -1,0 +1,109 @@
+{
+ "block_id": "11170",
+ "name": "서울특별시 용산구",
+ "hierarchy_levels": {
+  "1": {
+   "desc": "구 단위 (저줌)",
+   "min_zoom": 10,
+   "max_zoom": 14,
+   "font_size": 20,
+   "color": "#ffffff"
+  },
+  "2": {
+   "desc": "동/권역 단위 (중줌)",
+   "min_zoom": 13,
+   "max_zoom": 16,
+   "font_size": 14,
+   "color": "#90caf9"
+  },
+  "3": {
+   "desc": "명소/랜드마크 (고줌)",
+   "min_zoom": 15,
+   "max_zoom": 20,
+   "font_size": 12,
+   "color": "#ffd54f"
+  }
+ },
+ "labels": [
+  {
+   "id": "L1_yongsan",
+   "level": 1,
+   "name": "용산구",
+   "lat": 37.5325763,
+   "lon": 126.9904206,
+   "alt": 140,
+   "icon": "district",
+   "source": {
+    "title": "용산구청 공식 포털",
+    "url": "https://www.yongsan.go.kr",
+    "page_title": "용산구청",
+    "quote": "서울특별시 용산구 녹사평대로 150(이태원동)",
+    "checked": "2026-11-02"
+   }
+  },
+  {
+   "id": "L3_museum",
+   "level": 3,
+   "name": "국립중앙박물관",
+   "lat": 37.523953,
+   "lon": 126.9803196,
+   "alt": 55,
+   "icon": "landmark",
+   "source": {
+    "title": "서울시 미디어허브(내 손안에 서울)",
+    "url": "https://mediahub.seoul.go.kr/archives/2006826",
+    "page_title": "서울시 - 내 손안에 서울",
+    "quote": "서울시 용산구 서빙고로 137",
+    "checked": "2026-11-02"
+   }
+  },
+  {
+   "id": "L3_warmem",
+   "level": 3,
+   "name": "전쟁기념관",
+   "lat": 37.5359715,
+   "lon": 126.9772916,
+   "alt": 55,
+   "icon": "landmark",
+   "source": {
+    "title": "서울시 미디어허브(내 손안에 서울)",
+    "url": "https://mediahub.seoul.go.kr/archives/2015380",
+    "page_title": "서울시 - 내 손안에 서울",
+    "quote": "1989년 육군본부가 계룡대로 이전한 뒤 남은 부지에 건립되어 1994년에 문을 열었다.",
+    "checked": "2026-11-02"
+   }
+  },
+  {
+   "id": "L3_namsan",
+   "level": 3,
+   "name": "남산서울타워(N서울타워)",
+   "lat": 37.55127,
+   "lon": 126.9882805,
+   "alt": 55,
+   "icon": "landmark",
+   "source": {
+    "title": "서울시 미디어허브(내 손안에 서울)",
+    "url": "https://mediahub.seoul.go.kr/archives/1210540",
+    "page_title": "서울시 - 내 손안에 서울",
+    "quote": "남산서울타워의 높이는 236.7m이며, 해발 479.7m이다.",
+    "checked": "2026-11-02"
+   }
+  },
+  {
+   "id": "L3_hyochang",
+   "level": 3,
+   "name": "효창공원·백범김구기념관",
+   "lat": 37.5447104,
+   "lon": 126.9608147,
+   "alt": 55,
+   "icon": "landmark",
+   "source": {
+    "title": "서울시 미디어허브(내 손안에 서울)",
+    "url": "https://mediahub.seoul.go.kr/archives/2003933",
+    "page_title": "서울시 - 내 손안에 서울",
+    "quote": "의열사, 삼의사묘역, 백범김구기념관이 위치한 효창공원은 사적 제 330호로 지정된 유서 깊은 장소이다.",
+    "checked": "2026-11-02"
+   }
+  }
+ ]
+}
