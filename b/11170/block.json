@@ -1,31 +1,117 @@
 {
-  "code": "11170",
-  "name": "용산구",
-  "center": [
-    126.99,
-    37.532
-  ],
-  "count": 5,
-  "blocks": [
-    {
-      "id": "11170_B01",
-      "title": "용산구 1호 시그니처 랜드마크 (중심 앵커)"
+  "block_id": "11170",
+  "name": "서울특별시 용산구",
+  "version": "1.0",
+  "updated": "2026-11-02",
+  "basic": {
+    "office": {
+      "name": "용산구청",
+      "address": "서울특별시 용산구 녹사평대로 150(이태원동)",
+      "coords": [
+        126.9904206,
+        37.5325763
+      ],
+      "coords_source": "OpenStreetMap Nominatim 조회(2026-11-02), WGS84 [경도, 위도]",
+      "source": {
+        "title": "용산구청 공식 포털",
+        "url": "https://www.yongsan.go.kr",
+        "page_title": "용산구청",
+        "quote": "서울특별시 용산구 녹사평대로 150(이태원동)",
+        "checked": "2026-11-02"
+      }
     },
-    {
-      "id": "11170_B02",
-      "title": "용산구 대표 역사문화 거점"
-    },
-    {
-      "id": "11170_B03",
-      "title": "용산구 복합행정타운 및 시민광장"
-    },
-    {
-      "id": "11170_B04",
-      "title": "용산구 도심 생태하천 및 녹지축"
-    },
-    {
-      "id": "11170_B05",
-      "title": "용산구 미래 스마트 첨단산업 밸리"
+    "scale": {
+      "building_count": 35047,
+      "road_feature_count": 4552,
+      "tile_count_1000m": 42
     }
+  },
+  "landmarks": [
+    {
+      "id": "museum",
+      "name": "국립중앙박물관",
+      "coords": [
+        126.9803196,
+        37.523953
+      ],
+      "coords_source": "OpenStreetMap Nominatim 조회(2026-11-02), WGS84 [경도, 위도]",
+      "highlight_radius_m": 120,
+      "source": {
+        "title": "서울시 미디어허브(내 손안에 서울)",
+        "url": "https://mediahub.seoul.go.kr/archives/2006826",
+        "page_title": "서울시 - 내 손안에 서울",
+        "quote": "서울시 용산구 서빙고로 137",
+        "checked": "2026-11-02"
+      }
+    },
+    {
+      "id": "warmem",
+      "name": "전쟁기념관",
+      "coords": [
+        126.9772916,
+        37.5359715
+      ],
+      "coords_source": "OpenStreetMap Nominatim 조회(2026-11-02), WGS84 [경도, 위도]",
+      "highlight_radius_m": 120,
+      "source": {
+        "title": "서울시 미디어허브(내 손안에 서울)",
+        "url": "https://mediahub.seoul.go.kr/archives/2015380",
+        "page_title": "서울시 - 내 손안에 서울",
+        "quote": "1989년 육군본부가 계룡대로 이전한 뒤 남은 부지에 건립되어 1994년에 문을 열었다.",
+        "checked": "2026-11-02"
+      }
+    },
+    {
+      "id": "namsan",
+      "name": "남산서울타워(N서울타워)",
+      "coords": [
+        126.9882805,
+        37.55127
+      ],
+      "coords_source": "OpenStreetMap Nominatim 조회(2026-11-02), WGS84 [경도, 위도]",
+      "highlight_radius_m": 120,
+      "source": {
+        "title": "서울시 미디어허브(내 손안에 서울)",
+        "url": "https://mediahub.seoul.go.kr/archives/1210540",
+        "page_title": "서울시 - 내 손안에 서울",
+        "quote": "남산서울타워의 높이는 236.7m이며, 해발 479.7m이다.",
+        "checked": "2026-11-02"
+      }
+    },
+    {
+      "id": "hyochang",
+      "name": "효창공원·백범김구기념관",
+      "coords": [
+        126.9608147,
+        37.5447104
+      ],
+      "coords_source": "OpenStreetMap Nominatim 조회(2026-11-02), WGS84 [경도, 위도]",
+      "highlight_radius_m": 120,
+      "source": {
+        "title": "서울시 미디어허브(내 손안에 서울)",
+        "url": "https://mediahub.seoul.go.kr/archives/2003933",
+        "page_title": "서울시 - 내 손안에 서울",
+        "quote": "의열사, 삼의사묘역, 백범김구기념관이 위치한 효창공원은 사적 제 330호로 지정된 유서 깊은 장소이다.",
+        "checked": "2026-11-02"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "id": "hyochang_walk",
+      "name": "효창공원 독립운동가 묘역 산책",
+      "source": {
+        "title": "서울시 미디어허브(내 손안에 서울)",
+        "url": "https://mediahub.seoul.go.kr/archives/2003933",
+        "page_title": "서울시 - 내 손안에 서울",
+        "quote": "의열사, 삼의사묘역, 백범김구기념관이 위치한 효창공원은 사적 제 330호로 지정된 유서 깊은 장소이다.",
+        "checked": "2026-11-02"
+      }
+    }
+  ],
+  "healing": [],
+  "markets": [],
+  "attributions": [
+    "지형 고도: Open-Meteo/Copernicus DEM 90m 또는 AWS Terrain Tiles(Tilezen 오픈 DEM) · 성곽선: OpenStreetMap contributors (ODbL)"
   ]
 }
