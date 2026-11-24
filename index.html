@@ -74,7 +74,7 @@ fetch('data/sgg.json',{cache:'no-store'}).then(function(r){return r.json()}).the
   p.setAttribute('class',r.status==='open'?'open':'soon');
   var t=document.createElementNS(NS,'title');t.textContent=r.province+' '+r.name+(r.status==='open'?' · 열림':' · 준비중');p.appendChild(t);
   p.addEventListener('mouseenter',function(){tip.textContent=r.province+' '+r.name+(r.status==='open'?' · 열림':' · 준비중')});
-  p.addEventListener('click',function(){if(r.status==='open'){location.href='b/'+r.code+'/'}else{tip.textContent=r.name+': 아직 준비중입니다'}});
+  p.addEventListener('click',function(){if(r.status==='open'){location.href='b/'+r.code+'/'}else{tip.innerHTML=r.name+': 아직 준비중입니다. <a href="b/11110/" style="color:#38bdf8;font-weight:bold;text-decoration:underline;margin-left:8px;">현재 열린 종로구 3D 지도 보러가기 →</a>'}});
   if(r.status==='open')openG.appendChild(p);else svg.appendChild(p)});
  svg.appendChild(openG);
  d.regions.filter(function(r){return r.status==='open'}).forEach(function(r){
