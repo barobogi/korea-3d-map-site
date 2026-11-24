@@ -81,10 +81,16 @@ fetch('data/sgg.json',{cache:'no-store'}).then(function(r){return r.json()}).the
   var xs=[],ys=[];r.rings.forEach(function(g){g.forEach(function(q){xs.push(X(q[0]));ys.push(Y(q[1]))})});
   var mx=(Math.min.apply(null,xs)+Math.max.apply(null,xs))/2,my=(Math.min.apply(null,ys)+Math.max.apply(null,ys))/2;
   var g=document.createElementNS(NS,'g');g.setAttribute('style','cursor:pointer');
-  var c=document.createElementNS(NS,'circle');c.setAttribute('cx',mx);c.setAttribute('cy',my);c.setAttribute('r',9);c.setAttribute('fill','none');c.setAttribute('stroke','#38bdf8');c.setAttribute('stroke-width','2.5');
-  var c2=document.createElementNS(NS,'circle');c2.setAttribute('cx',mx);c2.setAttribute('cy',my);c2.setAttribute('r',3.5);c2.setAttribute('fill','#38bdf8');
-  var t=document.createElementNS(NS,'text');t.setAttribute('x',mx+13);t.setAttribute('y',my+4);t.setAttribute('fill','#e0f2fe');t.setAttribute('font-size','13');t.setAttribute('font-weight','700');t.textContent=r.name+' (열림)';
-  g.appendChild(c);g.appendChild(c2);g.appendChild(t);g.addEventListener('click',function(){location.href='b/'+r.code+'/'});svg.appendChild(g);
+  var c=document.createElementNS(NS,'circle');c.setAttribute('cx',mx);c.setAttribute('cy',my);c.setAttribute('r',3.5);c.setAttribute('fill','#38bdf8');c.setAttribute('stroke','#0f172a');c.setAttribute('stroke-width','1');
+  g.appendChild(c);
+  if(r.code==='11110'){
+    var cOuter=document.createElementNS(NS,'circle');cOuter.setAttribute('cx',mx);cOuter.setAttribute('cy',my);cOuter.setAttribute('r',8);cOuter.setAttribute('fill','none');cOuter.setAttribute('stroke','#38bdf8');cOuter.setAttribute('stroke-width','2');
+    var t=document.createElementNS(NS,'text');t.setAttribute('x',mx+12);t.setAttribute('y',my+4);t.setAttribute('fill','#38bdf8');t.setAttribute('font-size','12');t.setAttribute('font-weight','bold');t.textContent='종로구 3D 지도 →';
+    g.appendChild(cOuter);g.appendChild(t);
+  }
+  g.addEventListener('mouseenter',function(){tip.textContent=r.province+' '+r.name+' (열림 · 클릭 시 3D 지도 이동)'});
+  g.addEventListener('click',function(){location.href='b/'+r.code+'/'});
+  svg.appendChild(g);
  });
 });
 
